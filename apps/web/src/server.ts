@@ -99,30 +99,39 @@ async function loadCartSummary(siteId: string, cookie: string) {
       setCookies: [] as string[],
     };
   }
-  const res = await fetch(
-    `${apiUrl}/v1/public/cart?siteId=${encodeURIComponent(siteId)}`,
-    { headers: { cookie } },
-  );
-  if (!res.ok) {
+  try {
+    const res = await fetch(
+      `${apiUrl}/v1/public/cart?siteId=${encodeURIComponent(siteId)}`,
+      { headers: { cookie } },
+    );
+    if (!res.ok) {
+      return {
+        items: [] as CartSummaryItem[],
+        subtotalCents: 0,
+        count: 0,
+        setCookies: res.headers.getSetCookie?.() ?? [],
+      };
+    }
+    const data = (await res.json()) as {
+      cart: {
+        items: CartSummaryItem[];
+        subtotalCents: number;
+      };
+    };
+    const count = data.cart.items.reduce((s, i) => s + i.quantity, 0);
+    return {
+      ...data.cart,
+      count,
+      setCookies: res.headers.getSetCookie?.() ?? [],
+    };
+  } catch {
     return {
       items: [] as CartSummaryItem[],
       subtotalCents: 0,
       count: 0,
-      setCookies: res.headers.getSetCookie?.() ?? [],
+      setCookies: [] as string[],
     };
   }
-  const data = (await res.json()) as {
-    cart: {
-      items: CartSummaryItem[];
-      subtotalCents: number;
-    };
-  };
-  const count = data.cart.items.reduce((s, i) => s + i.quantity, 0);
-  return {
-    ...data.cart,
-    count,
-    setCookies: res.headers.getSetCookie?.() ?? [],
-  };
 }
 
 function priceEuroQueryToCents(value: string | null): string | null {

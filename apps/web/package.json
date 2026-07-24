@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "build": "tsc -p tsconfig.json && mkdir -p dist/i18n/locales && cp src/i18n/locales/*.json dist/i18n/locales/",
+    "build": "tsc -p tsconfig.json && mkdir -p dist/i18n/locales dist/client && cp src/i18n/locales/*.json dist/i18n/locales/ && cp src/client/*.js dist/client/",
     "start": "node dist/server.js",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "lint": "tsc -p tsconfig.json --noEmit",
