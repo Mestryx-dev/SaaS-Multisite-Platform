@@ -292,6 +292,14 @@ const CATALOG: SeedProduct[] = [
 async function ensureUser(app: ReturnType<typeof createApp>, db: ReturnType<typeof createDb>["db"]) {
   const [existing] = await db.select().from(user).where(eq(user.email, SEED_EMAIL)).limit(1);
   if (existing) {
+    if (!existing.emailVerified) {
+      await db
+        .update(user)
+        .set({ emailVerified: true, updatedAt: new Date() })
+        .where(eq(user.id, existing.id));
+      console.log(`Verified existing seed user: ${SEED_EMAIL}`);
+      return { ...existing, emailVerified: true };
+    }
     console.log(`User already exists: ${SEED_EMAIL}`);
     return existing;
   }
@@ -309,9 +317,14 @@ async function ensureUser(app: ReturnType<typeof createApp>, db: ReturnType<type
     const body = await res.text();
     throw new Error(`Sign-up failed (${res.status}): ${body}`);
   }
+  // Dogfood seed: Better Auth leaves email unverified; mark verified so admin console works.
+  await db
+    .update(user)
+    .set({ emailVerified: true, updatedAt: new Date() })
+    .where(eq(user.email, SEED_EMAIL));
   const [created] = await db.select().from(user).where(eq(user.email, SEED_EMAIL)).limit(1);
   if (!created) throw new Error("User created but not found");
-  console.log(`Created user: ${SEED_EMAIL}`);
+  console.log(`Created user (verified): ${SEED_EMAIL}`);
   return created;
 }
 
