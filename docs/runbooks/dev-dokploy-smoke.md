@@ -1,15 +1,19 @@
 # Dev smoke deploy — Dokploy (VM 245)
 
-**Status**: Project provisioned · Git branch **`dev`** · Dokploy UI env currently labeled `production` (default) — **rename to `dev` in UI** when convenient.  
+**Status**: Project provisioned · Git branch **`dev`** · Dokploy env **`Dev`** (not the default `production`).  
 **Scope**: MVP smoke on hub **245**, not staging VM.  
 **Repo**: [Mestryx-dev/SaaS-Multisite-Platform](https://github.com/Mestryx-dev/SaaS-Multisite-Platform)
+
+**UI**: [Dev environment](https://dokploy.mestryx.dev/dashboard/project/-Vs-cpc8VxoBaVEiPYxV2/environment/3n9oonm3fmKyrN7S97g69)  
+Leave default [`production`](https://dokploy.mestryx.dev/dashboard/project/-Vs-cpc8VxoBaVEiPYxV2/environment/g2f5M7qZn81XlH9KaO2Jv) empty until a real prod cutover.
 
 ## Dokploy IDs
 
 | Resource | ID / name |
 |----------|-----------|
 | Project | `-Vs-cpc8VxoBaVEiPYxV2` · `mestryx-platform` |
-| Environment | `g2f5M7qZn81XlH9KaO2Jv` (default — treat as **dev**) |
+| Environment **Dev** | `3n9oonm3fmKyrN7S97g69` ← smoke services live here |
+| Environment `production` (default, empty) | `g2f5M7qZn81XlH9KaO2Jv` — do not use for MVP |
 | Postgres | `jKgdinMzPNkenLxpLdKni` · `Postgres-Dev` · app `mestryx-platform-pg-dev-vk1j3y` |
 | API | `kCBbgI5zhsOzOT6_ODHfI` · `API-Dev` |
 | Admin | `gdyLubG94HJxre7WrKkCg` · `Admin-Dev` |
