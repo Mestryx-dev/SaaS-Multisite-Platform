@@ -40,6 +40,21 @@ export type CreateAppOptions = {
   config?: AppConfig;
 };
 
+/** Hosts allowed to resolve via WEB_DEV_SITE_ID (local + Dokploy smoke WEB_ORIGIN). */
+function isWebDevSiteHost(host: string, webOrigin: string): boolean {
+  if (host === "localhost" || host === "127.0.0.1") return true;
+  const smokeHosts = new Set<string>();
+  const publicWebHost = process.env.PUBLIC_WEB_HOST?.trim().toLowerCase();
+  if (publicWebHost) smokeHosts.add(publicWebHost.split(":")[0]!);
+  try {
+    const originHost = new URL(webOrigin).hostname.toLowerCase();
+    if (originHost) smokeHosts.add(originHost);
+  } catch {
+    // ignore invalid WEB_ORIGIN
+  }
+  return smokeHosts.has(host);
+}
+
 export function createApp(options: CreateAppOptions = {}) {
   const config = options.config ?? loadConfig();
   const db = options.db ?? null;
@@ -212,18 +227,26 @@ export function createApp(options: CreateAppOptions = {}) {
         return apiError(c, 400, "VALIDATION_ERROR", "host query required");
       }
 
-      const [custom] = await db
-        .select({ site, domain })
-        .from(domain)
-        .innerJoin(site, eq(domain.siteId, site.id))
-        .where(eq(domain.hostname, host))
-        .limit(1);
+      // Missing domain table / schema drift must not 500 the whole resolve path
+      try {
+        const [custom] = await db
+          .select({ site, domain })
+          .from(domain)
+          .innerJoin(site, eq(domain.siteId, site.id))
+          .where(eq(domain.hostname, host))
+          .limit(1);
 
-      if (custom && custom.domain.verificationStatus === "verified") {
-        return c.json({
-          site: custom.site,
-          hostname: host,
-          source: "custom_domain",
+        if (custom && custom.domain.verificationStatus === "verified") {
+          return c.json({
+            site: custom.site,
+            hostname: host,
+            source: "custom_domain",
+          });
+        }
+      } catch (err) {
+        log("warn", "resolve_host_domain_lookup_failed", {
+          host,
+          error: err instanceof Error ? err.message : String(err),
         });
       }
 
@@ -242,12 +265,9 @@ export function createApp(options: CreateAppOptions = {}) {
         }
       }
 
-      // Local SSR (WEB_DEV_SITE_ID) — localhost has no platform subdomain / custom domain
+      // Local / smoke SSR (WEB_DEV_SITE_ID) — no platform subdomain or custom domain
       const webDevSiteId = process.env.WEB_DEV_SITE_ID?.trim();
-      if (
-        webDevSiteId &&
-        (host === "localhost" || host === "127.0.0.1")
-      ) {
+      if (webDevSiteId && isWebDevSiteHost(host, config.webOrigin)) {
         const [row] = await db
           .select()
           .from(site)

@@ -43,18 +43,21 @@ TLS / Traefik (Cloudflare tunnel → Dokploy 245):
 1. **DNS** — create the three CNAMEs/As to the same target as other `*.mestryx.dev` Dokploy apps.  
 2. **Postgres** — Deploy (started at provision). Wait until status `done`.  
 3. **API** — Deploy `API-Dev` (build `apps/api/Dockerfile`, branch `dev`).  
-4. **Migrate** — one-shot against Dokploy Postgres (`pnpm --filter @mestryx/api db:migrate` with `DATABASE_URL` from Dokploy, or exec into API container after first start).  
-5. **Seed (optional)** — `pnpm db:seed` with `SEED_EMAIL` / `SEED_PASSWORD` from your vault; set `WEB_DEV_SITE_ID` on Web if testing without platform subdomain.  
-6. **Admin** — Deploy `Admin-Dev` (`apps/admin/Dockerfile` + `VITE_*` build args).  
-7. **Web** — Deploy `Web-Dev` (`apps/web/Dockerfile`).  
+4. **Migrate** — one-shot against Dokploy Postgres (`pnpm --filter @mestryx/api db:migrate` with `DATABASE_URL` from Dokploy). Prefer a **temporary** Postgres external port (LAN only), then set `externalPort` back to null and reload.  
+5. **Seed Luna** — `pnpm --filter @mestryx/api db:seed` with `SEED_EMAIL` / `SEED_PASSWORD` from vault (defaults are local-only). Capture printed `WEB_DEV_SITE_ID=<uuid>`.  
+6. **Bind smoke host** — set the same `WEB_DEV_SITE_ID` on **Web-Dev** and **API-Dev** env, then redeploy both. Required because `dev-web-platform.mestryx.dev` is not a `*.sites.dev.mestryx.dev` subdomain; without it the storefront falls back to `id=local` and `/wishlist` / `/cart` / `/checkout` 404. API uses the id for `/v1/public/resolve-host` on `WEB_ORIGIN` / localhost.  
+7. **Admin** — Deploy `Admin-Dev` (`apps/admin/Dockerfile` + `VITE_*` build args).  
+8. **Web** — Deploy `Web-Dev` (`apps/web/Dockerfile`) if not already redeployed in step 6.  
 
 ## Smoke checklist
 
 1. [ ] `GET https://dev-api-platform.mestryx.dev/health` → 200  
-2. [ ] `https://dev-admin-platform.mestryx.dev` → SPA loads  
-3. [ ] Sign-in / create org (or seed user)  
-4. [ ] `https://dev-web-platform.mestryx.dev` → HTML (with `WEB_DEV_SITE_ID` or site host)  
-5. [ ] Admin Sites + Products list OK  
+2. [ ] `GET …/v1/public/resolve-host?host=dev-web-platform.mestryx.dev` → 200 + Luna site (not 500)  
+3. [ ] `https://dev-admin-platform.mestryx.dev` → SPA loads  
+4. [ ] Sign-in with seed user (or create org)  
+5. [ ] `https://dev-web-platform.mestryx.dev` → HTML titled Luna (not “Demo Store”)  
+6. [ ] `https://dev-web-platform.mestryx.dev/wishlist` → Soft page 200 (empty OK)  
+7. [ ] Admin Sites + Products list OK for Luna Bijoux  
 
 ## Rollback
 
