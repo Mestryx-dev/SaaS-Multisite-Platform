@@ -3,8 +3,9 @@
 **Purpose:** Single human checklist of points Mestryx must **confirm** before treating the dogfood MVP as ready for **staging (FB-044)** and later **launch packaging (FB-045)**.
 
 **Status:** Open — walk sections in order; tick only after live review.  
-**Updated:** 2026-07-21  
-**Owner:** Mestryx (human) · Agent may update ticks only after explicit “OK / confirmed”
+**Updated:** 2026-07-24  
+**Owner:** Mestryx (human) · Agent may update ticks only after explicit “OK / confirmed”  
+**Facilitation:** skill `human-review` (point-by-point: where / check / expected)
 
 **Related SSOT**
 
@@ -15,16 +16,17 @@
 | [brand-brief.md](./brand-brief.md) | Brand / visuals |
 | [design-system/ux-ui-harmony-checklist.md](./design-system/ux-ui-harmony-checklist.md) | Deep DS V/C/P/M |
 | [runbooks/staging-dokploy.md](./runbooks/staging-dokploy.md) | Staging ops |
+| [runbooks/dev-dokploy-smoke.md](./runbooks/dev-dokploy-smoke.md) | Dev smoke hosts |
 | [12-commerce-fiscal-complete.md](./12-commerce-fiscal-complete.md) | Commerce target scope |
 
-**Local surfaces (dev)**
+**Surfaces**
 
-| Surface | URL |
-|---------|-----|
-| Admin | `http://localhost:5174` |
-| Storefront (Luna) | `http://localhost:3002` |
-| API | `http://localhost:3001` |
-| Storybook | `http://localhost:6006` |
+| Surface | Local | Dev smoke (Dokploy 245) |
+|---------|-------|-------------------------|
+| Admin | `http://localhost:5174` | `https://dev-admin-platform.mestryx.dev` |
+| Storefront (Luna) | `http://localhost:3002` | `https://dev-web-platform.mestryx.dev` |
+| API | `http://localhost:3001` | `https://dev-api-platform.mestryx.dev` |
+| Storybook | `http://localhost:6006` | — (local) |
 
 **Legend:** ☐ todo · ☑ confirmed · ✗ rejected (note) · — N/A / deferred by design
 
