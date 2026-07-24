@@ -26,7 +26,7 @@
 | Admin | `http://localhost:5174` | `https://dev-admin-platform.mestryx.dev` |
 | Storefront (Luna) | `http://localhost:3002` | `https://dev-web-platform.mestryx.dev` |
 | API | `http://localhost:3001` | `https://dev-api-platform.mestryx.dev` |
-| Storybook | `http://localhost:6006` | — (local) |
+| Storybook | `http://localhost:6006` | `https://dev-storybook-platform.mestryx.dev` |
 
 **Legend:** ☐ todo · ☑ confirmed · ✗ rejected (note) · — N/A / deferred by design
 
@@ -36,10 +36,21 @@
 
 Confirm this is the **accepted MVP boundary** (Option B commerce, Stripe end-customer capture still deferred).
 
-- [ ] **MVP cut** = multi-site CMS + admin console + Luna dogfood shop through **`pending_payment`** (no FB-070 live capture yet)
-- [ ] **Out of MVP** acknowledged: Expo (FB-090), platform glass admin (Wave E), marketing product name, FB-070 unlock
-- [ ] Working name **mestryx-platform** OK for engineering / DNS until marketing name
-- [ ] Piblox / Studio identity stays **separate** (no violet collision)
+- [x] **MVP cut** = multi-site CMS + admin console + Luna dogfood shop through **`pending_payment`** (no FB-070 live capture yet)
+- [x] **Out of MVP** acknowledged: Expo (FB-090) later; marketing product name / dedicated domain not needed (vitrine); FB-070 unlock later
+- [x] Working name **mestryx-platform** OK for engineering / DNS until marketing name
+- [x] Piblox / Studio identity stays **separate** (no violet collision)
+- [x] **Admin glass:** chrome already shipped (`.glass-chrome` top bar + sidebar brand) — human confirms OK / enough for MVP; extra Wave E (more glass) stays deferred
+
+```
+Blockers / notes (§0):
+- Stripe / FB-070: later (2026-07-24)
+- Expo: later
+- Marketing name & dedicated domain: N/A for vitrine
+- Glass chrome: OK for MVP; feels a bit flat — polish / deepen chrome later (not blocking)
+- Colors / Piblox separation: keep current dual themes; palette may change later (not blocking)
+```
+
 
 ---
 
@@ -49,12 +60,12 @@ Walk [brand-brief.md](./brand-brief.md) against live UI + Storybook.
 
 ### 1.1 Foundations
 
-- [ ] Platform theme (admin): dark dense console, accent/primary readable, not flat black soup
-- [ ] Storefront theme: Soft boutique (Luna), ambient wash OK, not cream-cliché / not Piblox
-- [ ] Typography: IBM Plex Sans body; Fraunces display on storefront only
-- [ ] Radius: platform ~8px · storefront sharper (DESIGN.md)
-- [ ] Light + dark storefront toggle OK (contrast on Cart, badges, pills)
-- [ ] No purple SaaS / Inter / card-soup aesthetics
+- [x] Platform theme (admin): dark dense console, accent/primary readable, not flat black soup
+- [x] Storefront theme: Soft boutique (Luna), ambient wash OK, not cream-cliché / not Piblox
+- [x] Typography: IBM Plex Sans body; Fraunces display on storefront only (agent-verified Dev: store Google Fonts Fraunces+Plex + `data-theme=storefront`; admin Inter + Plus Jakarta Sans in CSS)
+- [x] Radius: platform ~8px · storefront Soft boutique also 8px (DESIGN.md / tokens; checklist “sharper” outdated — agent-verified Dev `--radius: 8px`)
+- [x] Light + dark storefront toggle OK (contrast on Cart, badges, pills)
+- [x] No purple SaaS / Inter / card-soup aesthetics
 
 ### 1.2 Storybook
 
@@ -174,7 +185,7 @@ Detail runbook: [runbooks/staging-dokploy.md](./runbooks/staging-dokploy.md)
 ## 7. Explicitly deferred (confirm “OK to leave out of MVP”)
 
 - [ ] FB-070 Stripe Capture + refunds (end-customer)
-- [ ] Admin Wave E platform glass
+- [x] Admin Wave E **extra** platform glass (beyond shipped `.glass-chrome` chrome) — defer; chrome OK for MVP but noted as a bit flat (polish later)
 - [ ] Marketing product name / dedicated domain
 - [ ] Expo mobile (FB-090)
 - [ ] Full launch packaging FB-045 (isolation drills, backups, legal packaging) — **after** staging

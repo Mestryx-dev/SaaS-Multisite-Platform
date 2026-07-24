@@ -18,6 +18,7 @@ Leave default [`production`](https://dokploy.mestryx.dev/dashboard/project/-Vs-c
 | API | `kCBbgI5zhsOzOT6_ODHfI` · `API-Dev` |
 | Admin | `gdyLubG94HJxre7WrKkCg` · `Admin-Dev` |
 | Web | `5Hbp0nfyZn9Nkh9eb8hVe` · `Web-Dev` |
+| Storybook | _(provision)_ · `Storybook-Dev` · Dockerfile `packages/ui/Dockerfile` |
 
 Secrets (DB password, `BETTER_AUTH_SECRET`) live **only in Dokploy env** — not in git.
 
@@ -28,6 +29,7 @@ Secrets (DB password, `BETTER_AUTH_SECRET`) live **only in Dokploy env** — not
 | `dev-api-platform.mestryx.dev` | API | 3001 |
 | `dev-admin-platform.mestryx.dev` | Admin | 80 |
 | `dev-web-platform.mestryx.dev` | Web SSR | 3000 |
+| `dev-storybook-platform.mestryx.dev` | Storybook static | 80 |
 
 TLS / Traefik (Cloudflare tunnel → Dokploy 245):
 
@@ -48,6 +50,7 @@ TLS / Traefik (Cloudflare tunnel → Dokploy 245):
 6. **Bind smoke host** — set the same `WEB_DEV_SITE_ID` on **Web-Dev** and **API-Dev** env, then redeploy both. Required because `dev-web-platform.mestryx.dev` is not a `*.sites.dev.mestryx.dev` subdomain; without it the storefront falls back to `id=local` and `/wishlist` / `/cart` / `/checkout` 404. API uses the id for `/v1/public/resolve-host` on `WEB_ORIGIN` / localhost.  
 7. **Admin** — Deploy `Admin-Dev` (`apps/admin/Dockerfile` + `VITE_*` build args).  
 8. **Web** — Deploy `Web-Dev` (`apps/web/Dockerfile`) if not already redeployed in step 6.  
+9. **Storybook** — Deploy `Storybook-Dev` (`packages/ui/Dockerfile`, branch `dev`, domain `dev-storybook-platform.mestryx.dev`, `https: false` / cert `none`). No runtime secrets.  
 
 ## Smoke checklist
 
@@ -58,11 +61,13 @@ TLS / Traefik (Cloudflare tunnel → Dokploy 245):
 5. [ ] `https://dev-web-platform.mestryx.dev` → HTML titled Luna (not “Demo Store”)  
 6. [ ] `https://dev-web-platform.mestryx.dev/wishlist` → Soft page 200 (empty OK)  
 7. [ ] Admin Sites + Products list OK for Luna Bijoux  
+8. [ ] `https://dev-storybook-platform.mestryx.dev` → Storybook manager loads (Foundations / Themes)
 
 ## Rollback
 
 - Redeploy previous Dokploy deployment per app.  
 - Postgres: volume `mestryx-platform-pg-dev-vk1j3y-data` — restore from backup destination if configured.  
+- Storybook: stop/remove `Storybook-Dev` or redeploy previous image; no data volume.  
 - Do **not** delete the project without Mestryx OK.
 
 ## Out of scope (later)
@@ -71,3 +76,4 @@ TLS / Traefik (Cloudflare tunnel → Dokploy 245):
 - Redis service (optional; API tolerates missing `REDIS_URL`)  
 - Wildcard `*.sites.dev.mestryx.dev`  
 - Production env on this project  
+- Auth gate on Dev Storybook (public static catalog for now)  

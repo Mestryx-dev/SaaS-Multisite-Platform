@@ -49,6 +49,7 @@ Seed is idempotent (org `luna-bijoux`, site `luna`, products, categories, defaul
 | API | `apps/api/Dockerfile` |
 | Admin | `apps/admin/Dockerfile` |
 | Web SSR | `apps/web/Dockerfile` |
+| Storybook (optional Dev) | `packages/ui/Dockerfile` |
 
 ## Staging smoke checklist (post-deploy)
 
