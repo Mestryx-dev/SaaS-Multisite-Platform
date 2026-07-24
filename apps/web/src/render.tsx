@@ -17,9 +17,22 @@ import {
 } from "./seo.js";
 
 const here = dirname(fileURLToPath(import.meta.url));
-const tokensCssPath = resolve(here, "../../../packages/tokens/src/tokens.css");
-const uiCssPathCompiled = resolve(
-  here,
+
+/** Resolve package asset for both monorepo `apps/web` and Docker `pnpm deploy`. */
+function resolvePackageAsset(specifier: string, monorepoFallback: string): string {
+  try {
+    return fileURLToPath(import.meta.resolve(specifier));
+  } catch {
+    return resolve(here, monorepoFallback);
+  }
+}
+
+const tokensCssPath = resolvePackageAsset(
+  "@mestryx/tokens/css",
+  "../../../packages/tokens/src/tokens.css",
+);
+const uiCssPathCompiled = resolvePackageAsset(
+  "@mestryx/ui/styles.compiled.css",
   "../../../packages/ui/dist/styles.css",
 );
 const uiCssPathSource = resolve(
