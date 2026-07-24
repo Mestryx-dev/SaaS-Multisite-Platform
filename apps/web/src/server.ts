@@ -25,10 +25,15 @@ import {
   type SavedAddress,
 } from "./views.js";
 
-const repoRoot = resolve(fileURLToPath(new URL(".", import.meta.url)), "../../..");
-loadDotenv({ path: resolve(repoRoot, ".env") });
+const repoRoot = resolve(
+  fileURLToPath(new URL(".", import.meta.url)),
+  "../../..",
+);
+if (process.env.NODE_ENV !== "production") {
+  loadDotenv({ path: resolve(repoRoot, ".env") });
+}
 
-const port = Number(process.env.WEB_PORT ?? 3002);
+const port = Number(process.env.WEB_PORT ?? process.env.PORT ?? 3002);
 const apiUrl = process.env.API_URL ?? "http://localhost:3001";
 const sitesHostSuffix =
   process.env.PUBLIC_SITES_HOST_SUFFIX ?? "sites.mestryx.dev";
