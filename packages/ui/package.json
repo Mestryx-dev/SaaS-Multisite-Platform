@@ -9,8 +9,9 @@
     ".": {
       "types": "./src/index.ts",
       "development": "./src/index.ts",
-      "import": "./dist/index.js",
-      "default": "./dist/index.js"
+      "node": "./dist/index.js",
+      "import": "./src/index.ts",
+      "default": "./src/index.ts"
     },
     "./styles.css": "./src/styles.css",
     "./styles.compiled.css": "./dist/styles.css"

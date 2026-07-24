@@ -2,7 +2,8 @@
 
 FROM node:22-alpine AS build
 WORKDIR /app
-RUN corepack enable
+RUN corepack enable && corepack prepare pnpm@10.32.0 --activate
+ENV CI=true
 COPY package.json pnpm-workspace.yaml pnpm-lock.yaml turbo.json ./
 COPY apps/admin/package.json apps/admin/
 COPY packages/ui/package.json packages/ui/
@@ -17,6 +18,7 @@ ARG VITE_PUBLIC_SITES_HOST_SUFFIX=
 ENV VITE_API_URL=$VITE_API_URL \
     VITE_WEB_ORIGIN=$VITE_WEB_ORIGIN \
     VITE_PUBLIC_SITES_HOST_SUFFIX=$VITE_PUBLIC_SITES_HOST_SUFFIX
+# Vite resolves workspace packages from source (exports.import → src).
 RUN pnpm --filter @mestryx/admin build
 
 FROM nginx:1.27-alpine

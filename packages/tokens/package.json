@@ -9,16 +9,18 @@
     ".": {
       "types": "./src/index.ts",
       "development": "./src/index.ts",
-      "import": "./dist/index.js",
-      "default": "./dist/index.js"
+      "node": "./dist/index.js",
+      "import": "./src/index.ts",
+      "default": "./src/index.ts"
     },
     "./css": "./src/tokens.css",
     "./fonts": "./src/fonts.css",
     "./presets": {
       "types": "./src/presets/index.ts",
       "development": "./src/presets/index.ts",
-      "import": "./dist/presets/index.js",
-      "default": "./dist/presets/index.js"
+      "node": "./dist/presets/index.js",
+      "import": "./src/presets/index.ts",
+      "default": "./src/presets/index.ts"
     }
   },
   "files": [
