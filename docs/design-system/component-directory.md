@@ -1,7 +1,7 @@
 # Component directory (platform × storefront)
 
-**Last updated:** 2026-07-22  
-**Status:** Storefront Soft boutique + Soft glass chrome + commerce patterns; platform form layout + Stalwart-inspired list chrome (dark).  
+**Last updated:** 2026-07-24  
+**Status:** Storefront Soft boutique + Soft glass chrome + commerce patterns; platform form layout + Stalwart-inspired list chrome (dark); admin fluid console width.  
 **Related:** [stack-and-tooling.md](./stack-and-tooling.md) · [ux-ui-harmony-checklist.md](./ux-ui-harmony-checklist.md)
 
 ---
@@ -10,7 +10,7 @@
 
 Storybook: each atom under `Components/` has an **Autodocs** page (`tags: ["autodocs"]`) with ArgsTable + Show/Copy code. Patterns and Foundations do **not** use autodocs.
 
-Platform console layout patterns (Wave A+): `PageContent`, `TableFrame`, `SplitLayout`, `FilterChips`, `DensityToggle`, `BulkActionBar` — see [admin-console-master-plan.md](./admin-console-master-plan.md) and Storybook **Patterns/ConsoleLayout**. UX polish + Stalwart harvest (2026-07-22): EmptyState icon/CTA, ListPanel, SearchField, ActionTile, Alert warning, RouteFade. **Dokploy cleanliness** (2026-07-22): flat AppShell nav, ListPanel list pages, surface `/60`, Button `inverse`.
+Platform console layout patterns (Wave A+): `PageContent`, `TableFrame`, `SplitLayout`, `FilterChips`, `DensityToggle`, `BulkActionBar` — see [admin-console-master-plan.md](./admin-console-master-plan.md) and Storybook **Patterns/ConsoleLayout**. UX polish + Stalwart harvest (2026-07-22): EmptyState icon/CTA, ListPanel, SearchField, ActionTile, Alert warning, RouteFade. **Dokploy cleanliness** (2026-07-22): flat AppShell nav, ListPanel list pages, surface `/60`, Button `inverse`. **Fluid width** (2026-07-24): `PageContent` `wide`/`full` fill the AppShell main column (no `max-w-7xl`); `SplitLayout` `listDetail` for Sites; `FormPanel` default `xl`.
 
 | Name | Status | Path |
 |------|--------|------|
@@ -40,9 +40,9 @@ Platform console layout patterns (Wave A+): `PageContent`, `TableFrame`, `SplitL
 | Name | Locked Storybook theme | Status |
 |------|------------------------|--------|
 | AppShell / NavLink / NavSection / AuthShell | `platform` | grouped IA + density |
-| FormPanel / FormField / FormRow / FormActions | `platform` | admin form width pattern (`patterns/form-layout.tsx`) |
+| FormPanel / FormField / FormRow / FormActions | `platform` | default panel `xl`; `full` for Sites settings |
 | PageHeader / FilterBar / StatStrip / Dropzone | `platform` | harvested — StatStrip optional `bullet` |
-| PageContent / TableFrame / SplitLayout | `platform` | console density (Wave A); TableFrame scroll-x |
+| PageContent / TableFrame / SplitLayout | `platform` | fluid `wide`/`full`; SplitLayout `formAside` \| `listDetail` |
 | ListPanel | `platform` | Stalwart list chrome (header + body + footer) |
 | ActivityList | `platform` | Dokploy recent activity / deploy rows |
 | ActionTile / ActionTileGrid | `platform` | maintenance / tools action cards |

@@ -1,7 +1,7 @@
 # Admin console — master plan
 
-**Status:** Waves A–D executed (2026-07-20). **UX polish wave** shipped 2026-07-22 (empties, bulk CSV, KPI bullets, toasts, a11y/motion). **Dokploy cleanliness wave** shipped 2026-07-22 (flat shell nav, ListPanel list template, surface contrast). Wave E glass deferred. Wave F (F-01) awaiting human.  
-**Last updated:** 2026-07-22  
+**Status:** Waves A–D executed (2026-07-20). **UX polish wave** shipped 2026-07-22 (empties, bulk CSV, KPI bullets, toasts, a11y/motion). **Dokploy cleanliness wave** shipped 2026-07-22 (flat shell nav, ListPanel list template, surface contrast). **Fluid console width** shipped 2026-07-24 (PageContent full, SplitLayout `listDetail`, FormPanel xl). Wave E glass deferred. Wave F (F-01) awaiting human.  
+**Last updated:** 2026-07-24  
 **Related:** [ux-ui-harmony-checklist.md](./ux-ui-harmony-checklist.md) · [DESIGN.md](../../DESIGN.md) · [PRODUCT.md](../../PRODUCT.md) · [motion-guidelines.md](./motion-guidelines.md)
 
 Full console roadmap for mestryx-platform admin. Nothing is dropped: items are ordered by dependency. Cursor plan mirror: `.cursor/plans/admin_console_density_ea0b142b.plan.md` (name retained historically).
@@ -59,10 +59,11 @@ Default after Wave A: **keep opaque**. Soft boutique glass stays storefront-only
 
 ### A0 Primitives (`packages/ui`)
 
-- `PageContent`, `TableFrame` (sticky thead), `SplitLayout`
+- `PageContent`, `TableFrame` (sticky thead), `SplitLayout` (`formAside` \| `listDetail`)
 - `PageHeader` breadcrumb slot
-- Storybook Patterns (List / Settings / Split); export barrel
+- Storybook Patterns (List / Settings / Split / listDetail); export barrel
 - Stack owns vertical rhythm
+- Console pages fill AppShell main (`PageContent` `wide`/`full` — no marketing `max-w-7xl`)
 
 ### A1 Pilots
 

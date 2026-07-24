@@ -26,6 +26,8 @@ Validate milestones with Mestryx before checking.
 - [x] Wave D platform brand/ops (FB-084/085/089/097) — modules, theme, Umami hook, entitlements UX — 2026-07-19
 - [x] Wave E CMS preview + deferred commerce MVP (FB-087/081/082) — preview token, abandoned cart emails, RMA — 2026-07-19
 - [x] Store polish + payment seams (FB-102 Soft boutique, FB-103 ADR-0004 + schema, FB-104 tracking/RMA) — 2026-07-24
+- [x] Dev Dokploy smoke Luna bind (`WEB_DEV_SITE_ID`, resolve-host smoke host, seed email verified) — 2026-07-24 · [dev-dokploy-smoke.md](docs/runbooks/dev-dokploy-smoke.md)
+- [x] Admin console fluid width (PageContent full, SplitLayout `listDetail`, FormPanel xl) — 2026-07-24 · DS CHANGELOG
 
 ## Next priority (visual)
 

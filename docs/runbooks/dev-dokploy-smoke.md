@@ -44,7 +44,7 @@ TLS / Traefik (Cloudflare tunnel → Dokploy 245):
 2. **Postgres** — Deploy (started at provision). Wait until status `done`.  
 3. **API** — Deploy `API-Dev` (build `apps/api/Dockerfile`, branch `dev`).  
 4. **Migrate** — one-shot against Dokploy Postgres (`pnpm --filter @mestryx/api db:migrate` with `DATABASE_URL` from Dokploy). Prefer a **temporary** Postgres external port (LAN only), then set `externalPort` back to null and reload.  
-5. **Seed Luna** — `pnpm --filter @mestryx/api db:seed` with `SEED_EMAIL` / `SEED_PASSWORD` from vault (defaults are local-only). Capture printed `WEB_DEV_SITE_ID=<uuid>`.  
+5. **Seed Luna** — `pnpm --filter @mestryx/api db:seed` with `SEED_EMAIL` / `SEED_PASSWORD` from vault (defaults are local-only). Seed **auto-verifies** the admin email (Better Auth otherwise blocks console login). Capture printed `WEB_DEV_SITE_ID=<uuid>`.  
 6. **Bind smoke host** — set the same `WEB_DEV_SITE_ID` on **Web-Dev** and **API-Dev** env, then redeploy both. Required because `dev-web-platform.mestryx.dev` is not a `*.sites.dev.mestryx.dev` subdomain; without it the storefront falls back to `id=local` and `/wishlist` / `/cart` / `/checkout` 404. API uses the id for `/v1/public/resolve-host` on `WEB_ORIGIN` / localhost.  
 7. **Admin** — Deploy `Admin-Dev` (`apps/admin/Dockerfile` + `VITE_*` build args).  
 8. **Web** — Deploy `Web-Dev` (`apps/web/Dockerfile`) if not already redeployed in step 6.  

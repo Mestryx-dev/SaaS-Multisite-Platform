@@ -8,7 +8,7 @@
 1. **Never commit secrets** — `.env`, API keys, tokens, private keys, vault dumps.
 2. Use **Agent Vault / Infisical / Dokploy env** for real credentials (see [integrations.md](./integrations.md), [runbooks/staging-dokploy.md](./runbooks/staging-dokploy.md)).
 3. Repo root [`.env.example`](../.env.example) is the only committed env template (placeholders only).
-4. Local dogfood seed (`SEED_EMAIL` / `SEED_PASSWORD`) is **local/dev only** — do not reuse on staging/prod; set from vault when seeding remote DBs.
+4. Local dogfood seed (`SEED_EMAIL` / `SEED_PASSWORD`) is **local/dev only** — do not reuse on staging/prod; set from vault when seeding remote DBs. The Luna seed **auto-verifies** the admin email for console login (dogfood convenience only — not a production auth pattern).
 5. CI may use disposable secrets (e.g. `BETTER_AUTH_SECRET` in GitHub Actions) — never production values.
 
 ## What is OK in git
