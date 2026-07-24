@@ -11,6 +11,12 @@ COPY packages/sdk/package.json packages/sdk/
 COPY packages/config/package.json packages/config/
 RUN pnpm install --frozen-lockfile --filter @mestryx/admin...
 COPY . .
+ARG VITE_API_URL=
+ARG VITE_WEB_ORIGIN=
+ARG VITE_PUBLIC_SITES_HOST_SUFFIX=
+ENV VITE_API_URL=$VITE_API_URL \
+    VITE_WEB_ORIGIN=$VITE_WEB_ORIGIN \
+    VITE_PUBLIC_SITES_HOST_SUFFIX=$VITE_PUBLIC_SITES_HOST_SUFFIX
 RUN pnpm --filter @mestryx/admin build
 
 FROM nginx:1.27-alpine

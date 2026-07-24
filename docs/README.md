@@ -50,6 +50,7 @@
 17. [adr/](./adr/)  
 18. [error-journal.md](./error-journal.md)  
 19. [runbooks/staging-dokploy.md](./runbooks/staging-dokploy.md)  
+19b. [runbooks/dev-dokploy-smoke.md](./runbooks/dev-dokploy-smoke.md) — MVP smoke on VM 245  
 20. [plans/](./plans/) — historical  
 
 Root: [GAMEPLAN.md](../GAMEPLAN.md) · [PROGRESS.md](../PROGRESS.md) · [AGENTS.md](../AGENTS.md)

@@ -33,6 +33,7 @@ Multi-brand CMS / multisite SaaS by **Mestryx** (`mestryx.dev`) — TypeScript m
 | [docs/11-seo-ai-ready.md](docs/11-seo-ai-ready.md) | SSR + SEO + AI discovery |
 | [docs/10-agent-ops.md](docs/10-agent-ops.md) | CI/CD, debug & learning loops |
 | [docs/runbooks/staging-dokploy.md](docs/runbooks/staging-dokploy.md) | Staging deploy (human gates) |
+| [docs/runbooks/dev-dokploy-smoke.md](docs/runbooks/dev-dokploy-smoke.md) | Dev smoke on Dokploy 245 |
 | [GAMEPLAN.md](GAMEPLAN.md) | Phases, risks, estimate |
 | [PROGRESS.md](PROGRESS.md) | Spec checklist |
 
