@@ -133,7 +133,7 @@ export function BillingPage() {
   const paidPlans = (plans.data?.plans ?? []).filter((p) => p.id !== "free");
 
   return (
-    <PageContent maxWidth="wide">
+    <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
           title={t("billing.title")}

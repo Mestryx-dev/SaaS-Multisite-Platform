@@ -84,7 +84,7 @@ export function CouponsPage() {
   const rows = coupons.data?.coupons ?? [];
 
   return (
-    <PageContent maxWidth="wide">
+    <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
           eyebrow={t("nav.section.commerce")}

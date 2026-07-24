@@ -91,7 +91,7 @@ export function ReturnsPage() {
   const rows = returns.data?.returns ?? [];
 
   return (
-    <PageContent maxWidth="wide">
+    <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
           title={t("nav.returns")}

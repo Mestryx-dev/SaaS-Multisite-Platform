@@ -98,7 +98,7 @@ export function MediaLibraryPage() {
   const rows = assets.data?.assets ?? [];
 
   return (
-    <PageContent maxWidth="wide">
+    <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
           title={t("nav.media")}

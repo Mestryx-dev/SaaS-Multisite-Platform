@@ -108,7 +108,7 @@ export function CategoriesPage() {
   const rows = categories.data?.categories ?? [];
 
   return (
-    <PageContent maxWidth="wide">
+    <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
           eyebrow={t("nav.section.commerce")}

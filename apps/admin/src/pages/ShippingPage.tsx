@@ -167,7 +167,7 @@ export function ShippingPage() {
   const zoneRows = zones.data?.zones ?? [];
 
   return (
-    <PageContent maxWidth="wide">
+    <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
           title={t("nav.shipping")}

@@ -2,6 +2,14 @@
 
 Traceability for FB-037 / design-system milestones. Newest first.
 
+## 2026-07-24 (Admin console width / density)
+
+- **PageContent:** `wide`/`full` are fluid (no `max-w-7xl`); default PageContent prop is `wide`. Admin pages use `full`.
+- **SplitLayout:** `variant="listDetail"` (narrow list rail + wide settings) vs default `formAside`.
+- **FormPanel:** default width `xl` (`max-w-4xl`); Sites settings use `full` + multi-col FormRow.
+- **AppShell:** main padding `md:p-6 xl:px-8` for fluid canvases.
+- Reading: SaaS admin density (Linear/Vercel) — fill main column, not marketing max-width.
+
 ## 2026-07-24 (Store Soft boutique polish — FB-102)
 
 - **Patterns:** `CheckoutSteps`; CartLine / CategoryNav / PriceRange / TrustStrip / header chrome accept locale props (no EN hardcode at runtime).

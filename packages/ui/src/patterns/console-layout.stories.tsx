@@ -13,7 +13,7 @@ import {
   BreadcrumbSeparator,
 } from "../components/breadcrumb";
 import { FilterBar } from "./filter-bar";
-import { FormActions, FormField, FormPanel } from "./form-layout";
+import { FormActions, FormField, FormPanel, FormRow } from "./form-layout";
 import { PageContent } from "./page-content";
 import { PageHeader } from "./page-header";
 import { SplitLayout } from "./split-layout";
@@ -105,7 +105,7 @@ export const Settings: Story = {
 export const Split: Story = {
   name: "Split — list | aside form",
   render: () => (
-    <PageContent maxWidth="wide" className="p-4 md:p-5">
+    <PageContent maxWidth="full" className="p-4 md:p-5">
       <Stack gap="md">
         <PageHeader
           breadcrumb={
@@ -122,7 +122,7 @@ export const Split: Story = {
             </Breadcrumb>
           }
           title="Organizations"
-          description="SplitLayout: primary table + aside FormPanel."
+          description="SplitLayout formAside: wide primary + narrow FormPanel."
         />
         <SplitLayout
           primary={
@@ -151,6 +151,48 @@ export const Split: Story = {
               <FormActions>
                 <Button size="sm">Create</Button>
               </FormActions>
+            </FormPanel>
+          }
+        />
+      </Stack>
+    </PageContent>
+  ),
+};
+
+export const ListDetail: Story = {
+  name: "Split — listDetail (Sites)",
+  render: () => (
+    <PageContent maxWidth="full" className="p-4 md:p-6">
+      <Stack gap="md">
+        <PageHeader
+          eyebrow="Workspace"
+          title="Sites"
+          description="listDetail: narrow site rail + full-width settings panel."
+        />
+        <SplitLayout
+          variant="listDetail"
+          primary={
+            <TableFrame maxWidth="full">
+              <ul className="divide-y divide-[var(--border)] text-sm">
+                <li className="bg-[var(--primary)]/10 px-3 py-2 font-semibold">
+                  Luna Bijoux
+                </li>
+                <li className="px-3 py-2 text-[var(--muted-foreground)]">
+                  Another site
+                </li>
+              </ul>
+            </TableFrame>
+          }
+          aside={
+            <FormPanel title="Site settings — Luna Bijoux" width="full">
+              <FormRow cols={2}>
+                <FormField label="Locale" htmlFor="loc" size="full">
+                  <Input id="loc" defaultValue="fr" />
+                </FormField>
+                <FormField label="Preset" htmlFor="pre" size="full">
+                  <Input id="pre" defaultValue="luna" />
+                </FormField>
+              </FormRow>
             </FormPanel>
           }
         />

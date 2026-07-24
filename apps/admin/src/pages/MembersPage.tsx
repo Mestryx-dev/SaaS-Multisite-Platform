@@ -157,7 +157,7 @@ export function MembersPage() {
   const inviteRows = invites.data?.invites ?? [];
 
   return (
-    <PageContent maxWidth="wide">
+    <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
           title={t("nav.members")}

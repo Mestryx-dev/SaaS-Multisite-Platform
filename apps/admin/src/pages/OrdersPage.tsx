@@ -141,7 +141,7 @@ export function OrdersPage() {
     rows.length > 0 && rows.every((r) => selectedIds.includes(r.id));
 
   return (
-    <PageContent maxWidth="wide">
+    <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
           eyebrow={t("nav.section.commerce")}

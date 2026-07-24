@@ -102,7 +102,7 @@ export function AppShell({
             ) : null}
           </div>
         ) : null}
-        <main className="flex-1 p-4 md:p-5">{children}</main>
+        <main className="min-w-0 flex-1 p-4 md:p-6 xl:px-8 xl:py-6">{children}</main>
       </div>
     </div>
   );

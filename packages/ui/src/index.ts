@@ -153,7 +153,10 @@ export type { ListPanelProps } from "./patterns/list-panel";
 export { ActionTile, ActionTileGrid } from "./patterns/action-tile";
 export type { ActionTileProps, ActionTileGridProps } from "./patterns/action-tile";
 export { SplitLayout } from "./patterns/split-layout";
-export type { SplitLayoutProps } from "./patterns/split-layout";
+export type {
+  SplitLayoutProps,
+  SplitLayoutVariant,
+} from "./patterns/split-layout";
 export { FilterBar } from "./patterns/filter-bar";
 export type { FilterBarProps } from "./patterns/filter-bar";
 export { FilterChips } from "./patterns/filter-chips";

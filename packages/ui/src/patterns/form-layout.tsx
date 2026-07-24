@@ -10,26 +10,29 @@ export type FormPanelWidth = "md" | "lg" | "xl" | "full";
 const panelWidthClass: Record<FormPanelWidth, string> = {
   md: "max-w-md",
   lg: "max-w-2xl",
-  xl: "max-w-3xl",
+  xl: "max-w-4xl",
   full: "max-w-none w-full",
 };
 
 export type FormPanelProps = {
   children: ReactNode;
   title?: ReactNode;
-  /** Default lg (max-w-2xl) for settings forms. */
+  /**
+   * Default xl for settings panels in a fluid console.
+   * Use md/lg inside SplitLayout formAside or dialogs.
+   */
   width?: FormPanelWidth;
   className?: string;
 };
 
 /**
- * Constrained settings / create form surface — platform density.
- * Input/Select stay w-full inside FormField; panel caps reading width.
+ * Settings / create form surface — platform density.
+ * Input/Select stay w-full inside FormField; panel caps reading width when set.
  */
 export function FormPanel({
   children,
   title,
-  width = "lg",
+  width = "xl",
   className,
 }: FormPanelProps) {
   return (

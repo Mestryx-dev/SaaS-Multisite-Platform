@@ -175,7 +175,7 @@ export function OrderDetailPage() {
 
   if (detail.isLoading) {
     return (
-      <PageContent maxWidth="wide">
+      <PageContent maxWidth="full">
         <Stack gap="md">
           <PageHeader title={t("order.detail")} />
           <FormSkeleton fields={4} />
@@ -185,7 +185,7 @@ export function OrderDetailPage() {
   }
   if (detail.isError || !detail.data) {
     return (
-      <PageContent maxWidth="wide">
+      <PageContent maxWidth="full">
         <Stack gap="md">
           <PageHeader
             breadcrumb={
@@ -222,7 +222,7 @@ export function OrderDetailPage() {
   const docs = invoices ?? (invoice ? [invoice] : []);
 
   return (
-    <PageContent maxWidth="wide">
+    <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
           breadcrumb={

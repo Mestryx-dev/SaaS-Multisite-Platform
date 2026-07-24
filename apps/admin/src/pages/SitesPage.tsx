@@ -17,6 +17,7 @@ import {
   PageContent,
   PageHeader,
   Select,
+  SplitLayout,
   Stack,
   TableFrame,
 } from "@mestryx/ui";
@@ -188,8 +189,277 @@ export function SitesPage() {
     };
   }
 
+  const siteList = (
+    <TableFrame maxWidth="full">
+      <ul className="divide-y divide-[var(--border)]">
+        {(sites.data?.sites ?? []).map((s) => (
+          <li key={s.id}>
+            <button
+              type="button"
+              onClick={() => setSelectedSiteId(s.id)}
+              className={`flex w-full items-center justify-between gap-3 px-3 py-2.5 text-left text-sm transition-colors hover:bg-[var(--muted)] ${
+                s.id === selectedSiteId
+                  ? "bg-[var(--primary)]/10 font-semibold"
+                  : ""
+              }`}
+            >
+              <span className="min-w-0 truncate">
+                {s.name}{" "}
+                <code className="text-xs text-[var(--muted-foreground)]">
+                  {s.slug}
+                </code>
+              </span>
+              <Badge>{s.status}</Badge>
+            </button>
+          </li>
+        ))}
+        {(sites.data?.sites ?? []).length === 0 ? (
+          <li>
+            <EmptyState
+              title={t("site.empty")}
+              description={t("site.emptyHint")}
+              action={
+                <Button
+                  type="button"
+                  size="sm"
+                  onClick={() => setCreateOpen(true)}
+                >
+                  {t("site.create")}
+                </Button>
+              }
+            />
+          </li>
+        ) : null}
+      </ul>
+    </TableFrame>
+  );
+
+  const siteSettings = selectedSite ? (
+    <FormPanel
+      title={`${t("site.settings")} — ${selectedSite.name}`}
+      width="full"
+    >
+      <Label className="flex items-center gap-2 font-normal">
+        <input
+          type="checkbox"
+          checked={selectedSite.cookieConsentEnabled !== false}
+          onChange={(e) =>
+            patchSite.mutate({
+              cookieConsentEnabled: e.target.checked,
+            })
+          }
+        />
+        {t("site.cookieConsent")}
+      </Label>
+      <FormRow cols={2}>
+        <FormField
+          label={t("site.cookiePolicyPath")}
+          htmlFor="policy"
+          size="full"
+        >
+          <Input
+            id="policy"
+            className="font-mono text-xs"
+            defaultValue={selectedSite.cookiePolicyPath ?? "/privacy"}
+            onBlur={(e) => {
+              const v = e.target.value.trim() || "/privacy";
+              if (v !== (selectedSite.cookiePolicyPath ?? "/privacy")) {
+                patchSite.mutate({ cookiePolicyPath: v });
+              }
+            }}
+          />
+        </FormField>
+        <FormField
+          label={t("site.defaultLocale")}
+          htmlFor="defaultLocale"
+          size="full"
+        >
+          <Select
+            id="defaultLocale"
+            key={`${selectedSite.id}-locale`}
+            defaultValue={selectedSite.defaultLocale === "fr" ? "fr" : "en"}
+            onChange={(e) => {
+              const v = e.target.value === "fr" ? "fr" : "en";
+              if (v !== (selectedSite.defaultLocale ?? "en")) {
+                patchSite.mutate({ defaultLocale: v });
+              }
+            }}
+          >
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+          </Select>
+        </FormField>
+      </FormRow>
+      <FormActions>
+        <Button
+          type="button"
+          variant="secondary"
+          size="sm"
+          onClick={() => ensureLegal.mutate()}
+          disabled={ensureLegal.isPending}
+        >
+          {t("site.ensureLegal")}
+        </Button>
+        <span className="text-xs text-[var(--muted-foreground)]">
+          {t("site.legalHint")}{" "}
+          <Link to="/pages" className="underline">
+            {t("nav.pages")}
+          </Link>{" "}
+          (<code>privacy</code>, <code>terms</code>, <code>legal</code>).
+        </span>
+      </FormActions>
+      <p className="pt-1 text-sm font-semibold">{t("site.theme")}</p>
+      <FormField
+        label={t("site.themePreset")}
+        htmlFor="themePreset"
+        size="full"
+      >
+        <Select
+          id="themePreset"
+          key={`${selectedSite.id}-preset`}
+          defaultValue={readThemeFields(selectedSite).preset}
+        >
+          {SITE_PRESETS.map((p) => (
+            <option key={p.id} value={p.id}>
+              {p.label}
+            </option>
+          ))}
+        </Select>
+      </FormField>
+      <FormRow cols={3}>
+        <FormField
+          label={t("site.primaryColor")}
+          htmlFor="primaryColor"
+          size="full"
+        >
+          <Input
+            id="primaryColor"
+            key={`${selectedSite.id}-primary`}
+            className="font-mono text-xs"
+            defaultValue={readThemeFields(selectedSite).primary}
+            placeholder="#hex or oklch(…)"
+            onBlur={() => {
+              const built = buildThemeJsonFromForm();
+              if (built) patchSite.mutate({ themeJson: built });
+            }}
+          />
+        </FormField>
+        <FormField
+          label={t("site.accentColor")}
+          htmlFor="accentColor"
+          size="full"
+        >
+          <Input
+            id="accentColor"
+            key={`${selectedSite.id}-accent`}
+            className="font-mono text-xs"
+            defaultValue={readThemeFields(selectedSite).accent}
+            placeholder="#hex or oklch(…)"
+          />
+        </FormField>
+        <FormField
+          label={t("site.backgroundColor")}
+          htmlFor="backgroundColor"
+          size="full"
+        >
+          <Input
+            id="backgroundColor"
+            key={`${selectedSite.id}-bg`}
+            className="font-mono text-xs"
+            defaultValue={readThemeFields(selectedSite).background}
+            placeholder="#hex or oklch(…)"
+          />
+        </FormField>
+      </FormRow>
+      <FormRow cols={2}>
+        <FormField
+          label={t("site.fontFamily")}
+          htmlFor="fontFamily"
+          size="full"
+        >
+          <Input
+            id="fontFamily"
+            key={`${selectedSite.id}-font`}
+            defaultValue={readThemeFields(selectedSite).fontFamily}
+            placeholder="IBM Plex Sans, sans-serif"
+          />
+        </FormField>
+        <FormField label={t("site.logoUrl")} htmlFor="logoUrl" size="full">
+          <Input
+            id="logoUrl"
+            key={`${selectedSite.id}-logo`}
+            className="font-mono text-xs"
+            defaultValue={readThemeFields(selectedSite).logoUrl}
+            placeholder="https://…"
+          />
+        </FormField>
+      </FormRow>
+      <FormActions>
+        <Button
+          type="button"
+          variant="secondary"
+          size="sm"
+          onClick={() => {
+            const built = buildThemeJsonFromForm();
+            if (built) patchSite.mutate({ themeJson: built });
+          }}
+          disabled={patchSite.isPending}
+        >
+          {t("site.saveTheme")}
+        </Button>
+      </FormActions>
+      <p className="pt-1 text-sm font-semibold">{t("site.analytics")}</p>
+      <FormRow cols={2}>
+        <FormField
+          label={t("site.umamiWebsiteId")}
+          htmlFor="umamiWebsiteId"
+          size="full"
+        >
+          <Input
+            id="umamiWebsiteId"
+            key={`${selectedSite.id}-umami-id`}
+            className="font-mono text-xs"
+            defaultValue={selectedSite.umamiWebsiteId ?? ""}
+            onBlur={(e) => {
+              const v = e.target.value.trim();
+              if (v !== (selectedSite.umamiWebsiteId ?? "")) {
+                patchSite.mutate({ umamiWebsiteId: v || null });
+              }
+            }}
+          />
+        </FormField>
+        <FormField label={t("site.umamiSrc")} htmlFor="umamiSrc" size="full">
+          <Input
+            id="umamiSrc"
+            key={`${selectedSite.id}-umami-src`}
+            className="font-mono text-xs"
+            defaultValue={selectedSite.umamiSrc ?? ""}
+            placeholder="https://stats.example.com/script.js"
+            onBlur={(e) => {
+              const v = e.target.value.trim();
+              if (v !== (selectedSite.umamiSrc ?? "")) {
+                patchSite.mutate({ umamiSrc: v || null });
+              }
+            }}
+          />
+        </FormField>
+      </FormRow>
+      {error ? <Alert>{error}</Alert> : null}
+    </FormPanel>
+  ) : (
+    <EmptyState
+      title={t("site.empty")}
+      description={t("site.emptyHint")}
+      action={
+        <Button type="button" size="sm" onClick={() => setCreateOpen(true)}>
+          {t("site.create")}
+        </Button>
+      }
+    />
+  );
+
   return (
-    <PageContent maxWidth="wide">
+    <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
           eyebrow={t("nav.section.workspace")}
@@ -207,49 +477,6 @@ export function SitesPage() {
           <EmptyState>{t("site.needOrganization")}</EmptyState>
         ) : (
           <>
-            <TableFrame maxWidth="full">
-              <ul className="divide-y divide-[var(--border)]">
-                {(sites.data?.sites ?? []).map((s) => (
-                  <li key={s.id}>
-                    <button
-                      type="button"
-                      onClick={() => setSelectedSiteId(s.id)}
-                      className={`flex w-full items-center justify-between gap-3 px-4 py-2.5 text-left text-sm transition-colors hover:bg-[var(--muted)] ${
-                        s.id === selectedSiteId
-                          ? "bg-[var(--primary)]/10 font-semibold"
-                          : ""
-                      }`}
-                    >
-                      <span>
-                        {s.name}{" "}
-                        <code className="text-xs text-[var(--muted-foreground)]">
-                          {s.slug}
-                        </code>
-                      </span>
-                      <Badge>{s.status}</Badge>
-                    </button>
-                  </li>
-                ))}
-                {(sites.data?.sites ?? []).length === 0 ? (
-                  <li>
-                    <EmptyState
-                      title={t("site.empty")}
-                      description={t("site.emptyHint")}
-                      action={
-                        <Button
-                          type="button"
-                          size="sm"
-                          onClick={() => setCreateOpen(true)}
-                        >
-                          {t("site.create")}
-                        </Button>
-                      }
-                    />
-                  </li>
-                ) : null}
-              </ul>
-            </TableFrame>
-
             <Dialog
               open={createOpen}
               onOpenChange={(open) => {
@@ -306,184 +533,13 @@ export function SitesPage() {
               </DialogContent>
             </Dialog>
 
-            {selectedSite ? (
-              <FormPanel title={`${t("site.settings")} — ${selectedSite.name}`} width="lg">
-              <Label className="flex items-center gap-2 font-normal">
-                <input
-                  type="checkbox"
-                  checked={selectedSite.cookieConsentEnabled !== false}
-                  onChange={(e) =>
-                    patchSite.mutate({
-                      cookieConsentEnabled: e.target.checked,
-                    })
-                  }
-                />
-                {t("site.cookieConsent")}
-              </Label>
-              <FormField label={t("site.cookiePolicyPath")} htmlFor="policy" size="sm">
-                <Input
-                  id="policy"
-                  className="font-mono text-xs"
-                  defaultValue={selectedSite.cookiePolicyPath ?? "/privacy"}
-                  onBlur={(e) => {
-                    const v = e.target.value.trim() || "/privacy";
-                    if (v !== (selectedSite.cookiePolicyPath ?? "/privacy")) {
-                      patchSite.mutate({ cookiePolicyPath: v });
-                    }
-                  }}
-                />
-              </FormField>
-              <FormField label={t("site.defaultLocale")} htmlFor="defaultLocale" size="sm">
-                <Select
-                  id="defaultLocale"
-                  key={`${selectedSite.id}-locale`}
-                  defaultValue={
-                    selectedSite.defaultLocale === "fr" ? "fr" : "en"
-                  }
-                  onChange={(e) => {
-                    const v = e.target.value === "fr" ? "fr" : "en";
-                    if (v !== (selectedSite.defaultLocale ?? "en")) {
-                      patchSite.mutate({ defaultLocale: v });
-                    }
-                  }}
-                >
-                  <option value="en">English</option>
-                  <option value="fr">Français</option>
-                </Select>
-              </FormField>
-              <FormActions>
-                <Button
-                  type="button"
-                  variant="secondary"
-                  size="sm"
-                  onClick={() => ensureLegal.mutate()}
-                  disabled={ensureLegal.isPending}
-                >
-                  {t("site.ensureLegal")}
-                </Button>
-                <span className="text-xs text-[var(--muted-foreground)]">
-                  {t("site.legalHint")}{" "}
-                  <Link to="/pages" className="underline">
-                    {t("nav.pages")}
-                  </Link>{" "}
-                  (<code>privacy</code>, <code>terms</code>, <code>legal</code>).
-                </span>
-              </FormActions>
-              <p className="pt-1 text-sm font-semibold">{t("site.theme")}</p>
-              <FormField label={t("site.themePreset")} htmlFor="themePreset" size="md">
-                <Select
-                  id="themePreset"
-                  key={`${selectedSite.id}-preset`}
-                  defaultValue={readThemeFields(selectedSite).preset}
-                >
-                  {SITE_PRESETS.map((p) => (
-                    <option key={p.id} value={p.id}>
-                      {p.label}
-                    </option>
-                  ))}
-                </Select>
-              </FormField>
-              <FormRow cols={3}>
-                <FormField label={t("site.primaryColor")} htmlFor="primaryColor" size="full">
-                  <Input
-                    id="primaryColor"
-                    key={`${selectedSite.id}-primary`}
-                    className="font-mono text-xs"
-                    defaultValue={readThemeFields(selectedSite).primary}
-                    placeholder="#hex or oklch(…)"
-                    onBlur={() => {
-                      const built = buildThemeJsonFromForm();
-                      if (built) patchSite.mutate({ themeJson: built });
-                    }}
-                  />
-                </FormField>
-                <FormField label={t("site.accentColor")} htmlFor="accentColor" size="full">
-                  <Input
-                    id="accentColor"
-                    key={`${selectedSite.id}-accent`}
-                    className="font-mono text-xs"
-                    defaultValue={readThemeFields(selectedSite).accent}
-                    placeholder="#hex or oklch(…)"
-                  />
-                </FormField>
-                <FormField label={t("site.backgroundColor")} htmlFor="backgroundColor" size="full">
-                  <Input
-                    id="backgroundColor"
-                    key={`${selectedSite.id}-bg`}
-                    className="font-mono text-xs"
-                    defaultValue={readThemeFields(selectedSite).background}
-                    placeholder="#hex or oklch(…)"
-                  />
-                </FormField>
-              </FormRow>
-              <FormField label={t("site.fontFamily")} htmlFor="fontFamily" size="md">
-                <Input
-                  id="fontFamily"
-                  key={`${selectedSite.id}-font`}
-                  defaultValue={readThemeFields(selectedSite).fontFamily}
-                  placeholder="IBM Plex Sans, sans-serif"
-                />
-              </FormField>
-              <FormField label={t("site.logoUrl")} htmlFor="logoUrl" size="lg">
-                <Input
-                  id="logoUrl"
-                  key={`${selectedSite.id}-logo`}
-                  className="font-mono text-xs"
-                  defaultValue={readThemeFields(selectedSite).logoUrl}
-                  placeholder="https://…"
-                />
-              </FormField>
-              <FormActions>
-                <Button
-                  type="button"
-                  variant="secondary"
-                  size="sm"
-                  onClick={() => {
-                    const built = buildThemeJsonFromForm();
-                    if (built) patchSite.mutate({ themeJson: built });
-                  }}
-                  disabled={patchSite.isPending}
-                >
-                  {t("site.saveTheme")}
-                </Button>
-              </FormActions>
-              <p className="pt-1 text-sm font-semibold">{t("site.analytics")}</p>
-              <FormRow cols={2}>
-                <FormField label={t("site.umamiWebsiteId")} htmlFor="umamiWebsiteId" size="full">
-                  <Input
-                    id="umamiWebsiteId"
-                    key={`${selectedSite.id}-umami-id`}
-                    className="font-mono text-xs"
-                    defaultValue={selectedSite.umamiWebsiteId ?? ""}
-                    onBlur={(e) => {
-                      const v = e.target.value.trim();
-                      if (v !== (selectedSite.umamiWebsiteId ?? "")) {
-                        patchSite.mutate({ umamiWebsiteId: v || null });
-                      }
-                    }}
-                  />
-                </FormField>
-                <FormField label={t("site.umamiSrc")} htmlFor="umamiSrc" size="full">
-                  <Input
-                    id="umamiSrc"
-                    key={`${selectedSite.id}-umami-src`}
-                    className="font-mono text-xs"
-                    defaultValue={selectedSite.umamiSrc ?? ""}
-                    placeholder="https://stats.example.com/script.js"
-                    onBlur={(e) => {
-                      const v = e.target.value.trim();
-                      if (v !== (selectedSite.umamiSrc ?? "")) {
-                        patchSite.mutate({ umamiSrc: v || null });
-                      }
-                    }}
-                  />
-                </FormField>
-              </FormRow>
-              {error ? <Alert>{error}</Alert> : null}
-            </FormPanel>
-          ) : null}
-        </>
-      )}
+            <SplitLayout
+              variant="listDetail"
+              primary={siteList}
+              aside={siteSettings}
+            />
+          </>
+        )}
       </Stack>
     </PageContent>
   );

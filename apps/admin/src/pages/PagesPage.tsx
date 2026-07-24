@@ -229,7 +229,7 @@ export function PagesPage() {
   const rows = pages.data?.pages ?? [];
 
   return (
-    <PageContent maxWidth="wide">
+    <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
           title={t("nav.pages")}

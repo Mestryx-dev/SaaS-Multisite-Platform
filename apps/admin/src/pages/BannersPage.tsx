@@ -137,7 +137,7 @@ export function BannersPage() {
   const rows = banners.data?.banners ?? [];
 
   return (
-    <PageContent maxWidth="wide">
+    <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
           title={t("nav.banners")}

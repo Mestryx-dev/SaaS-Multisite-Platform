@@ -415,7 +415,7 @@ export function ProductsPage() {
   }
 
   return (
-    <PageContent maxWidth="wide">
+    <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
           eyebrow={t("nav.section.commerce")}

@@ -111,7 +111,7 @@ export function ReportsPage() {
   const alertRows = alerts.data?.products ?? [];
 
   return (
-    <PageContent maxWidth="wide">
+    <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
           eyebrow={t("nav.section.commerce")}

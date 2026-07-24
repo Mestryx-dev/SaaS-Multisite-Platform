@@ -132,7 +132,7 @@ export function MenusPage() {
   }
 
   return (
-    <PageContent maxWidth="wide">
+    <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
           title={t("nav.menus")}

@@ -173,7 +173,7 @@ export function DashboardPage() {
   ];
 
   const createOrgForm = (
-    <FormPanel title={t("org.create")} width="full">
+    <FormPanel title={t("org.create")} width="lg">
       <FormField label={t("org.name")} htmlFor="org-name" size="full">
         <Input
           id="org-name"
@@ -206,7 +206,7 @@ export function DashboardPage() {
   );
 
   return (
-    <PageContent>
+    <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
           title={
