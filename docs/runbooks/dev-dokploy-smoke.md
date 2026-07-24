@@ -18,7 +18,7 @@ Leave default [`production`](https://dokploy.mestryx.dev/dashboard/project/-Vs-c
 | API | `kCBbgI5zhsOzOT6_ODHfI` · `API-Dev` |
 | Admin | `gdyLubG94HJxre7WrKkCg` · `Admin-Dev` |
 | Web | `5Hbp0nfyZn9Nkh9eb8hVe` · `Web-Dev` |
-| Storybook | _(provision)_ · `Storybook-Dev` · Dockerfile `packages/ui/Dockerfile` |
+| Storybook | `prO2jYMucgP4rK2mx4iaY` · `Storybook-Dev` · Dockerfile `packages/ui/Dockerfile` |
 
 Secrets (DB password, `BETTER_AUTH_SECRET`) live **only in Dokploy env** — not in git.
 
