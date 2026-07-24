@@ -25,7 +25,14 @@ Secrets (DB password, `BETTER_AUTH_SECRET`) live **only in Dokploy env** — not
 | `dev-admin-platform.mestryx.dev` | Admin | 80 |
 | `dev-web-platform.mestryx.dev` | Web SSR | 3000 |
 
-TLS: Let's Encrypt on each domain (same pattern as archery `dev-*-archery.mestryx.dev`).
+TLS / Traefik (Cloudflare tunnel → Dokploy 245):
+
+- Cloudflare terminates HTTPS on the public edge.
+- Tunnel origin to Traefik is **HTTP :80** (`entryPoints: web`).
+- Dokploy domain: **`https: false`**, **`certificateType: none`**, port = app listen port (API `3001`). Same pattern as archery `dev-api-archery.mestryx.dev`.
+- Do **not** enable Dokploy Let's Encrypt / `https: true` — conflicts with CF Always HTTPS → `ERR_TOO_MANY_REDIRECTS`.
+- LAN check: `curl -H 'Host: dev-api-platform.mestryx.dev' http://192.168.0.245/health` (expect app JSON, not Traefik 502).
+- SSOT: Memorizer [DNS/Traefik/CF](http://memorizer.lan/view/6d9ae84b-ad12-4bc1-bc3b-eebc5a2a4a88).
 
 ## Deploy order (smoke)
 

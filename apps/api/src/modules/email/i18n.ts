@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 import type { Db } from "../../db/client.js";
 import { site } from "../../db/schema.js";
-import en from "./locales/en.json";
-import fr from "./locales/fr.json";
+import en from "./locales/en.json" with { type: "json" };
+import fr from "./locales/fr.json" with { type: "json" };
 
 export type EmailLocale = "en" | "fr";
 
