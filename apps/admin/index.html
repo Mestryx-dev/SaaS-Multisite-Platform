@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#07080d" />
+    <title>mestryx-platform admin</title>
+    <style>
+      /* Boot splash — platform night-gold. Replaced when React mounts. */
+      :root {
+        --boot-bg: #07080d;
+        --boot-fg: #f5f3ef;
+        --boot-muted: #9ca3af;
+        --boot-gold: #c9a227;
+        --boot-border: #252a3a;
+        --boot-surface: #10131c;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: var(--boot-bg);
+        color: var(--boot-fg);
+      }
+
+      #root {
+        min-height: 100dvh;
+      }
+
+      .boot {
+        box-sizing: border-box;
+        position: relative;
+        display: grid;
+        place-items: center;
+        min-height: 100dvh;
+        padding: 2rem;
+        overflow: hidden;
+        font-family:
+          "Plus Jakarta Sans",
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+        background:
+          radial-gradient(
+            120% 80% at 50% -10%,
+            color-mix(in srgb, var(--boot-gold) 10%, transparent),
+            transparent 55%
+          ),
+          radial-gradient(
+            60% 50% at 85% 90%,
+            color-mix(in srgb, var(--boot-gold) 5%, transparent),
+            transparent 60%
+          ),
+          linear-gradient(180deg, #0b0d14 0%, var(--boot-bg) 100%);
+      }
+
+      .boot *,
+      .boot *::before,
+      .boot *::after {
+        box-sizing: border-box;
+      }
+
+      .boot__stage {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.75rem;
+        width: min(100%, 20rem);
+        text-align: center;
+        animation: boot-enter 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+
+      .boot__mark {
+        position: relative;
+        width: 3.5rem;
+        height: 3.5rem;
+      }
+
+      .boot__mark-ring {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        border: 1px solid color-mix(in srgb, var(--boot-gold) 28%, var(--boot-border));
+        box-shadow: 0 0 0 6px color-mix(in srgb, var(--boot-gold) 6%, transparent);
+      }
+
+      .boot__mark-orbit {
+        position: absolute;
+        inset: -2px;
+        border-radius: 50%;
+        border: 2px solid transparent;
+        border-top-color: var(--boot-gold);
+        border-right-color: color-mix(in srgb, var(--boot-gold) 35%, transparent);
+        animation: boot-spin 900ms linear infinite;
+      }
+
+      .boot__mark-core {
+        position: absolute;
+        inset: 0.55rem;
+        display: grid;
+        place-items: center;
+        border-radius: 0.55rem;
+        background: color-mix(in srgb, var(--boot-surface) 88%, var(--boot-gold));
+        border: 1px solid color-mix(in srgb, var(--boot-gold) 35%, var(--boot-border));
+        color: var(--boot-gold);
+        font-size: 1.05rem;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+      }
+
+      .boot__copy {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+      }
+
+      .boot__brand {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+        line-height: 1.2;
+        color: var(--boot-fg);
+      }
+
+      .boot__status {
+        margin: 0;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        color: var(--boot-muted);
+      }
+
+      .boot__track {
+        width: 100%;
+        height: 2px;
+        border-radius: 999px;
+        background: color-mix(in srgb, var(--boot-border) 80%, transparent);
+        overflow: hidden;
+      }
+
+      .boot__bar {
+        display: block;
+        width: 38%;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--boot-gold),
+          color-mix(in srgb, var(--boot-gold) 55%, #fff),
+          var(--boot-gold),
+          transparent
+        );
+        animation: boot-bar 1.35s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+      }
+
+      @keyframes boot-enter {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes boot-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes boot-bar {
+        0% {
+          transform: translateX(-120%);
+        }
+        100% {
+          transform: translateX(320%);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .boot__stage {
+          animation: none;
+        }
+
+        .boot__mark-orbit,
+        .boot__bar {
+          animation: none;
+        }
+
+        .boot__mark-orbit {
+          border-top-color: var(--boot-gold);
+          border-right-color: var(--boot-gold);
+          opacity: 0.55;
+        }
+
+        .boot__bar {
+          width: 100%;
+          opacity: 0.45;
+          transform: none;
+          background: var(--boot-gold);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="boot" role="status" aria-live="polite" aria-busy="true" aria-label="Loading admin console">
+        <div class="boot__stage">
+          <div class="boot__mark" aria-hidden="true">
+            <span class="boot__mark-ring"></span>
+            <span class="boot__mark-orbit"></span>
+            <span class="boot__mark-core">M</span>
+          </div>
+          <div class="boot__copy">
+            <p class="boot__brand">mestryx</p>
+            <p class="boot__status">Starting console…</p>
+          </div>
+          <div class="boot__track" aria-hidden="true">
+            <span class="boot__bar"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

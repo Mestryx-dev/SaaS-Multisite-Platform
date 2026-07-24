@@ -1,0 +1,16 @@
+/* Self-hosted product fonts — import once per app / Storybook.
+ * Platform admin: Inter (UI/tables) + Plus Jakarta Sans (display / KPI titles).
+ * Storefront: IBM Plex Sans body + Fraunces display.
+ */
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource/plus-jakarta-sans/500.css";
+@import "@fontsource/plus-jakarta-sans/600.css";
+@import "@fontsource/plus-jakarta-sans/700.css";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-sans/700.css";
+@import "@fontsource/fraunces/600.css";
+@import "@fontsource/fraunces/700.css";

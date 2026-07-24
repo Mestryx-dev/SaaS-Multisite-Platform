@@ -1,0 +1,118 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  monorepo:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: mestryx_platform
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d mestryx_platform"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+
+    env:
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/mestryx_platform
+      REDIS_URL: redis://localhost:6379
+      BETTER_AUTH_SECRET: ci-secret-change-me-min-32-chars-long!!
+      BETTER_AUTH_URL: http://localhost:3001
+      NODE_ENV: test
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "pnpm"
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: i18n parity
+        run: pnpm check:i18n
+
+      - name: Migrate
+        run: pnpm --filter @mestryx/api db:migrate
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Test
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build
+
+  design-system:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Detect AI design anti-patterns (packages/ui first)
+        run: npx --yes impeccable@latest detect packages/ui/src --json
+        # Expand to apps after legacy CSS migrate; start UI-package-only as planned.
+
+  # Promo MP4s for social/ads only — not embedded on storefront (code-driven UI there).
+  remotion:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "pnpm"
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Ensure Remotion browser
+        run: pnpm --filter @mestryx/remotion exec remotion browser ensure
+
+      - name: Typecheck Remotion
+        run: pnpm --filter @mestryx/remotion typecheck
+
+      - name: Render promo compositions
+        run: pnpm --filter @mestryx/remotion run ci:render
+
+      - name: Upload promo MP4s
+        uses: actions/upload-artifact@v4
+        with:
+          name: remotion-promos
+          path: apps/remotion/out/*.mp4
+          retention-days: 7
+          if-no-files-found: error

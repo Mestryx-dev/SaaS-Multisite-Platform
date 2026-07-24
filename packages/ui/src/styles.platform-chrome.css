@@ -1,0 +1,74 @@
+/* Platform chrome glass — top bar, sticky panels, KPI strip shell.
+ * Never apply to table cells, form fields, or solid CTAs (DESIGN.md Wave E).
+ */
+
+.glass-panel {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-panel {
+    background: var(--card);
+  }
+}
+
+/* Shell chrome strips — glass surface without floating-card shadow. */
+.glass-chrome {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  box-shadow: none;
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-chrome {
+    background: var(--sidebar);
+  }
+}
+
+.glass-card {
+  background: color-mix(in oklab, var(--card) 90%, transparent);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-card {
+    background: var(--card);
+  }
+}
+
+/* Restrained ambient wash for shell roots (pairs with --background-ambient). */
+.platform-ambient {
+  background-color: var(--background);
+  background-image: var(--background-ambient);
+}
+
+.type-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.type-kpi-value {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.type-kpi-label {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}

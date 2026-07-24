@@ -1,0 +1,303 @@
+# Data dictionary — Mestryx Multisite Platform
+# Single source of truth for core fields (expand as modules land).
+
+entities:
+  user:
+    description: Human account (platform-wide identity).
+    fields:
+      id: { type: uuid, required: true }
+      email: { type: string, format: email, required: true, unique: true }
+      email_verified_at: { type: datetime, required: false }
+      name: { type: string, required: false }
+      created_at: { type: datetime, required: true }
+
+  organization:
+    description: Tenant / billing customer of the SaaS.
+    fields:
+      id: { type: uuid, required: true }
+      name: { type: string, required: true }
+      slug: { type: string, required: true, unique: true }
+      stripe_customer_id: { type: string, required: false }
+      plan_id: { type: string, required: false }
+      created_at: { type: datetime, required: true }
+
+  membership:
+    description: User membership in an organization.
+    fields:
+      id: { type: uuid, required: true }
+      organization_id: { type: uuid, required: true, ref: organization.id }
+      user_id: { type: uuid, required: true, ref: user.id }
+      role: { type: enum, values: [owner, admin, editor, viewer], required: true }
+
+  organization_invite:
+    description: Staff invite to an organization (FB-035). Not storefront customers.
+    fields:
+      id: { type: uuid, required: true }
+      organization_id: { type: uuid, required: true, ref: organization.id }
+      email: { type: string, format: email, required: true }
+      role: { type: enum, values: [admin, editor, viewer], required: true }
+      token: { type: string, required: true, unique: true }
+      invited_by_user_id: { type: string, required: true, ref: user.id }
+      status: { type: enum, values: [pending, accepted, revoked, expired], required: true }
+      expires_at: { type: datetime, required: true }
+
+  site:
+    description: Public site belonging to an organization.
+    fields:
+      id: { type: uuid, required: true }
+      organization_id: { type: uuid, required: true, ref: organization.id }
+      name: { type: string, required: true }
+      slug: { type: string, required: true }
+      status: { type: enum, values: [draft, live, archived], required: true }
+      default_locale: { type: string, example: fr, required: true }
+      theme_json: { type: json, required: false, description: "Site theme tokens v1 (logoUrl, primaryColor, accentColor, fontFamily, backgroundColor)" }
+      seo_default_title: { type: string, required: false }
+      seo_default_description: { type: string, required: false }
+      og_image_url: { type: string, required: false }
+      llms_intro: { type: string, required: false, description: "Blurb for /llms.txt" }
+      cookie_consent_enabled: { type: boolean, required: true, description: "FB-076 storefront cookie banner" }
+      cookie_policy_path: { type: string, required: true, example: "/privacy" }
+      umami_website_id: { type: string, required: false, description: "Umami website id for storefront tracker (FB-089)" }
+      umami_src: { type: string, required: false, description: "Umami script URL; falls back to UMAMI_SCRIPT_URL env" }
+
+  site_banner:
+    description: Homepage / promo banner for a storefront (FB-073).
+    fields:
+      id: { type: uuid, required: true }
+      organization_id: { type: uuid, required: true, ref: organization.id }
+      site_id: { type: uuid, required: true, ref: site.id }
+      title: { type: string, required: true }
+      subtitle: { type: string, required: false }
+      image_url: { type: string, required: false }
+      href: { type: string, required: false }
+      sort_order: { type: integer, required: true }
+      active: { type: boolean, required: true }
+
+  domain:
+    description: Hostname mapped to a site.
+    fields:
+      id: { type: uuid, required: true }
+      site_id: { type: uuid, required: true, ref: site.id }
+      hostname: { type: string, required: true, unique: true }
+      is_primary: { type: boolean, required: true }
+      verification_status: { type: enum, values: [pending, verified, failed], required: true }
+      verified_at: { type: datetime, required: false }
+
+  plan:
+    description: SaaS plan offered by Mestryx.
+    fields:
+      id: { type: string, required: true }
+      name: { type: string, required: true }
+      max_sites: { type: integer, required: true }
+      modules_allowed: { type: string[], required: true }
+      stripe_price_id: { type: string, required: false }
+
+  page:
+    description: CMS page for a site (module). SEO fields required from first publishable page.
+    fields:
+      id: { type: uuid, required: true }
+      site_id: { type: uuid, required: true, ref: site.id }
+      slug: { type: string, required: true }
+      title: { type: string, required: true }
+      status: { type: enum, values: [draft, published], required: true }
+      body_json: { type: json, required: true, description: "FB-075: {version:1,blocks[]} or legacy {markdown}" }
+      seo_title: { type: string, required: false }
+      seo_description: { type: string, required: false }
+      og_image_url: { type: string, required: false }
+      canonical_path: { type: string, required: false }
+      robots: { type: string, required: false, example: "index,follow" }
+      json_ld: { type: json, required: false, description: "Optional override; else generated" }
+
+  site_menu:
+    description: Header or footer menu container for a site (FB-088).
+    fields:
+      id: { type: uuid, required: true }
+      site_id: { type: uuid, required: true, ref: site.id }
+      location: { type: enum, values: [header, footer], required: true }
+
+  site_menu_item:
+    description: Link item within a site menu.
+    fields:
+      id: { type: uuid, required: true }
+      menu_id: { type: uuid, required: true, ref: site_menu.id }
+      label: { type: string, required: true }
+      href: { type: string, required: true }
+      sort_order: { type: integer, required: true }
+      active: { type: boolean, required: true }
+
+  product:
+    description: Org catalog product; site_id null until published to a storefront.
+    fields:
+      id: { type: uuid, required: true }
+      organization_id: { type: uuid, required: true, ref: organization.id }
+      site_id: { type: uuid, required: false, ref: site.id, description: "Null = not on a public site yet" }
+      sku: { type: string, required: true }
+      name: { type: string, required: true }
+      slug: { type: string, required: true }
+      description: { type: string, required: false }
+      price_cents: { type: integer, required: true }
+      compare_at_cents: { type: integer, required: false }
+      currency: { type: string, example: eur, required: true }
+      tax_class: { type: string, example: standard, required: true }
+      stock: { type: integer, required: true }
+      low_stock_threshold: { type: integer, required: false, description: "Null = no alert" }
+      status: { type: enum, values: [draft, active, archived], required: true }
+
+  coupon:
+    description: Org-scoped promo code (FB-065).
+    fields:
+      id: { type: uuid, required: true }
+      organization_id: { type: uuid, required: true, ref: organization.id }
+      code: { type: string, required: true }
+      type: { type: enum, values: [percent, fixed], required: true }
+      value: { type: integer, required: true, description: "percent = bps; fixed = cents" }
+      min_subtotal_cents: { type: integer, required: false }
+      max_redemptions: { type: integer, required: false }
+      redemption_count: { type: integer, required: true }
+      expires_at: { type: datetime, required: false }
+      active: { type: boolean, required: true }
+
+  category:
+    description: Catalog category / collection (org-scoped; optional site).
+    fields:
+      id: { type: uuid, required: true }
+      organization_id: { type: uuid, required: true, ref: organization.id }
+      site_id: { type: uuid, required: false, ref: site.id }
+      name: { type: string, required: true }
+      slug: { type: string, required: true }
+      parent_id: { type: uuid, required: false, ref: category.id }
+
+  product_category:
+    description: M2M link between products and categories.
+    fields:
+      id: { type: uuid, required: true }
+      product_id: { type: uuid, required: true, ref: product.id }
+      category_id: { type: uuid, required: true, ref: category.id }
+
+  product_variant:
+    description: Sellable SKU variant of a product.
+    fields:
+      id: { type: uuid, required: true }
+      product_id: { type: uuid, required: true, ref: product.id }
+      sku: { type: string, required: true }
+      options_json: { type: json, required: true }
+      price_cents: { type: integer, required: true }
+      stock: { type: integer, required: true }
+
+  cart:
+    description: Guest or customer cart for a site.
+    fields:
+      id: { type: uuid, required: true }
+      site_id: { type: uuid, required: true, ref: site.id }
+      customer_id: { type: uuid, required: false }
+      session_token: { type: string, required: false }
+      currency: { type: string, required: true }
+      abandoned_email_sent_at: { type: datetime, required: false, description: "FB-081 idempotence marker" }
+
+  cart_item:
+    fields:
+      id: { type: uuid, required: true }
+      cart_id: { type: uuid, required: true, ref: cart.id }
+      variant_id: { type: uuid, required: true, ref: product_variant.id }
+      quantity: { type: integer, required: true }
+      unit_price_cents: { type: integer, required: true }
+
+  return_request:
+    description: Customer return / RMA request (FB-082). No Stripe refund in MVP.
+    fields:
+      id: { type: uuid, required: true }
+      organization_id: { type: uuid, required: true, ref: organization.id }
+      site_id: { type: uuid, required: true, ref: site.id }
+      order_id: { type: uuid, required: true, ref: order.id }
+      reason: { type: string, required: true }
+      status: { type: enum, values: [requested, approved, rejected, cancelled], required: true }
+      items_json: { type: json, required: true }
+
+  wishlist_item:
+    fields:
+      id: { type: uuid, required: true }
+      site_id: { type: uuid, required: true, ref: site.id }
+      customer_id: { type: uuid, required: false }
+      session_token: { type: string, required: false }
+      product_id: { type: uuid, required: true, ref: product.id }
+
+  customer:
+    description: Storefront buyer (not SaaS admin user). Linked to Better Auth user when logged in.
+    fields:
+      id: { type: uuid, required: true }
+      organization_id: { type: uuid, required: true, ref: organization.id }
+      site_id: { type: uuid, required: true, ref: site.id }
+      user_id: { type: string, required: false, ref: user.id }
+      email: { type: string, required: true }
+      name: { type: string, required: false }
+      vat_number: { type: string, required: false }
+
+  customer_address:
+    description: Saved shipping address for a storefront customer (FB-078 address book).
+    fields:
+      id: { type: uuid, required: true }
+      site_id: { type: uuid, required: true, ref: site.id }
+      customer_id: { type: uuid, required: true, ref: customer.id }
+      label: { type: string, required: true }
+      name: { type: string, required: true }
+      line1: { type: string, required: true }
+      line2: { type: string, required: false }
+      city: { type: string, required: true }
+      postal_code: { type: string, required: true }
+      country: { type: string, required: true }
+      is_default: { type: boolean, required: true }
+
+  order:
+    description: Paid or pending storefront order (table store_order).
+    fields:
+      id: { type: uuid, required: true }
+      public_id: { type: string, required: true, unique: true }
+      organization_id: { type: uuid, required: true, ref: organization.id }
+      site_id: { type: uuid, required: true, ref: site.id }
+      customer_id: { type: uuid, required: false, ref: customer.id }
+      status: { type: enum, values: [pending_payment, paid, fulfilled, cancelled, refunded], required: true }
+      currency: { type: string, required: true }
+      subtotal_cents: { type: integer, required: true }
+      discount_cents: { type: integer, required: true }
+      shipping_cents: { type: integer, required: true }
+      tax_cents: { type: integer, required: true }
+      total_cents: { type: integer, required: true }
+      coupon_id: { type: uuid, required: false, ref: coupon.id }
+      coupon_code: { type: string, required: false }
+      carrier: { type: string, required: false }
+      tracking_number: { type: string, required: false }
+      fulfilled_at: { type: datetime, required: false }
+      shipping_address_json: { type: json, required: true }
+      billing_address_json: { type: json, required: true }
+
+  invoice:
+    description: Fiscal invoice / credit note for an order (merchant). Multiple rows per order allowed.
+    fields:
+      id: { type: uuid, required: true }
+      organization_id: { type: uuid, required: true, ref: organization.id }
+      site_id: { type: uuid, required: true, ref: site.id }
+      order_id: { type: uuid, required: true, ref: order.id }
+      parent_invoice_id: { type: uuid, required: false, ref: invoice.id, description: "Credit note → sales invoice" }
+      number: { type: string, required: true }
+      kind: { type: enum, values: [invoice, credit_note], required: true }
+      issued_at: { type: datetime, required: true }
+      pdf_url: { type: string, required: false }
+      totals_json: { type: json, required: true }
+
+  merchant_legal_profile:
+    description: Company identity for invoices (SIRET, VAT, address).
+    fields:
+      id: { type: uuid, required: true }
+      organization_id: { type: uuid, required: true, ref: organization.id }
+      legal_name: { type: string, required: true }
+      siret: { type: string, required: false }
+      vat_number: { type: string, required: false }
+      address_json: { type: json, required: true }
+      invoice_prefix: { type: string, required: true }
+      credit_note_prefix: { type: string, required: true, example: AV }
+
+constraints:
+  - All tenant-owned rows MUST include organization_id and/or site_id with enforced scoping.
+  - Cross-tenant reads MUST fail automated tests before any public deploy.
+  - Commerce entities always include site_id (publish target = site).
+  - Fiscal invoice numbers MUST be sequential per organization (or per legal profile).
