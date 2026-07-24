@@ -5,7 +5,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { eq } from "drizzle-orm";
 import { createApp } from "../../app.js";
 import { createDb, type Db } from "../../db/client.js";
-import { product } from "../../db/schema.js";
+import { organization, product } from "../../db/schema.js";
 import { loadConfig } from "../../lib/config.js";
 import { createAuth } from "../identity/auth.js";
 import { seedPlans } from "../billing/routes.js";
@@ -63,6 +63,15 @@ describeDb("commerce storefront", () => {
     expect(orgARes.status).toBe(201);
     const orgA = (await orgARes.json()) as { organization: { id: string } };
     orgAId = orgA.organization.id;
+
+    await db
+      .update(organization)
+      .set({
+        planId: "pro",
+        modulesAllowed: ["cms", "commerce"],
+        updatedAt: new Date(),
+      })
+      .where(eq(organization.id, orgAId));
 
     await app.request("/v1/organizations", {
       method: "POST",

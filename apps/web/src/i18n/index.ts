@@ -19,6 +19,11 @@ export const CHROME_MESSAGE_KEYS = [
   "store.cart.subtotal",
   "store.cart.view",
   "store.cart.unavailable",
+  "store.cart.quantity",
+  "store.cart.update",
+  "store.cart.remove",
+  "store.nav.themeDark",
+  "store.nav.themeLight",
 ] as const;
 
 export function normalizeLocale(value: string | null | undefined): Locale {

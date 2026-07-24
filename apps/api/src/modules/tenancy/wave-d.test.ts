@@ -36,7 +36,7 @@ describe("theme normalize (unit)", () => {
       preset: "luna",
     });
     expect(css).toContain("--primary: oklch(0.43 0.04 41.99)");
-    expect(css).toContain("--background: oklch(0.98 0 0)");
+    expect(css).toContain("--background: oklch(0.965 0.012 75)");
   });
 });
 

@@ -686,6 +686,16 @@ export function commerceRoutes(db: Db, auth: Auth, config: AppConfig) {
       .select()
       .from(storeOrderItem)
       .where(eq(storeOrderItem.orderId, order.id));
+    const events = await db
+      .select({
+        type: orderEvent.type,
+        message: orderEvent.message,
+        createdAt: orderEvent.createdAt,
+      })
+      .from(orderEvent)
+      .where(eq(orderEvent.orderId, order.id))
+      .orderBy(desc(orderEvent.createdAt))
+      .limit(20);
     return c.json({
       order: {
         publicId: order.publicId,
@@ -701,6 +711,7 @@ export function commerceRoutes(db: Db, auth: Auth, config: AppConfig) {
         createdAt: order.createdAt,
       },
       items,
+      events,
     });
   });
 
@@ -726,6 +737,16 @@ export function commerceRoutes(db: Db, auth: Auth, config: AppConfig) {
     ) {
       return apiError(c, 404, "NOT_FOUND", "Order not found");
     }
+    const events = await db
+      .select({
+        type: orderEvent.type,
+        message: orderEvent.message,
+        createdAt: orderEvent.createdAt,
+      })
+      .from(orderEvent)
+      .where(eq(orderEvent.orderId, order.id))
+      .orderBy(desc(orderEvent.createdAt))
+      .limit(20);
     return c.json({
       order: {
         publicId: order.publicId,
@@ -739,6 +760,7 @@ export function commerceRoutes(db: Db, auth: Auth, config: AppConfig) {
         trackingNumber: order.trackingNumber,
         fulfilledAt: order.fulfilledAt,
         createdAt: order.createdAt,
+        events,
       },
     });
   });
@@ -1315,10 +1337,17 @@ export function commerceRoutes(db: Db, auth: Auth, config: AppConfig) {
           totalCents: order!.totalCents,
           currency: order!.currency,
           couponCode: order!.couponCode,
+          paymentProvider: order!.paymentProvider,
         },
+        /**
+         * Payment contract (FB-103 / ADR-0004).
+         * Today: provider "deferred" → pending_payment until admin mark-paid or FB-070.
+         * FB-070 will set provider "stripe", populate stripe_* columns, and drive
+         * markPaid / cancel via webhook_event idempotence (same pattern as billing).
+         */
         payment: {
           required: true,
-          provider: "deferred",
+          provider: "deferred" as const,
           message: "Payment integration not enabled yet. Order is pending_payment.",
         },
       },

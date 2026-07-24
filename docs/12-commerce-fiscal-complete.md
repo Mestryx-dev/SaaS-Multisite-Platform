@@ -62,14 +62,14 @@ Related: [06-feature-catalog-and-priority.md](./06-feature-catalog-and-priority.
 
 | ID | Feature | Notes |
 |----|---------|-------|
-| F-508 | Stripe Connect or platform charge | decide: Mestryx collects vs Connect to tenant |
+| F-508 | Stripe Connect or platform charge | **Decided:** platform charge for dogfood — [ADR-0004](./adr/0004-end-customer-payments-platform-charge.md). Connect later for external merchants. Seams: FB-103; capture: FB-070 (deferred). |
 | F-703e | Card / wallet checkout | Stripe Payment Element (test then live) |
 | F-708 | Refunds / partial refunds | Stripe + order state machine |
 | F-711 | Payment webhooks | idempotent; paid / failed / dispute |
 | F-712 | 3DS / SCA | EU required |
 | F-713 | Multi-currency (later) | display + settle |
 
-**Default assumption (change with ADR):** Stripe **test** first; live needs legal entity (Q13). Prefer **Stripe Checkout / PaymentIntents** per site with Connect when tenants are external merchants.
+**Default assumption:** Stripe **test** first; live needs legal entity (Q13). Platform PaymentIntent / Checkout Session per ADR-0004; Connect when tenants are external merchants (future ADR).
 
 ---
 

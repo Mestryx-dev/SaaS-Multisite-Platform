@@ -5,6 +5,7 @@ import { z } from "zod";
 import type { Db } from "../../db/client.js";
 import {
   customerAddress,
+  orderEvent,
   storeOrder,
   storeOrderItem,
 } from "../../db/schema.js";
@@ -221,6 +222,17 @@ export function storefrontAccountRoutes(
       .from(storeOrderItem)
       .where(eq(storeOrderItem.orderId, order.id));
 
+    const events = await db
+      .select({
+        type: orderEvent.type,
+        message: orderEvent.message,
+        createdAt: orderEvent.createdAt,
+      })
+      .from(orderEvent)
+      .where(eq(orderEvent.orderId, order.id))
+      .orderBy(desc(orderEvent.createdAt))
+      .limit(20);
+
     return c.json({
       order: {
         publicId: order.publicId,
@@ -238,6 +250,7 @@ export function storefrontAccountRoutes(
         createdAt: order.createdAt,
       },
       items,
+      events,
     });
   });
 

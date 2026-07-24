@@ -296,5 +296,6 @@
   "menu.deactivate": "Désactiver",
   "menu.active": "Actif",
   "menu.inactive": "Inactif",
-  "menu.delete": "Supprimer"
+  "menu.delete": "Supprimer",
+  "returns.description": "Demandes de retour (RMA) et e-mails paniers abandonnés."
 }

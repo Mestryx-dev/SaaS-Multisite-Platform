@@ -2,6 +2,13 @@
 
 Traceability for FB-037 / design-system milestones. Newest first.
 
+## 2026-07-24 (Store Soft boutique polish — FB-102)
+
+- **Patterns:** `CheckoutSteps`; CartLine / CategoryNav / PriceRange / TrustStrip / header chrome accept locale props (no EN hardcode at runtime).
+- **Gallery:** active thumb state (`data-active`); drawer cart lines parity with `CartLine` + focus trap.
+- **Pages:** Soft cart summary layout, wishlist grid, checkout fieldsets + shipping radios, PDP qty.
+- Storybook: Commerce stories remain EN demo defaults.
+
 ## 2026-07-23 (Platform chrome flatten)
 
 - **Shell top bar** = utilities only (Cmd+K, Sign in primary button) — no page-name crumb duplicating PageHeader.

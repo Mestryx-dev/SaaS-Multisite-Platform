@@ -12,6 +12,7 @@ import {
   TableFrame,
 } from "@mestryx/ui";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { apiFetch } from "../lib/api";
@@ -23,6 +24,7 @@ type ReturnRow = {
   status: string;
   reason: string;
   createdAt: string;
+  orderId: string;
   orderPublicId: string;
   orderStatus: string;
 };
@@ -93,7 +95,7 @@ export function ReturnsPage() {
       <Stack gap="md">
         <PageHeader
           title={t("nav.returns")}
-          description="RMA and abandoned carts."
+          description={t("returns.description")}
         />
         {error ? <Alert tone="error">{error}</Alert> : null}
 
@@ -109,7 +111,14 @@ export function ReturnsPage() {
               {rows.map((r) => (
                 <li key={r.id} className="space-y-2 px-4 py-3 text-sm">
                   <strong>
-                    {r.orderPublicId} — {r.status}
+                    <Link
+                      className="underline underline-offset-2 hover:text-[var(--primary)]"
+                      to="/orders/$orderId"
+                      params={{ orderId: r.orderId }}
+                    >
+                      {r.orderPublicId}
+                    </Link>{" "}
+                    — {r.status}
                   </strong>
                   <Muted as="p">{r.reason}</Muted>
                   {r.status === "requested" ? (

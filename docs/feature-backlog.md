@@ -3,7 +3,7 @@
 Prioritised executable backlog derived from [06-feature-catalog-and-priority.md](./06-feature-catalog-and-priority.md).  
 Statuses: `todo` · `doing` · `blocked` · `done` · `deferred`.
 
-**Last synced**: 2026-07-23 — FB-038 full i18n done (admin + store SSR + email + parity CI). Must stay aligned with [PROGRESS.md](../PROGRESS.md) and code (see [10-agent-ops.md](./10-agent-ops.md) §2.2). Journey map: [13-journey-audit.md](./13-journey-audit.md).
+**Last synced**: 2026-07-24 — Store polish + payment seams (FB-102/103/104). Must stay aligned with [PROGRESS.md](../PROGRESS.md) and code (see [10-agent-ops.md](./10-agent-ops.md) §2.2). Journey map: [13-journey-audit.md](./13-journey-audit.md).
 
 ## Sequencing
 
@@ -17,10 +17,11 @@ Statuses: `todo` · `doing` · `blocked` · `done` · `deferred`.
 | 4 | CMS depth | FB-075 blocks, FB-088 nav, FB-086 media, FB-087 preview (later) |
 | 5 | Shop UX | FB-078 address book, FB-080 tracking, FB-083 PLP filters, FB-079 wishlist |
 | 6 | Platform brand / ops | FB-084 modules, FB-085 theme, FB-089 Umami, FB-097 entitlements UX |
-| 7 | Deferred commerce | FB-081 abandoned cart, FB-082 RMA; Stripe = FB-070 when unlocked |
-| 8 | Release gates | Staging → launch checklist (FB-044/045) |
+| 7 | Store polish + payment prep | FB-102 Soft boutique polish, FB-103 payment seams, FB-104 tracking/RMA polish |
+| 8 | Deferred commerce | Stripe Capture = FB-070 when unlocked (prep = FB-103) |
+| 9 | Release gates | Staging → launch checklist (FB-044/045) |
 
-Stripe end-customer capture (**FB-070**) stays deferred until explicitly unlocked.
+Stripe end-customer capture (**FB-070**) stays deferred until explicitly unlocked. FB-081/082 are done; only FB-070 remains deferred for money movement.
 
 ## Definition of Ready
 
@@ -137,8 +138,13 @@ Payment deferred: stop at `pending_payment` until Mestryx unlocks Stripe Capture
 | FB-081 | Abandoned cart emails | feature | P2 | done | 3d | FB-067 |
 | FB-082 | Returns / RMA | feature | P2 | done | 5d | FB-061 |
 | FB-083 | PLP filters + sort (price, etc.) | feature | P1 | done | 3d | FB-063 |
+| FB-102 | Storefront Soft boutique polish (drawer/cart/checkout/PDP/i18n patterns) | feature | P1 | done | 3d | FB-060, FB-038 |
+| FB-103 | End-customer payment seams (ADR platform charge + nullable Stripe cols; no capture) | feature | P1 | done | 1.5d | FB-061 |
+| FB-104 | Tracking + RMA UX polish (i18n status, carrier link, returns history, approve→credit-note) | feature | P1 | done | 2d | FB-080, FB-082 |
 
 **Auth note (FB-068 / F-108 / F-110):** Better Auth `socialProviders`. Guest + email accounts; Google via `GOOGLE_*`; Apple via `APPLE_CLIENT_ID` / `APPLE_CLIENT_SECRET` (FB-072). Do not plan Facebook or X logins.
+
+**Payment note:** FB-103 prepares schema/ADR for FB-070 without unlocking Stripe. Checkout stays `pending_payment` / `provider: "deferred"` until FB-070.
 
 ## Phase 7 — brand & motion
 

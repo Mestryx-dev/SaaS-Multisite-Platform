@@ -240,8 +240,8 @@ Views: `apps/web/src/views.tsx` · routing: `apps/web/src/server.ts`.
 | SF-01 | HomePage | `/` | ☑ | ☑ | ☑ | ☑ | done | Hero + merch, brand-first |
 | SF-02 | PLP / product list | `/products` (+ filters) | ☑ | ☑ | ☑ | ☑ | done | Filters, grid, empty |
 | SF-03 | ProductPage (PDP) | `/products/:slug` | ☑ | ☑ | ☑ | ☑ | done | Gallery, CTA, trust |
-| SF-04 | CartPage | `/cart` | ☑ | ☑ | ☑ | ☑ | done | Line items, totals |
-| SF-05 | CheckoutPage | `/checkout` | ☑ | ☑ | ☑ | ☑ | done | Steps, address book |
+| SF-04 | CartPage | `/cart` | ☑ | ☑ | ☑ | ☑ | done | Soft summary + continue shopping (FB-102) |
+| SF-05 | CheckoutPage | `/checkout` | ☑ | ☑ | ☑ | ☑ | done | Steps + shipping radios (FB-102) |
 | SF-06 | OrderPage | order confirmation | ☑ | ☑ | ☑ | ☑ | done | |
 | SF-07 | OrderTrackPage | tracking | ☑ | ☑ | ☑ | ☑ | done | |
 | SF-08 | WishlistPage | `/wishlist` | ☑ | ☑ | ☑ | ☑ | done | |

@@ -296,5 +296,6 @@
   "menu.deactivate": "Deactivate",
   "menu.active": "Active",
   "menu.inactive": "Inactive",
-  "menu.delete": "Delete"
+  "menu.delete": "Delete",
+  "returns.description": "Return requests (RMA) and abandoned-cart emails."
 }

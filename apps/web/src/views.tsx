@@ -5,6 +5,7 @@ import {
   CartLine,
   CategoryNav,
   CheckoutLayout,
+  CheckoutSteps,
   CollectionCard,
   CollectionGrid,
   EmptyState,
@@ -43,6 +44,144 @@ import { t, type Locale } from "./i18n/index.js";
 import { formatMoney, type StoreProduct } from "./storefront.js";
 
 export type NavItem = { label: string; href: string };
+
+export type OrderEventItem = {
+  type: string;
+  message: string;
+  createdAt: string;
+};
+
+export function orderStatusLabel(locale: Locale, status: string): string {
+  const key = `store.order.status.${status}`;
+  const labeled = t(locale, key);
+  return labeled === key ? status : labeled;
+}
+
+export function returnStatusLabel(locale: Locale, status: string): string {
+  const key = `store.return.status.${status}`;
+  const labeled = t(locale, key);
+  return labeled === key ? status : labeled;
+}
+
+/** Best-effort carrier tracking URL from carrier name + tracking number. */
+export function carrierTrackingUrl(
+  carrier?: string | null,
+  trackingNumber?: string | null,
+): string | null {
+  if (!trackingNumber) return null;
+  const c = (carrier ?? "").toLowerCase();
+  const n = encodeURIComponent(trackingNumber);
+  if (c.includes("colissimo") || c.includes("laposte") || c.includes("la poste")) {
+    return `https://www.laposte.fr/outils/suivre-vos-envois?code=${n}`;
+  }
+  if (c.includes("chronopost")) {
+    return `https://www.chronopost.fr/tracking-no-cms/suivi-page?listeNumerosLT=${n}`;
+  }
+  if (c.includes("ups")) {
+    return `https://www.ups.com/track?tracknum=${n}`;
+  }
+  if (c.includes("dhl")) {
+    return `https://www.dhl.com/fr-fr/home/tracking.html?tracking-id=${n}`;
+  }
+  if (c.includes("mondial")) {
+    return `https://www.mondialrelay.fr/suivi-de-colis/?numeroExpedition=${n}`;
+  }
+  return null;
+}
+
+function trustItems(locale: Locale) {
+  return [
+    {
+      title: t(locale, "store.trust.shipping"),
+      description: t(locale, "store.trust.shippingHint"),
+    },
+    {
+      title: t(locale, "store.trust.returns"),
+      description: t(locale, "store.trust.returnsHint"),
+    },
+    {
+      title: t(locale, "store.trust.secure"),
+      description: t(locale, "store.trust.secureHint"),
+    },
+  ];
+}
+
+function defaultFooterColumns(locale: Locale) {
+  return [
+    {
+      title: t(locale, "store.footer.shop"),
+      items: [{ label: t(locale, "store.footer.allProducts"), href: "/" }],
+    },
+    {
+      title: t(locale, "store.footer.help"),
+      items: [
+        { label: t(locale, "store.footer.trackOrder"), href: "/orders/track" },
+      ],
+    },
+    {
+      title: t(locale, "store.footer.legal"),
+      items: [
+        { label: t(locale, "store.footer.privacy"), href: "/privacy" },
+        { label: t(locale, "store.footer.terms"), href: "/terms" },
+        { label: t(locale, "store.footer.legalNotice"), href: "/legal" },
+      ],
+    },
+  ];
+}
+
+function TrackingLink(props: {
+  locale: Locale;
+  carrier?: string | null;
+  trackingNumber?: string | null;
+}) {
+  const url = carrierTrackingUrl(props.carrier, props.trackingNumber);
+  if (!props.trackingNumber && !props.carrier) return null;
+  return (
+    <Muted>
+      {t(props.locale, "store.order.shippingLine", {
+        carrier: props.carrier ?? "carrier",
+      })}
+      {props.trackingNumber
+        ? ` · ${t(props.locale, "store.order.tracking", { number: props.trackingNumber })}`
+        : ""}
+      {url ? (
+        <>
+          {" · "}
+          <a href={url} rel="noopener noreferrer" target="_blank">
+            {t(props.locale, "store.order.trackCarrier")}
+          </a>
+        </>
+      ) : null}
+    </Muted>
+  );
+}
+
+function OrderTimeline(props: {
+  locale: Locale;
+  events?: OrderEventItem[];
+}) {
+  if (!props.events?.length) return null;
+  return (
+    <>
+      <h2 className="font-[family-name:var(--font-display)] text-lg font-semibold">
+        {t(props.locale, "store.order.timeline")}
+      </h2>
+      <ol className="ui-order-timeline">
+        {props.events.map((ev, i) => (
+          <li key={`${ev.type}-${ev.createdAt}-${i}`}>
+            <strong>{ev.message}</strong>
+            <br />
+            <time dateTime={ev.createdAt}>
+              {new Date(ev.createdAt).toLocaleString(
+                props.locale === "fr" ? "fr-FR" : "en-US",
+              )}
+            </time>
+          </li>
+        ))}
+      </ol>
+    </>
+  );
+}
 
 function productCardProps(p: StoreProduct, locale: Locale) {
   const onSale =
@@ -84,6 +223,15 @@ function Shell({
 }) {
   const resolvedAccount =
     accountLabel ?? t(locale, "store.nav.signIn");
+  const footerColumns =
+    footerNav && footerNav.length > 0
+      ? [
+          {
+            title: t(locale, "store.footer.help"),
+            items: footerNav,
+          },
+        ]
+      : defaultFooterColumns(locale);
   return (
     <>
       <StoreHeader
@@ -98,9 +246,16 @@ function Shell({
         searchButtonLabel={t(locale, "store.nav.searchButton")}
         searchQuery={searchQuery}
         navItems={headerNav}
+        menuToggleLabel={t(locale, "store.nav.menuToggle")}
+        navAriaLabel={t(locale, "store.nav.primary")}
+        menuLabel={t(locale, "store.nav.menu")}
+        shopLabel={t(locale, "store.nav.shop")}
+        themeDarkLabel={t(locale, "store.nav.themeDark")}
+        themeLightLabel={t(locale, "store.nav.themeLight")}
+        themeTitle={t(locale, "store.nav.theme")}
       />
       {children}
-      <StoreFooter brand={siteName} items={footerNav} />
+      <StoreFooter brand={siteName} columns={footerColumns} />
       {siteId && siteId !== "local" ? (
         <CartDrawer
           siteId={siteId}
@@ -239,12 +394,15 @@ export function HomePage(props: {
                 )}
               </div>
             </StoreSection>
-            <TrustStrip />
+            <TrustStrip
+              items={trustItems(locale)}
+              ariaLabel={t(locale, "store.trust.aria")}
+            />
           </StoreMain>
         </>
       ) : (
         <StoreMain>
-          <h1 className="mb-2 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight md:text-4xl">
+          <h1 className="ui-page-title">
             {props.searchQ
               ? t(locale, "store.plp.searchTitle", { query: props.searchQ })
               : (activeCategory?.name ?? t(locale, "store.plp.shop"))}
@@ -264,6 +422,8 @@ export function HomePage(props: {
             <CategoryNav
               items={props.categories}
               activeSlug={props.categoryQ}
+              allLabel={t(locale, "store.plp.all")}
+              ariaLabel={t(locale, "store.plp.collectionsNav")}
             />
           ) : null}
           <StoreForm method="get" action="/" className="ui-store-form--plp">
@@ -277,6 +437,11 @@ export function HomePage(props: {
               <PriceRangeInputs
                 minDefault={props.minPriceQ}
                 maxDefault={props.maxPriceQ}
+                priceLabel={t(locale, "store.plp.price")}
+                minPlaceholder={t(locale, "store.plp.priceMin")}
+                maxPlaceholder={t(locale, "store.plp.priceMax")}
+                minAriaLabel={t(locale, "store.plp.priceMinAria")}
+                maxAriaLabel={t(locale, "store.plp.priceMaxAria")}
               />
               <div className="ui-plp-toolbar-sort">
                 <label className="ui-plp-toolbar-sort-label" htmlFor="sort">
@@ -383,7 +548,10 @@ export function ProductPage(props: {
                 ? t(locale, "store.pdp.inStock", { count: stock })
                 : t(locale, "store.pdp.outOfStock")}
             </Muted>
-            <TrustStrip />
+            <TrustStrip
+              items={trustItems(locale)}
+              ariaLabel={t(locale, "store.trust.aria")}
+            />
             <form method="post" action="/actions/add-to-cart">
               <input type="hidden" name="siteId" value={props.siteId} />
               <input type="hidden" name="productId" value={p.id} />
@@ -401,8 +569,10 @@ export function ProductPage(props: {
                           : t(locale, "store.pdp.defaultVariant");
                       return (
                         <option key={v.id} value={v.id}>
-                          {label} — {formatMoney(v.priceCents, p.currency)} (
-                          {v.stock})
+                          {label} — {formatMoney(v.priceCents, p.currency)}
+                          {v.stock > 0
+                            ? ` (${t(locale, "store.pdp.stockLeft", { count: v.stock })})`
+                            : ` (${t(locale, "store.pdp.outOfStock")})`}
                         </option>
                       );
                     })}
@@ -411,6 +581,18 @@ export function ProductPage(props: {
               ) : variants[0] ? (
                 <input type="hidden" name="variantId" value={variants[0].id} />
               ) : null}
+              <div>
+                <Label htmlFor="quantity">{t(locale, "store.pdp.quantity")}</Label>
+                <Input
+                  id="quantity"
+                  name="quantity"
+                  type="number"
+                  min={1}
+                  max={Math.max(stock, 1)}
+                  defaultValue={1}
+                  className="w-24"
+                />
+              </div>
               <Button type="submit" disabled={stock < 1}>
                 {t(locale, "store.pdp.addToCart")}
               </Button>
@@ -456,14 +638,35 @@ export function CartPage(props: {
       cartCount={props.cartCount}
     >
       <StoreMain>
-        <h1>{t(locale, "store.cart.heading")}</h1>
+        <h1 className="ui-page-title">{t(locale, "store.cart.heading")}</h1>
         {props.items.length === 0 ? (
           <EmptyState>
             {t(locale, "store.cart.empty")}{" "}
             <a href="/">{t(locale, "store.cart.emptyCta")}</a>
           </EmptyState>
         ) : (
-          <Stack gap="md">
+          <CheckoutLayout
+            summary={
+              <OrderSummary
+                lines={props.items.map((i) => ({
+                  label: `${i.name} × ${i.quantity}`,
+                  value: formatMoney(
+                    i.unitPriceCents * i.quantity,
+                    i.currency,
+                  ),
+                }))}
+                totalLabel={t(locale, "store.checkout.subtotal")}
+                totalValue={formatMoney(props.subtotalCents, currency)}
+              >
+                <ButtonLink href="/checkout">
+                  {t(locale, "store.cart.checkout")}
+                </ButtonLink>
+                <ButtonLink href="/" variant="ghost">
+                  {t(locale, "store.common.continueShopping")}
+                </ButtonLink>
+              </OrderSummary>
+            }
+          >
             <div className="space-y-4">
               {props.items.map((i) => (
                 <CartLine
@@ -478,18 +681,13 @@ export function CartPage(props: {
                     i.unitPriceCents * i.quantity,
                     i.currency,
                   )}
+                  quantityLabel={t(locale, "store.cart.quantity")}
+                  updateLabel={t(locale, "store.cart.update")}
+                  removeLabel={t(locale, "store.cart.remove")}
                 />
               ))}
             </div>
-            <p className="ui-price">
-              {t(locale, "store.cart.subtotal", {
-                amount: formatMoney(props.subtotalCents, currency),
-              })}
-            </p>
-            <ButtonLink href="/checkout">
-              {t(locale, "store.cart.checkout")}
-            </ButtonLink>
-          </Stack>
+          </CheckoutLayout>
         )}
       </StoreMain>
     </Shell>
@@ -519,7 +717,7 @@ export function WishlistPage(props: {
       cartCount={props.cartCount}
     >
       <StoreMain>
-        <h1>{t(locale, "store.wishlist.heading")}</h1>
+        <h1 className="ui-page-title">{t(locale, "store.wishlist.heading")}</h1>
         {props.flash === "removed" ? (
           <Flash>{t(locale, "store.wishlist.removed")}</Flash>
         ) : null}
@@ -529,9 +727,9 @@ export function WishlistPage(props: {
         {props.items.length === 0 ? (
           <EmptyState>{t(locale, "store.wishlist.empty")}</EmptyState>
         ) : (
-          <Stack gap="md">
+          <div className="ui-wishlist-grid">
             {props.items.map((i) => (
-              <div key={i.productId}>
+              <div key={i.productId} className="ui-wishlist-item">
                 <ProductCard
                   name={i.name}
                   slug={i.slug}
@@ -553,7 +751,7 @@ export function WishlistPage(props: {
                 </Stack>
               </div>
             ))}
-          </Stack>
+          </div>
         )}
       </StoreMain>
     </Shell>
@@ -604,7 +802,15 @@ export function CheckoutPage(props: {
   const { locale } = props;
   const checkoutForm = (
     <>
-      <h1>{t(locale, "store.checkout.heading")}</h1>
+      <h1 className="ui-page-title">{t(locale, "store.checkout.heading")}</h1>
+      <CheckoutSteps
+        steps={[
+          t(locale, "store.checkout.stepAddress"),
+          t(locale, "store.checkout.stepShipping"),
+          t(locale, "store.checkout.stepReview"),
+        ]}
+        current={2}
+      />
       {props.error ? (
         <Flash>{t(locale, "store.checkout.error")}</Flash>
       ) : null}
@@ -619,123 +825,139 @@ export function CheckoutPage(props: {
       ) : null}
       <StoreForm method="post" action="/actions/checkout">
         <input type="hidden" name="siteId" value={props.siteId} />
-        <div>
-          <Label htmlFor="email">{t(locale, "store.checkout.email")}</Label>
-          <Input
-            id="email"
-            name="email"
-            type="email"
-            required
-            defaultValue={props.emailPrefill ?? ""}
-          />
-        </div>
-        {props.signedIn && (props.addresses?.length ?? 0) > 0 ? (
+        <fieldset className="ui-checkout-fieldset">
+          <legend>{t(locale, "store.checkout.sectionContact")}</legend>
           <div>
-            <Label htmlFor="shippingAddressId">
-              {t(locale, "store.checkout.savedAddress")}
-            </Label>
-            <Select
-              id="shippingAddressId"
-              name="shippingAddressId"
-              defaultValue={defaultAddress?.id ?? ""}
-            >
-              <option value="">{t(locale, "store.checkout.newAddress")}</option>
-              {(props.addresses ?? []).map((a) => (
-                <option key={a.id} value={a.id}>
-                  {a.label}: {a.name}, {a.line1}, {a.postalCode} {a.city}
-                </option>
-              ))}
-            </Select>
-            <Muted>{t(locale, "store.checkout.newAddressHint")}</Muted>
-          </div>
-        ) : null}
-        <div>
-          <Label htmlFor="name">{t(locale, "store.checkout.fullName")}</Label>
-          <Input
-            id="name"
-            name="name"
-            defaultValue={defaultAddress?.name ?? ""}
-            required={!props.signedIn || !(props.addresses?.length)}
-          />
-        </div>
-        <div>
-          <Label htmlFor="line1">{t(locale, "store.checkout.address")}</Label>
-          <Input
-            id="line1"
-            name="line1"
-            defaultValue={defaultAddress?.line1 ?? ""}
-            required={!props.signedIn || !(props.addresses?.length)}
-          />
-        </div>
-        <div>
-          <Label htmlFor="city">{t(locale, "store.checkout.city")}</Label>
-          <Input
-            id="city"
-            name="city"
-            defaultValue={defaultAddress?.city ?? ""}
-            required={!props.signedIn || !(props.addresses?.length)}
-          />
-        </div>
-        <div>
-          <Label htmlFor="postalCode">{t(locale, "store.checkout.postalCode")}</Label>
-          <Input
-            id="postalCode"
-            name="postalCode"
-            defaultValue={defaultAddress?.postalCode ?? ""}
-            required={!props.signedIn || !(props.addresses?.length)}
-          />
-        </div>
-        <div>
-          <Label htmlFor="country">{t(locale, "store.checkout.country")}</Label>
-          <Select
-            id="country"
-            name="country"
-            defaultValue={defaultAddress?.country ?? "FR"}
-          >
-            <option value="FR">{t(locale, "store.country.FR")}</option>
-            <option value="BE">{t(locale, "store.country.BE")}</option>
-            <option value="CH">{t(locale, "store.country.CH")}</option>
-          </Select>
-        </div>
-        {props.signedIn ? (
-          <div>
-            <Label htmlFor="saveAddress">
-              <input
-                id="saveAddress"
-                name="saveAddress"
-                type="checkbox"
-                value="1"
-              />{" "}
-              {t(locale, "store.checkout.saveAddress")}
-            </Label>
-          </div>
-        ) : null}
-        {props.shippingMethods.length > 0 ? (
-          <div>
-            <Label htmlFor="shippingMethodId">
-              {t(locale, "store.checkout.shipping")}
-            </Label>
-            <Select
-              id="shippingMethodId"
-              name="shippingMethodId"
-              defaultValue={props.shippingMethods[0]?.id}
+            <Label htmlFor="email">{t(locale, "store.checkout.email")}</Label>
+            <Input
+              id="email"
+              name="email"
+              type="email"
               required
+              defaultValue={props.emailPrefill ?? ""}
+            />
+          </div>
+          {props.signedIn && (props.addresses?.length ?? 0) > 0 ? (
+            <div>
+              <Label htmlFor="shippingAddressId">
+                {t(locale, "store.checkout.savedAddress")}
+              </Label>
+              <Select
+                id="shippingAddressId"
+                name="shippingAddressId"
+                defaultValue={defaultAddress?.id ?? ""}
+              >
+                <option value="">{t(locale, "store.checkout.newAddress")}</option>
+                {(props.addresses ?? []).map((a) => (
+                  <option key={a.id} value={a.id}>
+                    {a.label}: {a.name}, {a.line1}, {a.postalCode} {a.city}
+                  </option>
+                ))}
+              </Select>
+              <Muted>{t(locale, "store.checkout.newAddressHint")}</Muted>
+            </div>
+          ) : null}
+          <div>
+            <Label htmlFor="name">{t(locale, "store.checkout.fullName")}</Label>
+            <Input
+              id="name"
+              name="name"
+              defaultValue={defaultAddress?.name ?? ""}
+              required={!props.signedIn || !(props.addresses?.length)}
+            />
+          </div>
+          <div>
+            <Label htmlFor="line1">{t(locale, "store.checkout.address")}</Label>
+            <Input
+              id="line1"
+              name="line1"
+              defaultValue={defaultAddress?.line1 ?? ""}
+              required={!props.signedIn || !(props.addresses?.length)}
+            />
+          </div>
+          <div>
+            <Label htmlFor="city">{t(locale, "store.checkout.city")}</Label>
+            <Input
+              id="city"
+              name="city"
+              defaultValue={defaultAddress?.city ?? ""}
+              required={!props.signedIn || !(props.addresses?.length)}
+            />
+          </div>
+          <div>
+            <Label htmlFor="postalCode">{t(locale, "store.checkout.postalCode")}</Label>
+            <Input
+              id="postalCode"
+              name="postalCode"
+              defaultValue={defaultAddress?.postalCode ?? ""}
+              required={!props.signedIn || !(props.addresses?.length)}
+            />
+          </div>
+          <div>
+            <Label htmlFor="country">{t(locale, "store.checkout.country")}</Label>
+            <Select
+              id="country"
+              name="country"
+              defaultValue={defaultAddress?.country ?? "FR"}
             >
-              {props.shippingMethods.map((m) => (
-                <option key={m.id} value={m.id}>
-                  {m.name} — {formatMoney(m.priceCents, m.currency)}
-                </option>
-              ))}
+              <option value="FR">{t(locale, "store.country.FR")}</option>
+              <option value="BE">{t(locale, "store.country.BE")}</option>
+              <option value="CH">{t(locale, "store.country.CH")}</option>
             </Select>
           </div>
-        ) : (
-          <Muted>{t(locale, "store.checkout.noShipping")}</Muted>
-        )}
-        <div>
-          <Label htmlFor="couponCode">{t(locale, "store.checkout.coupon")}</Label>
-          <Input id="couponCode" name="couponCode" autoComplete="off" />
-        </div>
-        <Button type="submit">{t(locale, "store.checkout.placeOrder")}</Button>
+          {props.signedIn ? (
+            <div>
+              <Label htmlFor="saveAddress">
+                <input
+                  id="saveAddress"
+                  name="saveAddress"
+                  type="checkbox"
+                  value="1"
+                />{" "}
+                {t(locale, "store.checkout.saveAddress")}
+              </Label>
+            </div>
+          ) : null}
+        </fieldset>
+        <fieldset className="ui-checkout-fieldset">
+          <legend>{t(locale, "store.checkout.sectionShipping")}</legend>
+          {props.shippingMethods.length > 0 ? (
+            <div
+              className="ui-shipping-radios"
+              role="radiogroup"
+              aria-label={t(locale, "store.checkout.shipping")}
+            >
+              {props.shippingMethods.map((m, index) => (
+                <label key={m.id} className="ui-shipping-radio">
+                  <input
+                    type="radio"
+                    name="shippingMethodId"
+                    value={m.id}
+                    defaultChecked={index === 0}
+                    required
+                  />
+                  <span>
+                    <strong>{m.name}</strong>
+                    <br />
+                    <Muted as="span">
+                      {formatMoney(m.priceCents, m.currency)}
+                    </Muted>
+                  </span>
+                </label>
+              ))}
+            </div>
+          ) : (
+            <Muted>{t(locale, "store.checkout.noShipping")}</Muted>
+          )}
+        </fieldset>
+        <fieldset className="ui-checkout-fieldset">
+          <legend>{t(locale, "store.checkout.sectionReview")}</legend>
+          <div>
+            <Label htmlFor="couponCode">{t(locale, "store.checkout.coupon")}</Label>
+            <Input id="couponCode" name="couponCode" autoComplete="off" />
+          </div>
+          <Button type="submit">{t(locale, "store.checkout.placeOrder")}</Button>
+        </fieldset>
       </StoreForm>
     </>
   );
@@ -794,6 +1016,7 @@ export function OrderPage(props: {
     carrier?: string | null;
     trackingNumber?: string | null;
   };
+  events?: OrderEventItem[];
 }) {
   const o = props.order;
   const { locale } = props;
@@ -805,11 +1028,11 @@ export function OrderPage(props: {
       cartCount={props.cartCount}
     >
       <StoreMain>
-        <h1>{t(locale, "store.order.received")}</h1>
+        <h1 className="ui-page-title">{t(locale, "store.order.received")}</h1>
         <Flash>
           {t(locale, "store.order.referenceFlash", {
             id: props.publicId,
-            status: o?.status ?? "pending_payment",
+            status: orderStatusLabel(locale, o?.status ?? "pending_payment"),
           })}
         </Flash>
         {o ? (
@@ -822,16 +1045,12 @@ export function OrderPage(props: {
             })}
           </Muted>
         ) : null}
-        {o?.trackingNumber || o?.carrier ? (
-          <Muted>
-            {t(locale, "store.order.shippingLine", {
-              carrier: o.carrier ?? "carrier",
-            })}
-            {o.trackingNumber
-              ? ` · ${t(locale, "store.order.tracking", { number: o.trackingNumber })}`
-              : ""}
-          </Muted>
-        ) : null}
+        <TrackingLink
+          locale={locale}
+          carrier={o?.carrier}
+          trackingNumber={o?.trackingNumber}
+        />
+        <OrderTimeline locale={locale} events={props.events} />
         <Muted>{t(locale, "store.order.cardLater")}</Muted>
         <ButtonLink href="/orders/track">{t(locale, "store.order.trackCta")}</ButtonLink>
         <ButtonLink href="/">{t(locale, "store.common.backToShop")}</ButtonLink>
@@ -853,7 +1072,9 @@ export function OrderTrackPage(props: {
     totalCents: number;
     carrier?: string | null;
     trackingNumber?: string | null;
+    events?: OrderEventItem[];
   } | null;
+  emailPrefill?: string;
 }) {
   const { locale } = props;
   return (
@@ -864,7 +1085,7 @@ export function OrderTrackPage(props: {
       cartCount={props.cartCount}
     >
       <StoreMain>
-        <h1>{t(locale, "store.order.trackHeading")}</h1>
+        <h1 className="ui-page-title">{t(locale, "store.order.trackHeading")}</h1>
         {props.error ? (
           <Flash>{t(locale, "store.order.trackError")}</Flash>
         ) : null}
@@ -873,7 +1094,7 @@ export function OrderTrackPage(props: {
             <Flash>
               {t(locale, "store.order.trackResult", {
                 id: props.order.publicId,
-                status: props.order.status,
+                status: orderStatusLabel(locale, props.order.status),
               })}
             </Flash>
             <Muted>
@@ -885,30 +1106,39 @@ export function OrderTrackPage(props: {
               })}
             </Muted>
             {props.order.trackingNumber || props.order.carrier ? (
-              <Muted>
-                {t(locale, "store.order.shippingLine", {
-                  carrier: props.order.carrier ?? "carrier",
-                })}
-                {props.order.trackingNumber
-                  ? ` · ${t(locale, "store.order.tracking", { number: props.order.trackingNumber })}`
-                  : ""}
-              </Muted>
+              <TrackingLink
+                locale={locale}
+                carrier={props.order.carrier}
+                trackingNumber={props.order.trackingNumber}
+              />
             ) : (
               <Muted>{t(locale, "store.order.noTracking")}</Muted>
             )}
+            <OrderTimeline locale={locale} events={props.order.events} />
           </Stack>
         ) : null}
         <StoreForm method="post" action="/actions/track-order">
           <input type="hidden" name="siteId" value={props.siteId} />
           <div>
             <Label htmlFor="email">{t(locale, "store.order.email")}</Label>
-            <Input id="email" name="email" type="email" required />
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              required
+              defaultValue={props.emailPrefill ?? ""}
+            />
           </div>
           <div>
             <Label htmlFor="orderPublicId">
               {t(locale, "store.order.referenceLabel")}
             </Label>
-            <Input id="orderPublicId" name="orderPublicId" required />
+            <Input
+              id="orderPublicId"
+              name="orderPublicId"
+              required
+              defaultValue={props.order?.publicId ?? ""}
+            />
           </div>
           <Button type="submit">{t(locale, "store.order.lookup")}</Button>
         </StoreForm>
@@ -1099,6 +1329,13 @@ export function AccountPage(props: {
     totalCents: number;
     createdAt: string;
   }>;
+  returns?: Array<{
+    id: string;
+    status: string;
+    reason: string;
+    createdAt: string;
+    orderPublicId: string;
+  }>;
 }) {
   const { locale } = props;
   return (
@@ -1111,7 +1348,7 @@ export function AccountPage(props: {
       accountLabel={t(locale, "store.nav.account")}
     >
       <StoreMain>
-        <h1>{t(locale, "store.account.heading")}</h1>
+        <h1 className="ui-page-title">{t(locale, "store.account.heading")}</h1>
         <Muted>
           {props.customer.name ? `${props.customer.name} · ` : ""}
           {props.customer.email}
@@ -1145,12 +1382,39 @@ export function AccountPage(props: {
                   <Td>
                     <code>{o.publicId}</code>
                   </Td>
-                  <Td>{o.status}</Td>
+                  <Td>{orderStatusLabel(locale, o.status)}</Td>
                   <Td>{formatMoney(o.totalCents, o.currency)}</Td>
                   <Td>
                     <a href={`/account/orders/${encodeURIComponent(o.publicId)}`}>
                       {t(locale, "store.account.view")}
                     </a>
+                  </Td>
+                </Tr>
+              ))}
+            </Tbody>
+          </Table>
+        )}
+        <h2>{t(locale, "store.account.returns")}</h2>
+        {(props.returns?.length ?? 0) === 0 ? (
+          <EmptyState>{t(locale, "store.account.noReturns")}</EmptyState>
+        ) : (
+          <Table>
+            <Thead>
+              <Tr>
+                <Th>{t(locale, "store.account.reference")}</Th>
+                <Th>{t(locale, "store.account.status")}</Th>
+                <Th />
+              </Tr>
+            </Thead>
+            <Tbody>
+              {(props.returns ?? []).map((r) => (
+                <Tr key={r.id}>
+                  <Td>
+                    <code>{r.orderPublicId}</code>
+                  </Td>
+                  <Td>{returnStatusLabel(locale, r.status)}</Td>
+                  <Td>
+                    <Muted>{r.reason}</Muted>
                   </Td>
                 </Tr>
               ))}
@@ -1182,7 +1446,13 @@ export function AccountOrderPage(props: {
     carrier?: string | null;
     trackingNumber?: string | null;
   };
-  items?: Array<{ name: string; quantity: number; unitPriceCents: number }>;
+  items?: Array<{
+    id?: string;
+    name: string;
+    quantity: number;
+    unitPriceCents: number;
+  }>;
+  events?: OrderEventItem[];
   returnFlash?: "ok" | "error" | null;
 }) {
   const o = props.order;
@@ -1198,7 +1468,7 @@ export function AccountOrderPage(props: {
       accountLabel={t(locale, "store.nav.account")}
     >
       <StoreMain>
-        <h1>
+        <h1 className="ui-page-title">
           {t(locale, "store.account.orderHeading", { id: props.publicId })}
         </h1>
         {props.returnFlash === "ok" ? (
@@ -1210,7 +1480,9 @@ export function AccountOrderPage(props: {
         {o ? (
           <>
             <Flash>
-              {t(locale, "store.account.statusFlash", { status: o.status })}
+              {t(locale, "store.account.statusFlash", {
+                status: orderStatusLabel(locale, o.status),
+              })}
             </Flash>
             <Muted>
               {t(locale, "store.account.orderTotals", {
@@ -1228,19 +1500,15 @@ export function AccountOrderPage(props: {
                 total: formatMoney(o.totalCents, o.currency),
               })}
             </Muted>
-            {o.trackingNumber || o.carrier ? (
-              <Muted>
-                {t(locale, "store.order.shippingLine", {
-                  carrier: o.carrier ?? "carrier",
-                })}
-                {o.trackingNumber
-                  ? ` · ${t(locale, "store.order.tracking", { number: o.trackingNumber })}`
-                  : ""}
-              </Muted>
-            ) : null}
+            <TrackingLink
+              locale={locale}
+              carrier={o.carrier}
+              trackingNumber={o.trackingNumber}
+            />
+            <OrderTimeline locale={locale} events={props.events} />
             <ul>
               {(props.items ?? []).map((i, idx) => (
-                <li key={idx}>
+                <li key={i.id ?? idx}>
                   {i.name} × {i.quantity} —{" "}
                   {formatMoney(i.unitPriceCents * i.quantity, o.currency)}
                 </li>
@@ -1256,6 +1524,30 @@ export function AccountOrderPage(props: {
                   </Label>
                   <Input id="reason" name="reason" required minLength={3} />
                 </div>
+                {(props.items?.length ?? 0) > 0 ? (
+                  <fieldset className="ui-checkout-fieldset">
+                    <legend>{t(locale, "store.account.returnItems")}</legend>
+                    {(props.items ?? []).map((i, idx) => (
+                      <label key={i.id ?? idx} className="ui-shipping-radio">
+                        <input
+                          type="checkbox"
+                          name="returnItem"
+                          value={JSON.stringify({
+                            name: i.name,
+                            quantity: i.quantity,
+                            unitPriceCents: i.unitPriceCents,
+                          })}
+                        />
+                        <span>
+                          {t(locale, "store.account.returnItem", {
+                            name: i.name,
+                            quantity: i.quantity,
+                          })}
+                        </span>
+                      </label>
+                    ))}
+                  </fieldset>
+                ) : null}
                 <Button type="submit">
                   {t(locale, "store.account.submitReturn")}
                 </Button>

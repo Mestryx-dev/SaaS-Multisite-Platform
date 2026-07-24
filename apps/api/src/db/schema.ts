@@ -577,12 +577,21 @@ export const storeOrder = pgTable(
       .default({}),
     carrier: text("carrier"),
     trackingNumber: text("tracking_number"),
+    /** FB-103: payment seams for FB-070 (nullable until Stripe unlock). */
+    paymentProvider: text("payment_provider"),
+    stripePaymentIntentId: text("stripe_payment_intent_id"),
+    stripeCheckoutSessionId: text("stripe_checkout_session_id"),
     paidAt: timestamp("paid_at", { withTimezone: true }),
     fulfilledAt: timestamp("fulfilled_at", { withTimezone: true }),
     cancelledAt: timestamp("cancelled_at", { withTimezone: true }),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
   },
+  (table) => [
+    uniqueIndex("store_order_stripe_payment_intent_uidx").on(
+      table.stripePaymentIntentId,
+    ),
+  ],
 );
 
 /** Tenant shipping zone (countries covered). */

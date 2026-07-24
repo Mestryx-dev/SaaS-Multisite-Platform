@@ -4,6 +4,7 @@ import {
   CartDrawer,
   CartLine,
   CheckoutLayout,
+  CheckoutSteps,
   OrderSummary,
   PdpLayout,
   PlpToolbar,
@@ -135,6 +136,10 @@ export const PdpAndCheckout: Story = {
         }
       >
         <div className="space-y-4">
+          <CheckoutSteps
+            steps={["Address", "Shipping", "Review"]}
+            current={1}
+          />
           <h2 className="font-[family-name:var(--font-display)] text-xl font-semibold">Your cart</h2>
           <CartLine
             itemId="line-1"

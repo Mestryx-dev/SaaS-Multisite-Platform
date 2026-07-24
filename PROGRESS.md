@@ -25,6 +25,7 @@ Validate milestones with Mestryx before checking.
 - [x] Wave C shop UX (FB-078/079/080/083) — address book, tracking, PLP filters, wishlist polish — 2026-07-19
 - [x] Wave D platform brand/ops (FB-084/085/089/097) — modules, theme, Umami hook, entitlements UX — 2026-07-19
 - [x] Wave E CMS preview + deferred commerce MVP (FB-087/081/082) — preview token, abandoned cart emails, RMA — 2026-07-19
+- [x] Store polish + payment seams (FB-102 Soft boutique, FB-103 ADR-0004 + schema, FB-104 tracking/RMA) — 2026-07-24
 
 ## Next priority (visual)
 

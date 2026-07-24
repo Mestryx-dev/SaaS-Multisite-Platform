@@ -36,6 +36,18 @@ export type StoreHeaderProps = {
    */
   scrolled?: boolean;
   className?: string;
+  /** EN default for Storybook / demos — pass locale copy from chrome. */
+  menuToggleLabel?: string;
+  /** EN default for Storybook / demos — pass locale copy from chrome. */
+  navAriaLabel?: string;
+  /** EN default for Storybook / demos — pass locale copy from chrome. */
+  menuLabel?: string;
+  /** EN default for Storybook / demos — shop link when navItems empty. */
+  shopLabel?: string;
+  /** EN default for Storybook / demos — theme toggle labels. */
+  themeDarkLabel?: string;
+  themeLightLabel?: string;
+  themeTitle?: string;
 };
 
 export function StoreHeader({
@@ -58,11 +70,18 @@ export function StoreHeader({
   navItems,
   scrolled = false,
   className,
+  menuToggleLabel = "Toggle menu",
+  navAriaLabel = "Primary",
+  menuLabel = "Menu",
+  shopLabel = "Shop",
+  themeDarkLabel = "Switch to dark theme",
+  themeLightLabel = "Switch to light theme",
+  themeTitle = "Theme",
 }: StoreHeaderProps) {
   const extraNav =
     navItems && navItems.length > 0
       ? navItems
-      : [{ label: "Shop", href: shopHref }];
+      : [{ label: shopLabel, href: shopHref }];
   const navId = "mx-store-nav";
   const navCheckId = "mx-store-nav-check";
   const resolvedSearchAria = searchAriaLabel ?? searchPlaceholder;
@@ -116,14 +135,14 @@ export function StoreHeader({
         className="ui-store-nav-check"
         data-mx-nav-check
         aria-controls={navId}
-        aria-label="Toggle menu"
+        aria-label={menuToggleLabel}
       />
 
       <nav
         id={navId}
         className={cn("ui-store-nav")}
         data-mx-nav-panel
-        aria-label="Primary"
+        aria-label={navAriaLabel}
       >
         {extraNav.map((item) => (
           <a
@@ -150,7 +169,12 @@ export function StoreHeader({
         >
           {accountLabel}
         </a>
-        <StoreThemeToggle siteId={siteId} />
+        <StoreThemeToggle
+          siteId={siteId}
+          darkLabel={themeDarkLabel}
+          lightLabel={themeLightLabel}
+          title={themeTitle}
+        />
       </nav>
 
       <div className="ui-store-header-actions">
@@ -180,15 +204,29 @@ export function StoreHeader({
             <span />
             <span />
           </span>
-          <span className="sr-only">Menu</span>
+          <span className="sr-only">{menuLabel}</span>
         </label>
       </div>
     </header>
   );
 }
 
+export type StoreThemeToggleProps = {
+  siteId?: string;
+  /** EN default for Storybook / demos — pass locale copy from chrome. */
+  darkLabel?: string;
+  lightLabel?: string;
+  /** EN default for Storybook / demos — pass locale copy from chrome. */
+  title?: string;
+};
+
 /** Per-site light/dark toggle — persisted in localStorage (`mx-store-theme:{siteId}`). */
-export function StoreThemeToggle({ siteId }: { siteId?: string }) {
+export function StoreThemeToggle({
+  siteId,
+  darkLabel = "Switch to dark theme",
+  lightLabel = "Switch to light theme",
+  title = "Theme",
+}: StoreThemeToggleProps) {
   const storageKey = siteId ? `mx-store-theme:${siteId}` : "mx-store-theme";
   return (
     <button
@@ -196,8 +234,10 @@ export function StoreThemeToggle({ siteId }: { siteId?: string }) {
       className="ui-store-theme-toggle"
       data-mx-theme-toggle
       data-mx-theme-storage={storageKey}
-      aria-label="Switch to dark theme"
-      title="Theme"
+      data-mx-theme-label-dark={darkLabel}
+      data-mx-theme-label-light={lightLabel}
+      aria-label={darkLabel}
+      title={title}
     >
       <span className="ui-store-theme-toggle-icon ui-store-theme-toggle-icon--sun" aria-hidden>
         ☀
@@ -617,9 +657,13 @@ export function PromoBanners({ banners }: { banners: PromoBannerData[] }) {
 export function CategoryNav({
   items,
   activeSlug,
+  allLabel = "All",
+  ariaLabel = "Collections",
 }: {
   items: Array<{ name: string; slug: string }>;
   activeSlug?: string | null;
+  allLabel?: string;
+  ariaLabel?: string;
 }) {
   const pillClass = (active: boolean) =>
     cn(
@@ -628,9 +672,9 @@ export function CategoryNav({
     );
 
   return (
-    <nav className={cn("ui-cat-nav", "mb-8 flex flex-wrap gap-2")} aria-label="Collections">
+    <nav className={cn("ui-cat-nav", "mb-8 flex flex-wrap gap-2")} aria-label={ariaLabel}>
       <a href="/" data-active={!activeSlug ? "true" : "false"} className={pillClass(!activeSlug)}>
-        All
+        {allLabel}
       </a>
       {items.map((cat) => (
         <a
@@ -654,6 +698,7 @@ export type TrustStripItem = {
 export type TrustStripProps = {
   /** Prefer explicit items from chrome; falls back to {@link DEFAULT_TRUST_ITEMS} (EN demo). */
   items?: TrustStripItem[];
+  ariaLabel?: string;
 };
 
 /**
@@ -666,9 +711,12 @@ export const DEFAULT_TRUST_ITEMS: TrustStripItem[] = [
   { title: "Secure checkout", description: "Encrypted payment processing" },
 ];
 
-export function TrustStrip({ items = DEFAULT_TRUST_ITEMS }: TrustStripProps) {
+export function TrustStrip({
+  items = DEFAULT_TRUST_ITEMS,
+  ariaLabel = "Store policies",
+}: TrustStripProps) {
   return (
-    <section className="ui-trust-strip" aria-label="Store policies">
+    <section className="ui-trust-strip" aria-label={ariaLabel}>
       {items.map((item) => (
         <div key={item.title} className="space-y-1">
           <p className="text-sm font-semibold text-[var(--foreground)]">{item.title}</p>
@@ -717,14 +765,16 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
       />
       {images.length > 1 ? (
         <div className="ui-pdp-gallery-thumbs flex flex-wrap gap-2">
-          {images.map((img) => (
+          {images.map((img, index) => (
             <button
               key={img.id}
               type="button"
               data-mx-gallery-thumb
               data-src={img.url}
-              className="overflow-hidden rounded-[var(--radius)] border border-[var(--border)] p-0"
+              data-active={index === 0 ? "true" : "false"}
+              className="ui-pdp-gallery-thumb overflow-hidden rounded-[var(--radius)] border border-[var(--border)] p-0"
               aria-label={`View ${img.alt ?? productName}`}
+              aria-pressed={index === 0}
             >
               <img
                 src={img.url}
@@ -794,6 +844,9 @@ export type CartLineProps = {
   quantity: number;
   lineTotalLabel: string;
   currency?: string;
+  quantityLabel?: string;
+  updateLabel?: string;
+  removeLabel?: string;
 };
 
 export function CartLine({
@@ -804,6 +857,9 @@ export function CartLine({
   imageUrl,
   quantity,
   lineTotalLabel,
+  quantityLabel = "Quantity",
+  updateLabel = "Update",
+  removeLabel = "Remove",
 }: CartLineProps) {
   return (
     <article className="ui-cart-line">
@@ -830,7 +886,7 @@ export function CartLine({
           <input type="hidden" name="itemId" value={itemId} />
           <input type="hidden" name="siteId" value={siteId} />
           <label className="sr-only" htmlFor={`qty-${itemId}`}>
-            Quantity
+            {quantityLabel}
           </label>
           <input
             id={`qty-${itemId}`}
@@ -844,7 +900,7 @@ export function CartLine({
             type="submit"
             className="rounded-[var(--radius)] border border-[var(--border)] px-2 py-1 text-xs hover:bg-[var(--muted)]"
           >
-            Update
+            {updateLabel}
           </button>
         </form>
         <form method="post" action="/actions/update-cart-item">
@@ -852,11 +908,46 @@ export function CartLine({
           <input type="hidden" name="siteId" value={siteId} />
           <input type="hidden" name="quantity" value={0} />
           <button type="submit" className="text-xs text-[var(--muted-foreground)] hover:text-[var(--destructive)]">
-            Remove
+            {removeLabel}
           </button>
         </form>
       </div>
     </article>
+  );
+}
+
+export type CheckoutStepsProps = {
+  steps: string[];
+  /** Zero-based index of the current step. */
+  current?: number;
+  className?: string;
+};
+
+/** Soft boutique checkout progress (informational; single-page form sections). */
+export function CheckoutSteps({
+  steps,
+  current = 0,
+  className,
+}: CheckoutStepsProps) {
+  return (
+    <ol className={cn("ui-checkout-steps", className)} aria-label="Checkout steps">
+      {steps.map((label, index) => (
+        <li
+          key={`${index}-${label}`}
+          className={cn(
+            "ui-checkout-step",
+            index === current && "is-current",
+            index < current && "is-done",
+          )}
+          aria-current={index === current ? "step" : undefined}
+        >
+          <span className="ui-checkout-step-index" aria-hidden>
+            {index + 1}
+          </span>
+          <span className="ui-checkout-step-label">{label}</span>
+        </li>
+      ))}
+    </ol>
   );
 }
 
@@ -985,6 +1076,11 @@ export type PriceRangeInputsProps = {
   maxDefault?: string | null;
   currencySymbol?: string;
   className?: string;
+  priceLabel?: string;
+  minPlaceholder?: string;
+  maxPlaceholder?: string;
+  minAriaLabel?: string;
+  maxAriaLabel?: string;
 };
 
 /**
@@ -999,11 +1095,16 @@ export function PriceRangeInputs({
   maxDefault = null,
   currencySymbol = "€",
   className,
+  priceLabel = "Price",
+  minPlaceholder = "Min",
+  maxPlaceholder = "Max",
+  minAriaLabel,
+  maxAriaLabel,
 }: PriceRangeInputsProps) {
   return (
     <div className={cn("ui-price-range", className)}>
       <span className="ui-price-range-label" id={`${minId}-label`}>
-        Price
+        {priceLabel}
       </span>
       <div
         className="ui-price-range-group"
@@ -1014,7 +1115,7 @@ export function PriceRangeInputs({
           {currencySymbol}
         </span>
         <label className="sr-only" htmlFor={minId}>
-          Minimum price ({currencySymbol})
+          {minAriaLabel ?? `Minimum price (${currencySymbol})`}
         </label>
         <input
           id={minId}
@@ -1023,7 +1124,7 @@ export function PriceRangeInputs({
           min={0}
           step="0.01"
           inputMode="decimal"
-          placeholder="Min"
+          placeholder={minPlaceholder}
           defaultValue={minDefault ?? ""}
           className="ui-price-range-input"
         />
@@ -1031,7 +1132,7 @@ export function PriceRangeInputs({
           –
         </span>
         <label className="sr-only" htmlFor={maxId}>
-          Maximum price ({currencySymbol})
+          {maxAriaLabel ?? `Maximum price (${currencySymbol})`}
         </label>
         <input
           id={maxId}
@@ -1040,7 +1141,7 @@ export function PriceRangeInputs({
           min={0}
           step="0.01"
           inputMode="decimal"
-          placeholder="Max"
+          placeholder={maxPlaceholder}
           defaultValue={maxDefault ?? ""}
           className="ui-price-range-input"
         />

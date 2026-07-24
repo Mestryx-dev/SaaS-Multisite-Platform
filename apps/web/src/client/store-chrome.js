@@ -16,6 +16,12 @@
     });
   }
 
+  function i18nLocale() {
+    var loc =
+      (window.__MX_I18N__ && window.__MX_I18N__.locale) || "en";
+    return String(loc).toLowerCase().startsWith("fr") ? "fr-FR" : "en-US";
+  }
+
   function prefersReducedMotion() {
     try {
       return (
@@ -41,10 +47,13 @@
     if (body) body.setAttribute("data-theme", theme);
     root.style.colorScheme = dark ? "dark" : "light";
     $all("[data-mx-theme-toggle]").forEach(function (btn) {
-      btn.setAttribute(
-        "aria-label",
-        dark ? "Switch to light theme" : "Switch to dark theme",
-      );
+      var darkLabel =
+        btn.getAttribute("data-mx-theme-label-dark") ||
+        "Switch to dark theme";
+      var lightLabel =
+        btn.getAttribute("data-mx-theme-label-light") ||
+        "Switch to light theme";
+      btn.setAttribute("aria-label", dark ? lightLabel : darkLabel);
     });
   }
 
@@ -135,6 +144,10 @@
       if (main && src && main.tagName === "IMG") {
         main.setAttribute("src", src);
       }
+      $all("[data-mx-gallery-thumb]").forEach(function (other) {
+        other.setAttribute("data-active", other === btn ? "true" : "false");
+        other.setAttribute("aria-pressed", other === btn ? "true" : "false");
+      });
     });
   });
 
@@ -143,6 +156,7 @@
   var overlay = $("[data-mx-cart-overlay]");
   var closeTimer = null;
   var MOTION_MS = 230;
+  var lastFocus = null;
 
   if (!drawer) return;
 
@@ -162,8 +176,35 @@
     }
   }
 
+  function focusableInDrawer() {
+    return $all(
+      'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      drawer,
+    ).filter(function (el) {
+      return !el.hasAttribute("hidden") && el.offsetParent !== null;
+    });
+  }
+
+  function trapFocus(e) {
+    if (e.key !== "Tab" || drawer.hidden || !drawer.classList.contains("is-open")) {
+      return;
+    }
+    var nodes = focusableInDrawer();
+    if (!nodes.length) return;
+    var first = nodes[0];
+    var last = nodes[nodes.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+
   function openDrawer() {
     clearCloseTimer();
+    lastFocus = document.activeElement;
     drawer.hidden = false;
     if (overlay) overlay.hidden = false;
     document.body.style.overflow = "hidden";
@@ -171,6 +212,7 @@
     if (prefersReducedMotion()) {
       drawer.classList.add("is-open");
       if (overlay) overlay.classList.add("is-open");
+      focusFirst();
       return;
     }
     /* Double rAF so the browser paints the closed transform before opening. */
@@ -178,8 +220,14 @@
       requestAnimationFrame(function () {
         drawer.classList.add("is-open");
         if (overlay) overlay.classList.add("is-open");
+        focusFirst();
       });
     });
+  }
+
+  function focusFirst() {
+    var closeBtn = $("[data-mx-cart-close]", drawer);
+    if (closeBtn) closeBtn.focus();
   }
 
   function closeDrawer() {
@@ -191,6 +239,13 @@
     function hide() {
       drawer.hidden = true;
       if (overlay) overlay.hidden = true;
+      if (lastFocus && typeof lastFocus.focus === "function") {
+        try {
+          lastFocus.focus();
+        } catch (e) {
+          /* ignore */
+        }
+      }
     }
 
     if (prefersReducedMotion()) {
@@ -203,7 +258,7 @@
 
   function money(cents, currency) {
     try {
-      return new Intl.NumberFormat("fr-FR", {
+      return new Intl.NumberFormat(i18nLocale(), {
         style: "currency",
         currency: (currency || "eur").toUpperCase(),
       }).format(cents / 100);
@@ -246,20 +301,67 @@
             "</a></p>";
           return;
         }
+        var qtyLabel = escapeHtml(tx("store.cart.quantity"));
+        var updateLabel = escapeHtml(tx("store.cart.update"));
+        var removeLabel = escapeHtml(tx("store.cart.remove"));
         var html = items
           .map(function (i) {
+            var lineTotal = money(i.unitPriceCents * i.quantity, i.currency);
+            var img = i.imageUrl
+              ? "<a href='/p/" +
+                encodeURIComponent(i.slug) +
+                "' class='shrink-0 overflow-hidden rounded-[var(--radius)]'><img src='" +
+                escapeAttr(i.imageUrl) +
+                "' alt='" +
+                escapeAttr(i.name) +
+                "' class='h-20 w-20 object-cover' /></a>"
+              : "<div class='h-20 w-20 shrink-0 rounded-[var(--radius)] bg-[var(--muted)]' aria-hidden='true'></div>";
             return (
-              "<div class='ui-cart-line' style='margin-bottom:1rem'>" +
-              "<div><a href='/p/" +
+              "<article class='ui-cart-line'>" +
+              img +
+              "<div class='flex min-w-0 flex-1 flex-col gap-2'>" +
+              "<a href='/p/" +
               encodeURIComponent(i.slug) +
-              "'>" +
+              "' class='font-medium text-[var(--foreground)] hover:underline'>" +
               escapeHtml(i.name) +
               "</a>" +
-              "<div>× " +
-              i.quantity +
-              " — " +
-              money(i.unitPriceCents * i.quantity, i.currency) +
-              "</div></div></div>"
+              "<p class='text-sm font-semibold'>" +
+              escapeHtml(lineTotal) +
+              "</p>" +
+              "<form method='post' action='/actions/update-cart-item' class='flex flex-wrap items-center gap-2'>" +
+              "<input type='hidden' name='itemId' value='" +
+              escapeAttr(i.id) +
+              "' />" +
+              "<input type='hidden' name='siteId' value='" +
+              escapeAttr(sid) +
+              "' />" +
+              "<label class='sr-only' for='drawer-qty-" +
+              escapeAttr(i.id) +
+              "'>" +
+              qtyLabel +
+              "</label>" +
+              "<input id='drawer-qty-" +
+              escapeAttr(i.id) +
+              "' type='number' name='quantity' min='1' value='" +
+              Number(i.quantity) +
+              "' class='w-16 rounded-[var(--radius)] border border-[var(--border)] px-2 py-1 text-sm' />" +
+              "<button type='submit' class='rounded-[var(--radius)] border border-[var(--border)] px-2 py-1 text-xs hover:bg-[var(--muted)]'>" +
+              updateLabel +
+              "</button>" +
+              "</form>" +
+              "<form method='post' action='/actions/update-cart-item'>" +
+              "<input type='hidden' name='itemId' value='" +
+              escapeAttr(i.id) +
+              "' />" +
+              "<input type='hidden' name='siteId' value='" +
+              escapeAttr(sid) +
+              "' />" +
+              "<input type='hidden' name='quantity' value='0' />" +
+              "<button type='submit' class='text-xs text-[var(--muted-foreground)] hover:text-[var(--destructive)]'>" +
+              removeLabel +
+              "</button>" +
+              "</form>" +
+              "</div></article>"
             );
           })
           .join("");
@@ -289,6 +391,10 @@
       .replace(/"/g, "&quot;");
   }
 
+  function escapeAttr(s) {
+    return escapeHtml(s).replace(/'/g, "&#39;");
+  }
+
   document.addEventListener("click", function (e) {
     var t = e.target;
     if (!(t instanceof Element)) return;
@@ -306,5 +412,6 @@
 
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") closeDrawer();
+    trapFocus(e);
   });
 })();

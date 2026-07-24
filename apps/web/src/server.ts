@@ -255,6 +255,10 @@ ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join("\n")}
     const productId = String(form.productId ?? "");
     const variantId = String(form.variantId ?? "");
     const slug = String(form.slug ?? "");
+    const quantity = Math.min(
+      99,
+      Math.max(1, Number(form.quantity ?? 1) || 1),
+    );
     const cookie = c.req.header("cookie") ?? "";
     const res = await fetch(`${apiUrl}/v1/public/cart/items`, {
       method: "POST",
@@ -265,7 +269,7 @@ ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join("\n")}
       body: JSON.stringify({
         siteId,
         productId,
-        quantity: 1,
+        quantity,
         ...(variantId ? { variantId } : {}),
       }),
     });
@@ -417,20 +421,18 @@ ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join("\n")}
         totalCents: number;
         carrier?: string | null;
         trackingNumber?: string | null;
+        events?: Array<{ type: string; message: string; createdAt: string }>;
       };
     };
-    const params = new URLSearchParams({
-      found: "1",
-      publicId: data.order.publicId,
-      status: data.order.status,
-      currency: data.order.currency,
-      totalCents: String(data.order.totalCents),
-    });
-    if (data.order.carrier) params.set("carrier", data.order.carrier);
-    if (data.order.trackingNumber) {
-      params.set("trackingNumber", data.order.trackingNumber);
-    }
-    return c.redirect(`/orders/track?${params.toString()}`, 303);
+    const payload = Buffer.from(JSON.stringify(data.order), "utf8").toString(
+      "base64url",
+    );
+    c.header(
+      "set-cookie",
+      `mx_track_flash=${payload}; Path=/; HttpOnly; SameSite=Lax; Max-Age=120`,
+      { append: true },
+    );
+    return c.redirect("/orders/track?found=1", 303);
   });
 
   app.post("/actions/request-return", async (c) => {
@@ -438,6 +440,21 @@ ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join("\n")}
     const siteId = String(form.siteId ?? "");
     const publicId = String(form.publicId ?? "");
     const reason = String(form.reason ?? "");
+    const rawItems = form.returnItem;
+    const itemsJson: Array<Record<string, unknown>> = [];
+    const pushItem = (raw: string) => {
+      try {
+        const parsed = JSON.parse(raw) as Record<string, unknown>;
+        if (parsed && typeof parsed === "object") itemsJson.push(parsed);
+      } catch {
+        /* ignore malformed checkbox values */
+      }
+    };
+    if (Array.isArray(rawItems)) {
+      for (const item of rawItems) pushItem(String(item));
+    } else if (rawItems != null && rawItems !== "") {
+      pushItem(String(rawItems));
+    }
     const cookie = c.req.header("cookie") ?? "";
     const res = await fetch(
       `${apiUrl}/v1/storefront/orders/${encodeURIComponent(publicId)}/returns`,
@@ -447,7 +464,11 @@ ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join("\n")}
           "content-type": "application/json",
           cookie,
         },
-        body: JSON.stringify({ siteId, reason }),
+        body: JSON.stringify({
+          siteId,
+          reason,
+          ...(itemsJson.length ? { itemsJson } : {}),
+        }),
       },
     );
     const q = res.ok ? "return=1" : "return=error";
@@ -918,17 +939,33 @@ ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join("\n")}
     if (path === "/orders/track" && site.id !== "local") {
       const url = new URL(c.req.url);
       const err = Boolean(url.searchParams.get("error"));
-      const found = url.searchParams.get("found");
-      const order = found
-        ? {
-            publicId: url.searchParams.get("publicId") ?? "",
-            status: url.searchParams.get("status") ?? "",
-            currency: url.searchParams.get("currency") ?? "eur",
-            totalCents: Number(url.searchParams.get("totalCents") ?? 0),
-            carrier: url.searchParams.get("carrier"),
-            trackingNumber: url.searchParams.get("trackingNumber"),
+      const found = Boolean(url.searchParams.get("found"));
+      let order: {
+        publicId: string;
+        status: string;
+        currency: string;
+        totalCents: number;
+        carrier?: string | null;
+        trackingNumber?: string | null;
+        events?: Array<{ type: string; message: string; createdAt: string }>;
+      } | null = null;
+      if (found) {
+        const match = cookie.match(/(?:^|;\s*)mx_track_flash=([^;]+)/);
+        if (match?.[1]) {
+          try {
+            order = JSON.parse(
+              Buffer.from(match[1], "base64url").toString("utf8"),
+            ) as typeof order;
+          } catch {
+            order = null;
           }
-        : null;
+        }
+        c.header(
+          "set-cookie",
+          "mx_track_flash=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0",
+          { append: true },
+        );
+      }
       const cart = await loadCartSummary(site.id, cookie);
       applySetCookieHeaders(c, cart.setCookies);
       return c.html(
@@ -1033,6 +1070,17 @@ ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join("\n")}
       }>(`/v1/storefront/orders?siteId=${encodeURIComponent(site.id)}`, {
         headers: { cookie },
       });
+      const returnsData = await fetchJson<{
+        returns: Array<{
+          id: string;
+          status: string;
+          reason: string;
+          createdAt: string;
+          orderPublicId: string;
+        }>;
+      }>(`/v1/storefront/returns?siteId=${encodeURIComponent(site.id)}`, {
+        headers: { cookie },
+      });
       return c.html(
         pageHtml(
           site,
@@ -1047,6 +1095,7 @@ ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join("\n")}
             cartCount: cart.count,
             customer: me.customer,
             orders: ordersData?.orders ?? [],
+            returns: returnsData?.returns ?? [],
           }),
         ),
       );
@@ -1071,7 +1120,13 @@ ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join("\n")}
           carrier?: string | null;
           trackingNumber?: string | null;
         };
-        items: Array<{ name: string; quantity: number; unitPriceCents: number }>;
+        items: Array<{
+          id?: string;
+          name: string;
+          quantity: number;
+          unitPriceCents: number;
+        }>;
+        events?: Array<{ type: string; message: string; createdAt: string }>;
       }>(
         `/v1/storefront/orders/${encodeURIComponent(publicId)}?siteId=${encodeURIComponent(site.id)}`,
         { headers: { cookie } },
@@ -1093,6 +1148,7 @@ ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join("\n")}
             publicId,
             order: data?.order,
             items: data?.items,
+            events: data?.events,
             returnFlash,
           }),
         ),
@@ -1115,6 +1171,7 @@ ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join("\n")}
             carrier?: string | null;
             trackingNumber?: string | null;
           };
+          events?: Array<{ type: string; message: string; createdAt: string }>;
         }>(`/v1/public/orders/${encodeURIComponent(publicId)}`),
         loadCartSummary(site.id, cookie),
       ]);
@@ -1133,6 +1190,7 @@ ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join("\n")}
             cartCount: cart.count,
             publicId,
             order: data?.order,
+            events: data?.events,
           }),
         ),
       );

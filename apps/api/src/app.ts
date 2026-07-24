@@ -201,7 +201,7 @@ export function createApp(options: CreateAppOptions = {}) {
     app.route("/v1", commerceRoutes(db, auth, config));
     app.route("/v1", storefrontAccountRoutes(db, auth, config));
     app.route("/v1", abandonedCartRoutes(db, auth, config));
-    app.route("/v1", returnRoutes(db, auth));
+    app.route("/v1", returnRoutes(db, auth, config));
     app.route("/v1", domainRoutes(db, auth));
     app.route("/v1", billingRoutes(db, auth, config));
 

@@ -266,6 +266,9 @@ entities:
       coupon_code: { type: string, required: false }
       carrier: { type: string, required: false }
       tracking_number: { type: string, required: false }
+      payment_provider: { type: string, required: false, description: "FB-103 seam; deferred until FB-070" }
+      stripe_payment_intent_id: { type: string, required: false, unique: true }
+      stripe_checkout_session_id: { type: string, required: false }
       fulfilled_at: { type: datetime, required: false }
       shipping_address_json: { type: json, required: true }
       billing_address_json: { type: json, required: true }

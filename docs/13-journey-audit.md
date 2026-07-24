@@ -21,11 +21,11 @@ Paths: `apps/web` · public API `/v1/public/…`
 | Checkout | `/checkout` → `pending_payment` | FB-060, FB-066, FB-065 · pay **FB-070** · address book **FB-078** |
 | Account sign-in / up | `/account/sign-*` | FB-068, FB-072 |
 | Order history | `/account`, `/account/orders/:id` | FB-068 |
-| Order tracking (guest / public) | — | **FB-080** (extends FB-069) |
+| Order tracking (guest / public) | `/orders/track` | FB-080 · polish **FB-104** |
 | Product search | — | **FB-074** |
 | Promo banners / homepage hero | — | **FB-073** |
 | PLP filters + sort | — | **FB-083** |
-| Returns / RMA | — | **FB-082** (F-716) |
+| Returns / RMA | `/account` returns list · order detail form | **FB-082** · polish **FB-104** |
 | Abandoned cart email | — | **FB-081** (F-710) |
 | Cookie consent | — | **FB-076** (F-803) |
 | Legal pages | stubs → full | **FB-077** (F-303) |

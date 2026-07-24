@@ -7,10 +7,12 @@ import {
   returnRequest,
   storeOrder,
 } from "../../db/schema.js";
+import type { AppConfig } from "../../lib/config.js";
 import { apiError } from "../../lib/errors.js";
 import type { Auth } from "../identity/auth.js";
 import { assertOrgRole } from "../identity/rbac.js";
 import { ensureStorefrontCustomer } from "./customer.js";
+import { issueCreditNote } from "./order-ops.js";
 
 const createReturnSchema = z.object({
   siteId: z.string().uuid(),
@@ -22,7 +24,7 @@ const patchReturnSchema = z.object({
   status: z.enum(["approved", "rejected", "cancelled"]),
 });
 
-export function returnRoutes(db: Db, auth: Auth) {
+export function returnRoutes(db: Db, auth: Auth, config: AppConfig) {
   const app = new Hono();
 
   /** Storefront — customer creates return on own order */
@@ -158,6 +160,7 @@ export function returnRoutes(db: Db, auth: Auth) {
         reason: returnRequest.reason,
         createdAt: returnRequest.createdAt,
         updatedAt: returnRequest.updatedAt,
+        orderId: storeOrder.id,
         orderPublicId: storeOrder.publicId,
         orderStatus: storeOrder.status,
         siteId: returnRequest.siteId,
@@ -207,7 +210,20 @@ export function returnRoutes(db: Db, auth: Auth) {
       message: `Return ${parsed.data.status}`,
     });
 
-    return c.json({ returnRequest: updated });
+    let creditNote: unknown = null;
+    if (parsed.data.status === "approved") {
+      const cn = await issueCreditNote(db, existing.orderId, config);
+      if (cn.ok) {
+        creditNote = {
+          invoiceId: cn.invoice.id,
+          number: cn.invoice.number,
+          idempotent: cn.idempotent,
+          fiscalOnly: true,
+        };
+      }
+    }
+
+    return c.json({ returnRequest: updated, creditNote });
   });
 
   return app;
