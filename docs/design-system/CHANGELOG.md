@@ -2,6 +2,11 @@
 
 Traceability for FB-037 / design-system milestones. Newest first.
 
+## 2026-07-25 (Unified AppShell header)
+
+- **AppShell:** LMB-style full-bleed sticky header (`--app-header-height: 3.5rem` on platform). Brand + collapse + utilities share one bar; sidebar starts below (no separate brand row height mismatch).
+- Wave E Soft glass still deferred — chrome classes unchanged.
+
 ## 2026-07-24 (Admin console width / density)
 
 - **PageContent:** `wide`/`full` are fluid (no `max-w-7xl`); default PageContent prop is `wide`. Admin pages use `full`.

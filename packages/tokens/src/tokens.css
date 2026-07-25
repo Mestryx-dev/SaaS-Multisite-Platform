@@ -62,6 +62,9 @@
 
   --radius: 8px;
 
+  /* Full-bleed admin chrome (unified header; sidebar sits below) */
+  --app-header-height: 3.5rem;
+
   --font-sans: "Inter", "Segoe UI", system-ui, sans-serif;
   --font-display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
 

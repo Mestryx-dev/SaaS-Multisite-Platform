@@ -8,7 +8,7 @@ Validate milestones with Mestryx before checking.
 - [x] App spec, stack, brand brief (keys), data dictionary, AGENTS, catalog + backlog, integrations, error journal
 - [x] Open questions Q1–Q16 locked (`docs/08`)
 - [x] ADR-0001 stack direction Accepted
-- [ ] Brand brief **visuals** validated — track work in [docs/design-system/ux-ui-harmony-checklist.md](docs/design-system/ux-ui-harmony-checklist.md) (before staging) — **Wave F ready**: admin console Waves A–D shipped; human F-01 review vs Storybook Foundations + live admin
+- [x] Brand brief **visuals** validated — [mvp-confirmation-checklist.md](docs/mvp-confirmation-checklist.md) F-01 · 2026-07-25 · [ux-ui-harmony-checklist.md](docs/design-system/ux-ui-harmony-checklist.md)
 
 ## Implementation milestones
 
@@ -34,7 +34,7 @@ Validate milestones with Mestryx before checking.
 - [x] UX / UI harmony wave (Storybook dual-theme audit) — foundations, atoms, patterns, gaps, admin/storefront compose — [ux-ui-harmony-checklist.md](docs/design-system/ux-ui-harmony-checklist.md)
 - [x] Storefront Soft boutique + commerce patterns (gallery, trust, cart drawer island, editable cart, checkout 2-col) — 2026-07-20
 - [x] Storefront Soft glass chrome + drawer CSS motion (Apple-subtil; admin untouched) — 2026-07-20
-- [ ] Brand brief **visuals** human sign-off (F-01) — walk [docs/mvp-confirmation-checklist.md](docs/mvp-confirmation-checklist.md) §1 then sign-off table
+- [x] Brand brief **visuals** human sign-off (F-01) — 2026-07-25 · [mvp-confirmation-checklist.md](docs/mvp-confirmation-checklist.md)
 
 ## Release gates (deferred)
 

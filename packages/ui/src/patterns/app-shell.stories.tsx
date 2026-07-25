@@ -27,7 +27,7 @@ export default meta;
 type Story = StoryObj<typeof AppShell>;
 
 export const PlatformIA: Story = {
-  name: "Platform IA (Dokploy flat)",
+  name: "Platform IA (unified header)",
   render: () => (
     <div className="-m-6">
       <AppShell
@@ -35,6 +35,11 @@ export const PlatformIA: Story = {
         brandActions={
           <Button type="button" variant="ghost" size="icon" className="size-8">
             ≡
+          </Button>
+        }
+        topBarLeading={
+          <Button type="button" variant="ghost" size="icon" className="size-9 md:hidden">
+            ☰
           </Button>
         }
         nav={
@@ -100,7 +105,7 @@ export const PlatformIA: Story = {
         <PageHeader
           eyebrow="Overview"
           title="Dashboard"
-          description="Dokploy-flat nav: static group labels; Commerce alone collapsible."
+          description="Unified full-bleed header; sidebar starts below --app-header-height."
         />
         <StatStrip
           items={[

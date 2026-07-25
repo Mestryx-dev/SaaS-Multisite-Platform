@@ -69,25 +69,25 @@ Walk [brand-brief.md](./brand-brief.md) against live UI + Storybook.
 
 ### 1.2 Storybook
 
-- [ ] Foundations / Themes look on-brand
-- [ ] Atoms Autodocs usable (Button, Input, …)
-- [ ] Patterns/ConsoleLayout + Patterns/Loading OK for admin density
-- [ ] Storefront/Vitrine + Commerce (header dock, cart, PLP) OK
+- [x] Foundations / Themes look on-brand (Dev Storybook OK for MVP; deep catalog pass deferred)
+- [x] Atoms Autodocs usable (MVP OK — full component walk later)
+- [x] Patterns/ConsoleLayout + Patterns/Loading OK for admin density (MVP OK — deep pass later)
+- [x] Storefront/Vitrine + Commerce (header dock, cart, PLP) OK (MVP OK — deep pass later)
 
 ### 1.3 Motion / chrome
 
-- [ ] Storefront header: flat at top → Soft glass floating dock on scroll (no thrash loop)
-- [ ] Cart drawer open/close OK; reduced-motion acceptable
-- [ ] Soft glass on chrome only (not product photos / primary CTAs)
+- [x] Storefront header: flat at top → Soft glass floating dock on scroll (no thrash loop)
+- [x] Cart drawer open/close OK; reduced-motion acceptable
+- [x] Soft glass on chrome only (not product photos / primary CTAs)
 
 **F-01 verdict**
 
-- [ ] **F-01 approved** — brand visuals OK for staging gate  
+- [x] **F-01 approved** — brand visuals OK for staging gate  
 - [ ] Or: list blockers below before continuing
 
 ```
 Blockers / notes:
-—
+Storybook full component catalog review deferred post-MVP (2026-07-25).
 ```
 
 ---
@@ -98,9 +98,9 @@ Smoke as org admin on Luna / demo org.
 
 ### 2.1 Shell & auth
 
-- [ ] Sign in / sign up hierarchy clear; errors readable
-- [ ] Sidebar + top bar + **Cmd+K** routes to main pages
-- [ ] Org / workspace switcher clear
+- [x] Sign in / sign up hierarchy clear; errors readable
+- [x] Sidebar + top bar + **Cmd+K** routes to main pages
+- [ ] Org / workspace switcher clear — **re-verify after unified AppShell header (2026-07-25)**
 - [ ] Density: list pages use PageContent + FilterBar + TableFrame (not FormPanel-as-filters)
 
 ### 2.2 Core ops pages
@@ -196,7 +196,7 @@ Detail runbook: [runbooks/staging-dokploy.md](./runbooks/staging-dokploy.md)
 
 | Gate | Confirmed by | Date | Notes |
 |------|--------------|------|-------|
-| F-01 brand | | | |
+| F-01 brand | Mestryx | 2026-07-25 | §1 OK; Storybook deep catalog later |
 | MVP product smoke (admin + store) | | | |
 | OK for FB-044 staging | | | |
 

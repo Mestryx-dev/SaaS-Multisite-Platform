@@ -19,7 +19,7 @@ export type AppShellProps = {
   /** Collapse sidebar to icon rail (Dokploy-style). Desktop only. */
   sidebarCollapsed?: boolean;
   onSidebarCollapsedChange?: (collapsed: boolean) => void;
-  /** Optional control rendered in brand row (e.g. collapse toggle) — desktop aside. */
+  /** Optional control rendered next to brand in the unified header (e.g. collapse toggle). */
   brandActions?: ReactNode;
   children: ReactNode;
 };
@@ -35,73 +35,48 @@ export function AppShell({
   brandActions,
   children,
 }: AppShellProps) {
-  const showTopBar = Boolean(breadcrumb || topBar || topBarLeading);
-
   return (
-    <div
-      className={cn(
-        "grid min-h-svh grid-cols-1 bg-[image:var(--background-ambient)] bg-[var(--background)] text-[var(--foreground)]",
-        sidebarCollapsed
-          ? "md:grid-cols-[3.5rem_1fr]"
-          : "md:grid-cols-[16rem_1fr]",
-      )}
-    >
-      <aside
-        className={cn(
-          "hidden max-h-svh min-h-0 flex-col border-[var(--sidebar-border)] bg-[var(--sidebar)] md:sticky md:top-0 md:flex md:h-svh md:border-r",
-          sidebarCollapsed && "md:items-stretch",
-        )}
-      >
-        <div
-          className={cn(
-            "glass-chrome flex shrink-0 items-center gap-2 border-b border-[var(--sidebar-border)] px-3 py-3 text-[0.95rem] font-semibold tracking-[-0.02em] text-[var(--sidebar-foreground)]",
-            "rounded-none border-x-0 border-t-0",
-            sidebarCollapsed && "justify-center px-2",
-          )}
-          style={{ fontFamily: "var(--font-display)" }}
-        >
-          {!sidebarCollapsed ? (
-            <span className="min-w-0 flex-1 truncate">{brand}</span>
-          ) : null}
+    <div className="flex min-h-svh flex-col bg-[image:var(--background-ambient)] bg-[var(--background)] text-[var(--foreground)]">
+      <header className="glass-chrome sticky top-0 z-40 flex h-[var(--app-header-height)] shrink-0 items-center gap-2 border-b border-[var(--border)] px-3 sm:gap-3 sm:px-4">
+        <div className="flex min-w-0 shrink-0 items-center gap-2">
+          {topBarLeading}
+          <span
+            className="min-w-0 truncate text-[0.95rem] font-semibold tracking-[-0.02em] text-[var(--foreground)]"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            {brand}
+          </span>
           {brandActions}
+          {breadcrumb ? (
+            <div className="hidden min-w-0 truncate text-sm text-[var(--muted-foreground)] md:block">
+              {breadcrumb}
+            </div>
+          ) : null}
         </div>
-        <nav
-          className="ui-sidebar-nav-scroll min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-2 pb-3 pt-4"
-          aria-label="Primary"
+        {topBar ? (
+          <div className="ml-auto flex shrink-0 items-center gap-2">{topBar}</div>
+        ) : null}
+      </header>
+
+      <div className="relative flex min-h-0 min-w-0 flex-1">
+        <aside
+          className={cn(
+            "hidden min-h-0 flex-col border-[var(--sidebar-border)] bg-[var(--sidebar)] md:sticky md:top-[var(--app-header-height)] md:flex md:h-[calc(100svh-var(--app-header-height))] md:shrink-0 md:border-r",
+            sidebarCollapsed ? "md:w-14 md:items-stretch" : "md:w-64",
+          )}
         >
-          <div className="flex flex-col gap-3">{nav}</div>
-        </nav>
-        {sidebarFooter && !sidebarCollapsed ? (
-          <div className="mt-auto shrink-0 border-t border-[var(--sidebar-border)] p-3 text-xs text-[var(--muted-foreground)]">
-            {sidebarFooter}
-          </div>
-        ) : null}
-      </aside>
-      <div className="flex min-w-0 flex-col">
-        {showTopBar ? (
-          <div className="glass-chrome sticky top-0 z-20 flex items-center gap-3 rounded-none border-x-0 border-t-0 border-b border-[var(--border)] px-3 py-1.5">
-            {topBarLeading || breadcrumb ? (
-              <div className="flex min-w-0 flex-1 items-center gap-2">
-                {topBarLeading}
-                {breadcrumb ? (
-                  <div className="min-w-0 truncate text-sm text-[var(--muted-foreground)]">
-                    {breadcrumb}
-                  </div>
-                ) : null}
-              </div>
-            ) : null}
-            {topBar ? (
-              <div
-                className={cn(
-                  "flex shrink-0 items-center gap-2",
-                  !(topBarLeading || breadcrumb) && "ml-auto",
-                )}
-              >
-                {topBar}
-              </div>
-            ) : null}
-          </div>
-        ) : null}
+          <nav
+            className="ui-sidebar-nav-scroll min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-2 pb-3 pt-4"
+            aria-label="Primary"
+          >
+            <div className="flex flex-col gap-3">{nav}</div>
+          </nav>
+          {sidebarFooter && !sidebarCollapsed ? (
+            <div className="mt-auto shrink-0 border-t border-[var(--sidebar-border)] p-3 text-xs text-[var(--muted-foreground)]">
+              {sidebarFooter}
+            </div>
+          ) : null}
+        </aside>
         <main className="min-w-0 flex-1 p-4 md:p-6 xl:px-8 xl:py-6">{children}</main>
       </div>
     </div>

@@ -1,6 +1,6 @@
 # UX / UI harmony checklist — mestryx-platform
 
-**Status:** Mostly done — F-01 human brand sign-off still open (before staging FB-044)  
+**Status:** Done — F-01 human brand sign-off 2026-07-25 (staging gate FB-044 unblocked on brand)  
 **Created:** 2026-07-19  
 **SSOT for this wave:** this file. Update rows as work lands; keep [component-directory.md](./component-directory.md) in sync for shipped atoms.
 
@@ -50,7 +50,7 @@
 
 | ID | Item | Path / note | V | C | P | M | Status | Notes |
 |----|------|-------------|---|---|---|---|--------|-------|
-| F-01 | Brand brief visuals validated by Mestryx | `docs/brand-brief.md` | ☐ | ☐ | ☐ | ☐ | todo | PROGRESS gate still open |
+| F-01 | Brand brief visuals validated by Mestryx | `docs/brand-brief.md` · [mvp-confirmation-checklist.md](../mvp-confirmation-checklist.md) | ☑ | ☑ | ☑ | ☑ | done | Human OK 2026-07-25; Storybook deep catalog deferred |
 | F-02 | DESIGN.md ↔ tokens + N-site presets | `DESIGN.md`, tokens, [site-theming.md](./site-theming.md) | ☑ | ☑ | ☑ | ☑ | done | OKLCH storefront-base + Luna preset |
 | F-03 | Platform theme ambient (not flat black) | tokens + admin shell | ☑ | ☑ | ☑ | ☑ | done | Anti flat single-color |
 | F-04 | Storefront theme ambient (not cream-cliché) | tokens + web chrome | ☑ | ☑ | ☑ | ☑ | done | Distinct from Piblox |
@@ -292,12 +292,12 @@ Views: `apps/web/src/views.tsx` · routing: `apps/web/src/server.ts`.
 
 ## 8. Definition of Done (this wave)
 
-- [x] Foundations F-* mostly `done` (F-01 signed by Mestryx — **pending human**)
+- [x] Foundations F-* `done` (F-01 signed by Mestryx 2026-07-25)
 - [x] Critical gaps G-01…G-12 shipped or waived with note
 - [x] All AD-* and SF-* rows at least **V** checked; P0 pages **P** done
 - [x] `component-directory.md` + CHANGELOG updated
 - [x] `pnpm ds:detect` green; Storybook smoke on shell + storefront patterns
-- [ ] PROGRESS: brand visuals checkbox (F-01) + UX harmony wave milestone noted
+- [x] PROGRESS: brand visuals checkbox (F-01) + UX harmony wave milestone noted
 - [x] No staging deploy required to close this wave
 
 ---

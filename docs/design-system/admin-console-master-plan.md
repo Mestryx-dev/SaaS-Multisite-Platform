@@ -1,7 +1,7 @@
 # Admin console — master plan
 
-**Status:** Waves A–D executed (2026-07-20). **UX polish wave** shipped 2026-07-22 (empties, bulk CSV, KPI bullets, toasts, a11y/motion). **Dokploy cleanliness wave** shipped 2026-07-22 (flat shell nav, ListPanel list template, surface contrast). **Fluid console width** shipped 2026-07-24 (PageContent full, SplitLayout `listDetail`, FormPanel xl). Wave E glass deferred. Wave F (F-01) awaiting human.  
-**Last updated:** 2026-07-24  
+**Status:** Waves A–D executed (2026-07-20). **UX polish wave** shipped 2026-07-22 (empties, bulk CSV, KPI bullets, toasts, a11y/motion). **Dokploy cleanliness wave** shipped 2026-07-22 (flat shell nav, ListPanel list template, surface contrast). **Fluid console width** shipped 2026-07-24 (PageContent full, SplitLayout `listDetail`, FormPanel xl). **Unified AppShell header** shipped 2026-07-25 (full-bleed top bar; sidebar below). Wave E glass deferred. Wave F (F-01) signed 2026-07-25.  
+**Last updated:** 2026-07-25  
 **Related:** [ux-ui-harmony-checklist.md](./ux-ui-harmony-checklist.md) · [DESIGN.md](../../DESIGN.md) · [PRODUCT.md](../../PRODUCT.md) · [motion-guidelines.md](./motion-guidelines.md)
 
 Full console roadmap for mestryx-platform admin. Nothing is dropped: items are ordered by dependency. Cursor plan mirror: `.cursor/plans/admin_console_density_ea0b142b.plan.md` (name retained historically).
