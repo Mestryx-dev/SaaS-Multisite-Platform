@@ -305,7 +305,7 @@ function OrgSwitcher({
         id={id}
         value={orgId}
         onChange={(e) => setOrgId(e.target.value)}
-        className="h-8 min-w-[9rem] max-w-[14rem] text-xs"
+        className="h-8 min-w-[9rem] max-w-[14rem] text-xs md:min-w-[10rem]"
       >
         {orgs.map((o) => (
           <option key={o.id} value={o.id}>
@@ -560,20 +560,27 @@ function AuthenticatedShell({ children }: { children: ReactNode }) {
         brand={t("appName")}
         sidebarCollapsed={sidebarCollapsed}
         brandActions={
-          <Button
-            type="button"
-            variant="ghost"
-            size="icon"
-            className="hidden size-8 shrink-0 md:inline-flex"
-            aria-label={
-              sidebarCollapsed
-                ? t("shell.expandSidebar")
-                : t("shell.collapseSidebar")
-            }
-            onClick={toggleSidebar}
-          >
-            <PanelLeft className="size-4" />
-          </Button>
+          <>
+            <OrgSwitcher
+              orgs={orgList}
+              id="shell-org-top"
+              className="hidden min-w-0 sm:block"
+            />
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon"
+              className="hidden size-8 shrink-0 md:inline-flex"
+              aria-label={
+                sidebarCollapsed
+                  ? t("shell.expandSidebar")
+                  : t("shell.collapseSidebar")
+              }
+              onClick={toggleSidebar}
+            >
+              <PanelLeft className="size-4" />
+            </Button>
+          </>
         }
         topBarLeading={
           <Button
@@ -597,7 +604,6 @@ function AuthenticatedShell({ children }: { children: ReactNode }) {
         }
         topBar={
           <>
-            <OrgSwitcher orgs={orgList} id="shell-org-top" />
             <HeaderLocaleToggle />
             <HeaderThemeToggle />
             <UserChip userEmail={userEmail} />
