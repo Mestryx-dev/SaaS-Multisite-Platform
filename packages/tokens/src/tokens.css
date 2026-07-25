@@ -89,6 +89,81 @@
   --shadow-2xl: 0 1px 3px 0px oklch(0.00 0 0 / 0.25);
 }
 
+/* Admin light companion — same gold / Inter; surfaces inverted for daytime ops */
+[data-theme="platform-light"] {
+  color-scheme: light;
+
+  --background: #f4f5f8;
+  --background-ambient: radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      color-mix(in srgb, #c9a227 10%, transparent),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 55% 40% at 100% 40%,
+      color-mix(in srgb, #3b82f6 6%, transparent),
+      transparent
+    ),
+    linear-gradient(180deg, #fafbfc 0%, #f4f5f8 100%);
+  --foreground: #0f1219;
+  --card: #ffffff;
+  --card-foreground: #0f1219;
+  --popover: #ffffff;
+  --popover-foreground: #0f1219;
+  --primary: #a8861a;
+  --primary-foreground: #ffffff;
+  --secondary: oklch(0.94 0.01 265);
+  --secondary-foreground: #0f1219;
+  --muted: oklch(0.94 0.01 265);
+  --muted-foreground: #5b6472;
+  --accent: oklch(0.94 0.01 265);
+  --accent-foreground: #0f1219;
+  --destructive: oklch(0.50 0.18 25);
+  --border: #d8dde8;
+  --input: #d8dde8;
+  --ring: #a8861a;
+
+  --chart-1: #a8861a;
+  --chart-2: #5b6472;
+  --chart-3: oklch(0.88 0.01 265);
+  --chart-4: oklch(0.92 0.01 265);
+  --chart-5: #0f1219;
+
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0f1219;
+  --sidebar-primary: #a8861a;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: oklch(0.94 0.01 265);
+  --sidebar-accent-foreground: #0f1219;
+  --sidebar-border: #d8dde8;
+  --sidebar-ring: #c9a227;
+
+  --radius: 8px;
+  --app-header-height: 3.5rem;
+
+  --font-sans: "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+
+  --flash-bg: oklch(0.94 0.03 90);
+  --flash-border: oklch(0.82 0.06 90);
+
+  --glass-bg: #fffffff2;
+  --glass-border: #0f12191a;
+  --glass-blur: 16px;
+  --glass-shadow: 0 8px 28px #0f121914;
+  --glow-accent: #c9a22733;
+  --primary-muted: #c9a22726;
+
+  --shadow-2xs: 0 1px 3px 0px oklch(0.00 0 0 / 0.05);
+  --shadow-xs: 0 1px 3px 0px oklch(0.00 0 0 / 0.05);
+  --shadow-sm: 0 1px 3px 0px oklch(0.00 0 0 / 0.08), 0 1px 2px -1px oklch(0.00 0 0 / 0.08);
+  --shadow: 0 1px 3px 0px oklch(0.00 0 0 / 0.08), 0 1px 2px -1px oklch(0.00 0 0 / 0.08);
+  --shadow-md: 0 1px 3px 0px oklch(0.00 0 0 / 0.08), 0 2px 4px -1px oklch(0.00 0 0 / 0.08);
+  --shadow-lg: 0 1px 3px 0px oklch(0.00 0 0 / 0.08), 0 4px 6px -1px oklch(0.00 0 0 / 0.08);
+  --shadow-xl: 0 1px 3px 0px oklch(0.00 0 0 / 0.08), 0 8px 10px -1px oklch(0.00 0 0 / 0.08);
+  --shadow-2xl: 0 1px 3px 0px oklch(0.00 0 0 / 0.16);
+}
+
 [data-theme="storefront"] {
   color-scheme: light;
 

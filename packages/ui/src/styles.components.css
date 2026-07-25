@@ -238,12 +238,12 @@
   color: var(--muted-foreground);
 }
 
-[data-theme="platform"] .ui-sidebar-section-label {
+:is([data-theme="platform"], [data-theme="platform-light"]) .ui-sidebar-section-label {
   color: #6b7280;
 }
 
-[data-theme="platform"] .ui-sidebar-section-trigger-active .ui-sidebar-section-label,
-[data-theme="platform"] .ui-sidebar-section-trigger-active {
+:is([data-theme="platform"], [data-theme="platform-light"]) .ui-sidebar-section-trigger-active .ui-sidebar-section-label,
+:is([data-theme="platform"], [data-theme="platform-light"]) .ui-sidebar-section-trigger-active {
   color: var(--primary);
 }
 
@@ -270,9 +270,9 @@ a.ui-sidebar-link-active {
  * Platform active nav — soft gold wash (no hard border):
  * bg-ff-gold/15 text-ff-gold shadow-[0_0_12px_var(--color-ff-glow)]
  */
-[data-theme="platform"] .ui-sidebar-link-active,
-[data-theme="platform"] .ui-sidebar-link[data-active="true"],
-[data-theme="platform"] a.ui-sidebar-link-active {
+:is([data-theme="platform"], [data-theme="platform-light"]) .ui-sidebar-link-active,
+:is([data-theme="platform"], [data-theme="platform-light"]) .ui-sidebar-link[data-active="true"],
+:is([data-theme="platform"], [data-theme="platform-light"]) a.ui-sidebar-link-active {
   color: var(--primary);
   background: color-mix(in srgb, var(--primary) 15%, transparent);
   border: none;
@@ -280,14 +280,14 @@ a.ui-sidebar-link-active {
   font-weight: 500;
 }
 
-[data-theme="platform"] .ui-sidebar-link-active svg,
-[data-theme="platform"] .ui-sidebar-link[data-active="true"] svg,
-[data-theme="platform"] a.ui-sidebar-link-active svg {
+:is([data-theme="platform"], [data-theme="platform-light"]) .ui-sidebar-link-active svg,
+:is([data-theme="platform"], [data-theme="platform-light"]) .ui-sidebar-link[data-active="true"] svg,
+:is([data-theme="platform"], [data-theme="platform-light"]) a.ui-sidebar-link-active svg {
   color: var(--primary);
   opacity: 1;
 }
 
-[data-theme="platform"] .ui-sidebar-link:hover:not(.ui-sidebar-link-active):not([data-active="true"]) {
+:is([data-theme="platform"], [data-theme="platform-light"]) .ui-sidebar-link:hover:not(.ui-sidebar-link-active):not([data-active="true"]) {
   color: var(--sidebar-foreground);
   background: color-mix(in srgb, var(--card) 50%, transparent);
   box-shadow: none;

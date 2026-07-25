@@ -35,6 +35,8 @@ import {
   Puzzle,
   Search,
   ShoppingBag,
+  Sun,
+  Moon,
   Tag,
   Truck,
   Undo2,
@@ -335,6 +337,30 @@ function UserChip({ userEmail }: { userEmail?: string }) {
   );
 }
 
+const ADMIN_THEME_KEY = "admin-theme";
+type AdminTheme = "platform" | "platform-light";
+
+function readAdminTheme(): AdminTheme {
+  try {
+    const raw = window.localStorage.getItem(ADMIN_THEME_KEY);
+    if (raw === "platform-light") return "platform-light";
+  } catch {
+    /* ignore */
+  }
+  return "platform";
+}
+
+function applyAdminTheme(theme: AdminTheme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  document.documentElement.style.colorScheme =
+    theme === "platform-light" ? "light" : "dark";
+  try {
+    window.localStorage.setItem(ADMIN_THEME_KEY, theme);
+  } catch {
+    /* ignore */
+  }
+}
+
 function persistAdminLng(lng: "en" | "fr") {
   try {
     window.localStorage.setItem("admin-lng", lng);
@@ -343,54 +369,76 @@ function persistAdminLng(lng: "en" | "fr") {
   }
 }
 
-function SidebarUserFooter({
-  userEmail,
-}: {
-  userEmail?: string;
-}) {
+function HeaderLocaleToggle() {
   const { t, i18n } = useTranslation();
+  const lng = i18n.language?.startsWith("fr") ? "fr" : "en";
   return (
-    <div className="space-y-3">
-      <div className="flex items-center gap-2">
-        <div
-          className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[var(--muted)] text-xs font-semibold text-[var(--foreground)]"
-          aria-hidden
-        >
-          {(userEmail ?? "?").slice(0, 1).toUpperCase()}
-        </div>
-        <div className="min-w-0 flex-1">
-          <p className="truncate text-xs text-[var(--sidebar-foreground)]">
-            {userEmail ?? t("shell.signedOut")}
-          </p>
-          <div className="mt-1 flex gap-1">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="h-6 min-h-6 px-1.5 text-[10px]"
-              onClick={() => {
-                persistAdminLng("en");
-                void i18n.changeLanguage("en");
-              }}
-              aria-label={t("shell.langEn")}
-            >
-              EN
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              className="h-6 min-h-6 px-1.5 text-[10px]"
-              onClick={() => {
-                persistAdminLng("fr");
-                void i18n.changeLanguage("fr");
-              }}
-              aria-label={t("shell.langFr")}
-            >
-              FR
-            </Button>
-          </div>
-        </div>
-      </div>
+    <div className="flex items-center gap-0.5" role="group" aria-label={t("shell.language")}>
+      <Button
+        variant="ghost"
+        size="sm"
+        className={cn(
+          "h-8 min-h-8 px-2 text-[11px] font-semibold",
+          lng === "en" && "bg-[var(--muted)] text-[var(--foreground)]",
+        )}
+        onClick={() => {
+          persistAdminLng("en");
+          void i18n.changeLanguage("en");
+        }}
+        aria-label={t("shell.langEn")}
+        aria-pressed={lng === "en"}
+      >
+        EN
+      </Button>
+      <Button
+        variant="ghost"
+        size="sm"
+        className={cn(
+          "h-8 min-h-8 px-2 text-[11px] font-semibold",
+          lng === "fr" && "bg-[var(--muted)] text-[var(--foreground)]",
+        )}
+        onClick={() => {
+          persistAdminLng("fr");
+          void i18n.changeLanguage("fr");
+        }}
+        aria-label={t("shell.langFr")}
+        aria-pressed={lng === "fr"}
+      >
+        FR
+      </Button>
     </div>
+  );
+}
+
+function HeaderThemeToggle() {
+  const { t } = useTranslation();
+  const [theme, setTheme] = useState<AdminTheme>(() =>
+    typeof window === "undefined" ? "platform" : readAdminTheme(),
+  );
+  const isLight = theme === "platform-light";
+
+  function toggle() {
+    const next: AdminTheme = isLight ? "platform" : "platform-light";
+    applyAdminTheme(next);
+    setTheme(next);
+  }
+
+  return (
+    <Button
+      type="button"
+      variant="ghost"
+      size="icon"
+      className="size-8 shrink-0"
+      onClick={toggle}
+      aria-label={isLight ? t("shell.themeDark") : t("shell.themeLight")}
+      title={isLight ? t("shell.themeDark") : t("shell.themeLight")}
+    >
+      {isLight ? (
+        <Moon className="size-4" aria-hidden />
+      ) : (
+        <Sun className="size-4" aria-hidden />
+      )}
+    </Button>
   );
 }
 
@@ -550,6 +598,8 @@ function AuthenticatedShell({ children }: { children: ReactNode }) {
         topBar={
           <>
             <OrgSwitcher orgs={orgList} id="shell-org-top" />
+            <HeaderLocaleToggle />
+            <HeaderThemeToggle />
             <UserChip userEmail={userEmail} />
             <Button
               type="button"
@@ -563,7 +613,6 @@ function AuthenticatedShell({ children }: { children: ReactNode }) {
             </Button>
           </>
         }
-        sidebarFooter={<SidebarUserFooter userEmail={userEmail} />}
       >
         <RouteFade routeKey={pathname}>{children}</RouteFade>
       </AppShell>
@@ -592,7 +641,13 @@ function AuthenticatedShell({ children }: { children: ReactNode }) {
           </nav>
           <div className="mt-auto space-y-3 border-t border-[var(--sidebar-border)] p-3">
             <OrgSwitcher orgs={orgList} id="shell-org-mobile" className="w-full" />
-            <SidebarUserFooter userEmail={userEmail} />
+            <div className="flex items-center justify-between gap-2">
+              <HeaderLocaleToggle />
+              <HeaderThemeToggle />
+            </div>
+            {userEmail ? (
+              <p className="truncate text-xs text-[var(--muted-foreground)]">{userEmail}</p>
+            ) : null}
           </div>
         </SheetContent>
       </Sheet>

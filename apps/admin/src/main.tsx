@@ -185,7 +185,22 @@ declare module "@tanstack/react-router" {
   }
 }
 
-document.documentElement.setAttribute("data-theme", "platform");
+document.documentElement.setAttribute(
+  "data-theme",
+  (() => {
+    try {
+      return window.localStorage.getItem("admin-theme") === "platform-light"
+        ? "platform-light"
+        : "platform";
+    } catch {
+      return "platform";
+    }
+  })(),
+);
+document.documentElement.style.colorScheme =
+  document.documentElement.getAttribute("data-theme") === "platform-light"
+    ? "light"
+    : "dark";
 
 /** Dev tip: open `/?bootPreview` (or `/?bootPreview=4000`) to hold the HTML splash before React mounts. */
 async function mountAdmin() {

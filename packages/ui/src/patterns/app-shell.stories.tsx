@@ -87,6 +87,12 @@ export const PlatformIA: Story = {
         }
         topBar={
           <>
+            <Button variant="ghost" size="sm" className="h-8 px-2 text-[11px]">
+              EN
+            </Button>
+            <Button variant="ghost" size="icon" className="size-8">
+              ☀
+            </Button>
             <Button variant="secondary" size="sm">
               ⌘K
             </Button>
@@ -94,12 +100,6 @@ export const PlatformIA: Story = {
               Sign in
             </Button>
           </>
-        }
-        sidebarFooter={
-          <div className="space-y-2">
-            <p className="truncate text-[11px] font-medium">Luna Bijoux</p>
-            <p className="truncate text-xs">demo@lunabijoux.local</p>
-          </div>
         }
       >
         <PageHeader
