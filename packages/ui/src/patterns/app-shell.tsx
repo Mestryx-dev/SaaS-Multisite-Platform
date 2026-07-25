@@ -11,6 +11,8 @@ export type AppShellProps = {
    * shell top bar is utilities-only by default.
    */
   breadcrumb?: ReactNode;
+  /** Centered top-bar slot (e.g. org / workspace switcher). */
+  topBarCenter?: ReactNode;
   /** Right top-bar actions (Cmd+K, auth). */
   topBar?: ReactNode;
   /** Leading control in the top bar (mobile menu). Shown on all breakpoints when set. */
@@ -28,6 +30,7 @@ export function AppShell({
   brand,
   nav,
   breadcrumb,
+  topBarCenter,
   topBar,
   topBarLeading,
   sidebarFooter,
@@ -37,8 +40,8 @@ export function AppShell({
 }: AppShellProps) {
   return (
     <div className="flex min-h-svh flex-col bg-[image:var(--background-ambient)] bg-[var(--background)] text-[var(--foreground)]">
-      <header className="glass-chrome sticky top-0 z-40 flex h-[var(--app-header-height)] shrink-0 items-center gap-2 border-b border-[var(--border)] px-3 sm:gap-3 sm:px-4">
-        <div className="flex min-w-0 shrink-0 items-center gap-2">
+      <header className="glass-chrome relative sticky top-0 z-40 flex h-[var(--app-header-height)] shrink-0 items-center gap-2 border-b border-[var(--border)] px-3 sm:gap-3 sm:px-4">
+        <div className="flex min-w-0 flex-1 items-center gap-2">
           {topBarLeading}
           <span
             className="min-w-0 truncate text-[0.95rem] font-semibold tracking-[-0.02em] text-[var(--foreground)]"
@@ -53,9 +56,16 @@ export function AppShell({
             </div>
           ) : null}
         </div>
-        {topBar ? (
-          <div className="ml-auto flex shrink-0 items-center gap-2">{topBar}</div>
+        {topBarCenter ? (
+          <div className="pointer-events-none absolute inset-x-0 z-10 flex justify-center px-3">
+            <div className="pointer-events-auto max-w-[min(100%,16rem)]">
+              {topBarCenter}
+            </div>
+          </div>
         ) : null}
+        <div className="relative z-20 ml-auto flex min-w-0 flex-1 items-center justify-end gap-2">
+          {topBar}
+        </div>
       </header>
 
       <div className="relative flex min-h-0 min-w-0 flex-1">

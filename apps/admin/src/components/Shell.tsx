@@ -560,27 +560,20 @@ function AuthenticatedShell({ children }: { children: ReactNode }) {
         brand={t("appName")}
         sidebarCollapsed={sidebarCollapsed}
         brandActions={
-          <>
-            <OrgSwitcher
-              orgs={orgList}
-              id="shell-org-top"
-              className="hidden min-w-0 sm:block"
-            />
-            <Button
-              type="button"
-              variant="ghost"
-              size="icon"
-              className="hidden size-8 shrink-0 md:inline-flex"
-              aria-label={
-                sidebarCollapsed
-                  ? t("shell.expandSidebar")
-                  : t("shell.collapseSidebar")
-              }
-              onClick={toggleSidebar}
-            >
-              <PanelLeft className="size-4" />
-            </Button>
-          </>
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            className="hidden size-8 shrink-0 md:inline-flex"
+            aria-label={
+              sidebarCollapsed
+                ? t("shell.expandSidebar")
+                : t("shell.collapseSidebar")
+            }
+            onClick={toggleSidebar}
+          >
+            <PanelLeft className="size-4" />
+          </Button>
         }
         topBarLeading={
           <Button
@@ -593,6 +586,13 @@ function AuthenticatedShell({ children }: { children: ReactNode }) {
           >
             <Menu className="size-5" />
           </Button>
+        }
+        topBarCenter={
+          <OrgSwitcher
+            orgs={orgList}
+            id="shell-org-top"
+            className="hidden sm:block"
+          />
         }
         nav={
           <PrimaryNav
