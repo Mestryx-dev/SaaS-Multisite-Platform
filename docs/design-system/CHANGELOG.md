@@ -5,7 +5,8 @@ Traceability for FB-037 / design-system milestones. Newest first.
 ## 2026-07-25 (Unified AppShell header)
 
 - **AppShell:** LMB-style full-bleed sticky header (`--app-header-height: 3.5rem` on platform). Brand + collapse + utilities share one bar; sidebar starts below (no separate brand row height mismatch).
-- **Admin shell:** user + EN/FR + light/dark toggle live in the top bar only; sidebar footer removed (no duplicate chip). `platform-light` token companion + `admin-theme` localStorage.
+- **Header IA (locked):** left = brand + collapse · **center** = org/workspace (`topBarCenter`) · right = EN/FR + light/dark + user + ⌘K. Sidebar footer removed (no duplicate chip).
+- **Admin theme:** `platform` / `platform-light` tokens + `admin-theme` localStorage.
 - Wave E Soft glass still deferred — chrome classes unchanged.
 
 ## 2026-07-24 (Admin console width / density)

@@ -100,7 +100,7 @@ Smoke as org admin on Luna / demo org.
 
 - [x] Sign in / sign up hierarchy clear; errors readable
 - [x] Sidebar + top bar + **Cmd+K** routes to main pages
-- [ ] Org / workspace switcher clear — **re-verify after unified AppShell header (2026-07-25)**
+- [x] Org / workspace switcher clear — centered `topBarCenter` (Luna) after unified header polish 2026-07-25
 - [ ] Density: list pages use PageContent + FilterBar + TableFrame (not FormPanel-as-filters)
 
 ### 2.2 Core ops pages
