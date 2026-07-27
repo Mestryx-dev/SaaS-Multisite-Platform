@@ -4,17 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="dark" />
-    <meta name="theme-color" content="#07080d" />
+    <meta name="theme-color" content="#19191c" />
     <title>mestryx-platform admin</title>
     <style>
-      /* Boot splash — platform night-gold. Replaced when React mounts. */
+      /* Boot splash — platform Obsidian Soft. Replaced when React mounts. */
       :root {
-        --boot-bg: #07080d;
-        --boot-fg: #f5f3ef;
-        --boot-muted: #9ca3af;
-        --boot-gold: #c9a227;
-        --boot-border: #252a3a;
-        --boot-surface: #10131c;
+        --boot-bg: #19191c;
+        --boot-fg: #e6e6ea;
+        --boot-muted: #9a9aa3;
+        --boot-accent: #a78bfa;
+        --boot-border: #34343d;
+        --boot-surface: #232328;
       }
 
       html,
@@ -48,12 +48,12 @@
         background:
           radial-gradient(
             120% 80% at 50% -10%,
-            color-mix(in srgb, var(--boot-gold) 10%, transparent),
+            color-mix(in srgb, var(--boot-accent) 10%, transparent),
             transparent 55%
           ),
           radial-gradient(
             60% 50% at 85% 90%,
-            color-mix(in srgb, var(--boot-gold) 5%, transparent),
+            color-mix(in srgb, var(--boot-accent) 5%, transparent),
             transparent 60%
           ),
           linear-gradient(180deg, #0b0d14 0%, var(--boot-bg) 100%);
@@ -87,8 +87,8 @@
         position: absolute;
         inset: 0;
         border-radius: 50%;
-        border: 1px solid color-mix(in srgb, var(--boot-gold) 28%, var(--boot-border));
-        box-shadow: 0 0 0 6px color-mix(in srgb, var(--boot-gold) 6%, transparent);
+        border: 1px solid color-mix(in srgb, var(--boot-accent) 28%, var(--boot-border));
+        box-shadow: 0 0 0 6px color-mix(in srgb, var(--boot-accent) 6%, transparent);
       }
 
       .boot__mark-orbit {
@@ -96,8 +96,8 @@
         inset: -2px;
         border-radius: 50%;
         border: 2px solid transparent;
-        border-top-color: var(--boot-gold);
-        border-right-color: color-mix(in srgb, var(--boot-gold) 35%, transparent);
+        border-top-color: var(--boot-accent);
+        border-right-color: color-mix(in srgb, var(--boot-accent) 35%, transparent);
         animation: boot-spin 900ms linear infinite;
       }
 
@@ -107,9 +107,9 @@
         display: grid;
         place-items: center;
         border-radius: 0.55rem;
-        background: color-mix(in srgb, var(--boot-surface) 88%, var(--boot-gold));
-        border: 1px solid color-mix(in srgb, var(--boot-gold) 35%, var(--boot-border));
-        color: var(--boot-gold);
+        background: color-mix(in srgb, var(--boot-surface) 88%, var(--boot-accent));
+        border: 1px solid color-mix(in srgb, var(--boot-accent) 35%, var(--boot-border));
+        color: var(--boot-accent);
         font-size: 1.05rem;
         font-weight: 700;
         letter-spacing: -0.04em;
@@ -154,9 +154,9 @@
         background: linear-gradient(
           90deg,
           transparent,
-          var(--boot-gold),
-          color-mix(in srgb, var(--boot-gold) 55%, #fff),
-          var(--boot-gold),
+          var(--boot-accent),
+          color-mix(in srgb, var(--boot-accent) 55%, #fff),
+          var(--boot-accent),
           transparent
         );
         animation: boot-bar 1.35s cubic-bezier(0.45, 0, 0.2, 1) infinite;
@@ -199,8 +199,8 @@
         }
 
         .boot__mark-orbit {
-          border-top-color: var(--boot-gold);
-          border-right-color: var(--boot-gold);
+          border-top-color: var(--boot-accent);
+          border-right-color: var(--boot-accent);
           opacity: 0.55;
         }
 
@@ -208,7 +208,7 @@
           width: 100%;
           opacity: 0.45;
           transform: none;
-          background: var(--boot-gold);
+          background: var(--boot-accent);
         }
       }
     </style>

@@ -1,7 +1,8 @@
 # ADR-0003: Platform night-gold theme + chrome glass
 
-**Status**: Accepted  
-**Date**: 2026-07-23
+**Status**: Superseded by [ADR-0005](./0005-platform-obsidian-soft.md)  
+**Date**: 2026-07-23  
+**Superseded**: 2026-07-27
 
 ## Context
 

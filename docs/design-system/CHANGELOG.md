@@ -2,6 +2,13 @@
 
 Traceability for FB-037 / design-system milestones. Newest first.
 
+## 2026-07-27 (Platform Obsidian Soft)
+
+- **Tokens:** platform dark → Obsidian Soft (graphite `#19191c`, lilac `#a78bfa`); `platform-light` companion retinted.
+- **Docs:** DESIGN.md + brand-brief lock; ADR-0005 Accepted (supersedes ADR-0003 night-gold).
+- **Preview:** `docs/design-system/previews/obsidian-palette-preview.html` (Option B chosen).
+- Storefront Soft boutique unchanged.
+
 ## 2026-07-25 (Unified AppShell header)
 
 - **AppShell:** LMB-style full-bleed sticky header (`--app-header-height: 3.5rem` on platform). Brand + collapse + utilities share one bar; sidebar starts below (no separate brand row height mismatch).

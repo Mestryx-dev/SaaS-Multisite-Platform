@@ -1,18 +1,18 @@
 ---
 version: alpha
 name: mestryx-platform
-description: Dual-theme product UI — platform admin (night-gold) and storefront shop (light). Lock from packages/tokens.
+description: Dual-theme product UI — platform admin (Obsidian Soft) and storefront shop (light). Lock from packages/tokens.
 colors:
-  platform-bg: "#07080d"
-  platform-fg: "#f5f3ef"
-  platform-muted: "#9ca3af"
-  platform-accent: "#c9a227"
-  platform-border: "#252a3a"
-  platform-danger: "#b91c1c"
+  platform-bg: "#19191c"
+  platform-fg: "#e6e6ea"
+  platform-muted: "#9a9aa3"
+  platform-accent: "#a78bfa"
+  platform-border: "#34343d"
+  platform-danger: "#e06c75"
   platform-warning: "#e8b84a"
-  platform-surface: "#10131c"
-  platform-elevated: "#0b0d14"
-  platform-on-accent: "#1a1608"
+  platform-surface: "#232328"
+  platform-elevated: "#131316"
+  platform-on-accent: "#120f1c"
   storefront-bg: "#f4f0e8"
   storefront-fg: "#1a1f16"
   storefront-muted: "#5c6554"
@@ -66,16 +66,16 @@ components:
 
 mestryx-platform uses **two product themes** via `data-theme`:
 
-- **platform** — night-gold admin console (deep night `#07080d`, gold accent `#c9a227`, Inter UI + Plus Jakarta Sans display, 8px radius, chrome glass).
+- **platform** — Obsidian Soft admin console (graphite `#19191c`, soft lilac accent `#a78bfa`, Inter UI + Plus Jakarta Sans display, 8px radius, chrome glass). Companion `platform-light` for daytime ops.
 - **storefront** — light shop (Fraunces display + IBM Plex body, **Soft boutique** 8px radius, green accent `#2f5d3a`).
 
-Values match `packages/tokens` (OKLCH). Storefront universal base = Studio-derived light palette; **Luna** uses preset `luna`. Marketing product name remains deferred; avoid Piblox violet.
+Values match `packages/tokens`. Storefront universal base = Studio-derived light palette; **Luna** uses preset `luna`. Marketing product name remains deferred; avoid Piblox branding on this product.
 
 ## Colors
 
-Semantic CSS variables use **shadcn names** (`--background`, `--primary`, …) under `data-theme` — see [docs/design-system/shadcn-css-variables.md](./docs/design-system/shadcn-css-variables.md). Front matter labels map to those roles. Do not introduce purple gradients.
+Semantic CSS variables use **shadcn names** (`--background`, `--primary`, …) under `data-theme` — see [docs/design-system/shadcn-css-variables.md](./docs/design-system/shadcn-css-variables.md). Front matter labels map to those roles.
 
-**Ops status:** green for success only; warning amber OKLCH ≈ `oklch(0.72 0.12 75)` — not brand gold.
+**Platform accent** is soft lilac (ADR-0005), not neon purple gradient meshes. **Ops status:** green for success only; warning amber OKLCH ≈ `oklch(0.72 0.12 75)` — not brand accent.
 
 ## Typography
 
@@ -90,16 +90,16 @@ Spacing scale 8 / 16 / 24. Prefer density for admin tables; generous rhythm for 
 
 **Chrome glass** — translucent blur on:
 
-- **Platform:** utilities top bar + sidebar brand row use `.glass-chrome` (`--glass-*`, no floating shadow). Page title lives only in **PageHeader** (shell top bar must not duplicate the page name). Never glass on table cells, primary form inputs, or solid gold CTAs.
+- **Platform:** utilities top bar uses `.glass-chrome` (`--glass-*`, no floating shadow). Page title lives only in **PageHeader**. Never glass on table cells, primary form inputs, or solid primary CTAs.
 - **Storefront:** sticky header, PLP toolbar, cart drawer/overlay. Never on product media, hero photos, or solid primary CTAs.
 
-**Ambient page wash** — static CSS `--background-ambient` (soft gold + cool radials on night canvas) so frosted chrome has something to blur through. No animated mesh under product grids.
+**Ambient page wash** — static CSS `--background-ambient` (soft lilac radials on graphite) so frosted chrome has something to blur through. No animated mesh under product grids.
 
 **Vitrine homepage** — `/` is a boutique window (full-bleed hero, collection tiles, curated featured rail). Price filters and sort live only on **catalog** views.
 
 ## Elevation & Depth
 
-Surfaces via `--card` / `--secondary` — no nested card stacks for decoration. KPI strips use a single bordered surface with `gap-px` cells.
+Surfaces via `--card` / `--secondary` — no nested card stacks for decoration. KPI strips use a single bordered surface with `gap-px` cells. Platform elevated = sidebar `#131316`.
 
 ## Components
 

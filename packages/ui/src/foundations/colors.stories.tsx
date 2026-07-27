@@ -98,7 +98,7 @@ export const Palette: Story = {
         </div>
       </div>
       <p className="text-sm text-[var(--muted-foreground)]">
-        Decision: <code>shared</code> — values from tokens / presets only. Platform night-gold;
+        Decision: <code>shared</code> — values from tokens / presets only. Platform Obsidian Soft;
         storefront Soft boutique. Refs: DESIGN.md, ADR-0003.
       </p>
     </div>

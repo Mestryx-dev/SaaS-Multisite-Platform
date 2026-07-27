@@ -35,14 +35,14 @@
 
 | Role | Platform | Storefront | Status |
 |------|----------|------------|--------|
-| Accent / primary interactive | `#3d8bfd` | `#2f5d3a` | Provisional accepted |
-| Background | `#0f1419` | `#f4f0e8` | Provisional accepted |
-| Foreground | `#f4f1ea` | `#1a1f16` | Provisional accepted |
-| Display font | IBM Plex Sans | Fraunces | Provisional accepted |
-| Body font | IBM Plex Sans | IBM Plex Sans | Provisional accepted |
-| Radius | 8px | 0px | Provisional accepted |
+| Accent / primary interactive | `#a78bfa` | `#2f5d3a` | Accepted 2026-07-27 (Obsidian Soft) |
+| Background | `#19191c` | `#f4f0e8` | Accepted 2026-07-27 |
+| Foreground | `#e6e6ea` | `#1a1f16` | Accepted 2026-07-27 |
+| Display font | Plus Jakarta Sans | Fraunces | Accepted |
+| Body font | Inter | IBM Plex Sans | Accepted |
+| Radius | 8px | 8px Soft boutique | Accepted |
 
-Avoid Piblox violet `#723CEB` collision.
+Avoid Piblox brand collision; platform lilac is soft (`#a78bfa`), not neon purple mesh.
 
 ## Imagery
 

@@ -320,7 +320,7 @@ export function NavLink({
   );
 }
 
-/** Night-gold sidebar link — gap/type/padding aligned to platform chrome lock. */
+/** Platform sidebar link — gap/type/padding aligned to platform chrome lock. */
 export function navLinkClassName(active: boolean, className = "") {
   return cn(
     "ui-sidebar-link group flex items-center gap-3 rounded-lg px-2.5 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--sidebar-ring)]",
