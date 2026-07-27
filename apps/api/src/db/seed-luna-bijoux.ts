@@ -39,7 +39,10 @@ import { loadConfig } from "../lib/config.js";
 import { createAuth } from "../modules/identity/auth.js";
 import { seedPlans } from "../modules/billing/routes.js";
 import { ensureLegalPages } from "../modules/cms/legal-pages.js";
-import { ensureDefaultVariant } from "../modules/commerce/catalog-routes.js";
+import {
+  ensureDefaultVariant,
+  syncProductStockFromVariants,
+} from "../modules/commerce/catalog-routes.js";
 
 // This file lives in apps/api/src/db → four levels up to repo root
 const repoRoot = resolve(fileURLToPath(new URL(".", import.meta.url)), "../../../..");
@@ -52,6 +55,14 @@ const SEED_PASSWORD = process.env.SEED_PASSWORD ?? "LunaBijoux2026!";
 const ORG_SLUG = "luna-bijoux";
 const SITE_SLUG = "luna";
 
+type SeedVariant = {
+  sku: string;
+  options: Record<string, string>;
+  stock: number;
+  priceCents?: number;
+  status?: "draft" | "active" | "archived";
+};
+
 type SeedProduct = {
   name: string;
   slug: string;
@@ -59,11 +70,17 @@ type SeedProduct = {
   description: string;
   priceCents: number;
   compareAtCents?: number;
+  /** Aggregate stock when no variants; ignored when variants are set (synced from variants). */
   stock: number;
+  /** null = no alert; stock <= threshold → dashboard low-stock / “réappro” panel */
+  lowStockThreshold?: number | null;
+  status?: "draft" | "active" | "archived";
   taxClass: "standard" | "reduced";
   imageUrl: string;
   seoTitle: string;
   seoDescription: string;
+  /** Color/size SKUs — drives the full inventory panel in admin Products. */
+  variants?: SeedVariant[];
 };
 
 const CATALOG: SeedProduct[] = [
@@ -76,6 +93,8 @@ const CATALOG: SeedProduct[] = [
     priceCents: 2490,
     compareAtCents: 3200,
     stock: 48,
+    lowStockThreshold: 10,
+    status: "active",
     taxClass: "standard",
     imageUrl:
       "https://images.unsplash.com/photo-1515562140607-ee22621dd758?w=800&q=80",
@@ -87,24 +106,54 @@ const CATALOG: SeedProduct[] = [
     slug: "boucles-papillon-satin",
     sku: "LUNA-ORE-002",
     description:
-      "Papillons légers effet satin, clips doux. Idéales pour un look fairycore.",
+      "Papillons légers effet satin, clips doux. Variantes couleur — stock mixte (en stock / bas / rupture).",
     priceCents: 1890,
-    stock: 60,
+    stock: 0, // synced from variants
+    lowStockThreshold: 8,
+    status: "active",
     taxClass: "standard",
     imageUrl:
       "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80",
     seoTitle: "Boucles Papillon Satin — Luna Bijoux",
     seoDescription: "Boucles d'oreilles papillon fantaisie, ambiance girly.",
+    variants: [
+      {
+        sku: "LUNA-ORE-002-ROSE",
+        options: { color: "Rose poudré" },
+        stock: 24,
+        status: "active",
+      },
+      {
+        sku: "LUNA-ORE-002-LILAS",
+        options: { color: "Lilas" },
+        stock: 5,
+        status: "active",
+      },
+      {
+        sku: "LUNA-ORE-002-OR",
+        options: { color: "Or rose" },
+        stock: 0,
+        status: "active",
+      },
+      {
+        sku: "LUNA-ORE-002-ARGENT",
+        options: { color: "Argent" },
+        stock: 0,
+        status: "archived",
+      },
+    ],
   },
   {
     name: "Bracelet Charms Cœur",
     slug: "bracelet-charms-coeur",
     sku: "LUNA-BRA-003",
     description:
-      "Chaîne délicate avec charms cœur, étoile et perle. Empilable avec d'autres bracelets Luna.",
+      "Chaîne délicate avec charms cœur, étoile et perle. Stock bas — réapprovisionnement entrepôt en cours.",
     priceCents: 2190,
     compareAtCents: 2790,
-    stock: 55,
+    stock: 3,
+    lowStockThreshold: 12,
+    status: "active",
     taxClass: "standard",
     imageUrl:
       "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&q=80",
@@ -116,23 +165,59 @@ const CATALOG: SeedProduct[] = [
     slug: "bague-perle-nacree",
     sku: "LUNA-BAG-004",
     description:
-      "Perle nacrée montée sur anneau ajustable doré rose. Touche romantique instantanée.",
+      "Perle nacrée montée sur anneau ajustable. Variantes taille × couleur pour dogfood inventaire.",
     priceCents: 1590,
-    stock: 70,
+    stock: 0,
+    lowStockThreshold: 6,
+    status: "active",
     taxClass: "standard",
     imageUrl:
       "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&q=80",
     seoTitle: "Bague Perle Nacrée — Luna Bijoux",
     seoDescription: "Bague perle fantaisie, style soft glam.",
+    variants: [
+      {
+        sku: "LUNA-BAG-004-S-ROSE",
+        options: { size: "S", color: "Or rose" },
+        stock: 18,
+        status: "active",
+      },
+      {
+        sku: "LUNA-BAG-004-M-ROSE",
+        options: { size: "M", color: "Or rose" },
+        stock: 4,
+        status: "active",
+      },
+      {
+        sku: "LUNA-BAG-004-L-ROSE",
+        options: { size: "L", color: "Or rose" },
+        stock: 0,
+        status: "active",
+      },
+      {
+        sku: "LUNA-BAG-004-M-ARGENT",
+        options: { size: "M", color: "Argent" },
+        stock: 12,
+        status: "active",
+      },
+      {
+        sku: "LUNA-BAG-004-M-OR",
+        options: { size: "M", color: "Or jaune" },
+        stock: 2,
+        status: "draft",
+      },
+    ],
   },
   {
     name: "Collier Chaîne Étoile",
     slug: "collier-chaine-etoile",
     sku: "LUNA-COL-005",
     description:
-      "Mini étoile scintillante sur chaîne fine. Layering friendly avec le Collier Lune.",
+      "Mini étoile scintillante sur chaîne fine. Rupture de stock — réassort prévu semaine prochaine.",
     priceCents: 1990,
-    stock: 42,
+    stock: 0,
+    lowStockThreshold: 5,
+    status: "active",
     taxClass: "standard",
     imageUrl:
       "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&q=80",
@@ -147,6 +232,8 @@ const CATALOG: SeedProduct[] = [
       "Créoles moyennes ornées de fleurs roses. Printemps permanent, même en hiver.",
     priceCents: 2290,
     stock: 36,
+    lowStockThreshold: 8,
+    status: "active",
     taxClass: "standard",
     imageUrl:
       "https://images.unsplash.com/photo-1630019852942-f89202989a59?w=800&q=80",
@@ -158,15 +245,37 @@ const CATALOG: SeedProduct[] = [
     slug: "bracelet-tennis-rose",
     sku: "LUNA-BRA-007",
     description:
-      "Rangée de cristaux rose pâle. Effet luxe soft pour soirées et selfies.",
+      "Rangée de cristaux rose pâle. Variantes finition — une couleur en rupture.",
     priceCents: 3490,
     compareAtCents: 4200,
-    stock: 28,
+    stock: 0,
+    lowStockThreshold: 10,
+    status: "active",
     taxClass: "standard",
     imageUrl:
       "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&q=80",
     seoTitle: "Bracelet Tennis Rose — Luna Bijoux",
     seoDescription: "Bracelet tennis cristaux roses, glam girly.",
+    variants: [
+      {
+        sku: "LUNA-BRA-007-ROSE",
+        options: { color: "Rose pâle" },
+        stock: 14,
+        status: "active",
+      },
+      {
+        sku: "LUNA-BRA-007-CRYSTAL",
+        options: { color: "Crystal clear" },
+        stock: 0,
+        status: "active",
+      },
+      {
+        sku: "LUNA-BRA-007-CHAMPAGNE",
+        options: { color: "Champagne" },
+        stock: 7,
+        status: "active",
+      },
+    ],
   },
   {
     name: "Bague Duo Cœurs",
@@ -176,6 +285,8 @@ const CATALOG: SeedProduct[] = [
       "Deux petits cœurs entrelacés, finition or rose. Cadeau bestie ou crush.",
     priceCents: 1290,
     stock: 80,
+    lowStockThreshold: 15,
+    status: "active",
     taxClass: "standard",
     imageUrl:
       "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=800&q=80",
@@ -187,10 +298,12 @@ const CATALOG: SeedProduct[] = [
     slug: "set-aurora",
     sku: "LUNA-SET-009",
     description:
-      "Parure aurora : collier + boucles assorties, dégradé rose-lilas. Prête pour un outfit complet.",
+      "Parure aurora : collier + boucles assorties. Stock critique — réappro urgent.",
     priceCents: 4490,
     compareAtCents: 5490,
-    stock: 22,
+    stock: 2,
+    lowStockThreshold: 8,
+    status: "active",
     taxClass: "standard",
     imageUrl:
       "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=800&q=80",
@@ -202,9 +315,11 @@ const CATALOG: SeedProduct[] = [
     slug: "choker-velours-rose",
     sku: "LUNA-CHO-010",
     description:
-      "Choker velours rose poudré avec pendentif cœur. Mood coquette assumé.",
+      "Choker velours rose poudré avec pendentif cœur. Brouillon catalogue — pas encore publié boutique.",
     priceCents: 1790,
     stock: 40,
+    lowStockThreshold: 10,
+    status: "draft",
     taxClass: "standard",
     imageUrl:
       "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=800&q=80",
@@ -216,9 +331,11 @@ const CATALOG: SeedProduct[] = [
     slug: "boucles-goutte-cristal",
     sku: "LUNA-ORE-011",
     description:
-      "Gouttes cristal irisé qui captent la lumière. Effet fairy lights sur les oreilles.",
+      "Gouttes cristal irisé. Référence archivée (fin de collection).",
     priceCents: 2690,
-    stock: 33,
+    stock: 0,
+    lowStockThreshold: null,
+    status: "archived",
     taxClass: "standard",
     imageUrl:
       "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=800&q=80",
@@ -233,6 +350,8 @@ const CATALOG: SeedProduct[] = [
       "Perles roses, lilas et ivoire. Stackable, hypoallergénique (finition nickel-safe).",
     priceCents: 1490,
     stock: 65,
+    lowStockThreshold: 12,
+    status: "active",
     taxClass: "standard",
     imageUrl:
       "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&q=80",
@@ -247,6 +366,8 @@ const CATALOG: SeedProduct[] = [
       "Open ring lune + étoile, ajustable. Pièce signature Luna Bijoux.",
     priceCents: 1890,
     stock: 50,
+    lowStockThreshold: 10,
+    status: "active",
     taxClass: "standard",
     imageUrl:
       "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&q=80&sat=-20",
@@ -261,6 +382,8 @@ const CATALOG: SeedProduct[] = [
       "Long collier perles roses à nouer ou porter en double. Soft glam office-to-evening.",
     priceCents: 2990,
     stock: 30,
+    lowStockThreshold: 8,
+    status: "active",
     taxClass: "standard",
     imageUrl:
       "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=800&q=80",
@@ -275,6 +398,8 @@ const CATALOG: SeedProduct[] = [
       "Barrette nœud satin rose poudré. Accessoire cheveux matching la parure Aurora.",
     priceCents: 990,
     stock: 90,
+    lowStockThreshold: 20,
+    status: "active",
     taxClass: "standard",
     imageUrl:
       "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&q=80",
@@ -289,6 +414,8 @@ const CATALOG: SeedProduct[] = [
       "Mini fleur pour l'été, pieds nus & sandales. Détail kawaii beach-ready.",
     priceCents: 890,
     stock: 75,
+    lowStockThreshold: 15,
+    status: "active",
     taxClass: "standard",
     imageUrl:
       "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=800&q=80&hue=20",
@@ -478,6 +605,15 @@ async function main() {
 
   let upserted = 0;
   for (const item of CATALOG) {
+    const productStatus = item.status ?? "active";
+    const lowStockThreshold =
+      item.lowStockThreshold === undefined ? 10 : item.lowStockThreshold;
+    const initialStock = item.variants?.length
+      ? item.variants
+          .filter((v) => (v.status ?? "active") === "active")
+          .reduce((sum, v) => sum + v.stock, 0)
+      : item.stock;
+
     const [existing] = await db
       .select()
       .from(product)
@@ -496,9 +632,10 @@ async function main() {
           description: item.description,
           priceCents: item.priceCents,
           compareAtCents: item.compareAtCents ?? null,
-          stock: item.stock,
+          stock: initialStock,
+          lowStockThreshold,
           taxClass: item.taxClass,
-          status: "active",
+          status: productStatus,
           imageUrl: item.imageUrl,
           seoTitle: item.seoTitle,
           seoDescription: item.seoDescription,
@@ -520,8 +657,9 @@ async function main() {
           compareAtCents: item.compareAtCents ?? null,
           currency: "eur",
           taxClass: item.taxClass,
-          stock: item.stock,
-          status: "active",
+          stock: initialStock,
+          lowStockThreshold,
+          status: productStatus,
           imageUrl: item.imageUrl,
           seoTitle: item.seoTitle,
           seoDescription: item.seoDescription,
@@ -536,21 +674,77 @@ async function main() {
       .limit(1);
     if (prodRow) {
       await ensureDefaultVariant(db, prodRow);
-      const [variant] = await db
-        .select()
-        .from(productVariant)
-        .where(eq(productVariant.productId, prodRow.id))
-        .limit(1);
-      if (variant) {
+
+      if (item.variants?.length) {
+        // Archive bare default SKU so color/size rows own inventory.
         await db
           .update(productVariant)
           .set({
-            priceCents: item.priceCents,
-            stock: item.stock,
-            status: "active",
+            status: "archived",
+            stock: 0,
             updatedAt: new Date(),
           })
-          .where(eq(productVariant.id, variant.id));
+          .where(
+            and(
+              eq(productVariant.productId, prodRow.id),
+              eq(productVariant.sku, item.sku),
+            ),
+          );
+
+        for (const v of item.variants) {
+          const variantStatus = v.status ?? "active";
+          const variantPrice = v.priceCents ?? item.priceCents;
+          const [existingVariant] = await db
+            .select()
+            .from(productVariant)
+            .where(
+              and(
+                eq(productVariant.productId, prodRow.id),
+                eq(productVariant.sku, v.sku),
+              ),
+            )
+            .limit(1);
+          if (existingVariant) {
+            await db
+              .update(productVariant)
+              .set({
+                optionsJson: v.options,
+                priceCents: variantPrice,
+                stock: v.stock,
+                status: variantStatus,
+                updatedAt: new Date(),
+              })
+              .where(eq(productVariant.id, existingVariant.id));
+          } else {
+            await db.insert(productVariant).values({
+              productId: prodRow.id,
+              sku: v.sku,
+              optionsJson: v.options,
+              priceCents: variantPrice,
+              stock: v.stock,
+              status: variantStatus,
+            });
+          }
+        }
+        await syncProductStockFromVariants(db, prodRow.id);
+      } else {
+        const [variant] = await db
+          .select()
+          .from(productVariant)
+          .where(eq(productVariant.productId, prodRow.id))
+          .limit(1);
+        if (variant) {
+          await db
+            .update(productVariant)
+            .set({
+              priceCents: item.priceCents,
+              stock: item.stock,
+              status: productStatus === "archived" ? "archived" : "active",
+              optionsJson: {},
+              updatedAt: new Date(),
+            })
+            .where(eq(productVariant.id, variant.id));
+        }
       }
     }
     upserted += 1;
@@ -1217,6 +1411,10 @@ async function main() {
   console.log("Demo commerce (Orders / Returns / tracking):");
   console.log("  pending · paid · fulfilled+tracking · return requested/approved · cancelled · refunded");
   console.log("  Coupon: LUNA10 (−10%)");
+  console.log("");
+  console.log("Demo inventory panel:");
+  console.log("  in stock · low stock (réappro) · out of stock · draft · archived");
+  console.log("  color/size variants on Papillon, Bague Perle, Tennis");
   console.log("");
   console.log("Storefront (add to repo .env then restart web):");
   console.log(`  WEB_DEV_SITE_ID=${shop!.id}`);
