@@ -13,18 +13,26 @@ import { createApp } from "../app.js";
 import { createDb } from "./client.js";
 import {
   category,
+  coupon,
+  customer,
+  customerAddress,
+  invoice,
   mediaAsset,
   membership,
   merchantLegalProfile,
+  orderEvent,
   organization,
   page,
   product,
   productCategory,
   productMedia,
   productVariant,
+  returnRequest,
   shippingMethod,
   shippingZone,
   site,
+  storeOrder,
+  storeOrderItem,
   user,
 } from "./schema.js";
 import { loadConfig } from "../lib/config.js";
@@ -723,6 +731,477 @@ async function main() {
     }
   }
 
+  // --- Demo commerce: customers, orders, tracking, returns (idempotent by publicId / email) ---
+  const shopProducts = await db
+    .select()
+    .from(product)
+    .where(and(eq(product.siteId, shop!.id), eq(product.status, "active")));
+  const bySku = new Map(shopProducts.map((p) => [p.sku, p]));
+
+  const methods = await db
+    .select()
+    .from(shippingMethod)
+    .where(eq(shippingMethod.zoneId, zoneId!));
+  const colissimo = methods.find((m) => m.name === "Colissimo") ?? methods[0];
+  const relais = methods.find((m) => m.name === "Point Relais") ?? methods[1] ?? colissimo;
+
+  let demoCouponId: string | undefined;
+  {
+    const [existingCoupon] = await db
+      .select()
+      .from(coupon)
+      .where(
+        and(eq(coupon.organizationId, org!.id), eq(coupon.code, "LUNA10")),
+      )
+      .limit(1);
+    if (existingCoupon) {
+      demoCouponId = existingCoupon.id;
+    } else {
+      const [created] = await db
+        .insert(coupon)
+        .values({
+          organizationId: org!.id,
+          code: "LUNA10",
+          type: "percent",
+          value: 1000,
+          minSubtotalCents: 2000,
+          maxRedemptions: 100,
+          active: true,
+        })
+        .returning();
+      demoCouponId = created!.id;
+      console.log("Created coupon LUNA10 (−10%)");
+    }
+  }
+
+  type DemoCustomer = {
+    email: string;
+    name: string;
+    address: {
+      label: string;
+      line1: string;
+      city: string;
+      postalCode: string;
+      country: string;
+    };
+  };
+
+  const DEMO_CUSTOMERS: DemoCustomer[] = [
+    {
+      email: "camille.martin@example.com",
+      name: "Camille Martin",
+      address: {
+        label: "Domicile",
+        line1: "18 rue des Abbesses",
+        city: "Paris",
+        postalCode: "75018",
+        country: "FR",
+      },
+    },
+    {
+      email: "lea.dubois@example.com",
+      name: "Léa Dubois",
+      address: {
+        label: "Appartement",
+        line1: "4 avenue Jean Jaurès",
+        city: "Lyon",
+        postalCode: "69007",
+        country: "FR",
+      },
+    },
+    {
+      email: "sofia.nguyen@example.com",
+      name: "Sofia Nguyen",
+      address: {
+        label: "Maison",
+        line1: "22 quai des Chartrons",
+        city: "Bordeaux",
+        postalCode: "33000",
+        country: "FR",
+      },
+    },
+    {
+      email: "emma.bernard@example.com",
+      name: "Emma Bernard",
+      address: {
+        label: "Domicile",
+        line1: "9 place du Capitole",
+        city: "Toulouse",
+        postalCode: "31000",
+        country: "FR",
+      },
+    },
+  ];
+
+  const customerIds = new Map<string, string>();
+  for (const c of DEMO_CUSTOMERS) {
+    const [existing] = await db
+      .select()
+      .from(customer)
+      .where(and(eq(customer.siteId, shop!.id), eq(customer.email, c.email)))
+      .limit(1);
+    let customerId = existing?.id;
+    if (!existing) {
+      const [created] = await db
+        .insert(customer)
+        .values({
+          organizationId: org!.id,
+          siteId: shop!.id,
+          email: c.email,
+          name: c.name,
+        })
+        .returning();
+      customerId = created!.id;
+      await db.insert(customerAddress).values({
+        siteId: shop!.id,
+        customerId: customerId!,
+        label: c.address.label,
+        name: c.name,
+        line1: c.address.line1,
+        city: c.address.city,
+        postalCode: c.address.postalCode,
+        country: c.address.country,
+        isDefault: true,
+      });
+    }
+    customerIds.set(c.email, customerId!);
+  }
+  console.log(`Demo customers ready: ${customerIds.size}`);
+
+  type LineSpec = { sku: string; qty: number };
+  type DemoOrder = {
+    publicId: string;
+    email: string;
+    status: "pending_payment" | "paid" | "fulfilled" | "cancelled" | "refunded";
+    lines: LineSpec[];
+    shippingCents: number;
+    methodId?: string;
+    carrier?: string;
+    trackingNumber?: string;
+    couponCode?: string;
+    discountCents?: number;
+    daysAgo: number;
+    events: Array<{ type: string; message: string; hoursAfter: number }>;
+    return?: { reason: string; status: "requested" | "approved" | "rejected" };
+    invoiceNumber?: string;
+  };
+
+  const addrFor = (email: string) => {
+    const c = DEMO_CUSTOMERS.find((x) => x.email === email)!;
+    return {
+      name: c.name,
+      line1: c.address.line1,
+      city: c.address.city,
+      postalCode: c.address.postalCode,
+      country: c.address.country,
+    };
+  };
+
+  const DEMO_ORDERS: DemoOrder[] = [
+    {
+      publicId: "ord_seed_luna_pending01",
+      email: "camille.martin@example.com",
+      status: "pending_payment",
+      lines: [
+        { sku: "LUNA-COL-001", qty: 1 },
+        { sku: "LUNA-ORE-002", qty: 1 },
+      ],
+      shippingCents: 490,
+      methodId: colissimo?.id,
+      daysAgo: 0,
+      events: [
+        { type: "created", message: "Order placed — awaiting payment", hoursAfter: 0 },
+      ],
+    },
+    {
+      publicId: "ord_seed_luna_paid01",
+      email: "lea.dubois@example.com",
+      status: "paid",
+      lines: [{ sku: "LUNA-BRA-003", qty: 1 }],
+      shippingCents: 390,
+      methodId: relais?.id,
+      couponCode: "LUNA10",
+      discountCents: 0,
+      daysAgo: 1,
+      events: [
+        { type: "created", message: "Order placed", hoursAfter: 0 },
+        { type: "paid", message: "Payment confirmed (demo)", hoursAfter: 1 },
+      ],
+      invoiceNumber: "LUNA-2026-0001",
+    },
+    {
+      publicId: "ord_seed_luna_shipped01",
+      email: "sofia.nguyen@example.com",
+      status: "fulfilled",
+      lines: [
+        { sku: "LUNA-COL-001", qty: 1 },
+        { sku: "LUNA-BAG-004", qty: 2 },
+      ],
+      shippingCents: 490,
+      methodId: colissimo?.id,
+      carrier: "Colissimo",
+      trackingNumber: "8R12345678901",
+      daysAgo: 5,
+      events: [
+        { type: "created", message: "Order placed", hoursAfter: 0 },
+        { type: "paid", message: "Payment confirmed (demo)", hoursAfter: 2 },
+        {
+          type: "fulfilled",
+          message: "Shipped via Colissimo · 8R12345678901",
+          hoursAfter: 28,
+        },
+      ],
+      invoiceNumber: "LUNA-2026-0002",
+    },
+    {
+      publicId: "ord_seed_luna_shipped02",
+      email: "emma.bernard@example.com",
+      status: "fulfilled",
+      lines: [{ sku: "LUNA-ORE-002", qty: 2 }],
+      shippingCents: 490,
+      methodId: colissimo?.id,
+      carrier: "Colissimo",
+      trackingNumber: "8R98765432109",
+      daysAgo: 12,
+      events: [
+        { type: "created", message: "Order placed", hoursAfter: 0 },
+        { type: "paid", message: "Payment confirmed (demo)", hoursAfter: 1 },
+        {
+          type: "fulfilled",
+          message: "Shipped via Colissimo · 8R98765432109",
+          hoursAfter: 30,
+        },
+        {
+          type: "delivered",
+          message: "Delivered (carrier scan — demo)",
+          hoursAfter: 96,
+        },
+      ],
+      return: {
+        reason: "Taille / modèle ne convient pas — échange souhaité",
+        status: "requested",
+      },
+      invoiceNumber: "LUNA-2026-0003",
+    },
+    {
+      publicId: "ord_seed_luna_return_ok",
+      email: "camille.martin@example.com",
+      status: "fulfilled",
+      lines: [{ sku: "LUNA-COL-001", qty: 1 }],
+      shippingCents: 390,
+      methodId: relais?.id,
+      carrier: "Mondial Relay",
+      trackingNumber: "MR4455667788",
+      daysAgo: 20,
+      events: [
+        { type: "created", message: "Order placed", hoursAfter: 0 },
+        { type: "paid", message: "Payment confirmed (demo)", hoursAfter: 1 },
+        { type: "fulfilled", message: "Shipped via Mondial Relay", hoursAfter: 24 },
+      ],
+      return: {
+        reason: "Article endommagé à la réception",
+        status: "approved",
+      },
+      invoiceNumber: "LUNA-2026-0004",
+    },
+    {
+      publicId: "ord_seed_luna_cancelled01",
+      email: "lea.dubois@example.com",
+      status: "cancelled",
+      lines: [{ sku: "LUNA-BRA-003", qty: 1 }],
+      shippingCents: 490,
+      methodId: colissimo?.id,
+      daysAgo: 3,
+      events: [
+        { type: "created", message: "Order placed", hoursAfter: 0 },
+        {
+          type: "cancelled",
+          message: "Cancelled by customer before payment",
+          hoursAfter: 4,
+        },
+      ],
+    },
+    {
+      publicId: "ord_seed_luna_refunded01",
+      email: "sofia.nguyen@example.com",
+      status: "refunded",
+      lines: [{ sku: "LUNA-ORE-002", qty: 1 }],
+      shippingCents: 490,
+      methodId: colissimo?.id,
+      carrier: "Colissimo",
+      trackingNumber: "8R55566677788",
+      daysAgo: 25,
+      events: [
+        { type: "created", message: "Order placed", hoursAfter: 0 },
+        { type: "paid", message: "Payment confirmed (demo)", hoursAfter: 1 },
+        { type: "fulfilled", message: "Shipped", hoursAfter: 36 },
+        {
+          type: "refunded",
+          message: "Refund issued after approved return (demo — no Stripe)",
+          hoursAfter: 200,
+        },
+      ],
+      return: {
+        reason: "Allergie au métal — remboursement",
+        status: "approved",
+      },
+      invoiceNumber: "LUNA-2026-0005",
+    },
+  ];
+
+  // Resolve SKUs that may not exist (catalog slugs vary) — fall back to first products
+  const fallbackSkus = shopProducts.slice(0, 4).map((p) => p.sku);
+  const resolveSku = (sku: string) => {
+    if (bySku.has(sku)) return sku;
+    return fallbackSkus[0] ?? sku;
+  };
+
+  let ordersCreated = 0;
+  for (const demo of DEMO_ORDERS) {
+    const [existingOrder] = await db
+      .select()
+      .from(storeOrder)
+      .where(eq(storeOrder.publicId, demo.publicId))
+      .limit(1);
+    if (existingOrder) continue;
+
+    const lines = demo.lines.map((l) => {
+      const sku = resolveSku(l.sku);
+      const p = bySku.get(sku) ?? shopProducts[0]!;
+      return { product: p, qty: l.qty, sku: p.sku, name: p.name, unit: p.priceCents };
+    });
+    const subtotal = lines.reduce((s, l) => s + l.unit * l.qty, 0);
+    let discount = demo.discountCents ?? 0;
+    if (demo.couponCode === "LUNA10" && discount === 0) {
+      discount = Math.round(subtotal * 0.1);
+    }
+    const shipping = demo.shippingCents;
+    const tax = Math.round((subtotal - discount) * 0.2);
+    const total = subtotal - discount + shipping + tax;
+    const createdAt = new Date(Date.now() - demo.daysAgo * 24 * 60 * 60 * 1000);
+    const address = addrFor(demo.email);
+
+    const [order] = await db
+      .insert(storeOrder)
+      .values({
+        publicId: demo.publicId,
+        organizationId: org!.id,
+        siteId: shop!.id,
+        customerId: customerIds.get(demo.email),
+        email: demo.email,
+        status: demo.status,
+        currency: "eur",
+        subtotalCents: subtotal,
+        discountCents: discount,
+        shippingCents: shipping,
+        taxCents: tax,
+        totalCents: total,
+        couponId: demo.couponCode === "LUNA10" ? demoCouponId : undefined,
+        couponCode: demo.couponCode,
+        shippingMethodId: demo.methodId,
+        shippingAddressJson: address,
+        billingAddressJson: address,
+        carrier: demo.carrier,
+        trackingNumber: demo.trackingNumber,
+        paymentProvider: demo.status === "pending_payment" ? null : "demo",
+        paidAt:
+          demo.status === "paid" ||
+          demo.status === "fulfilled" ||
+          demo.status === "refunded"
+            ? new Date(createdAt.getTime() + 60 * 60 * 1000)
+            : null,
+        fulfilledAt:
+          demo.status === "fulfilled" || demo.status === "refunded"
+            ? new Date(createdAt.getTime() + 28 * 60 * 60 * 1000)
+            : null,
+        cancelledAt:
+          demo.status === "cancelled"
+            ? new Date(createdAt.getTime() + 4 * 60 * 60 * 1000)
+            : null,
+        createdAt,
+        updatedAt: createdAt,
+      })
+      .returning();
+
+    for (const line of lines) {
+      await db.insert(storeOrderItem).values({
+        orderId: order!.id,
+        productId: line.product.id,
+        sku: line.sku,
+        name: line.name,
+        quantity: line.qty,
+        unitPriceCents: line.unit,
+        taxClass: line.product.taxClass ?? "standard",
+      });
+    }
+
+    for (const ev of demo.events) {
+      await db.insert(orderEvent).values({
+        orderId: order!.id,
+        type: ev.type,
+        message: ev.message,
+        createdAt: new Date(createdAt.getTime() + ev.hoursAfter * 60 * 60 * 1000),
+      });
+    }
+
+    if (demo.return) {
+      await db.insert(returnRequest).values({
+        organizationId: org!.id,
+        siteId: shop!.id,
+        orderId: order!.id,
+        reason: demo.return.reason,
+        status: demo.return.status,
+        itemsJson: lines.map((l) => ({
+          sku: l.sku,
+          name: l.name,
+          quantity: l.qty,
+        })),
+        createdAt: new Date(createdAt.getTime() + 5 * 24 * 60 * 60 * 1000),
+        updatedAt: new Date(createdAt.getTime() + 5 * 24 * 60 * 60 * 1000),
+      });
+    }
+
+    if (
+      demo.invoiceNumber &&
+      (demo.status === "paid" ||
+        demo.status === "fulfilled" ||
+        demo.status === "refunded")
+    ) {
+      const [existingInv] = await db
+        .select()
+        .from(invoice)
+        .where(
+          and(
+            eq(invoice.organizationId, org!.id),
+            eq(invoice.number, demo.invoiceNumber),
+          ),
+        )
+        .limit(1);
+      if (!existingInv) {
+        await db.insert(invoice).values({
+          organizationId: org!.id,
+          siteId: shop!.id,
+          orderId: order!.id,
+          number: demo.invoiceNumber,
+          kind: "invoice",
+          issuedAt: new Date(createdAt.getTime() + 2 * 60 * 60 * 1000),
+          totalsJson: {
+            subtotalCents: subtotal,
+            discountCents: discount,
+            shippingCents: shipping,
+            taxCents: tax,
+            totalCents: total,
+            currency: "eur",
+          },
+          pdfReady: true,
+        });
+      }
+    }
+
+    ordersCreated += 1;
+  }
+  console.log(`Demo orders created this run: ${ordersCreated}`);
+
   console.log("");
   console.log("=== Luna Bijoux seed complete ===");
   console.log(`Products upserted: ${upserted}`);
@@ -734,6 +1213,10 @@ async function main() {
   console.log(`  email:    ${SEED_EMAIL}`);
   console.log(`  password: ${SEED_PASSWORD}`);
   console.log(`  URL:      http://localhost:5174/sign-in`);
+  console.log("");
+  console.log("Demo commerce (Orders / Returns / tracking):");
+  console.log("  pending · paid · fulfilled+tracking · return requested/approved · cancelled · refunded");
+  console.log("  Coupon: LUNA10 (−10%)");
   console.log("");
   console.log("Storefront (add to repo .env then restart web):");
   console.log(`  WEB_DEV_SITE_ID=${shop!.id}`);
