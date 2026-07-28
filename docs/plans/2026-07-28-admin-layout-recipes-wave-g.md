@@ -50,7 +50,7 @@ Deferred: Order detail status copy, Sites mild i18n.
 ## G4 — Verify
 
 - [x] Typecheck admin
-- [ ] Push `dev` + Admin-Dev redeploy
+- [x] Push `dev` + Admin-Dev redeploy
 - [ ] Dev Admin smoke: Shipping + one R1 peer + Orders + Products
 - [ ] Tick mvp §2.1 density when R1 family green; tick Shipping when human OK
 
