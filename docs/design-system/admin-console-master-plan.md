@@ -145,11 +145,11 @@ Same **operating logic** within each recipe family — not “every page is Spli
 
 | Sub-wave | Work | Status |
 |----------|------|--------|
-| G0 | Recipes SSOT + Storybook matrix + master-plan link | Doing |
-| G1 | R1 polish (Coupons, Categories, Menus, Banners, Media, Members) | Todo |
-| G2 | Mild polish R3–R7 (i18n / eyebrow only) | Todo |
-| G3 | Returns secondary-ops clarity | Todo |
-| G4 | Dev smoke + checklist density tick | Todo |
+| G0 | Recipes SSOT + Storybook matrix + master-plan link | **Done** |
+| G1 | R1 polish (Coupons, Categories, Menus, Banners, Media, Members) | **Done** (`2c43d9f`) |
+| G2 | Mild polish R3–R7 (i18n / eyebrow only) | **Done** (`14f644a`) |
+| G3 | Returns secondary-ops clarity | **Done** (`14f644a`) |
+| G4 | Dev smoke + checklist density tick | Pending (human) |
 
 **Do not** migrate Products/Pages to R1 or Order detail to formAside.
 
