@@ -1,5 +1,6 @@
 import {
   Alert,
+  Badge,
   Button,
   EmptyState,
   FilterBar,
@@ -19,7 +20,7 @@ import {
   TableSkeleton,
 } from "@mestryx/ui";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { apiFetch } from "../lib/api";
 import { useSelectedOrgId } from "../lib/workspace";
@@ -96,12 +97,6 @@ export function ShippingPage() {
       ),
   });
 
-  useEffect(() => {
-    if (!selectedZoneId && zones.data?.zones?.[0]?.id) {
-      setSelectedZoneId(zones.data.zones[0].id);
-    }
-  }, [zones.data, selectedZoneId]);
-
   const createZone = useMutation({
     mutationFn: () =>
       apiFetch<{ zone: Zone }>("/v1/shipping-zones", {
@@ -167,7 +162,22 @@ export function ShippingPage() {
     onError: (err: Error) => setError(err.message),
   });
 
-  const zoneRows = zones.data?.zones ?? [];
+  const allZones = zones.data?.zones;
+  const zoneRows = useMemo(() => {
+    const list = allZones ?? [];
+    if (!siteId) return list;
+    return list.filter((z) => z.siteId === siteId || z.siteId == null);
+  }, [allZones, siteId]);
+
+  useEffect(() => {
+    if (zoneRows.length === 0) {
+      if (selectedZoneId) setSelectedZoneId("");
+      return;
+    }
+    if (!zoneRows.some((z) => z.id === selectedZoneId)) {
+      setSelectedZoneId(zoneRows[0]!.id);
+    }
+  }, [zoneRows, selectedZoneId]);
 
   return (
     <PageContent maxWidth="full">
@@ -180,7 +190,7 @@ export function ShippingPage() {
         {error ? <Alert tone="error">{error}</Alert> : null}
 
         <FilterBar>
-          <div className="min-w-[12rem]">
+          <div className="flex min-w-[12rem] flex-col gap-1.5 sm:min-w-[14rem]">
             <Label htmlFor="ship-site">{t("product.publishSite")}</Label>
             <Select
               id="ship-site"
@@ -224,12 +234,18 @@ export function ShippingPage() {
                   {zoneRows.map((z) => (
                     <li key={z.id} className="space-y-2 px-4 py-3 text-sm">
                       <div className="flex items-center justify-between gap-3">
-                        <span className="min-w-0">
-                          <strong>{z.name}</strong>{" "}
-                          <Muted as="span" className="text-xs">
-                            {z.countries.join(", ")}
-                          </Muted>
-                        </span>
+                        <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1">
+                          <strong>{z.name}</strong>
+                          {z.countries.map((code) => (
+                            <Badge
+                              key={code}
+                              tone="muted"
+                              className="font-mono text-[10px] uppercase"
+                            >
+                              {code}
+                            </Badge>
+                          ))}
+                        </div>
                         <Button
                           type="button"
                           variant="ghost"
