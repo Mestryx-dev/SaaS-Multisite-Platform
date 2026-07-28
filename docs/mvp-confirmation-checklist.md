@@ -101,7 +101,7 @@ Smoke as org admin on Luna / demo org.
 - [x] Sign in / sign up hierarchy clear; errors readable
 - [x] Sidebar + top bar + **Cmd+K** routes to main pages
 - [x] Org / workspace switcher clear — centered `topBarCenter` (Luna) after unified header polish 2026-07-25
-- [ ] Density: list pages use PageContent + FilterBar + TableFrame (not FormPanel-as-filters)
+- [ ] Density: list pages use PageContent + FilterBar + TableFrame (not FormPanel-as-filters) — recipes R1–R8 in [admin-console-layout-recipes.md](./design-system/admin-console-layout-recipes.md); Shipping R1 SoT done; R1 family polish (G1) pending
 
 ### 2.2 Core ops pages
 
@@ -112,7 +112,7 @@ Smoke as org admin on Luna / demo org.
 - [ ] Orders list: filters, URL sync, density, selection / bulk bar (CSV export; cancel stub OK)
 - [ ] Order detail: mark-paid / cancel path understood (+ toast feedback)
 - [ ] Pages / Menus / Media / Banners — empty CTAs where applicable
-- [ ] Shipping zones
+- [ ] Shipping zones — R1 SplitLayout SoT on `dev` (2026-07-28); human smoke pending
 - [ ] Coupons
 - [ ] Members / invites (+ toast on invite)
 - [ ] Billing / modules / reports / returns (smoke)

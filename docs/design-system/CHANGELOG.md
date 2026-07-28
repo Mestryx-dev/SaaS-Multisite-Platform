@@ -2,6 +2,13 @@
 
 Traceability for FB-037 / design-system milestones. Newest first.
 
+## 2026-07-28 (Admin layout recipes — Wave G)
+
+- **SSOT:** [admin-console-layout-recipes.md](./admin-console-layout-recipes.md) — recipes R1–R8; page ↔ recipe matrix; agent rules.
+- **Shipping R1 SoT:** SplitLayout `formAside`, unified FormPanel, site filter, method badges (admin `dev`).
+- **Master plan:** Wave G opened (G0 docs → G1 R1 polish → G2 mild → G3 Returns → G4 smoke).
+- **Principle:** same operating logic within a recipe family — not “every page is SplitLayout”.
+
 ## 2026-07-27 (Platform Obsidian Soft)
 
 - **Tokens:** platform dark → Obsidian Soft (graphite `#19191c`, lilac `#a78bfa`); `platform-light` companion retinted.

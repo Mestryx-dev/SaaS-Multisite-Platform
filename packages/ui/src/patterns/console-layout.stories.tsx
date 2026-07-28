@@ -200,3 +200,81 @@ export const ListDetail: Story = {
     </PageContent>
   ),
 };
+
+/** Recipe IDs R1–R8 — SSOT docs/design-system/admin-console-layout-recipes.md */
+export const RecipeMatrix: Story = {
+  name: "Recipes matrix R1–R8",
+  render: () => (
+    <PageContent maxWidth="full" className="p-4 md:p-6">
+      <Stack gap="md">
+        <PageHeader
+          eyebrow="Platform"
+          title="Console layout recipes"
+          description="Homogeneous operating logic within each family — not every page is SplitLayout."
+        />
+        <TableFrame>
+          <Table>
+            <Thead>
+              <Tr>
+                <Th>ID</Th>
+                <Th>Name</Th>
+                <Th>Use when</Th>
+                <Th>Example pages</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              <Tr>
+                <Td>R1</Td>
+                <Td>formAside</Td>
+                <Td>List + simple create aside</Td>
+                <Td>Shipping, Categories, Coupons…</Td>
+              </Tr>
+              <Tr>
+                <Td>R2</Td>
+                <Td>listDetail</Td>
+                <Td>Select then edit settings</Td>
+                <Td>Sites</Td>
+              </Tr>
+              <Tr>
+                <Td>R3</Td>
+                <Td>listOnly</Td>
+                <Td>Ops table, no create aside</Td>
+                <Td>Orders</Td>
+              </Tr>
+              <Tr>
+                <Td>R4</Td>
+                <Td>listOverlay</Td>
+                <Td>Heavy create/edit Dialog/Sheet</Td>
+                <Td>Products, Pages</Td>
+              </Tr>
+              <Tr>
+                <Td>R5</Td>
+                <Td>detailOps</Td>
+                <Td>Entity lifecycle actions</Td>
+                <Td>Order detail</Td>
+              </Tr>
+              <Tr>
+                <Td>R6</Td>
+                <Td>dashboard</Td>
+                <Td>KPIs / charts</Td>
+                <Td>Dashboard, Reports</Td>
+              </Tr>
+              <Tr>
+                <Td>R7</Td>
+                <Td>settings</Td>
+                <Td>Single settings surface</Td>
+                <Td>Modules, Billing</Td>
+              </Tr>
+              <Tr>
+                <Td>R8</Td>
+                <Td>auth</Td>
+                <Td>Unauthenticated FormPanel</Td>
+                <Td>Sign-in / Sign-up / Invite</Td>
+              </Tr>
+            </Tbody>
+          </Table>
+        </TableFrame>
+      </Stack>
+    </PageContent>
+  ),
+};

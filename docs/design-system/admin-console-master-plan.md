@@ -1,8 +1,8 @@
 # Admin console — master plan
 
-**Status:** Waves A–D executed (2026-07-20). **UX polish wave** shipped 2026-07-22 (empties, bulk CSV, KPI bullets, toasts, a11y/motion). **Dokploy cleanliness wave** shipped 2026-07-22 (flat shell nav, ListPanel list template, surface contrast). **Fluid console width** shipped 2026-07-24 (PageContent full, SplitLayout `listDetail`, FormPanel xl). **Unified AppShell header** shipped 2026-07-25 (full-bleed top bar; sidebar below). Wave E glass deferred. Wave F (F-01) signed 2026-07-25.  
-**Last updated:** 2026-07-25  
-**Related:** [ux-ui-harmony-checklist.md](./ux-ui-harmony-checklist.md) · [DESIGN.md](../../DESIGN.md) · [PRODUCT.md](../../PRODUCT.md) · [motion-guidelines.md](./motion-guidelines.md)
+**Status:** Waves A–D executed (2026-07-20). **UX polish wave** shipped 2026-07-22. **Dokploy cleanliness** shipped 2026-07-22. **Fluid console width** shipped 2026-07-24. **Unified AppShell header** shipped 2026-07-25. Wave E glass deferred. Wave F (F-01) signed 2026-07-25. **Wave G — layout recipe homogeneity** opened 2026-07-28 (R1 SoT Shipping; see [admin-console-layout-recipes.md](./admin-console-layout-recipes.md)).  
+**Last updated:** 2026-07-28  
+**Related:** [admin-console-layout-recipes.md](./admin-console-layout-recipes.md) · [ux-ui-harmony-checklist.md](./ux-ui-harmony-checklist.md) · [DESIGN.md](../../DESIGN.md) · [PRODUCT.md](../../PRODUCT.md) · [motion-guidelines.md](./motion-guidelines.md)
 
 Full console roadmap for mestryx-platform admin. Nothing is dropped: items are ordered by dependency. Cursor plan mirror: `.cursor/plans/admin_console_density_ea0b142b.plan.md` (name retained historically).
 
@@ -20,6 +20,7 @@ Professional admin console end-to-end: density/layout → SaaS 2026 table UX →
 | **D** | Nav polish + auth redesign | Should | A | 2–4 |
 | **E** | Platform glass (chrome only) | Maybe | A + DESIGN.md amend + human OK | 0–2 |
 | **F** | F-01 brand visuals human sign-off | Must (staging) | Coherent UI (A+D min) | Human |
+| **G** | Layout recipe homogeneity | Must | A + Shipping SoT | 3–4 |
 
 ```mermaid
 flowchart TD
@@ -31,7 +32,9 @@ flowchart TD
   A --> F[WaveF_F01]
   C --> F
   E --> F
+  A --> G[WaveG_LayoutRecipes]
   F --> Staging[FB044_Staging]
+  G --> Staging
 ```
 
 ## Decision matrix
@@ -49,6 +52,7 @@ flowchart TD
 | Auth redesign (sign-in / up / invite) | Should | D | AuthShell |
 | Glass on admin | Maybe | E | Today DESIGN.md = opaque dense; amend only if Mestryx wants chrome blur after A |
 | F-01 brand sign-off | Must | F | Blocks FB-044 staging |
+| Homogeneous recipes (R1–R8) + R1 polish | Must | G | [layout-recipes](./admin-console-layout-recipes.md) |
 | RHF/zod, Calendar, Slider | Park | — | G-11/13/14 until needed |
 
 ### Glass (“if needed”)
@@ -130,7 +134,24 @@ G-11 Form RHF/zod, G-13 Calendar, G-14 Slider, B-A15 card-nav, drop-in full Stud
 | UX polish (post A–D) | **Done** (2026-07-22) — EmptyState CTAs, toasts, focus/a11y |
 | Dokploy cleanliness | **Done** (2026-07-22) — flat nav, ListPanel lists, surface contrast, status badges |
 | E Platform glass | **Deferred** — opaque dense remains; needs DESIGN.md amend + human OK |
-| F F-01 sign-off | **Ready for human** — staging gate |
+| F F-01 sign-off | **Signed** 2026-07-25 — staging gate brand OK |
+| G Layout recipes | **In progress** — SSOT [admin-console-layout-recipes.md](./admin-console-layout-recipes.md); Shipping R1 SoT done; G1–G3 polish pending |
+
+## Wave G — Layout recipe homogeneity
+
+**SSOT:** [admin-console-layout-recipes.md](./admin-console-layout-recipes.md)
+
+Same **operating logic** within each recipe family — not “every page is SplitLayout”.
+
+| Sub-wave | Work | Status |
+|----------|------|--------|
+| G0 | Recipes SSOT + Storybook matrix + master-plan link | Doing |
+| G1 | R1 polish (Coupons, Categories, Menus, Banners, Media, Members) | Todo |
+| G2 | Mild polish R3–R7 (i18n / eyebrow only) | Todo |
+| G3 | Returns secondary-ops clarity | Todo |
+| G4 | Dev smoke + checklist density tick | Todo |
+
+**Do not** migrate Products/Pages to R1 or Order detail to formAside.
 
 ## Loading system (admin)
 

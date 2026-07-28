@@ -1,7 +1,7 @@
 # Design system — Mestryx Multisite Platform
 
-**Last updated:** 2026-07-19  
-**Status:** FB-037 **done** + **visual correction** (fonts loaded, shadcn-style atoms, 28 Storybook stories).
+**Last updated:** 2026-07-28  
+**Status:** FB-037 **done** + visual correction; admin console Waves A–F landed; **Wave G** layout recipes SSOT opened.
 
 This folder is the **working reference** for the Mestryx design system. Agents read here before inventing UI process or stack choices. Orchestration skill: **`mestryx-design-system`**.
 
@@ -21,7 +21,8 @@ This folder is the **working reference** for the Mestryx design system. Agents r
 | **Catalog** | [component-directory.md](./component-directory.md) | Atomic layers + platform vs storefront inventory |
 | **Checklist** | [ux-ui-harmony-checklist.md](./ux-ui-harmony-checklist.md) | Brand/UX wave: verify · correct · polish · manage (pages + Studio harvest) |
 | **Reference** | [i18n.md](./i18n.md) | Locale catalogs, key naming, UI props-only rule, parity CI |
-| **Roadmap** | [admin-console-master-plan.md](./admin-console-master-plan.md) | Admin Waves A–F: density → table UX → charts/mobile → shell/auth → optional glass → F-01 |
+| **Roadmap** | [admin-console-master-plan.md](./admin-console-master-plan.md) | Admin Waves A–G: density → table UX → … → F-01 → **layout recipes** |
+| **Recipes** | [admin-console-layout-recipes.md](./admin-console-layout-recipes.md) | R1–R8 operating logic; page matrix; Wave G polish |
 | **Log** | [CHANGELOG.md](./CHANGELOG.md) | Traceability bullets per milestone |
 | **Reference** | [`packages/tokens`](../../packages/tokens) | Dual-theme CSS variables (`platform` / `storefront`) |
 | **Reference** | [`packages/ui`](../../packages/ui) | Primitives + Storybook |

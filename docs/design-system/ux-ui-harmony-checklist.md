@@ -1,6 +1,6 @@
 # UX / UI harmony checklist — mestryx-platform
 
-**Status:** Done — F-01 human brand sign-off 2026-07-25 (staging gate FB-044 unblocked on brand)  
+**Status:** Done — F-01 human brand sign-off 2026-07-25 (staging gate FB-044 unblocked on brand). **Wave G** layout recipes: SSOT [admin-console-layout-recipes.md](./admin-console-layout-recipes.md); R1 polish G1 pending.  
 **Created:** 2026-07-19  
 **SSOT for this wave:** this file. Update rows as work lands; keep [component-directory.md](./component-directory.md) in sync for shipped atoms.
 
@@ -220,7 +220,7 @@ File root: `apps/admin/src/pages/`.
 | AD-12 | OrdersPage | `/orders` | ☑ | ☑ | ☑ | ☑ | done | skeleton pass: FilterBar + Badge |
 | AD-13 | OrderDetailPage | `/orders/:id` | ☑ | ☑ | ☑ | ☑ | done | Timeline |
 | AD-14 | ReturnsPage | `/returns` | ☑ | ☑ | ☑ | ☑ | done | + abandoned carts card |
-| AD-15 | ShippingPage | `/shipping` | ☑ | ☑ | ☑ | ☑ | done | |
+| AD-15 | ShippingPage | `/shipping` | ☑ | ☑ | ☑ | ☑ | done | **R1 SoT** 2026-07-28 — SplitLayout formAside; see [layout-recipes](./admin-console-layout-recipes.md) |
 | AD-16 | CouponsPage | `/coupons` | ☑ | ☑ | ☑ | ☑ | done | |
 | AD-17 | BannersPage | `/banners` | ☑ | ☑ | ☑ | ☑ | done | |
 | AD-18 | ModulesPage | `/modules` | ☑ | ☑ | ☑ | ☑ | done | Entitlements |
