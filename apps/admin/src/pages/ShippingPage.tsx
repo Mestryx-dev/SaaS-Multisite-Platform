@@ -6,14 +6,17 @@ import {
   FormActions,
   FormField,
   FormPanel,
+  FormRow,
   Input,
   Label,
+  Muted,
   PageContent,
   PageHeader,
   Select,
-  TableSkeleton,
+  SplitLayout,
   Stack,
   TableFrame,
+  TableSkeleton,
 } from "@mestryx/ui";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
@@ -170,8 +173,9 @@ export function ShippingPage() {
     <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
+          eyebrow={t("nav.section.commerce")}
           title={t("nav.shipping")}
-          description="Zones and rates."
+          description={t("shipping.description")}
         />
         {error ? <Alert tone="error">{error}</Alert> : null}
 
@@ -192,130 +196,187 @@ export function ShippingPage() {
           </div>
         </FilterBar>
 
-        {zones.isLoading ? (
-          <TableFrame>
-            <TableSkeleton />
-          </TableFrame>
-        ) : zoneRows.length === 0 ? (
-          <EmptyState>{t("shipping.empty")}</EmptyState>
-        ) : (
-          <TableFrame>
-            <ul className="divide-y divide-[var(--border)]">
-              {zoneRows.map((z) => (
-                <li key={z.id} className="space-y-2 px-4 py-3 text-sm">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span>
-                      <strong>{z.name}</strong> — {z.countries.join(", ")}
-                    </span>
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => deleteZone.mutate(z.id)}
-                    >
-                      {t("shipping.deleteZone")}
-                    </Button>
-                  </div>
-                  <ul className="space-y-1 pl-2">
-                    {z.methods.map((m) => (
-                      <li
-                        key={m.id}
-                        className="flex flex-wrap items-center gap-2"
-                      >
-                        {m.name}: {formatMoney(m.priceCents, m.currency, i18n.language)}{" "}
+        <SplitLayout
+          primary={
+            zones.isLoading ? (
+              <TableFrame>
+                <TableSkeleton />
+              </TableFrame>
+            ) : zoneRows.length === 0 ? (
+              <EmptyState
+                title={t("shipping.empty")}
+                description={t("shipping.emptyHint")}
+                action={
+                  <Button
+                    type="button"
+                    size="sm"
+                    onClick={() =>
+                      document.getElementById("zone-name")?.focus()
+                    }
+                  >
+                    {t("shipping.createZone")}
+                  </Button>
+                }
+              />
+            ) : (
+              <TableFrame>
+                <ul className="divide-y divide-[var(--border)]">
+                  {zoneRows.map((z) => (
+                    <li key={z.id} className="space-y-2 px-4 py-3 text-sm">
+                      <div className="flex items-center justify-between gap-3">
+                        <span className="min-w-0">
+                          <strong>{z.name}</strong>{" "}
+                          <Muted as="span" className="text-xs">
+                            {z.countries.join(", ")}
+                          </Muted>
+                        </span>
                         <Button
                           type="button"
                           variant="ghost"
                           size="sm"
-                          onClick={() => deleteMethod.mutate(m.id)}
+                          className="shrink-0"
+                          onClick={() => deleteZone.mutate(z.id)}
                         >
-                          {t("shipping.deleteMethod")}
+                          {t("shipping.deleteZone")}
                         </Button>
-                      </li>
+                      </div>
+                      {z.methods.length > 0 ? (
+                        <ul className="space-y-1 border-l border-[var(--border)] pl-3">
+                          {z.methods.map((m) => (
+                            <li
+                              key={m.id}
+                              className="grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-2"
+                            >
+                              <span className="truncate">{m.name}</span>
+                              <span className="tabular-nums text-[var(--muted-foreground)]">
+                                {formatMoney(
+                                  m.priceCents,
+                                  m.currency,
+                                  i18n.language,
+                                )}
+                              </span>
+                              <Button
+                                type="button"
+                                variant="ghost"
+                                size="sm"
+                                className="shrink-0"
+                                onClick={() => deleteMethod.mutate(m.id)}
+                              >
+                                {t("shipping.deleteMethod")}
+                              </Button>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <Muted as="p" className="pl-3 text-xs">
+                          {t("shipping.noMethods")}
+                        </Muted>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </TableFrame>
+            )
+          }
+          aside={
+            <FormPanel title={t("shipping.createZone")} width="full">
+              <FormRow cols={2}>
+                <FormField
+                  label={t("shipping.zoneName")}
+                  htmlFor="zone-name"
+                  size="full"
+                >
+                  <Input
+                    id="zone-name"
+                    value={zoneName}
+                    onChange={(e) => setZoneName(e.target.value)}
+                  />
+                </FormField>
+                <FormField
+                  label={t("shipping.countries")}
+                  htmlFor="zone-countries"
+                  size="full"
+                >
+                  <Input
+                    id="zone-countries"
+                    className="font-mono text-xs"
+                    value={countries}
+                    onChange={(e) => setCountries(e.target.value)}
+                    placeholder="FR,BE"
+                  />
+                </FormField>
+              </FormRow>
+              <FormActions>
+                <Button
+                  type="button"
+                  size="sm"
+                  onClick={() => createZone.mutate()}
+                  disabled={!selectedOrgId || createZone.isPending}
+                >
+                  {t("shipping.createZone")}
+                </Button>
+              </FormActions>
+
+              <div className="mt-4 space-y-3 border-t border-[var(--border)] pt-4">
+                <h3 className="text-sm font-medium text-[var(--foreground)]">
+                  {t("shipping.addMethod")}
+                </h3>
+                <FormField
+                  label={t("shipping.zone")}
+                  htmlFor="method-zone"
+                  size="full"
+                >
+                  <Select
+                    id="method-zone"
+                    value={selectedZoneId}
+                    onChange={(e) => setSelectedZoneId(e.target.value)}
+                    disabled={zoneRows.length === 0}
+                  >
+                    {(zones.data?.zones ?? []).map((z) => (
+                      <option key={z.id} value={z.id}>
+                        {z.name}
+                      </option>
                     ))}
-                  </ul>
-                </li>
-              ))}
-            </ul>
-          </TableFrame>
-        )}
-
-        <FormPanel title={t("shipping.createZone")} width="lg">
-          <FormField label={t("shipping.zoneName")} htmlFor="zone-name" size="md">
-            <Input
-              id="zone-name"
-              value={zoneName}
-              onChange={(e) => setZoneName(e.target.value)}
-            />
-          </FormField>
-          <FormField
-            label={t("shipping.countries")}
-            htmlFor="zone-countries"
-            size="sm"
-          >
-            <Input
-              id="zone-countries"
-              className="font-mono text-xs"
-              value={countries}
-              onChange={(e) => setCountries(e.target.value)}
-              placeholder="FR,BE"
-            />
-          </FormField>
-          <FormActions>
-            <Button
-              type="button"
-              size="sm"
-              onClick={() => createZone.mutate()}
-              disabled={!selectedOrgId || createZone.isPending}
-            >
-              {t("shipping.createZone")}
-            </Button>
-          </FormActions>
-        </FormPanel>
-
-        <FormPanel title={t("shipping.addMethod")} width="md">
-          <FormField label={t("shipping.zone")} htmlFor="method-zone" size="md">
-            <Select
-              id="method-zone"
-              value={selectedZoneId}
-              onChange={(e) => setSelectedZoneId(e.target.value)}
-            >
-              {(zones.data?.zones ?? []).map((z) => (
-                <option key={z.id} value={z.id}>
-                  {z.name}
-                </option>
-              ))}
-            </Select>
-          </FormField>
-          <FormField
-            label={t("shipping.methodName")}
-            htmlFor="method-name"
-            size="md"
-          >
-            <Input
-              id="method-name"
-              value={methodName}
-              onChange={(e) => setMethodName(e.target.value)}
-            />
-          </FormField>
-          <FormField label={t("shipping.price")} htmlFor="method-price" size="sm">
-            <Input
-              id="method-price"
-              value={methodPrice}
-              onChange={(e) => setMethodPrice(e.target.value)}
-            />
-          </FormField>
-          <FormActions>
-            <Button
-              type="button"
-              size="sm"
-              onClick={() => createMethod.mutate()}
-              disabled={!selectedZoneId || createMethod.isPending}
-            >
-              {t("shipping.createMethod")}
-            </Button>
-          </FormActions>
-        </FormPanel>
+                  </Select>
+                </FormField>
+                <FormRow cols={2}>
+                  <FormField
+                    label={t("shipping.methodName")}
+                    htmlFor="method-name"
+                    size="full"
+                  >
+                    <Input
+                      id="method-name"
+                      value={methodName}
+                      onChange={(e) => setMethodName(e.target.value)}
+                    />
+                  </FormField>
+                  <FormField
+                    label={t("shipping.price")}
+                    htmlFor="method-price"
+                    size="full"
+                  >
+                    <Input
+                      id="method-price"
+                      value={methodPrice}
+                      onChange={(e) => setMethodPrice(e.target.value)}
+                    />
+                  </FormField>
+                </FormRow>
+                <FormActions>
+                  <Button
+                    type="button"
+                    size="sm"
+                    onClick={() => createMethod.mutate()}
+                    disabled={!selectedZoneId || createMethod.isPending}
+                  >
+                    {t("shipping.createMethod")}
+                  </Button>
+                </FormActions>
+              </div>
+            </FormPanel>
+          }
+        />
       </Stack>
     </PageContent>
   );
