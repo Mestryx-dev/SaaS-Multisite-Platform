@@ -263,6 +263,8 @@
   "shipping.price": "Prix (EUR)",
   "shipping.createMethod": "Créer le mode",
   "shipping.deleteMethod": "Supprimer",
+  "shipping.methodActive": "Actif",
+  "shipping.methodInactive": "Inactif",
   "page.list": "Pages",
   "page.empty": "Aucune page pour l'instant.",
   "page.create": "Créer une page",

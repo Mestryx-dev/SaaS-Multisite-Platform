@@ -261,9 +261,17 @@ export function ShippingPage() {
                           {z.methods.map((m) => (
                             <li
                               key={m.id}
-                              className="grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-2"
+                              className="grid grid-cols-[minmax(0,1fr)_auto_auto_auto] items-center gap-2"
                             >
                               <span className="truncate">{m.name}</span>
+                              <Badge
+                                tone={m.active ? "success" : "muted"}
+                                className="shrink-0"
+                              >
+                                {m.active
+                                  ? t("shipping.methodActive")
+                                  : t("shipping.methodInactive")}
+                              </Badge>
                               <span className="tabular-nums text-[var(--muted-foreground)]">
                                 {formatMoney(
                                   m.priceCents,
