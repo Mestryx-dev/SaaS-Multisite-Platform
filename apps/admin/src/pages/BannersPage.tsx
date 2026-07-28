@@ -1,5 +1,6 @@
 import {
   Alert,
+  Badge,
   Button,
   EmptyState,
   FilterBar,
@@ -140,8 +141,9 @@ export function BannersPage() {
     <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
+          eyebrow={t("nav.section.content")}
           title={t("nav.banners")}
-          description="Storefront promo banners."
+          description={t("banner.description")}
         />
 
         <FilterBar>
@@ -168,25 +170,42 @@ export function BannersPage() {
                 <TableSkeleton />
               </TableFrame>
             ) : rows.length === 0 ? (
-              <EmptyState>{t("banner.empty")}</EmptyState>
+              <EmptyState
+                title={t("banner.empty")}
+                description={t("banner.emptyHint")}
+                action={
+                  <Button
+                    type="button"
+                    size="sm"
+                    onClick={() => document.getElementById("title")?.focus()}
+                  >
+                    {t("banner.create")}
+                  </Button>
+                }
+              />
             ) : (
               <TableFrame>
                 <ul className="divide-y divide-[var(--border)]">
                   {rows.map((b) => (
                     <li
                       key={b.id}
-                      className="flex flex-wrap items-center justify-between gap-2 px-4 py-2.5 text-sm"
+                      className="flex items-center justify-between gap-3 px-4 py-2.5 text-sm"
                     >
-                      <span>
+                      <span className="min-w-0">
                         <strong>{b.title}</strong>
                         {b.subtitle ? ` — ${b.subtitle}` : ""}{" "}
-                        <code>{b.active ? "active" : "off"}</code>
+                        <Badge>
+                          {b.active
+                            ? t("banner.active")
+                            : t("banner.inactive")}
+                        </Badge>
                       </span>
-                      <div className="flex gap-2">
+                      <div className="flex shrink-0 gap-2">
                         <Button
                           type="button"
                           variant="ghost"
                           size="sm"
+                          className="shrink-0"
                           onClick={() => toggle.mutate(b)}
                         >
                           {b.active
@@ -197,6 +216,7 @@ export function BannersPage() {
                           type="button"
                           variant="ghost"
                           size="sm"
+                          className="shrink-0"
                           onClick={() => remove.mutate(b.id)}
                         >
                           {t("banner.delete")}

@@ -101,8 +101,9 @@ export function MediaLibraryPage() {
     <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
+          eyebrow={t("nav.section.content")}
           title={t("nav.media")}
-          description="Upload and reuse assets."
+          description={t("media.description")}
         />
 
         <FilterBar>
@@ -113,7 +114,7 @@ export function MediaLibraryPage() {
               value={siteId}
               onChange={(e) => setSiteId(e.target.value)}
             >
-              <option value="">— org-wide —</option>
+              <option value="">{t("media.orgWide")}</option>
               {(sites.data?.sites ?? []).map((s) => (
                 <option key={s.id} value={s.id}>
                   {s.name}
@@ -132,7 +133,7 @@ export function MediaLibraryPage() {
             ) : rows.length === 0 ? (
               <EmptyState
                 title={t("media.empty")}
-                description="Register an asset URL to reuse across pages and products."
+                description={t("media.emptyHint")}
                 action={
                   <Button
                     type="button"

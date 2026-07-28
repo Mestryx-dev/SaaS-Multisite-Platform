@@ -135,8 +135,9 @@ export function MenusPage() {
     <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
+          eyebrow={t("nav.section.content")}
           title={t("nav.menus")}
-          description="Navigation trees for storefronts."
+          description={t("menu.description")}
         />
 
         <FilterBar>
@@ -160,7 +161,7 @@ export function MenusPage() {
           primary={
             <ListPanel
               title={t("nav.menus")}
-              description="Header and footer links for the selected site."
+              description={t("menu.panelHint")}
               actions={
                 <Button type="button" size="sm" onClick={focusAddForm}>
                   {t("menu.add")}
@@ -279,7 +280,7 @@ function ItemList({
         variant="plain"
         icon={<Menu />}
         title={emptyTitle}
-        description="Add a link to build this navigation tree."
+        description={t("menu.emptyHint")}
         action={
           <Button type="button" size="sm" onClick={onAdd}>
             {t("menu.add")}

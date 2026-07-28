@@ -160,21 +160,22 @@ export function MembersPage() {
     <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
+          eyebrow={t("nav.section.organization")}
           title={t("nav.members")}
-          description="Invite and manage roles."
+          description={t("members.description")}
         />
 
         <SplitLayout
           primary={
             <ListPanel
               title={t("members.list")}
-              description="Active members and pending invites."
+              description={t("members.panelHint")}
               actions={
                 <SearchField
-                  placeholder="Search members…"
+                  placeholder={t("members.searchPlaceholder")}
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  aria-label="Search members"
+                  aria-label={t("members.searchAria")}
                 />
               }
             >
@@ -187,11 +188,13 @@ export function MembersPage() {
                   <EmptyState
                     variant="plain"
                     icon={<UserPlus />}
-                    title={`${t("members.list")} — empty`}
-                    description={
+                    title={
                       query
-                        ? "No members match the search."
-                        : "Invite a teammate to collaborate on this organization."
+                        ? t("members.searchEmpty")
+                        : t("members.emptyTitle")
+                    }
+                    description={
+                      query ? undefined : t("members.emptyHint")
                     }
                     action={
                       query ? (
@@ -201,7 +204,7 @@ export function MembersPage() {
                           variant="secondary"
                           onClick={() => setQuery("")}
                         >
-                          Clear search
+                          {t("members.clearSearch")}
                         </Button>
                       ) : (
                         <Button

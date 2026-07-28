@@ -113,7 +113,7 @@ export function CategoriesPage() {
         <PageHeader
           eyebrow={t("nav.section.commerce")}
           title={t("nav.categories")}
-          description="Organize the product tree."
+          description={t("category.description")}
         />
 
         <FilterBar>
@@ -143,7 +143,7 @@ export function CategoriesPage() {
             ) : rows.length === 0 ? (
               <EmptyState
                 title={t("category.empty")}
-                description="Create a category in the form beside this list."
+                description={t("category.emptyHint")}
                 action={
                   <Button
                     type="button"

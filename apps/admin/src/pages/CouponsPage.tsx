@@ -89,7 +89,7 @@ export function CouponsPage() {
         <PageHeader
           eyebrow={t("nav.section.commerce")}
           title={t("nav.coupons")}
-          description="Promotions and discounts."
+          description={t("coupon.description")}
         />
 
         <SplitLayout
@@ -99,7 +99,19 @@ export function CouponsPage() {
                 <TableSkeleton />
               </TableFrame>
             ) : rows.length === 0 ? (
-              <EmptyState>No coupons yet — create one in the panel.</EmptyState>
+              <EmptyState
+                title={t("coupon.empty")}
+                description={t("coupon.emptyHint")}
+                action={
+                  <Button
+                    type="button"
+                    size="sm"
+                    onClick={() => document.getElementById("code")?.focus()}
+                  >
+                    {t("coupon.create")}
+                  </Button>
+                }
+              />
             ) : (
               <TableFrame>
                 <ul className="divide-y divide-[var(--border)] text-sm">
