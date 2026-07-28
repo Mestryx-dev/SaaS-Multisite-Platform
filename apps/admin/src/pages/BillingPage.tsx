@@ -136,6 +136,7 @@ export function BillingPage() {
     <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
+          eyebrow={t("nav.section.organization")}
           title={t("billing.title")}
           description={t("billing.subtitle")}
         />
@@ -148,7 +149,7 @@ export function BillingPage() {
             <TableSkeleton />
           </TableFrame>
         ) : !b ? (
-          <EmptyState>No billing data for this organization.</EmptyState>
+          <EmptyState>{t("billing.empty")}</EmptyState>
         ) : (
           <Card variant="panel">
             <Stack gap="md">

@@ -1,6 +1,6 @@
 # Admin console — master plan
 
-**Status:** Waves A–D executed (2026-07-20). **UX polish wave** shipped 2026-07-22. **Dokploy cleanliness** shipped 2026-07-22. **Fluid console width** shipped 2026-07-24. **Unified AppShell header** shipped 2026-07-25. Wave E glass deferred. Wave F (F-01) signed 2026-07-25. **Wave G — layout recipe homogeneity** opened 2026-07-28 (R1 SoT Shipping; see [admin-console-layout-recipes.md](./admin-console-layout-recipes.md)).  
+**Status:** Waves A–D executed (2026-07-20). **UX polish wave** shipped 2026-07-22. **Dokploy cleanliness** shipped 2026-07-22. **Fluid console width** shipped 2026-07-24. **Unified AppShell header** shipped 2026-07-25. Wave E glass deferred. Wave F (F-01) signed 2026-07-25. **Wave G — layout recipe homogeneity** G0–G3 done 2026-07-28 (G4 = human smoke); see [admin-console-layout-recipes.md](./admin-console-layout-recipes.md).  
 **Last updated:** 2026-07-28  
 **Related:** [admin-console-layout-recipes.md](./admin-console-layout-recipes.md) · [ux-ui-harmony-checklist.md](./ux-ui-harmony-checklist.md) · [DESIGN.md](../../DESIGN.md) · [PRODUCT.md](../../PRODUCT.md) · [motion-guidelines.md](./motion-guidelines.md)
 
@@ -135,7 +135,7 @@ G-11 Form RHF/zod, G-13 Calendar, G-14 Slider, B-A15 card-nav, drop-in full Stud
 | Dokploy cleanliness | **Done** (2026-07-22) — flat nav, ListPanel lists, surface contrast, status badges |
 | E Platform glass | **Deferred** — opaque dense remains; needs DESIGN.md amend + human OK |
 | F F-01 sign-off | **Signed** 2026-07-25 — staging gate brand OK |
-| G Layout recipes | **In progress** — SSOT [admin-console-layout-recipes.md](./admin-console-layout-recipes.md); Shipping R1 SoT done; G1–G3 polish pending |
+| G Layout recipes | **G0–G3 done** 2026-07-28 — SSOT [admin-console-layout-recipes.md](./admin-console-layout-recipes.md); G4 = human smoke on Dev |
 
 ## Wave G — Layout recipe homogeneity
 

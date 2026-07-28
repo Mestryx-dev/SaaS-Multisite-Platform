@@ -209,6 +209,7 @@ export function DashboardPage() {
     <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
+          eyebrow={t("nav.section.overview")}
           title={
             orgCount
               ? t("dashboard.welcomeBack", { name: greetName })

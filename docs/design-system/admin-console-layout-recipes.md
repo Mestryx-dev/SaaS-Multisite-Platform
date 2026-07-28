@@ -70,22 +70,22 @@ flowchart TD
 | Page | Route | Recipe | Status | Next action |
 |------|-------|--------|--------|-------------|
 | Shipping | `/shipping` | R1 | **Done** (2026-07-28) | Smoke on Dev |
-| Categories | `/categories` | R1 | Structure OK | Polish: i18n description |
-| Coupons | `/coupons` | R1 | Structure OK | Polish: EmptyState CTA + i18n |
-| Menus | `/menus` | R1 | Structure OK | Polish: eyebrow + i18n + densify rows |
-| Banners | `/banners` | R1 | Structure OK | Polish: eyebrow + EmptyState CTA + i18n |
-| Media | `/media` | R1 | Structure OK | Polish: eyebrow + i18n |
-| Members | `/members` | R1 | Structure OK | Polish: eyebrow + i18n |
-| Sites | `/sites` | R2 | **Keep** | Mild i18n only |
-| Orders | `/orders` | R3 | **Keep** | Mild i18n / description |
-| Returns | `/returns` | R3 + secondary ops panel | Structure OK-ish | Polish: eyebrow; keep abandoned panel below (not R1) |
-| Pages | `/pages` | R4 | **Keep** | Polish: eyebrow + i18n |
-| Products | `/products` | R4 | **Keep** | Polish: i18n only (no formAside) |
-| Order detail | `/orders/:id` | R5 | **Keep** | Polish: i18n status copy |
-| Dashboard | `/` | R6 | **Keep** | Optional eyebrow |
-| Reports | `/reports` | R6 | **Keep** | i18n description |
-| Billing | `/billing` | R7 | **Keep** | Prefer FormPanel/Card consistency |
-| Modules | `/modules` | R7 | **Keep** | Optional eyebrow |
+| Categories | `/categories` | R1 | **Done** (Wave G1) | Smoke on Dev |
+| Coupons | `/coupons` | R1 | **Done** (Wave G1) | Smoke on Dev |
+| Menus | `/menus` | R1 | **Done** (Wave G1) | Smoke on Dev |
+| Banners | `/banners` | R1 | **Done** (Wave G1) | Smoke on Dev |
+| Media | `/media` | R1 | **Done** (Wave G1) | Smoke on Dev |
+| Members | `/members` | R1 | **Done** (Wave G1) | Smoke on Dev |
+| Sites | `/sites` | R2 | **Keep** | Mild i18n only (deferred) |
+| Orders | `/orders` | R3 | **Done** (Wave G2) | Smoke on Dev |
+| Returns | `/returns` | R3 + secondary ops panel | **Done** (Wave G3) | Smoke on Dev |
+| Pages | `/pages` | R4 | **Done** (Wave G2) | Smoke on Dev |
+| Products | `/products` | R4 | **Done** (Wave G2) | Smoke on Dev |
+| Order detail | `/orders/:id` | R5 | **Keep** | Mild i18n status copy (deferred) |
+| Dashboard | `/` | R6 | **Done** (Wave G2) | Smoke on Dev |
+| Reports | `/reports` | R6 | **Done** (Wave G2) | Smoke on Dev |
+| Billing | `/billing` | R7 | **Done** (Wave G2) | Smoke on Dev |
+| Modules | `/modules` | R7 | **Done** (Wave G2) | Smoke on Dev |
 | Sign-in / Sign-up / Accept invite | auth routes | R8 | **Out of scope** for R1 | AuthShell polish only if Wave D follow-up |
 
 ## Component inventory (reuse — no new page shell required)
@@ -105,13 +105,13 @@ flowchart TD
 
 ## Homogenization waves (execution)
 
-| Wave | Scope | Est. |
-|------|-------|------|
-| **G0** | This SSOT + master-plan link + Storybook recipe matrix | 0.5 cycle |
-| **G1** | R1 polish: Coupons, Categories, Menus, Banners, Media, Members (i18n, eyebrow, EmptyState CTA, row density) | 1–2 cycles |
-| **G2** | R3/R4/R5/R6/R7 mild polish (i18n + eyebrow only; no archetype change) | 1 cycle |
-| **G3** | Returns: commerce eyebrow + clarify abandoned panel as secondary ops (not second create) | 0.5 cycle |
-| **G4** | Human smoke on Dev admin; tick mvp checklist density if green | Human + 0.5 |
+| Wave | Scope | Est. | Status |
+|------|-------|------|--------|
+| **G0** | This SSOT + master-plan link + Storybook recipe matrix | 0.5 cycle | **Done** |
+| **G1** | R1 polish: Coupons, Categories, Menus, Banners, Media, Members (i18n, eyebrow, EmptyState CTA, row density) | 1–2 cycles | **Done** (`2c43d9f`) |
+| **G2** | R3/R4/R5/R6/R7 mild polish (i18n + eyebrow only; no archetype change) | 1 cycle | **Done** |
+| **G3** | Returns: commerce eyebrow + clarify abandoned panel as secondary ops (not second create) | 0.5 cycle | **Done** |
+| **G4** | Human smoke on Dev admin; tick mvp checklist density if green | Human + 0.5 | Ship pending |
 
 **Out of scope:** forcing Products/Pages into R1; Order detail → formAside; auth redesign; Wave E glass.
 

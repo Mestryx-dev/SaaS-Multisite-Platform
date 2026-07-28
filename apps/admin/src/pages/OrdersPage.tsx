@@ -146,6 +146,7 @@ export function OrdersPage() {
         <PageHeader
           eyebrow={t("nav.section.commerce")}
           title={t("nav.orders")}
+          description={t("order.description")}
           actions={
             selectedOrgId ? (
               <ButtonLink
@@ -160,8 +161,8 @@ export function OrdersPage() {
 
         {!selectedOrgId ? (
           <EmptyState
-            title="No organization"
-            description="Create an organization from the dashboard, then return here."
+            title={t("order.noOrgTitle")}
+            description={t("order.noOrgHint")}
           />
         ) : (
           <>
@@ -169,13 +170,13 @@ export function OrdersPage() {
               trailing={<DensityToggle value={density} onChange={setDensity} />}
             >
               <div className="min-w-[10rem]">
-                <Label htmlFor="order-status">Status</Label>
+                <Label htmlFor="order-status">{t("order.filterStatus")}</Label>
                 <Select
                   id="order-status"
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
                 >
-                  <option value="">All</option>
+                  <option value="">{t("order.filterAll")}</option>
                   <option value="pending_payment">
                     {t("order.status.pending_payment")}
                   </option>

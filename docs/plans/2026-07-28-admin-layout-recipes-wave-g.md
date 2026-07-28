@@ -7,20 +7,20 @@
 
 ## Approach
 
-1. Document recipes (G0) — **done** in this pass.
-2. Polish R1 family to Shipping SoT bar (G1).
-3. Mild i18n/eyebrow on other recipes (G2–G3).
-4. Human smoke + checklist ticks (G4).
+1. Document recipes (G0) — **done**.
+2. Polish R1 family to Shipping SoT bar (G1) — **done** (`2c43d9f`).
+3. Mild i18n/eyebrow on other recipes (G2–G3) — **done**.
+4. Human smoke + checklist ticks (G4) — ship + smoke.
 
 No new page-shell React component unless G1 still drifts (YAGNI).
 
-## G0 — Docs & Storybook (this commit)
+## G0 — Docs & Storybook
 
 - [x] `admin-console-layout-recipes.md`
 - [x] Master plan Wave G + CHANGELOG + README + component-directory + mvp notes + harmony AD-15
 - [x] Storybook `Patterns/ConsoleLayout` → **Recipes matrix R1–R8**
 
-## G1 — R1 polish (one commit per page or batched by pair)
+## G1 — R1 polish — **done**
 
 For each: Coupons, Categories, Menus, Banners, Media, Members
 
@@ -32,25 +32,27 @@ For each: Coupons, Categories, Menus, Banners, Media, Members
 | Aside | single FormPanel; FormRow where 2+ fields |
 | List rows | `shrink-0` actions; avoid wrap on delete |
 
-**Estimate:** 1–2 cycles. Commit: `fix(admin): align <Page> with R1 layout recipe`
+**Commit:** `2c43d9f` — `fix(admin): align R1 pages with layout recipe polish`
 
-## G2 — Mild polish (no archetype change)
+## G2 — Mild polish (no archetype change) — **done**
 
-Orders, Pages, Products, Order detail, Dashboard, Reports, Billing, Modules, Sites — i18n description / eyebrow only.
+Orders, Pages, Products, Dashboard, Reports, Billing, Modules — i18n description / eyebrow.  
+Deferred: Order detail status copy, Sites mild i18n.
 
-**Estimate:** 1 cycle. Prefer one commit: `fix(admin): i18n console PageHeader copy (Wave G2)`
+**Commit:** `fix(admin): i18n console PageHeader copy (Wave G2)`
 
-## G3 — Returns
+## G3 — Returns — **done**
 
-- Commerce eyebrow
-- Keep abandoned FormPanel as secondary ops below list (document as R3 + ops, not R1)
-- EmptyState if missing
+- [x] Commerce eyebrow
+- [x] Keep abandoned FormPanel as secondary ops below list (R3 + ops, not R1)
+- [x] EmptyState + abandoned ops hint
 
 ## G4 — Verify
 
-- Typecheck admin + Storybook build optional
-- Dev Admin smoke: Shipping + one R1 peer + Orders + Products
-- Tick mvp §2.1 density when R1 family green; tick Shipping when human OK
+- [x] Typecheck admin
+- [ ] Push `dev` + Admin-Dev redeploy
+- [ ] Dev Admin smoke: Shipping + one R1 peer + Orders + Products
+- [ ] Tick mvp §2.1 density when R1 family green; tick Shipping when human OK
 
 ## Out of scope
 

@@ -116,7 +116,7 @@ export function ReportsPage() {
         <PageHeader
           eyebrow={t("nav.section.commerce")}
           title={t("nav.reports")}
-          description="Lightweight commerce snapshots."
+          description={t("reports.description")}
         />
 
         {r ? (

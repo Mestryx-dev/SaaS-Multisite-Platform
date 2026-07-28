@@ -104,6 +104,7 @@ export function ModulesPage() {
     <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
+          eyebrow={t("nav.section.organization")}
           title={t("nav.modules")}
           description={t("modules.subtitle")}
         />

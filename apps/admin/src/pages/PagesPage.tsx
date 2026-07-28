@@ -232,8 +232,9 @@ export function PagesPage() {
     <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
+          eyebrow={t("nav.section.content")}
           title={t("nav.pages")}
-          description="CMS pages and preview."
+          description={t("page.description")}
           actions={
             siteId ? (
               <Button type="button" size="sm" onClick={openCreate}>
@@ -272,7 +273,7 @@ export function PagesPage() {
           ) : rows.length === 0 ? (
             <EmptyState
               title={t("page.empty")}
-              description="Create a CMS page for the selected site."
+              description={t("page.emptyHint")}
               action={
                 <Button type="button" size="sm" onClick={openCreate}>
                   {t("page.create")}

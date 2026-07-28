@@ -420,13 +420,13 @@ export function ProductsPage() {
         <PageHeader
           eyebrow={t("nav.section.commerce")}
           title={t("nav.products")}
-          description="Catalog belongs to the organization. Attach a site to publish on the storefront."
+          description={t("product.pageDescription")}
         />
 
         {!selectedOrgId ? (
           <EmptyState
-            title="No organization"
-            description="Select an organization in the shell switcher, or run the local seed and sign in with SEED_EMAIL from your .env."
+            title={t("product.noOrgTitle")}
+            description={t("product.noOrgHint")}
           />
         ) : (
           <>
@@ -451,7 +451,7 @@ export function ProductsPage() {
             {products.isLoading ? (
               <ListPanel
                 title={t("nav.products")}
-                description="Catalog for the active organization."
+                description={t("product.panelHint")}
                 actions={
                   <div className="flex flex-wrap items-center gap-2">
                     <SearchField
@@ -480,7 +480,7 @@ export function ProductsPage() {
             ) : (
               <ListPanel
                 title={t("nav.products")}
-                description="Catalog for the active organization."
+                description={t("product.panelHint")}
                 actions={
                   <div className="flex flex-wrap items-center gap-2">
                     <SearchField

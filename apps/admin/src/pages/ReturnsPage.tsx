@@ -94,6 +94,7 @@ export function ReturnsPage() {
     <PageContent maxWidth="full">
       <Stack gap="md">
         <PageHeader
+          eyebrow={t("nav.section.commerce")}
           title={t("nav.returns")}
           description={t("returns.description")}
         />
@@ -104,7 +105,10 @@ export function ReturnsPage() {
             <TableSkeleton />
           </TableFrame>
         ) : rows.length === 0 ? (
-          <EmptyState>{t("returns.empty")}</EmptyState>
+          <EmptyState
+            title={t("returns.empty")}
+            description={t("returns.emptyHint")}
+          />
         ) : (
           <TableFrame>
             <ul className="divide-y divide-[var(--border)]">
@@ -151,6 +155,9 @@ export function ReturnsPage() {
         )}
 
         <FormPanel title={t("abandoned.title")} width="md">
+          <Muted as="p" className="text-xs">
+            {t("abandoned.opsHint")}
+          </Muted>
           <Muted as="p">
             {t("abandoned.candidates", {
               count: abandoned.data?.carts?.length ?? 0,
