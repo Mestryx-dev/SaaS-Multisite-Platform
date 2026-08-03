@@ -10,35 +10,45 @@ export function getStaticPaths() {
 const locale = resolveLocale(Astro.params.locale);
 ---
 
-<BaseLayout locale={locale} title={`${t(locale, "brand.name")} · ${t(locale, "hero.title")}`}>
+<BaseLayout locale={locale} title={`${t(locale, "hero.productSlug")} · ${t(locale, "hero.tagline")}`}>
   <section class="hero shell">
-    <p class="hero__eyebrow">{t(locale, "hero.eyebrow")}</p>
-    <h1 class="hero__title">{t(locale, "hero.title")}</h1>
-    <p class="hero__lead">{t(locale, "hero.lead")}</p>
+    <p class="hero__eyebrow">{t(locale, "hero.brand")}</p>
+    <h1 class="hero__title">{t(locale, "hero.tagline")}</h1>
+    <p class="hero__lead">{t(locale, "hero.supporting")}</p>
     <div class="cta-row">
-      <a class="btn btn--primary" href={t(locale, "links.demoAdmin")}>{t(locale, "hero.ctaAdmin")}</a>
-      <a class="btn btn--ghost" href={t(locale, "links.demoStore")}>{t(locale, "hero.ctaStore")}</a>
-      <a class="btn btn--ghost" href={t(locale, "links.portfolio")}>{t(locale, "hero.ctaPortfolio")}</a>
+      <a class="btn btn--primary" href={t(locale, "links.demoAdmin")}>{t(locale, "hero.cta.demoAdmin")}</a>
+      <a class="btn btn--ghost" href={t(locale, "links.demoStore")}>{t(locale, "hero.cta.demoStore")}</a>
+      <a class="btn btn--ghost" href={t(locale, "links.portfolio")}>{t(locale, "hero.cta.portfolio")}</a>
     </div>
   </section>
 
   <section class="section shell" id="product">
     <h2>{t(locale, "problem.title")}</h2>
-    <p>{t(locale, "problem.body")}</p>
+    <p>{t(locale, "problem.lead")}</p>
+    <ul class="roadmap" style="margin-top: 1.25rem">
+      <li><strong>{t(locale, "problem.point1.title")}</strong> — {t(locale, "problem.point1.body")}</li>
+      <li><strong>{t(locale, "problem.point2.title")}</strong> — {t(locale, "problem.point2.body")}</li>
+      <li><strong>{t(locale, "problem.point3.title")}</strong> — {t(locale, "problem.point3.body")}</li>
+    </ul>
   </section>
 
   <section class="section shell">
     <h2>{t(locale, "solution.title")}</h2>
-    <p>{t(locale, "solution.body")}</p>
+    <p>{t(locale, "solution.lead")}</p>
+    <ul class="roadmap" style="margin-top: 1.25rem">
+      <li><strong>{t(locale, "solution.point1.title")}</strong> — {t(locale, "solution.point1.body")}</li>
+      <li><strong>{t(locale, "solution.point2.title")}</strong> — {t(locale, "solution.point2.body")}</li>
+      <li><strong>{t(locale, "solution.point3.title")}</strong> — {t(locale, "solution.point3.body")}</li>
+    </ul>
   </section>
 
   <section class="section shell">
     <h2>{t(locale, "roadmap.title")}</h2>
     <ul class="roadmap">
-      <li>{t(locale, "roadmap.now")}</li>
-      <li>{t(locale, "roadmap.next")}</li>
-      <li>{t(locale, "roadmap.ae")}</li>
-      <li>{t(locale, "roadmap.later")}</li>
+      <li><strong>{t(locale, "roadmap.phase.mvp.label")}</strong> — {t(locale, "roadmap.phase.mvp.description")}</li>
+      <li><strong>{t(locale, "roadmap.phase.clickCollect.label")}</strong> — {t(locale, "roadmap.phase.clickCollect.description")}</li>
+      <li><strong>{t(locale, "roadmap.phase.ae.label")}</strong> — {t(locale, "roadmap.phase.ae.description")}</li>
+      <li><strong>{t(locale, "roadmap.phase.pos.label")}</strong> — {t(locale, "roadmap.phase.pos.description")}</li>
     </ul>
   </section>
 </BaseLayout>

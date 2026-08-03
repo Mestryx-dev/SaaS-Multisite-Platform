@@ -8,14 +8,27 @@ export function getStaticPaths() {
 }
 
 const locale = resolveLocale(Astro.params.locale);
+const email = t(locale, "legal.contact.email.value");
 ---
 
-<BaseLayout locale={locale} title={t(locale, "legal.contact.title")}>
+<BaseLayout
+  locale={locale}
+  title={t(locale, "legal.contact.meta.title")}
+  description={t(locale, "legal.contact.meta.description")}
+>
   <article class="legal-page shell">
-    <h1>{t(locale, "legal.contact.title")}</h1>
+    <p class="draft-banner">{t(locale, "legal.contact.draftNotice")}</p>
+    <h1>{t(locale, "legal.contact.meta.title")}</h1>
+    <p>{t(locale, "legal.contact.lead")}</p>
     <p>
-      {t(locale, "legal.contact.body")}
-      <a href={`mailto:${t(locale, "legal.contact.email")}`}>{t(locale, "legal.contact.email")}</a>
+      {t(locale, "legal.contact.email.label")}
+      <a href={`mailto:${email}`}>{email}</a>
     </p>
+    <p>{t(locale, "legal.contact.response")}</p>
+    <div class="cta-row" style="margin-top: 1.5rem">
+      <a class="btn btn--ghost" href={t(locale, "links.demoAdmin")}>{t(locale, "legal.contact.demoAdmin")}</a>
+      <a class="btn btn--ghost" href={t(locale, "links.demoStore")}>{t(locale, "legal.contact.demoStore")}</a>
+      <a class="btn btn--ghost" href={t(locale, "links.portfolio")}>{t(locale, "legal.contact.portfolio")}</a>
+    </div>
   </article>
 </BaseLayout>

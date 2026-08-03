@@ -16,6 +16,7 @@ const suffix = pathWithoutLocale === "/" ? "" : pathWithoutLocale;
 const homeHref = `/${locale}`;
 const frHref = `/fr${suffix}`;
 const enHref = `/en${suffix}`;
+const shareUrl = import.meta.env.PUBLIC_UMAMI_SHARE_URL as string | undefined;
 ---
 
 <!doctype html>
@@ -23,27 +24,27 @@ const enHref = `/en${suffix}`;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description ?? t(locale, "hero.lead")} />
+    <meta name="description" content={description ?? t(locale, "hero.supporting")} />
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <Umami />
   </head>
   <body>
-    <a class="skip-link" href="#main">{t(locale, "nav.skip")}</a>
+    <a class="skip-link" href="#main">{locale === "fr" ? "Aller au contenu" : "Skip to content"}</a>
     <header class="site-header">
       <div class="shell site-header__inner">
         <a class="brand" href={homeHref}>
-          <span class="brand__name">{t(locale, "brand.name")}</span>
-          <span class="brand__op">{t(locale, "brand.operator")}</span>
+          <span class="brand__name">{t(locale, "hero.productSlug")}</span>
+          <span class="brand__op">{t(locale, "hero.brand")}</span>
         </a>
         <nav class="nav" aria-label="Primary">
           <a href={homeHref}>{t(locale, "nav.home")}</a>
-          <a href={`/${locale}/mentions-legales`}>{t(locale, "nav.mentions")}</a>
-          <a href={`/${locale}/confidentialite`}>{t(locale, "nav.privacy")}</a>
+          <a href={`/${locale}/mentions-legales`}>{t(locale, "nav.legal.mentions")}</a>
+          <a href={`/${locale}/confidentialite`}>{t(locale, "nav.legal.privacy")}</a>
           <a href={`/${locale}/contact`}>{t(locale, "nav.contact")}</a>
           <div class="locale-switch" role="group" aria-label="Language">
-            <a href={frHref} aria-current={locale === "fr" ? "true" : undefined}>{t(locale, "nav.localeFr")}</a>
-            <a href={enHref} aria-current={locale === "en" ? "true" : undefined}>{t(locale, "nav.localeEn")}</a>
+            <a href={frHref} aria-current={locale === "fr" ? "true" : undefined}>{t(locale, "nav.locale.fr")}</a>
+            <a href={enHref} aria-current={locale === "en" ? "true" : undefined}>{t(locale, "nav.locale.en")}</a>
           </div>
         </nav>
       </div>
@@ -56,22 +57,21 @@ const enHref = `/en${suffix}`;
     <footer class="site-footer">
       <div class="shell">
         <nav class="site-footer__nav" aria-label="Legal">
-          <a href={`/${locale}/mentions-legales`}>{t(locale, "nav.mentions")}</a>
-          <a href={`/${locale}/confidentialite`}>{t(locale, "nav.privacy")}</a>
-          <a href={`/${locale}/cgu`}>{t(locale, "nav.terms")}</a>
-          <a href={`/${locale}/cookies`}>{t(locale, "nav.cookies")}</a>
-          <a href={`/${locale}/contact`}>{t(locale, "nav.contact")}</a>
+          <a href={`/${locale}/mentions-legales`}>{t(locale, "footer.legal.mentions")}</a>
+          <a href={`/${locale}/confidentialite`}>{t(locale, "footer.legal.privacy")}</a>
+          <a href={`/${locale}/cgu`}>{t(locale, "footer.legal.terms")}</a>
+          <a href={`/${locale}/cookies`}>{t(locale, "footer.legal.cookies")}</a>
+          <a href={`/${locale}/contact`}>{t(locale, "footer.contact")}</a>
           {
-            import.meta.env.PUBLIC_UMAMI_SHARE_URL ? (
-              <a href={import.meta.env.PUBLIC_UMAMI_SHARE_URL} rel="noopener noreferrer" target="_blank">
-                {t(locale, "nav.stats")}
+            shareUrl ? (
+              <a href={shareUrl} rel="noopener noreferrer" target="_blank">
+                {t(locale, "footer.statsShare")}
               </a>
             ) : null
           }
         </nav>
         <p>{t(locale, "footer.tagline")}</p>
-        <p>{t(locale, "footer.draft")}</p>
-        <p>{t(locale, "footer.rights")}</p>
+        <p>{t(locale, "footer.copyright")}</p>
       </div>
     </footer>
 

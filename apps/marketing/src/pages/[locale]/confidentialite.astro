@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { t } from "../../i18n";
+import LegalDoc from "../../components/LegalDoc.astro";
+import { t, type MessageKey } from "../../i18n";
 import { localeStaticPaths, resolveLocale } from "../../lib/locale";
 
 export function getStaticPaths() {
@@ -8,22 +9,30 @@ export function getStaticPaths() {
 }
 
 const locale = resolveLocale(Astro.params.locale);
+const sections = [
+  "legal.privacy.section.scope.title",
+  "legal.privacy.section.controller.title",
+  "legal.privacy.section.dataCollected.title",
+  "legal.privacy.section.purposes.title",
+  "legal.privacy.section.legalBasis.title",
+  "legal.privacy.section.analytics.title",
+  "legal.privacy.section.cookies.title",
+  "legal.privacy.section.recipients.title",
+  "legal.privacy.section.retention.title",
+  "legal.privacy.section.rights.title",
+  "legal.privacy.section.contact.title",
+] as MessageKey[];
 ---
 
-<BaseLayout locale={locale} title={t(locale, "legal.privacy.title")}>
-  <article class="legal-page shell">
-    <p class="draft-banner">{t(locale, "legal.draftBanner")}</p>
-    <h1>{t(locale, "legal.privacy.title")}</h1>
-    <p>{t(locale, "legal.privacy.intro")}</p>
-    <h2>{t(locale, "legal.privacy.data")}</h2>
-    <p>{t(locale, "legal.privacy.dataBody")}</p>
-    <h2>{t(locale, "legal.privacy.purposes")}</h2>
-    <p>{t(locale, "legal.privacy.purposesBody")}</p>
-    <h2>{t(locale, "legal.privacy.umami")}</h2>
-    <p>{t(locale, "legal.privacy.umamiBody")}</p>
-    <h2>{t(locale, "legal.privacy.rights")}</h2>
-    <p>{t(locale, "legal.privacy.rightsBody")}</p>
-    <h2>{t(locale, "legal.privacy.retention")}</h2>
-    <p>{t(locale, "legal.privacy.retentionBody")}</p>
-  </article>
+<BaseLayout
+  locale={locale}
+  title={t(locale, "legal.privacy.meta.title")}
+  description={t(locale, "legal.privacy.meta.description")}
+>
+  <LegalDoc
+    locale={locale}
+    draftKey="legal.privacy.draftNotice"
+    titleKey="legal.privacy.meta.title"
+    sectionKeys={sections}
+  />
 </BaseLayout>

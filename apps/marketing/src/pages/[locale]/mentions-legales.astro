@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { t } from "../../i18n";
+import LegalDoc from "../../components/LegalDoc.astro";
+import { t, type MessageKey } from "../../i18n";
 import { localeStaticPaths, resolveLocale } from "../../lib/locale";
 
 export function getStaticPaths() {
@@ -8,17 +9,25 @@ export function getStaticPaths() {
 }
 
 const locale = resolveLocale(Astro.params.locale);
+const sections = [
+  "legal.mentions.section.publisher.title",
+  "legal.mentions.section.director.title",
+  "legal.mentions.section.hosting.title",
+  "legal.mentions.section.contact.title",
+  "legal.mentions.section.intellectualProperty.title",
+  "legal.mentions.section.liability.title",
+] as MessageKey[];
 ---
 
-<BaseLayout locale={locale} title={t(locale, "legal.mentions.title")}>
-  <article class="legal-page shell">
-    <p class="draft-banner">{t(locale, "legal.draftBanner")}</p>
-    <h1>{t(locale, "legal.mentions.title")}</h1>
-    <h2>{t(locale, "legal.mentions.editor")}</h2>
-    <p>{t(locale, "legal.mentions.editorBody")}</p>
-    <h2>{t(locale, "legal.mentions.hosting")}</h2>
-    <p>{t(locale, "legal.mentions.hostingBody")}</p>
-    <h2>{t(locale, "legal.mentions.contact")}</h2>
-    <p>{t(locale, "legal.mentions.contactBody")}</p>
-  </article>
+<BaseLayout
+  locale={locale}
+  title={t(locale, "legal.mentions.meta.title")}
+  description={t(locale, "legal.mentions.meta.description")}
+>
+  <LegalDoc
+    locale={locale}
+    draftKey="legal.mentions.draftNotice"
+    titleKey="legal.mentions.meta.title"
+    sectionKeys={sections}
+  />
 </BaseLayout>
