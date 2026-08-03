@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { t } from "../../i18n";
+import { localeStaticPaths, resolveLocale } from "../../lib/locale";
+
+export function getStaticPaths() {
+  return localeStaticPaths();
+}
+
+const locale = resolveLocale(Astro.params.locale);
+---
+
+<BaseLayout locale={locale} title={t(locale, "legal.contact.title")}>
+  <article class="legal-page shell">
+    <h1>{t(locale, "legal.contact.title")}</h1>
+    <p>
+      {t(locale, "legal.contact.body")}
+      <a href={`mailto:${t(locale, "legal.contact.email")}`}>{t(locale, "legal.contact.email")}</a>
+    </p>
+  </article>
+</BaseLayout>

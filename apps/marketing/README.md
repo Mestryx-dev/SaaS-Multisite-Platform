@@ -1,7 +1,12 @@
-# apps/marketing
+# apps/marketing — product landing (mestryx.dev)
 
-Marketing site (Astro) — deferred.
+Astro 7 static site · FR + EN · Obsidian Soft tokens · Umami opt-in via env.
 
-Video promos live in [`apps/remotion`](../remotion) (Remotion 4).
+```bash
+pnpm --filter @mestryx/marketing dev     # http://localhost:4321 → /fr
+pnpm --filter @mestryx/marketing build
+```
 
-See: `docs/02-stack.md` · `docs/feature-backlog.md` (FB-092).
+Docker: `apps/marketing/Dockerfile` (nginx). Build args: `PUBLIC_UMAMI_*`.
+
+Legal drafts + cookie consent ship with the app. Contact: `contact@mestryx.dev`.

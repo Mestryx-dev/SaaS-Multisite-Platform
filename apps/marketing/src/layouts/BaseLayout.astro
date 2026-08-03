@@ -1,0 +1,80 @@
+---
+import { t, type Locale } from "../i18n";
+import CookieBanner from "../components/CookieBanner.astro";
+import Umami from "../components/Umami.astro";
+import "../styles/global.css";
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description?: string;
+}
+
+const { locale, title, description } = Astro.props;
+const pathWithoutLocale = Astro.url.pathname.replace(/^\/(fr|en)/, "") || "/";
+const suffix = pathWithoutLocale === "/" ? "" : pathWithoutLocale;
+const homeHref = `/${locale}`;
+const frHref = `/fr${suffix}`;
+const enHref = `/en${suffix}`;
+---
+
+<!doctype html>
+<html lang={locale} data-theme="platform">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description ?? t(locale, "hero.lead")} />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <Umami />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{t(locale, "nav.skip")}</a>
+    <header class="site-header">
+      <div class="shell site-header__inner">
+        <a class="brand" href={homeHref}>
+          <span class="brand__name">{t(locale, "brand.name")}</span>
+          <span class="brand__op">{t(locale, "brand.operator")}</span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href={homeHref}>{t(locale, "nav.home")}</a>
+          <a href={`/${locale}/mentions-legales`}>{t(locale, "nav.mentions")}</a>
+          <a href={`/${locale}/confidentialite`}>{t(locale, "nav.privacy")}</a>
+          <a href={`/${locale}/contact`}>{t(locale, "nav.contact")}</a>
+          <div class="locale-switch" role="group" aria-label="Language">
+            <a href={frHref} aria-current={locale === "fr" ? "true" : undefined}>{t(locale, "nav.localeFr")}</a>
+            <a href={enHref} aria-current={locale === "en" ? "true" : undefined}>{t(locale, "nav.localeEn")}</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell">
+        <nav class="site-footer__nav" aria-label="Legal">
+          <a href={`/${locale}/mentions-legales`}>{t(locale, "nav.mentions")}</a>
+          <a href={`/${locale}/confidentialite`}>{t(locale, "nav.privacy")}</a>
+          <a href={`/${locale}/cgu`}>{t(locale, "nav.terms")}</a>
+          <a href={`/${locale}/cookies`}>{t(locale, "nav.cookies")}</a>
+          <a href={`/${locale}/contact`}>{t(locale, "nav.contact")}</a>
+          {
+            import.meta.env.PUBLIC_UMAMI_SHARE_URL ? (
+              <a href={import.meta.env.PUBLIC_UMAMI_SHARE_URL} rel="noopener noreferrer" target="_blank">
+                {t(locale, "nav.stats")}
+              </a>
+            ) : null
+          }
+        </nav>
+        <p>{t(locale, "footer.tagline")}</p>
+        <p>{t(locale, "footer.draft")}</p>
+        <p>{t(locale, "footer.rights")}</p>
+      </div>
+    </footer>
+
+    <CookieBanner locale={locale} />
+  </body>
+</html>

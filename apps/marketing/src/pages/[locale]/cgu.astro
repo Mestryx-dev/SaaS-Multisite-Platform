@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { t } from "../../i18n";
+import { localeStaticPaths, resolveLocale } from "../../lib/locale";
+
+export function getStaticPaths() {
+  return localeStaticPaths();
+}
+
+const locale = resolveLocale(Astro.params.locale);
+---
+
+<BaseLayout locale={locale} title={t(locale, "legal.terms.title")}>
+  <article class="legal-page shell">
+    <p class="draft-banner">{t(locale, "legal.draftBanner")}</p>
+    <h1>{t(locale, "legal.terms.title")}</h1>
+    <p>{t(locale, "legal.terms.body")}</p>
+  </article>
+</BaseLayout>

@@ -1,0 +1,14 @@
+---
+/** Inject Umami only when build-time env is set. Runtime consent gates load via CookieBanner. */
+const scriptUrl = import.meta.env.PUBLIC_UMAMI_SCRIPT_URL as string | undefined;
+const websiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID as string | undefined;
+const ready = Boolean(scriptUrl && websiteId);
+---
+
+{
+  ready ? (
+    <script is:inline define:vars={{ scriptUrl, websiteId }}>
+      window.__MX_UMAMI__ = { scriptUrl, websiteId };
+    </script>
+  ) : null
+}

@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { t } from "../../i18n";
+import { localeStaticPaths, resolveLocale } from "../../lib/locale";
+
+export function getStaticPaths() {
+  return localeStaticPaths();
+}
+
+const locale = resolveLocale(Astro.params.locale);
+---
+
+<BaseLayout locale={locale} title={`${t(locale, "brand.name")} · ${t(locale, "hero.title")}`}>
+  <section class="hero shell">
+    <p class="hero__eyebrow">{t(locale, "hero.eyebrow")}</p>
+    <h1 class="hero__title">{t(locale, "hero.title")}</h1>
+    <p class="hero__lead">{t(locale, "hero.lead")}</p>
+    <div class="cta-row">
+      <a class="btn btn--primary" href={t(locale, "links.demoAdmin")}>{t(locale, "hero.ctaAdmin")}</a>
+      <a class="btn btn--ghost" href={t(locale, "links.demoStore")}>{t(locale, "hero.ctaStore")}</a>
+      <a class="btn btn--ghost" href={t(locale, "links.portfolio")}>{t(locale, "hero.ctaPortfolio")}</a>
+    </div>
+  </section>
+
+  <section class="section shell" id="product">
+    <h2>{t(locale, "problem.title")}</h2>
+    <p>{t(locale, "problem.body")}</p>
+  </section>
+
+  <section class="section shell">
+    <h2>{t(locale, "solution.title")}</h2>
+    <p>{t(locale, "solution.body")}</p>
+  </section>
+
+  <section class="section shell">
+    <h2>{t(locale, "roadmap.title")}</h2>
+    <ul class="roadmap">
+      <li>{t(locale, "roadmap.now")}</li>
+      <li>{t(locale, "roadmap.next")}</li>
+      <li>{t(locale, "roadmap.ae")}</li>
+      <li>{t(locale, "roadmap.later")}</li>
+    </ul>
+  </section>
+</BaseLayout>

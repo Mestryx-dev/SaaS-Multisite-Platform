@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { t } from "../../i18n";
+import { localeStaticPaths, resolveLocale } from "../../lib/locale";
+
+export function getStaticPaths() {
+  return localeStaticPaths();
+}
+
+const locale = resolveLocale(Astro.params.locale);
+---
+
+<BaseLayout locale={locale} title={t(locale, "cookies.page.title")}>
+  <article class="legal-page shell">
+    <h1>{t(locale, "cookies.page.title")}</h1>
+    <p>{t(locale, "cookies.page.necessary")}</p>
+    <p>{t(locale, "cookies.page.analytics")}</p>
+    <div class="cta-row" style="margin-top: 1.25rem">
+      <button type="button" class="btn btn--primary" id="prefs-accept">{t(locale, "cookies.banner.accept")}</button>
+      <button type="button" class="btn btn--ghost" id="prefs-reject">{t(locale, "cookies.banner.reject")}</button>
+    </div>
+  </article>
+</BaseLayout>
+
+<script is:inline>
+  document.getElementById("prefs-accept")?.addEventListener("click", function () {
+    if (window.__MX_SET_CONSENT__) window.__MX_SET_CONSENT__("1");
+    else
+      try {
+        localStorage.setItem("mx-consent-analytics", "1");
+      } catch (_) {}
+  });
+  document.getElementById("prefs-reject")?.addEventListener("click", function () {
+    if (window.__MX_SET_CONSENT__) window.__MX_SET_CONSENT__("0");
+    else
+      try {
+        localStorage.setItem("mx-consent-analytics", "0");
+      } catch (_) {}
+  });
+</script>

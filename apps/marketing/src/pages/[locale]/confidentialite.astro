@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { t } from "../../i18n";
+import { localeStaticPaths, resolveLocale } from "../../lib/locale";
+
+export function getStaticPaths() {
+  return localeStaticPaths();
+}
+
+const locale = resolveLocale(Astro.params.locale);
+---
+
+<BaseLayout locale={locale} title={t(locale, "legal.privacy.title")}>
+  <article class="legal-page shell">
+    <p class="draft-banner">{t(locale, "legal.draftBanner")}</p>
+    <h1>{t(locale, "legal.privacy.title")}</h1>
+    <p>{t(locale, "legal.privacy.intro")}</p>
+    <h2>{t(locale, "legal.privacy.data")}</h2>
+    <p>{t(locale, "legal.privacy.dataBody")}</p>
+    <h2>{t(locale, "legal.privacy.purposes")}</h2>
+    <p>{t(locale, "legal.privacy.purposesBody")}</p>
+    <h2>{t(locale, "legal.privacy.umami")}</h2>
+    <p>{t(locale, "legal.privacy.umamiBody")}</p>
+    <h2>{t(locale, "legal.privacy.rights")}</h2>
+    <p>{t(locale, "legal.privacy.rightsBody")}</p>
+    <h2>{t(locale, "legal.privacy.retention")}</h2>
+    <p>{t(locale, "legal.privacy.retentionBody")}</p>
+  </article>
+</BaseLayout>

@@ -1,0 +1,3627 @@
+{
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/package.json": {
+    "mtime": 1784837570.2745807,
+    "ast_hash": "dfe66f5c31c6047e63ab6ae23a51042d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/turbo.json": {
+    "mtime": 1784179198.8456984,
+    "ast_hash": "1cfcd5829bfed7a2727a494f2555c762",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/package.json": {
+    "mtime": 1784748388.9044785,
+    "ast_hash": "873851802a1616abd6bfb21a1d878a4e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/tsconfig.json": {
+    "mtime": 1784181306.9782722,
+    "ast_hash": "c03a31fa9d1b4eebc23b38541b68e14e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/vite.config.ts": {
+    "mtime": 1784435326.7547657,
+    "ast_hash": "dcdf707b834a03abd71ecd79aa1622c1",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/vitest.config.ts": {
+    "mtime": 1784181344.6046884,
+    "ast_hash": "87ccba62dfdfa1ff70c36f817875e8d2",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/playwright.config.ts": {
+    "mtime": 1784320669.323351,
+    "ast_hash": "1067b4e2ded82a9a274d23d086863e2e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/i18n.ts": {
+    "mtime": 1784837635.70755,
+    "ast_hash": "50ee6ebe96063c14a2ecd51c18268708",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/main.tsx": {
+    "mtime": 1784944489.9684622,
+    "ast_hash": "2234eef726be57c38dd9be8b548363e5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/slugify.test.ts": {
+    "mtime": 1784181343.8416193,
+    "ast_hash": "a1c597cb2336f69c8e7e0881022621e4",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/locales/en.json": {
+    "mtime": 1785566333.5402648,
+    "ast_hash": "9fc9cc713691e578f6756660dbb04c96",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/locales/fr.json": {
+    "mtime": 1785566333.5722678,
+    "ast_hash": "e53e062438be3c948f1bb6c369af3d7b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/lib/api.ts": {
+    "mtime": 1784181320.512501,
+    "ast_hash": "45ad839969cb9e7903146d4bae3815fe",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/lib/saved-views.ts": {
+    "mtime": 1784572217.560247,
+    "ast_hash": "362e90833e1884031afa64fddd5f169f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/lib/csv-export.ts": {
+    "mtime": 1784748128.2456827,
+    "ast_hash": "406ed1ec6361e5f486786172963ea317",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/lib/csv-export.test.ts": {
+    "mtime": 1784748430.8223045,
+    "ast_hash": "84593de243e538f66d926d4286efbda9",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/lib/workspace.tsx": {
+    "mtime": 1784821649.828366,
+    "ast_hash": "a27b404396cc7ff45a44237aea9aa68c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/lib/status-labels.ts": {
+    "mtime": 1784821649.7403579,
+    "ast_hash": "fd9614c0886594ad51bd8a84acb0424b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/lib/auth-return.ts": {
+    "mtime": 1784821649.828366,
+    "ast_hash": "441e6b41092a6cd8e478ff69427410f6",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/components/Shell.tsx": {
+    "mtime": 1784946676.7368147,
+    "ast_hash": "ab2f8dd34e5c57c843ff2eeac4deadaf",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/pages/SignInPage.tsx": {
+    "mtime": 1784837664.04413,
+    "ast_hash": "bbc1e83e077eb34c2f74298924fd7b43",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/pages/SignUpPage.tsx": {
+    "mtime": 1784837682.5278122,
+    "ast_hash": "f5e4d3cf071218e52c5b595ea0c2915e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/pages/DashboardPage.tsx": {
+    "mtime": 1785566333.4082527,
+    "ast_hash": "dff52a9a4cc809828c9d1f5fddb39e9e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/pages/SitesPage.tsx": {
+    "mtime": 1784913890.2323442,
+    "ast_hash": "e1c307900ee654a8068658671c9cb3a1",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/pages/OrdersPage.tsx": {
+    "mtime": 1785566333.1232264,
+    "ast_hash": "ffe7f09d9360feb00cf6a75fea72c1c4",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/pages/OrderDetailPage.tsx": {
+    "mtime": 1784913891.4104514,
+    "ast_hash": "c41ff674fae90a006ac12403589e5378",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/pages/PagesPage.tsx": {
+    "mtime": 1785566332.5751758,
+    "ast_hash": "75ffc43f59778e17533335fc2b35efb7",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/pages/CategoriesPage.tsx": {
+    "mtime": 1785566333.4082527,
+    "ast_hash": "7d47049d1385ea7755d9d878c63d950b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/pages/ShippingPage.tsx": {
+    "mtime": 1785566332.6291807,
+    "ast_hash": "edcb878eb03b13aa36b48187279cfa94",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/pages/CouponsPage.tsx": {
+    "mtime": 1785566333.5392647,
+    "ast_hash": "81e94d11c3c1dcfb9ed106d33d5aac14",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/pages/ReportsPage.tsx": {
+    "mtime": 1785566332.9052062,
+    "ast_hash": "b24c719f0d0a884760682abfbcaf2926",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/pages/MembersPage.tsx": {
+    "mtime": 1785566333.2192352,
+    "ast_hash": "d5b01e8b895dae549fbb69e1f6cbdd04",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/pages/AcceptInvitePage.tsx": {
+    "mtime": 1784493857.7622664,
+    "ast_hash": "5350c0936bb7f2755590abbcfcdb48f5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/pages/BillingPage.tsx": {
+    "mtime": 1785566332.5581741,
+    "ast_hash": "0295d2288106c1fa3d54fe34790ff72c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/pages/ProductsPage.tsx": {
+    "mtime": 1785566332.8031967,
+    "ast_hash": "222e4025d5225ed26a4c10a7e5348634",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/pages/BannersPage.tsx": {
+    "mtime": 1785566333.314244,
+    "ast_hash": "449d48f89477cdf6e21d4e44d844dd9a",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/pages/MediaLibraryPage.tsx": {
+    "mtime": 1785566333.5712676,
+    "ast_hash": "2a573eca75bca70b8451d1219d4639be",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/pages/MenusPage.tsx": {
+    "mtime": 1785566332.5751758,
+    "ast_hash": "23b92a72304f4326247b259b1620e764",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/pages/ModulesPage.tsx": {
+    "mtime": 1785566333.4082527,
+    "ast_hash": "b6277288207af50b727edf11063735de",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/src/pages/ReturnsPage.tsx": {
+    "mtime": 1785566333.2192352,
+    "ast_hash": "b8a7bd2fc6e599e70a0fecbb0138b232",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/e2e/smoke.spec.ts": {
+    "mtime": 1784181346.1328273,
+    "ast_hash": "908b2379004ceebdabc40de6e39e15df",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/test-results/.last-run.json": {
+    "mtime": 1784773577.8634822,
+    "ast_hash": "f196824657d8858bc7fa44eecbba38b1",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/package.json": {
+    "mtime": 1784838424.456398,
+    "ast_hash": "97fce2150a177ae7d85f4bfbc5a05879",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/tsconfig.json": {
+    "mtime": 1784384944.87,
+    "ast_hash": "02925c0691cc8f67e6c4e2876664ee18",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/vitest.config.ts": {
+    "mtime": 1784181527.4592927,
+    "ast_hash": "ad63303b85c8bc73c087bbc607ed817d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle.config.ts": {
+    "mtime": 1784179243.1807358,
+    "ast_hash": "0a8eb802eebcb90251a1603f3289f2c0",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/app.ts": {
+    "mtime": 1784911306.2587144,
+    "ast_hash": "4ac0becb2cb82d228c711ea05cefad42",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/index.ts": {
+    "mtime": 1784320668.661291,
+    "ast_hash": "7b9bed24cd991e4c790775bed6087e46",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/app.test.ts": {
+    "mtime": 1784181246.114747,
+    "ast_hash": "0d940d9b2af35df30c0a05d13772aee8",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/db/schema.ts": {
+    "mtime": 1784906597.7776833,
+    "ast_hash": "a6a76e1ead0665f38c0a7a165a7fd095",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/db/client.ts": {
+    "mtime": 1784179224.0839968,
+    "ast_hash": "167b2f69ab22987e63a277897c43afaa",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/db/migrate.ts": {
+    "mtime": 1784320668.5572813,
+    "ast_hash": "8d708bba64436600bdb809ec0ed2f649",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/db/seed-luna-bijoux.ts": {
+    "mtime": 1785177624.1531699,
+    "ast_hash": "22e57f37c76313981b540eb0676fb848",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/middleware/request-id.ts": {
+    "mtime": 1784181148.6338987,
+    "ast_hash": "c11f3a88afe51e8040cc09323fdd7c59",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/middleware/security-headers.ts": {
+    "mtime": 1784474859.4291792,
+    "ast_hash": "106c544eecea284564ffc493ba99c57c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/lib/errors.ts": {
+    "mtime": 1784181150.8761022,
+    "ast_hash": "5b704a6977b4d696d4d29c77265bbab7",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/lib/logger.ts": {
+    "mtime": 1784181153.2383165,
+    "ast_hash": "d904827497a93bcb5c25df82338b2910",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/lib/redis.ts": {
+    "mtime": 1784181156.9956577,
+    "ast_hash": "3e55a12a6fc917f3d7646fc457d417cb",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/lib/config.ts": {
+    "mtime": 1784385312.414895,
+    "ast_hash": "76b2b7dafce574b9a997d753da91d869",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/lib/theme.ts": {
+    "mtime": 1784488371.8067958,
+    "ast_hash": "b9c639f061a8d1757ba08e2c8c2d5a79",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/identity/auth.ts": {
+    "mtime": 1784385335.1736162,
+    "ast_hash": "f637d81d9a38adb1cd848b2095555de5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/identity/rbac.ts": {
+    "mtime": 1784181193.1559398,
+    "ast_hash": "e24de1149c60383c05a12e8e67ea3314",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/identity/rbac.test.ts": {
+    "mtime": 1784181255.4065905,
+    "ast_hash": "84917e8b4e270750efdb3cb279e48eaa",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/identity/auth-social.test.ts": {
+    "mtime": 1784385376.2231581,
+    "ast_hash": "378094fbea4340f1265ace6e79edb5b5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/tenancy/routes.ts": {
+    "mtime": 1784838187.9418418,
+    "ast_hash": "34526d7b8925d0178a061b75b72ea3ec",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/tenancy/isolation.test.ts": {
+    "mtime": 1784181256.3156729,
+    "ast_hash": "352158b9a18d870bfd1dcc89a1a98453",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/tenancy/members-routes.ts": {
+    "mtime": 1784391562.3869927,
+    "ast_hash": "8f5679f20fa0f33f0a4b1e8edebdf3b4",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/tenancy/members.test.ts": {
+    "mtime": 1784391664.1129024,
+    "ast_hash": "30803dd54cabf86fc0195c354f9facbf",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/tenancy/wave-d.test.ts": {
+    "mtime": 1784907005.1618142,
+    "ast_hash": "28f9cee42587139fd2a139e576d25cda",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/cms/routes.ts": {
+    "mtime": 1784482968.3437257,
+    "ast_hash": "813d9ec150587b1c8388a96bc6ec9ccd",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/cms/cms.test.ts": {
+    "mtime": 1784320670.3224418,
+    "ast_hash": "02d699617854f44792eca6927a4ecfbc",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/cms/legal-pages.ts": {
+    "mtime": 1784474855.6428328,
+    "ast_hash": "f89cbd8972db99cd5292e12659ac4bbc",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/cms/blocks.ts": {
+    "mtime": 1784476929.9667275,
+    "ast_hash": "ba024d9123871eb8456dc6174976d612",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/cms/menu-routes.ts": {
+    "mtime": 1784476934.3111253,
+    "ast_hash": "cd3355b9409b89a320f337ed93669d58",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/cms/wave-b.test.ts": {
+    "mtime": 1784477115.6257184,
+    "ast_hash": "18d576f64c1587a4bcfe0884374747ee",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/billing/routes.ts": {
+    "mtime": 1784480136.129037,
+    "ast_hash": "9c63a576a7f2da660966247a2aa166be",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/billing/stripe.ts": {
+    "mtime": 1784393748.03125,
+    "ast_hash": "f4e0bcf7ff8184db2978b7faf69c1f50",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/billing/billing.test.ts": {
+    "mtime": 1784393809.9370265,
+    "ast_hash": "bc9883f9a214bf49755a65d6df07313b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/domains/routes.ts": {
+    "mtime": 1784181239.9371862,
+    "ast_hash": "61d4b97ecc71948f1d5f5f0bb635af7d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/tax.ts": {
+    "mtime": 1784320669.6123772,
+    "ast_hash": "ba4271024c0cc1a751f9b11da4b420ed",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/routes.ts": {
+    "mtime": 1784906666.7089663,
+    "ast_hash": "8ed8d582fb57d05e70ef55ca401b82d6",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/tax.test.ts": {
+    "mtime": 1784320669.708386,
+    "ast_hash": "481af963512ad30afb27c2b6562630ae",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/commerce.test.ts": {
+    "mtime": 1784907103.9728196,
+    "ast_hash": "f419fbe0a57eacb2cb42aa8b0b1cc047",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/invoice-number.ts": {
+    "mtime": 1784389253.2185276,
+    "ast_hash": "692704d2601953c71e387dbaaf41d8fe",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/invoice-pdf.ts": {
+    "mtime": 1784389270.2150202,
+    "ast_hash": "c28c5be6a02346307f76f44522f1410c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/accounting-csv.ts": {
+    "mtime": 1784389308.182469,
+    "ast_hash": "a2e5358221fa21ddbd4036a8be23b90c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/order-ops.ts": {
+    "mtime": 1784838419.1329126,
+    "ast_hash": "c77f3b07cda3bd04848d9ee8fa85c263",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/catalog-routes.ts": {
+    "mtime": 1784320670.457454,
+    "ast_hash": "53fd23a3cfd8deb723466eb91d7ff1ed",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/shipping-routes.ts": {
+    "mtime": 1784384944.981,
+    "ast_hash": "225ebc0502eb11597a52ae65d910dae8",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/media-routes.ts": {
+    "mtime": 1784476936.0592852,
+    "ast_hash": "047732d691398683c33012dcdc851a15",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/shipping.test.ts": {
+    "mtime": 1784384944.981,
+    "ast_hash": "9f6dd947d03f761bae68b95c209424e0",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/customer.ts": {
+    "mtime": 1784384944.92,
+    "ast_hash": "9c5204df71588cbad011a034c5415240",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/storefront-account-routes.ts": {
+    "mtime": 1784906645.1269991,
+    "ast_hash": "8523403fe39076b0fad6ebf195e57f92",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/coupons.ts": {
+    "mtime": 1784389219.0784147,
+    "ast_hash": "f59d39948032d72a1d8397aba2f233fd",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/coupon-routes.ts": {
+    "mtime": 1784389325.4318924,
+    "ast_hash": "b1732f1a8a427c5bf1787d3fcecffc49",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/coupons.test.ts": {
+    "mtime": 1784389503.370257,
+    "ast_hash": "4ec17c2724ab25e97ef712b98006642c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/banner-routes.ts": {
+    "mtime": 1784474859.418178,
+    "ast_hash": "bc80dacc1ea6d4025a89d722b49fec66",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/wave-a.test.ts": {
+    "mtime": 1784475190.5184882,
+    "ast_hash": "7ccc58a369ab609bba4d953634180b6f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/wave-c.test.ts": {
+    "mtime": 1784478651.9722703,
+    "ast_hash": "7da742f0f224a61211666e46ab78b06e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/abandoned-carts.ts": {
+    "mtime": 1784838434.0762749,
+    "ast_hash": "9af03d2aa4e84e44c3ff56cac065b939",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/abandoned-cart-routes.ts": {
+    "mtime": 1784483066.2286723,
+    "ast_hash": "b3f41e93879aeaf0f77086dde5d2fd11",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/return-routes.ts": {
+    "mtime": 1784906754.8099964,
+    "ast_hash": "5af27e216e4f0d0a29779d461ff2a329",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/commerce/wave-e.test.ts": {
+    "mtime": 1784483170.9022393,
+    "ast_hash": "339724ec57ba7a182561087d47d9f867",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/email/templates.tsx": {
+    "mtime": 1784838397.9559824,
+    "ast_hash": "c032df098fa9b1ebda2db5f23cfa11c9",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/email/send.ts": {
+    "mtime": 1784838398.358019,
+    "ast_hash": "9c7e3ecc90086ac1e7ed78d618f22486",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/email/email.test.ts": {
+    "mtime": 1784838424.7694266,
+    "ast_hash": "62aa61e3844fc47344e02a6fc85b79ec",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/email/i18n.ts": {
+    "mtime": 1784863583.5376048,
+    "ast_hash": "5eb78fccb6f2ca4a2ed02df59be350b7",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/email/locales/en.json": {
+    "mtime": 1784838340.9697883,
+    "ast_hash": "40f2c905ffbfd5f42a840df6efec4d5c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/src/modules/email/locales/fr.json": {
+    "mtime": 1784838344.664125,
+    "ast_hash": "5dc6056bdb9d6888a0ee9a64727fa061",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/0000_smooth_expediter.sql": {
+    "mtime": 1784179271.5093153,
+    "ast_hash": "050d25fc20eab69049d940329b66c606",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/0001_puzzling_mach_iv.sql": {
+    "mtime": 1784181460.975255,
+    "ast_hash": "1accf76109c86e937d639f53179146a9",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/0002_demonic_raider.sql": {
+    "mtime": 1784213984.5767365,
+    "ast_hash": "3be1bca37b5672eeceba758fe9e02933",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/0003_little_pete_wisdom.sql": {
+    "mtime": 1784217067.9962597,
+    "ast_hash": "4b9cd9d972b4b8e709c0cf6dd3dc64ad",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/0004_premium_grim_reaper.sql": {
+    "mtime": 1784294938.0877523,
+    "ast_hash": "99927fb7c2b503e98e68402f5010074b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/0005_lowly_echo.sql": {
+    "mtime": 1784320670.4054494,
+    "ast_hash": "cc2429e51f4d86e54ad4dc29b94910e2",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/0006_gray_kronos.sql": {
+    "mtime": 1784344680.238153,
+    "ast_hash": "0aebce9aee080299f2f0cece6a73bada",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/0007_steady_maginty.sql": {
+    "mtime": 1784382241.5487125,
+    "ast_hash": "66c0503b4a3cb84b08bb5829a2a95ba3",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/0008_slippery_scarlet_spider.sql": {
+    "mtime": 1784389221.2107384,
+    "ast_hash": "2cb4f37d59778965e00f68a499a64ca9",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/0009_mute_moon_knight.sql": {
+    "mtime": 1784391528.78468,
+    "ast_hash": "cd76bd60ca88468063e6701d63bd6482",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/0010_melted_veda.sql": {
+    "mtime": 1784474928.3094826,
+    "ast_hash": "549dffc216a73110ba62309bd7629946",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/0011_melodic_greymalkin.sql": {
+    "mtime": 1784476896.4766626,
+    "ast_hash": "0fa120544c5df4ef4ae694cd52192b4c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/0012_familiar_namorita.sql": {
+    "mtime": 1784478384.2087698,
+    "ast_hash": "f061860c07398963aec79e343c927c08",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/0013_late_shape.sql": {
+    "mtime": 1784480153.4586222,
+    "ast_hash": "752be9cae57306d34f99c6f30ed81d9e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/0014_spooky_raza.sql": {
+    "mtime": 1784483078.1567624,
+    "ast_hash": "79387d35538c25ee2abae48d4987fd2a",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/0015_payment_seams.sql": {
+    "mtime": 1784906599.947881,
+    "ast_hash": "85092fd863c22c92958efd494b8879eb",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/meta/_journal.json": {
+    "mtime": 1784906605.961429,
+    "ast_hash": "3b609046bf012d35c9c32c8eb43164d2",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/meta/0000_snapshot.json": {
+    "mtime": 1784179271.508315,
+    "ast_hash": "82716e687a870a48d79090a20a9691c2",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/meta/0001_snapshot.json": {
+    "mtime": 1784181460.975255,
+    "ast_hash": "dad4272131a4a35028ea2fb321004202",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/meta/0002_snapshot.json": {
+    "mtime": 1784213984.5757363,
+    "ast_hash": "e08774b5d6871e92bbe89574d978223d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/meta/0003_snapshot.json": {
+    "mtime": 1784217067.9952598,
+    "ast_hash": "dae88512837759cf5c6373e1d2690687",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/meta/0004_snapshot.json": {
+    "mtime": 1784294938.0867522,
+    "ast_hash": "eecbf22c0258e038b23fbfe95e7ddc9c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/meta/0005_snapshot.json": {
+    "mtime": 1784298417.0887296,
+    "ast_hash": "83a51a6f219d69610255b826cd5f4c31",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/meta/0006_snapshot.json": {
+    "mtime": 1784344680.238153,
+    "ast_hash": "3872d1785e637fd8ace947f6ccdc5941",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/meta/0007_snapshot.json": {
+    "mtime": 1784382241.5487125,
+    "ast_hash": "8febcde4758d82f4bec65c8731a66497",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/meta/0008_snapshot.json": {
+    "mtime": 1784389221.2097383,
+    "ast_hash": "6f8d1829a0a44823053cb7e152d8e22d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/meta/0009_snapshot.json": {
+    "mtime": 1784391528.78468,
+    "ast_hash": "6e201ad092e383b00486f9debcffb819",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/meta/0010_snapshot.json": {
+    "mtime": 1784474928.3084824,
+    "ast_hash": "f91c4d7f8559f2768e20bfa25eb059d4",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/meta/0011_snapshot.json": {
+    "mtime": 1784476896.4756627,
+    "ast_hash": "e7ccb403ba18ee166ab3c6addfd7cc13",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/meta/0012_snapshot.json": {
+    "mtime": 1784478384.2077696,
+    "ast_hash": "1bae74facde7039f57a281305e71e75c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/meta/0013_snapshot.json": {
+    "mtime": 1784480153.4586222,
+    "ast_hash": "05f2ccfb04b8d9543244e903f7ce758d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/drizzle/meta/0014_snapshot.json": {
+    "mtime": 1784483078.1557622,
+    "ast_hash": "210bb7957749b0f28eebd5a17ba360c1",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/web/package.json": {
+    "mtime": 1784864849.8732054,
+    "ast_hash": "bf50d27ba4b024a071e4dd7632e0d054",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/web/tsconfig.json": {
+    "mtime": 1784181357.6638741,
+    "ast_hash": "418c944ffd82511db2cf721b6579a99f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/web/vitest.config.ts": {
+    "mtime": 1784181371.7111495,
+    "ast_hash": "87ccba62dfdfa1ff70c36f817875e8d2",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/web/src/seo.ts": {
+    "mtime": 1784838009.0345414,
+    "ast_hash": "be24889190adf72445622bbc0dc0d682",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/web/src/server.ts": {
+    "mtime": 1784906733.7260747,
+    "ast_hash": "56a4717c65c3908d74cfa9196188625f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/web/src/seo.test.ts": {
+    "mtime": 1784504184.487977,
+    "ast_hash": "b5836371bbe19d11b4237c805ba3c641",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/web/src/storefront.ts": {
+    "mtime": 1784322037.6697938,
+    "ast_hash": "eb74f957d00b778563082beecab93e46",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/web/src/render.tsx": {
+    "mtime": 1784865320.4301646,
+    "ast_hash": "6ec19cbba3fb39daf85ee9e98f8c2abd",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/web/src/views.tsx": {
+    "mtime": 1784906583.546386,
+    "ast_hash": "ef11de75a3ad0d99bbb047df87489854",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/web/src/blocks.tsx": {
+    "mtime": 1784838182.5673523,
+    "ast_hash": "0057558dcca5115fb1303005fd259d0b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/web/src/theme.ts": {
+    "mtime": 1784488371.8067958,
+    "ast_hash": "9fbb94b439dd9b83cfff528f55694e27",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/web/src/client/store-chrome.js": {
+    "mtime": 1784906364.690436,
+    "ast_hash": "ad4285dafe3a11fe06b7e408cbdf4b31",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/web/src/i18n/index.ts": {
+    "mtime": 1784906407.6823552,
+    "ast_hash": "670bd3a20fe8dc73d3993860d0b7ce36",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/web/src/i18n/i18n.test.ts": {
+    "mtime": 1784837972.0121691,
+    "ast_hash": "474f450e744f0805f86e0268f885a1b2",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/web/src/i18n/locales/en.json": {
+    "mtime": 1784906401.6168022,
+    "ast_hash": "6e6103b62887d325d9d8ee806573ae35",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/web/src/i18n/locales/fr.json": {
+    "mtime": 1784906401.6168022,
+    "ast_hash": "868c6293f0099699370ffdab82a40122",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/remotion/package.json": {
+    "mtime": 1784390532.787779,
+    "ast_hash": "db77a1b3794fdbf0c61c5a103f0a3159",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/remotion/tsconfig.json": {
+    "mtime": 1784384945.026,
+    "ast_hash": "09ccf6ea015b49af4f8001d1bdd01243",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/remotion/remotion.config.ts": {
+    "mtime": 1784384944.981,
+    "ast_hash": "3810fe12ba3b33e5d2eabd67a132a3bd",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/remotion/src/index.ts": {
+    "mtime": 1784384944.87,
+    "ast_hash": "d92d9dee1ab16aa44a75ae7fbfb843ca",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/remotion/src/Root.tsx": {
+    "mtime": 1784384945.026,
+    "ast_hash": "df29104f63513d1838a55d5cffcaf20d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/remotion/src/MestryxPromo.tsx": {
+    "mtime": 1784487492.7254364,
+    "ast_hash": "74729b584c34e0079115f160a8a963fc",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/remotion/src/ProductPromo.tsx": {
+    "mtime": 1784487492.7274365,
+    "ast_hash": "192056c05d9fa406261af7670b569126",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/remotion/src/BrandLaunch.tsx": {
+    "mtime": 1784487492.7264364,
+    "ast_hash": "c590a233efdaaeb6913b50a80b728e56",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/design-system/reports/detect-baseline-2026-07-19.json": {
+    "mtime": 1784435180.6934402,
+    "ast_hash": "58e0494c51d30eb3494f7c9198986bb9",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/config/package.json": {
+    "mtime": 1784181417.4182997,
+    "ast_hash": "550a4fa8566b218b0bce5381894c8415",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/config/tsconfig.base.json": {
+    "mtime": 1784179208.0245342,
+    "ast_hash": "ae6d9ea5947d3c2657d1ac04a3bcc584",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/sdk/package.json": {
+    "mtime": 1784181291.3488533,
+    "ast_hash": "ce126ccf55d54f83eec9903970cdeb5c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/sdk/tsconfig.json": {
+    "mtime": 1784181293.8530807,
+    "ast_hash": "32be1ffc3456f63148b3e08ed87be93c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/sdk/src/index.ts": {
+    "mtime": 1784181294.0691004,
+    "ast_hash": "9c323d89e34f4c37a2019d27dde0e4b4",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/tokens/package.json": {
+    "mtime": 1784865734.4879525,
+    "ast_hash": "de4ea9108d62968b13b46963e048ae26",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/tokens/tsconfig.json": {
+    "mtime": 1784181287.8725379,
+    "ast_hash": "e8744f234f752c091c9593244b548226",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/tokens/src/index.ts": {
+    "mtime": 1784488354.7082329,
+    "ast_hash": "42e8899fa56ce9d10210cc953b1bb083",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/tokens/src/presets/types.ts": {
+    "mtime": 1784488320.2800853,
+    "ast_hash": "2b2121c9fe72a289122734e6265113a6",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/tokens/src/presets/storefront-base.ts": {
+    "mtime": 1784744568.067819,
+    "ast_hash": "f8b19c060e0893109a5c8e435dba411d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/tokens/src/presets/luna.ts": {
+    "mtime": 1784488324.1464388,
+    "ast_hash": "99834e57bfcd2d67974ec7bab87fd1b4",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/tokens/src/presets/storefront-dark.ts": {
+    "mtime": 1784558734.3611693,
+    "ast_hash": "2ff141cbfe15323559c0ab87fd35fc0d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/tokens/src/presets/platform.ts": {
+    "mtime": 1785119035.114433,
+    "ast_hash": "9b5f9e88e5d7b33f352d541c17b3f4da",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/tokens/src/presets/index.ts": {
+    "mtime": 1784488334.1103497,
+    "ast_hash": "30cc3c071c63e43c1db398e74d006598",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/package.json": {
+    "mtime": 1784865727.766339,
+    "ast_hash": "f82bc817f7b48e6386377e3dd4dc790b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/tsconfig.json": {
+    "mtime": 1784435321.2382627,
+    "ast_hash": "5d108aec989d15603f626ce6db6d1580",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/components.json": {
+    "mtime": 1784435303.9266832,
+    "ast_hash": "af52966f964ba469129c0ed3297a09d5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/playwright.config.ts": {
+    "mtime": 1784471921.4740736,
+    "ast_hash": "f4500c13d14240153a257dd3d7cf2684",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/vitest.shims.d.ts": {
+    "mtime": 1784519454.3435864,
+    "ast_hash": "4d243f7dd03a2a82af1fde8db0b92025",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/vitest.config.ts": {
+    "mtime": 1784560530.9550364,
+    "ast_hash": "91c7ffdbcb190a0a586e62aa689452cb",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/index.ts": {
+    "mtime": 1784913884.2007945,
+    "ast_hash": "374a71525e748c19cc6181a00c5bdea7",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/testing-library.d.ts": {
+    "mtime": 1784748498.7375033,
+    "ast_hash": "f96ea6c432dcd9d0acebe086a707cadc",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/lib/utils.ts": {
+    "mtime": 1784435299.3692675,
+    "ast_hash": "da5e10b5aa14577c027674694a4d9b31",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/app-shell.tsx": {
+    "mtime": 1785119064.6531236,
+    "ast_hash": "0d38a8e4ad95bf46a468d3b897debd53",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/storefront.tsx": {
+    "mtime": 1784906579.1859887,
+    "ast_hash": "60ee9d8ecd9590d8aa3d3e3ba263b2c3",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/app-shell.stories.tsx": {
+    "mtime": 1784944516.3498657,
+    "ast_hash": "d2bad42b7a4113140e658b52d165ad0d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/store-header.stories.tsx": {
+    "mtime": 1784512453.7708664,
+    "ast_hash": "7c13f6b7056fd3da48b77ec79411a99c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/product-card.stories.tsx": {
+    "mtime": 1784506857.823041,
+    "ast_hash": "a8550289965c922e083599cedc3f0537",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/page-header.stories.tsx": {
+    "mtime": 1784560252.6166537,
+    "ast_hash": "15081a46db19f743b62ca000770529f4",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/page-header.tsx": {
+    "mtime": 1784913928.5418348,
+    "ast_hash": "bf2694e23a096bc4c29de3870c3383c7",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/store-hero.stories.tsx": {
+    "mtime": 1784506859.5601995,
+    "ast_hash": "b8c9f8fb632b0c510942882686fb282a",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/filter-bar.tsx": {
+    "mtime": 1784571931.7060604,
+    "ast_hash": "341c4728da3cde5500896497067e5e1f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/filter-bar.stories.tsx": {
+    "mtime": 1784491913.3125196,
+    "ast_hash": "f9d2d8d200ae8802cba8089f68010cf7",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/stat-strip.tsx": {
+    "mtime": 1784821649.8563685,
+    "ast_hash": "eae6a73f69e336731f9c3bb533e7876c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/stat-strip.stories.tsx": {
+    "mtime": 1784821649.9253747,
+    "ast_hash": "b27f2cd77f924662ec06100466add0c5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/dropzone.tsx": {
+    "mtime": 1784492658.3916836,
+    "ast_hash": "9660479409d401f989bc91ee5161c7ea",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/dropzone.stories.tsx": {
+    "mtime": 1784491914.4326222,
+    "ast_hash": "556c1c4e5fb720a8b07015212cf2083b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/form-layout.tsx": {
+    "mtime": 1784913829.0137658,
+    "ast_hash": "3563c6ebd2a96056a30f88c3894436f6",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/form-layout.stories.tsx": {
+    "mtime": 1784560266.6589344,
+    "ast_hash": "562d3b5a6ebf3ee010af1dae3779face",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/storefront-vitrine.stories.tsx": {
+    "mtime": 1784836720.175021,
+    "ast_hash": "cf1172fbf3fc001d0ece9ec739891b66",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/storefront-commerce.stories.tsx": {
+    "mtime": 1784906893.4376316,
+    "ast_hash": "a4da3ced26488d017992892555af113d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/page-content.tsx": {
+    "mtime": 1784913818.544812,
+    "ast_hash": "7090e28649c9f472f98f0b6facc71fbc",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/table-frame.tsx": {
+    "mtime": 1784821649.9583778,
+    "ast_hash": "76f801096c45b2d5955dfd0f06391d07",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/split-layout.tsx": {
+    "mtime": 1784914007.139997,
+    "ast_hash": "35d2ee1a8de80a1a2efa866c00761a93",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/console-layout.stories.tsx": {
+    "mtime": 1785566332.9052062,
+    "ast_hash": "0f14cab3a32cf673fa732a79205622fb",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/filter-chips.tsx": {
+    "mtime": 1784572082.561882,
+    "ast_hash": "d5f5c4712d350dd12d57624ef25081a9",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/density-toggle.tsx": {
+    "mtime": 1784572091.5187025,
+    "ast_hash": "a400af359be66bcb0de6cdae89a07887",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/bulk-action-bar.tsx": {
+    "mtime": 1784748349.0388396,
+    "ast_hash": "2bb393107e08ad3a11a438e8efeb945a",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/loading.tsx": {
+    "mtime": 1784821649.8763704,
+    "ast_hash": "b31b5170db939f8cc54acf90cd4efc68",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/loading.stories.tsx": {
+    "mtime": 1784822254.008488,
+    "ast_hash": "893efa4c3aa393013e0452202cebce2b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/action-tile.tsx": {
+    "mtime": 1784821649.9583778,
+    "ast_hash": "2ad7475a055968f615f9ae0bd83219e2",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/list-panel.tsx": {
+    "mtime": 1784821649.828366,
+    "ast_hash": "71901bdb56de51b97fac92dbf0ae5856",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/list-panel.stories.tsx": {
+    "mtime": 1784821649.9583778,
+    "ast_hash": "496b4318007ccf96f3cb0f74ea0aeddb",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/action-tile.stories.tsx": {
+    "mtime": 1784821649.828366,
+    "ast_hash": "68b9bc3862baeced611a91be4bd47989",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/activity-list.tsx": {
+    "mtime": 1784821649.9583778,
+    "ast_hash": "818bef09d3890648e1a0007f0374c139",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/activity-list.stories.tsx": {
+    "mtime": 1784821649.9253747,
+    "ast_hash": "0d388297676c607e868e6bbc69717d2c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/storefront-loading.tsx": {
+    "mtime": 1784837684.5859995,
+    "ast_hash": "cda268a80c57a9c141f1bc09c8b68c1b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/storefront-loading.stories.tsx": {
+    "mtime": 1784837710.228333,
+    "ast_hash": "532d491d68f69e9663652f93ec0c8cb0",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/motion/reduced-motion.ts": {
+    "mtime": 1784435300.6403835,
+    "ast_hash": "dd13c1c71004444f56bfae1e87e235f4",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/motion/motion-presence.tsx": {
+    "mtime": 1784435302.2405295,
+    "ast_hash": "19f0af6c00f32886040c816be0af0065",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/motion/motion-press.tsx": {
+    "mtime": 1784435485.1222126,
+    "ast_hash": "ccfd0ce51d511a91457657ae01c51b63",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/motion/index.ts": {
+    "mtime": 1784748371.983934,
+    "ast_hash": "8c4e770f07e74fa4e2e0db6b9d891a7f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/motion/motion.stories.tsx": {
+    "mtime": 1784560445.1262095,
+    "ast_hash": "96968e33e4c32f9944136e1a5fa3e86d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/patterns/motion/route-fade.tsx": {
+    "mtime": 1784748336.99274,
+    "ast_hash": "99dab4b2b38fe3727e6a5d0ebfa0ff84",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/alert.tsx": {
+    "mtime": 1784821649.8563685,
+    "ast_hash": "fd5e92e0ef18a17faae4e67f36db1ee0",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/badge.tsx": {
+    "mtime": 1784821649.8113644,
+    "ast_hash": "0738587dfe2f051785d1127a63211a6a",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/button.tsx": {
+    "mtime": 1784821649.9253747,
+    "ast_hash": "a97815694bde0fec9604d2d4539038ea",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/card.tsx": {
+    "mtime": 1784493170.930554,
+    "ast_hash": "5e63759f86d51c0d4614f58d05e56c55",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/checkbox.tsx": {
+    "mtime": 1784467787.5217884,
+    "ast_hash": "e26af7155dec79903809eecb3d2cea7c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/empty-state.tsx": {
+    "mtime": 1784821649.6553502,
+    "ast_hash": "233f75eadc8fc47316cbeddb78c694ce",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/input.tsx": {
+    "mtime": 1784467734.9289942,
+    "ast_hash": "3769b50d2501077d16412145347abc0b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/label.tsx": {
+    "mtime": 1784467736.649151,
+    "ast_hash": "d6e5c22ba96a72365b2336311a139826",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/select.tsx": {
+    "mtime": 1784467741.3345783,
+    "ast_hash": "edf7113872634226b66668113b211a07",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/stack.tsx": {
+    "mtime": 1784467751.1864762,
+    "ast_hash": "6f2843ec6edeb141190bd3824f9c575b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/table.tsx": {
+    "mtime": 1784821649.6553502,
+    "ast_hash": "6dd8f474bff269ba5012b63170f211f3",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/textarea.tsx": {
+    "mtime": 1784467738.2092934,
+    "ast_hash": "326e1299d0b88cf4140c16fc1ab7b752",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/text.tsx": {
+    "mtime": 1784468035.037343,
+    "ast_hash": "76ed066fa0c283544d8946403773006a",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/button.stories.tsx": {
+    "mtime": 1784564505.3747904,
+    "ast_hash": "70bdf24acaddd482d7c96c5213ec08c6",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/separator.tsx": {
+    "mtime": 1784467795.5575209,
+    "ast_hash": "17adbf60f9321105d7e5df8fbe12c055",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/skeleton.tsx": {
+    "mtime": 1784572752.873255,
+    "ast_hash": "b882ca7971e7f83d3ba91ccae2ff3448",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/avatar.tsx": {
+    "mtime": 1784467798.247766,
+    "ast_hash": "12ec0901e2ba2d1034aaebb62abe3181",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/dialog.tsx": {
+    "mtime": 1784467823.7140872,
+    "ast_hash": "9a0aa449ed40e98692ae0a6210d64a2a",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/sheet.tsx": {
+    "mtime": 1784467827.7134519,
+    "ast_hash": "383a20448b14608189157b579e3409eb",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/tabs.tsx": {
+    "mtime": 1784821649.7773614,
+    "ast_hash": "e880d5da9203d1314649d1db95393af1",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/tooltip.tsx": {
+    "mtime": 1784467834.6230814,
+    "ast_hash": "f0fd27f89ecae909807c6a3928f53454",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/dropdown-menu.tsx": {
+    "mtime": 1784467834.6440835,
+    "ast_hash": "1dd51bfbab353ae7e1124f0ac7adb4f4",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/input.stories.tsx": {
+    "mtime": 1784564588.1463423,
+    "ast_hash": "3448789e5d976f727e66a95fbac72eaf",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/textarea.stories.tsx": {
+    "mtime": 1784557286.7190971,
+    "ast_hash": "24701516bb5936758a582253f1483452",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/label.stories.tsx": {
+    "mtime": 1784557286.7130966,
+    "ast_hash": "3435016e382cb6d9e95031cb5727fb08",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/select.stories.tsx": {
+    "mtime": 1784558719.7088332,
+    "ast_hash": "02bb2f1b8cb6f2742b4df5c64ff691f4",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/checkbox.stories.tsx": {
+    "mtime": 1784564512.1114051,
+    "ast_hash": "f3e2c7abdffcbdc4abd3c335788cc8c5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/badge.stories.tsx": {
+    "mtime": 1784821649.8763704,
+    "ast_hash": "ebdd899e28ef86ca7b8f42c4b4aa3b43",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/card.stories.tsx": {
+    "mtime": 1784557333.2273452,
+    "ast_hash": "2d2258061490fc95b85b1e550f32ef3e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/alert.stories.tsx": {
+    "mtime": 1784821649.6293478,
+    "ast_hash": "605fe3ba994f40cef8fc45d3c5d268b4",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/table.stories.tsx": {
+    "mtime": 1784557286.7180972,
+    "ast_hash": "38756026cb0d114ad38afba75bafc164",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/empty-state.stories.tsx": {
+    "mtime": 1784821649.828366,
+    "ast_hash": "1a79b3971168b09460ac327b22391203",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/separator.stories.tsx": {
+    "mtime": 1784557286.7160969,
+    "ast_hash": "e082ae5f6c98b818481164952e1c9cd5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/skeleton.stories.tsx": {
+    "mtime": 1784572819.3713415,
+    "ast_hash": "2bdd31bb8e1d18d10da5f6df497072e4",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/avatar.stories.tsx": {
+    "mtime": 1784557286.707096,
+    "ast_hash": "b67e5142bee13f5cf4f3d2b79461fe96",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/dialog.stories.tsx": {
+    "mtime": 1784560158.450066,
+    "ast_hash": "19756305568e28d98345bbdfcae22783",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/sheet.stories.tsx": {
+    "mtime": 1784560163.5335295,
+    "ast_hash": "92437e55f6240cb84bfad2625efbb7fc",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/tabs.stories.tsx": {
+    "mtime": 1784557286.7180972,
+    "ast_hash": "c2ecacc90847f4f7368e68ff59929fb5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/tooltip.stories.tsx": {
+    "mtime": 1784557286.7200973,
+    "ast_hash": "a8fe611c527cfdd13695dd31678961b3",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/dropdown-menu.stories.tsx": {
+    "mtime": 1784560373.4406724,
+    "ast_hash": "48b3b66a352dfcf24f1d3d192635ba51",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/stack.stories.tsx": {
+    "mtime": 1784557286.717097,
+    "ast_hash": "c28ee925df6a09b0bb2105de58016b0d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/text.stories.tsx": {
+    "mtime": 1784557286.7180972,
+    "ast_hash": "2983b5bcd3c4e94ee7433746880b36d3",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/breadcrumb.tsx": {
+    "mtime": 1784491759.2784176,
+    "ast_hash": "e6ffc3e69b54c8c13839a380ddb24a9b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/breadcrumb.stories.tsx": {
+    "mtime": 1784557286.7080963,
+    "ast_hash": "ddeda097cdd4bacf2a42233abffee25e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/pagination.tsx": {
+    "mtime": 1784821649.6293478,
+    "ast_hash": "eb8793f44a10d1bde825fe0a0b85f66c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/pagination.stories.tsx": {
+    "mtime": 1784821649.8573685,
+    "ast_hash": "81d2afe1d9b398ad97c64d057da31d18",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/switch.tsx": {
+    "mtime": 1784492658.3926837,
+    "ast_hash": "608a64f675e963fd28f8658bea8ea422",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/switch.stories.tsx": {
+    "mtime": 1784564647.736779,
+    "ast_hash": "137679539e70d4bc61a1707430e01b26",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/popover.tsx": {
+    "mtime": 1784492658.3926837,
+    "ast_hash": "d294f0a00e6ef6e356e6470659a1cdd7",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/popover.stories.tsx": {
+    "mtime": 1784557286.7140968,
+    "ast_hash": "99d0b03f26136535a25672d62877235c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/command.tsx": {
+    "mtime": 1784748352.571162,
+    "ast_hash": "c4a564772eed4c6babca35dee2d2ae5d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/command.stories.tsx": {
+    "mtime": 1784560373.0746388,
+    "ast_hash": "8c7dbe96529e89edb26ee2619a4e3755",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/toast.tsx": {
+    "mtime": 1784492658.3926837,
+    "ast_hash": "ebfa1d2d26bccf701e6321cec69805c7",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/toast.stories.tsx": {
+    "mtime": 1784557286.7190971,
+    "ast_hash": "8ffc209c90e86fc43752ecaec9828447",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/radio-group.tsx": {
+    "mtime": 1784492658.3926837,
+    "ast_hash": "dd79dc7d3ce7e51a67168a1460dafc6b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/radio-group.stories.tsx": {
+    "mtime": 1784557286.715097,
+    "ast_hash": "e3bce98d839322b331769bdb7e22df13",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/progress.tsx": {
+    "mtime": 1784558773.5167398,
+    "ast_hash": "f64d9cb108f67e40cbaae8c510674b95",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/progress.stories.tsx": {
+    "mtime": 1784557286.7140968,
+    "ast_hash": "1d1d0d920db81dc53c19d008ef82dbb1",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/accordion.tsx": {
+    "mtime": 1784492658.393684,
+    "ast_hash": "2cce79424f24fae66a9bb640c9fb8a38",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/accordion.stories.tsx": {
+    "mtime": 1784557286.705096,
+    "ast_hash": "453b8f4c0da6ffb454c0c6fd5cd28997",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/scroll-area.tsx": {
+    "mtime": 1784558680.1702278,
+    "ast_hash": "28c17aed2a007a8fe9420ace113d45be",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/scroll-area.stories.tsx": {
+    "mtime": 1784557286.715097,
+    "ast_hash": "791d545f7e3ce02aaee346bfa3629c7c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/data-table.tsx": {
+    "mtime": 1784572792.91492,
+    "ast_hash": "6160d58de2e53cac609eb4a5c674d781",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/data-table.stories.tsx": {
+    "mtime": 1784560250.2334363,
+    "ast_hash": "eb376b6f7fb6f5cb8666492c2efe08de",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/spinner.tsx": {
+    "mtime": 1784821649.8563685,
+    "ast_hash": "06981062dca69d0592648e2afc7024ef",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/spinner.stories.tsx": {
+    "mtime": 1784572812.197685,
+    "ast_hash": "9b741210fcf0a49bdfc73061d7c11e29",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/kpi-bullet.tsx": {
+    "mtime": 1784748282.6427786,
+    "ast_hash": "82fa4d8277bbb8426111af15e3e890d3",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/search-field.tsx": {
+    "mtime": 1784821649.720356,
+    "ast_hash": "ba768e56aec6c483568a34bbbaa3771d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/search-field.stories.tsx": {
+    "mtime": 1784821649.828366,
+    "ast_hash": "c8d7d05863d2002dd4ed52deb11411c9",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/status-dot.tsx": {
+    "mtime": 1784821649.828366,
+    "ast_hash": "47874a9c43f4ff97933c98c72ef864ac",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/components/meta-pill.tsx": {
+    "mtime": 1784821649.6673512,
+    "ast_hash": "660b9edbb0c835371e42f5b0a231073a",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/foundations/colors.stories.tsx": {
+    "mtime": 1785119097.6611304,
+    "ast_hash": "65da109e521671f6d771b921a8678e92",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/foundations/typography.stories.tsx": {
+    "mtime": 1785119096.3690126,
+    "ast_hash": "8d1e12a4004d320cb34a4f70fac39f5c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/foundations/spacing.stories.tsx": {
+    "mtime": 1784506954.462866,
+    "ast_hash": "866726ba4d120524caeedacf87553930",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/foundations/themes.stories.tsx": {
+    "mtime": 1784487439.385561,
+    "ast_hash": "ead7eef5d23bea2330066e004f783386",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/foundations/catalog.stories.tsx": {
+    "mtime": 1784822299.7586613,
+    "ast_hash": "41abb2dd227cc82b71efff270ac68291",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/__tests__/coverage-gaps.test.tsx": {
+    "mtime": 1784821649.7773614,
+    "ast_hash": "d32f5b733bf96cb80c00a7a1c9fb9bff",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/__tests__/setup.ts": {
+    "mtime": 1784560143.8647358,
+    "ast_hash": "3709e3aa95abf0544678f0f2d9b46702",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/src/__tests__/empty-state.test.tsx": {
+    "mtime": 1784821649.8563685,
+    "ast_hash": "4195072be7936aa506b9e6f3f9b07d03",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/.storybook/preview.tsx": {
+    "mtime": 1784558854.4811225,
+    "ast_hash": "2b0a72ade62366aea254ef5cadbf3878",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/.storybook/main.ts": {
+    "mtime": 1784519439.948273,
+    "ast_hash": "b368b311428a3614399a72a679c47044",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/.storybook/theme.ts": {
+    "mtime": 1784470943.745169,
+    "ast_hash": "3463e229887df12046cf68aeb5d1dda8",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/e2e/storybook-themes.spec.ts": {
+    "mtime": 1784471922.930207,
+    "ast_hash": "191b15bb8cb94bb0a3b74c84b99909fc",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/test-results/.last-run.json": {
+    "mtime": 1784471940.138784,
+    "ast_hash": "f196824657d8858bc7fa44eecbba38b1",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/host-resolution/package.json": {
+    "mtime": 1784865737.5692337,
+    "ast_hash": "bd80a7101d879bb9b5ab4a907311f3b5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/host-resolution/tsconfig.json": {
+    "mtime": 1784181258.5108721,
+    "ast_hash": "3e7a3722d102b7924146ff3270549afa",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/host-resolution/vitest.config.ts": {
+    "mtime": 1784181262.1712046,
+    "ast_hash": "294cd42544648f5284b355f38a810295",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/host-resolution/src/index.test.ts": {
+    "mtime": 1784181262.1702044,
+    "ast_hash": "9589d519b231d568aa94f7638c435cc5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/host-resolution/src/index.ts": {
+    "mtime": 1784181262.1702044,
+    "ast_hash": "9b8f2820fbf4049b648b9305d3d6f0b5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/command-metadata.json": {
+    "mtime": 1784435154.3980412,
+    "ast_hash": "883d1962f87b23b4a0f6229e1aadd484",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/context-signals.mjs": {
+    "mtime": 1784435154.3980412,
+    "ast_hash": "05e3f193962cfd8ee4ebf30206332ebc",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/context.mjs": {
+    "mtime": 1784435154.3990412,
+    "ast_hash": "b9576499f86b49af3728aa86ff7f3735",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/critique-storage.mjs": {
+    "mtime": 1784435154.3990412,
+    "ast_hash": "d12f3059a3cd985f3eb61aff1faae87f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/detect-csp.mjs": {
+    "mtime": 1784435154.3990412,
+    "ast_hash": "02c5a9a8ad69f87d23af72bf580fd3f4",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/detect.mjs": {
+    "mtime": 1784435154.3990412,
+    "ast_hash": "11dbeb9341477d06d1a24c3ad1f37ac9",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/hook-admin.mjs": {
+    "mtime": 1784435154.4020414,
+    "ast_hash": "10f4460eaf2c38106cd70515e77508ce",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/hook-before-edit.mjs": {
+    "mtime": 1784435154.4020414,
+    "ast_hash": "b87461628d48057213a895d8eb6c4d88",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/hook-lib.mjs": {
+    "mtime": 1784435154.4020414,
+    "ast_hash": "dff88a3af8238f86bdeaa404cc737cd4",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/hook.mjs": {
+    "mtime": 1784435154.4020414,
+    "ast_hash": "b17a38c988ec5694067ec8b042813315",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live-accept.mjs": {
+    "mtime": 1784435154.4040418,
+    "ast_hash": "63a98882c6e9cee6155ec14f0541cf6b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live-browser-dom.js": {
+    "mtime": 1784435154.4040418,
+    "ast_hash": "b96db5b10874366237a40305c5dc72a1",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live-browser-session.js": {
+    "mtime": 1784435154.4040418,
+    "ast_hash": "5dec3dae6158050d69762fb79facaf48",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live-browser.js": {
+    "mtime": 1784435154.4040418,
+    "ast_hash": "b7c63a6ef2dd967483bedd8330b003d7",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live-commit-manual-edits.mjs": {
+    "mtime": 1784435154.4040418,
+    "ast_hash": "866079c1dea82be936f92cf11adf01d3",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live-complete.mjs": {
+    "mtime": 1784435154.4040418,
+    "ast_hash": "18ddd6db2567d7d385291b813d310518",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live-copy-edit-agent.mjs": {
+    "mtime": 1784435154.4040418,
+    "ast_hash": "1c4926b56d5442775dab0138bf71a790",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live-discard-manual-edits.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "bbd49a16f77178fc8e778759653dd4c5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live-inject.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "953ad604895fa47278b7a98c0195b4b7",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live-insert.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "a0ce4a29836987cc67cad70e630d5dcf",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live-manual-edit-evidence.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "aafd35ccb714ec883362d7dde83f61d1",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live-poll.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "33b5ef512bb2f50016a4c9b819b7ec5a",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live-resume.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "0791b79bb824ffc6b52fcec25c6982a7",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live-server.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "5d11255f974997e866db7ab36354d5e9",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live-status.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "039529830229f091246f26baabaaa0dd",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live-target.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "7a25beda7cdc4c5a6eb2a7f135ec50fd",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live-wrap.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "fe8eb439e106eeeabab75941c62e6867",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "cd3b7e1e4a35a37fbc651b6bb1f3f12f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/modern-screenshot.umd.js": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "4fe5f9e490ab4f107afc707d7eafc819",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/palette.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "adbc82e1e9021b4948901b21563277a2",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/pin.mjs": {
+    "mtime": 1784435154.4060419,
+    "ast_hash": "452815179b2ed5cdfc843f506ca770f0",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/detector/design-system.mjs": {
+    "mtime": 1784435154.3990412,
+    "ast_hash": "061f338cc4e2919f6e30d937ee19977e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/detector/detect-antipatterns-browser.js": {
+    "mtime": 1784435154.4000413,
+    "ast_hash": "05b0e18d6c93e1472a80b521d19bc6a2",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/detector/detect-antipatterns.mjs": {
+    "mtime": 1784435154.4000413,
+    "ast_hash": "1153e262200605dcc367717e5cb9958e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/detector/findings.mjs": {
+    "mtime": 1784435154.4000413,
+    "ast_hash": "f7f3de6f00121150c4762809df00df9f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/detector/browser/injected/index.mjs": {
+    "mtime": 1784435154.3990412,
+    "ast_hash": "debb68b8803d28963da5e428b02a36b6",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/detector/cli/main.mjs": {
+    "mtime": 1784435154.3990412,
+    "ast_hash": "4c300364ffb4a04401c66916faa1e264",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/detector/engines/browser/detect-url.mjs": {
+    "mtime": 1784435154.4000413,
+    "ast_hash": "79bad2870a43795ad3827691393c02d6",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/detector/engines/regex/detect-text.mjs": {
+    "mtime": 1784435154.4000413,
+    "ast_hash": "1227c4ca44f8b114c79d7e89e7c7f577",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/detector/engines/static-html/css-cascade.mjs": {
+    "mtime": 1784435154.4000413,
+    "ast_hash": "657919a4b2292ed8c5f7f400c94e7709",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/detector/engines/static-html/detect-html.mjs": {
+    "mtime": 1784435154.4000413,
+    "ast_hash": "c124c697ee3d2aab2f476e54559b1b18",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/detector/engines/visual/screenshot-contrast.mjs": {
+    "mtime": 1784435154.4000413,
+    "ast_hash": "6312c6dbc048c4445f50e69f167a297d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/detector/node/file-system.mjs": {
+    "mtime": 1784435154.4010415,
+    "ast_hash": "21d55d864c78f1a6c20794551e3901d5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/detector/profile/profiler.mjs": {
+    "mtime": 1784435154.4010415,
+    "ast_hash": "88c5d2027852842be578edf349a0f9c8",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/detector/registry/antipatterns.mjs": {
+    "mtime": 1784435154.4010415,
+    "ast_hash": "8ad3c2446924a9ef2f98c1fd534f71df",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/detector/rules/checks.mjs": {
+    "mtime": 1784435154.4010415,
+    "ast_hash": "8fb0c806fccc75110562555b191eca2a",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/detector/shared/color.mjs": {
+    "mtime": 1784435154.4010415,
+    "ast_hash": "2363d500ccf490f9ff285119b613276d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/detector/shared/constants.mjs": {
+    "mtime": 1784435154.4010415,
+    "ast_hash": "5700477c8a86d876b90de9d6eb63f191",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/detector/shared/fonts.mjs": {
+    "mtime": 1784435154.4010415,
+    "ast_hash": "5f06c512cc5316fb3f4f7116e33c7765",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/detector/shared/inline-ignores.mjs": {
+    "mtime": 1784435154.4010415,
+    "ast_hash": "6e3e7e639661186078ea93a849f57c64",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/detector/shared/page.mjs": {
+    "mtime": 1784435154.4010415,
+    "ast_hash": "ab3a243b690b4f70c4ef639cdf970d82",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/lib/design-parser.mjs": {
+    "mtime": 1784435154.4020414,
+    "ast_hash": "d158b9b1742ff7bf726431595a4bbfb1",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/lib/impeccable-config.mjs": {
+    "mtime": 1784435154.4020414,
+    "ast_hash": "ef8e2af0d064158f19a1a91251efe3ae",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/lib/impeccable-paths.mjs": {
+    "mtime": 1784435154.4020414,
+    "ast_hash": "e0ba90743cecda24a9ac244a8a1d45fb",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/lib/is-generated.mjs": {
+    "mtime": 1784435154.4020414,
+    "ast_hash": "edd718b1a4737edbf9631ff7f6f512ef",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/lib/provider.mjs": {
+    "mtime": 1784435154.4020414,
+    "ast_hash": "773f490ba7c80b4cb34592b6fad6111d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/lib/target-args.mjs": {
+    "mtime": 1784435154.4020414,
+    "ast_hash": "442e04a03b6ba43330a859a537a956b2",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live/browser-script-parts.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "fc7fd981a98a65f20055f3ac9409a67d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live/completion.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "77185bc6cced6322e6892af8e05839f0",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live/event-validation.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "97a304ab4b04080bcdbaf3816d3ee968",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live/insert-ui.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "b6c5c82e14218c0c1b1e66f0851bff3f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live/manual-apply.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "043d0a1a7a4a373178648502bbe7da81",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live/manual-edit-routes.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "5f801f9370461d1faa9ae4cde85a96be",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live/manual-edits-buffer.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "a36834f2a77dd6a81ee324ef4f6f8baa",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live/session-store.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "1f464fe28989247246d53927a1698265",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live/svelte-component.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "b23495379a1527dbb9c7c3171041819e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live/sveltekit-adapter.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "66e07d2c07827af6099ce81a442bd66e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live/ui-core.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "fd7d2bdbdab291957cffacfce95a19d1",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/scripts/live/vocabulary.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "e7e5650764fceb61f2197769c7f5864e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/hooks/impeccable.json": {
+    "mtime": 1784435154.4060419,
+    "ast_hash": "f6a14667d8817e238e37e7ee4d46c042",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/hooks.json": {
+    "mtime": 1784435154.4060419,
+    "ast_hash": "538dd1c4db82ff4f3c882cde0140799e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/command-metadata.json": {
+    "mtime": 1784435154.3870401,
+    "ast_hash": "883d1962f87b23b4a0f6229e1aadd484",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/context-signals.mjs": {
+    "mtime": 1784435154.3870401,
+    "ast_hash": "05e3f193962cfd8ee4ebf30206332ebc",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/context.mjs": {
+    "mtime": 1784435154.3870401,
+    "ast_hash": "b9576499f86b49af3728aa86ff7f3735",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/critique-storage.mjs": {
+    "mtime": 1784435154.3870401,
+    "ast_hash": "d12f3059a3cd985f3eb61aff1faae87f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/detect-csp.mjs": {
+    "mtime": 1784435154.3870401,
+    "ast_hash": "02c5a9a8ad69f87d23af72bf580fd3f4",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/detect.mjs": {
+    "mtime": 1784435154.3870401,
+    "ast_hash": "11dbeb9341477d06d1a24c3ad1f37ac9",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/hook-admin.mjs": {
+    "mtime": 1784435154.3900404,
+    "ast_hash": "10f4460eaf2c38106cd70515e77508ce",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/hook-before-edit.mjs": {
+    "mtime": 1784435154.3900404,
+    "ast_hash": "b87461628d48057213a895d8eb6c4d88",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/hook-lib.mjs": {
+    "mtime": 1784435154.3910406,
+    "ast_hash": "dff88a3af8238f86bdeaa404cc737cd4",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/hook.mjs": {
+    "mtime": 1784435154.3910406,
+    "ast_hash": "b17a38c988ec5694067ec8b042813315",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live-accept.mjs": {
+    "mtime": 1784435154.3920405,
+    "ast_hash": "63a98882c6e9cee6155ec14f0541cf6b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live-browser-dom.js": {
+    "mtime": 1784435154.3920405,
+    "ast_hash": "b96db5b10874366237a40305c5dc72a1",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live-browser-session.js": {
+    "mtime": 1784435154.3920405,
+    "ast_hash": "5dec3dae6158050d69762fb79facaf48",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live-browser.js": {
+    "mtime": 1784435154.3930407,
+    "ast_hash": "b7c63a6ef2dd967483bedd8330b003d7",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live-commit-manual-edits.mjs": {
+    "mtime": 1784435154.3930407,
+    "ast_hash": "866079c1dea82be936f92cf11adf01d3",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live-complete.mjs": {
+    "mtime": 1784435154.3930407,
+    "ast_hash": "18ddd6db2567d7d385291b813d310518",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live-copy-edit-agent.mjs": {
+    "mtime": 1784435154.3930407,
+    "ast_hash": "1c4926b56d5442775dab0138bf71a790",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live-discard-manual-edits.mjs": {
+    "mtime": 1784435154.3930407,
+    "ast_hash": "bbd49a16f77178fc8e778759653dd4c5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live-inject.mjs": {
+    "mtime": 1784435154.3930407,
+    "ast_hash": "953ad604895fa47278b7a98c0195b4b7",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live-insert.mjs": {
+    "mtime": 1784435154.3930407,
+    "ast_hash": "a0ce4a29836987cc67cad70e630d5dcf",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live-manual-edit-evidence.mjs": {
+    "mtime": 1784435154.3940408,
+    "ast_hash": "aafd35ccb714ec883362d7dde83f61d1",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live-poll.mjs": {
+    "mtime": 1784435154.3940408,
+    "ast_hash": "33b5ef512bb2f50016a4c9b819b7ec5a",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live-resume.mjs": {
+    "mtime": 1784435154.3940408,
+    "ast_hash": "0791b79bb824ffc6b52fcec25c6982a7",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live-server.mjs": {
+    "mtime": 1784435154.3940408,
+    "ast_hash": "5d11255f974997e866db7ab36354d5e9",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live-status.mjs": {
+    "mtime": 1784435154.3940408,
+    "ast_hash": "039529830229f091246f26baabaaa0dd",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live-target.mjs": {
+    "mtime": 1784435154.3940408,
+    "ast_hash": "7a25beda7cdc4c5a6eb2a7f135ec50fd",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live-wrap.mjs": {
+    "mtime": 1784435154.3940408,
+    "ast_hash": "fe8eb439e106eeeabab75941c62e6867",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live.mjs": {
+    "mtime": 1784435154.3940408,
+    "ast_hash": "cd3b7e1e4a35a37fbc651b6bb1f3f12f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/modern-screenshot.umd.js": {
+    "mtime": 1784435154.3940408,
+    "ast_hash": "4fe5f9e490ab4f107afc707d7eafc819",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/palette.mjs": {
+    "mtime": 1784435154.3940408,
+    "ast_hash": "adbc82e1e9021b4948901b21563277a2",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/pin.mjs": {
+    "mtime": 1784435154.3940408,
+    "ast_hash": "452815179b2ed5cdfc843f506ca770f0",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/detector/design-system.mjs": {
+    "mtime": 1784435154.3880403,
+    "ast_hash": "061f338cc4e2919f6e30d937ee19977e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/detector/detect-antipatterns-browser.js": {
+    "mtime": 1784435154.3880403,
+    "ast_hash": "05b0e18d6c93e1472a80b521d19bc6a2",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/detector/detect-antipatterns.mjs": {
+    "mtime": 1784435154.3880403,
+    "ast_hash": "1153e262200605dcc367717e5cb9958e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/detector/findings.mjs": {
+    "mtime": 1784435154.3890402,
+    "ast_hash": "f7f3de6f00121150c4762809df00df9f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/detector/browser/injected/index.mjs": {
+    "mtime": 1784435154.3880403,
+    "ast_hash": "debb68b8803d28963da5e428b02a36b6",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/detector/cli/main.mjs": {
+    "mtime": 1784435154.3880403,
+    "ast_hash": "4c300364ffb4a04401c66916faa1e264",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/detector/engines/browser/detect-url.mjs": {
+    "mtime": 1784435154.3880403,
+    "ast_hash": "79bad2870a43795ad3827691393c02d6",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/detector/engines/regex/detect-text.mjs": {
+    "mtime": 1784435154.3890402,
+    "ast_hash": "1227c4ca44f8b114c79d7e89e7c7f577",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/detector/engines/static-html/css-cascade.mjs": {
+    "mtime": 1784435154.3890402,
+    "ast_hash": "657919a4b2292ed8c5f7f400c94e7709",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/detector/engines/static-html/detect-html.mjs": {
+    "mtime": 1784435154.3890402,
+    "ast_hash": "c124c697ee3d2aab2f476e54559b1b18",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/detector/engines/visual/screenshot-contrast.mjs": {
+    "mtime": 1784435154.3890402,
+    "ast_hash": "6312c6dbc048c4445f50e69f167a297d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/detector/node/file-system.mjs": {
+    "mtime": 1784435154.3890402,
+    "ast_hash": "21d55d864c78f1a6c20794551e3901d5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/detector/profile/profiler.mjs": {
+    "mtime": 1784435154.3890402,
+    "ast_hash": "88c5d2027852842be578edf349a0f9c8",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/detector/registry/antipatterns.mjs": {
+    "mtime": 1784435154.3890402,
+    "ast_hash": "8ad3c2446924a9ef2f98c1fd534f71df",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/detector/rules/checks.mjs": {
+    "mtime": 1784435154.3900404,
+    "ast_hash": "8fb0c806fccc75110562555b191eca2a",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/detector/shared/color.mjs": {
+    "mtime": 1784435154.3900404,
+    "ast_hash": "2363d500ccf490f9ff285119b613276d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/detector/shared/constants.mjs": {
+    "mtime": 1784435154.3900404,
+    "ast_hash": "5700477c8a86d876b90de9d6eb63f191",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/detector/shared/fonts.mjs": {
+    "mtime": 1784435154.3900404,
+    "ast_hash": "5f06c512cc5316fb3f4f7116e33c7765",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/detector/shared/inline-ignores.mjs": {
+    "mtime": 1784435154.3900404,
+    "ast_hash": "6e3e7e639661186078ea93a849f57c64",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/detector/shared/page.mjs": {
+    "mtime": 1784435154.3900404,
+    "ast_hash": "ab3a243b690b4f70c4ef639cdf970d82",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/lib/design-parser.mjs": {
+    "mtime": 1784435154.3910406,
+    "ast_hash": "d158b9b1742ff7bf726431595a4bbfb1",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/lib/impeccable-config.mjs": {
+    "mtime": 1784435154.3910406,
+    "ast_hash": "ef8e2af0d064158f19a1a91251efe3ae",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/lib/impeccable-paths.mjs": {
+    "mtime": 1784435154.3910406,
+    "ast_hash": "e0ba90743cecda24a9ac244a8a1d45fb",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/lib/is-generated.mjs": {
+    "mtime": 1784435154.3910406,
+    "ast_hash": "edd718b1a4737edbf9631ff7f6f512ef",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/lib/provider.mjs": {
+    "mtime": 1784435154.3910406,
+    "ast_hash": "773f490ba7c80b4cb34592b6fad6111d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/lib/target-args.mjs": {
+    "mtime": 1784435154.3910406,
+    "ast_hash": "442e04a03b6ba43330a859a537a956b2",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live/browser-script-parts.mjs": {
+    "mtime": 1784435154.3910406,
+    "ast_hash": "fc7fd981a98a65f20055f3ac9409a67d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live/completion.mjs": {
+    "mtime": 1784435154.3910406,
+    "ast_hash": "77185bc6cced6322e6892af8e05839f0",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live/event-validation.mjs": {
+    "mtime": 1784435154.3910406,
+    "ast_hash": "97a304ab4b04080bcdbaf3816d3ee968",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live/insert-ui.mjs": {
+    "mtime": 1784435154.3910406,
+    "ast_hash": "b6c5c82e14218c0c1b1e66f0851bff3f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live/manual-apply.mjs": {
+    "mtime": 1784435154.3920405,
+    "ast_hash": "043d0a1a7a4a373178648502bbe7da81",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live/manual-edit-routes.mjs": {
+    "mtime": 1784435154.3920405,
+    "ast_hash": "5f801f9370461d1faa9ae4cde85a96be",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live/manual-edits-buffer.mjs": {
+    "mtime": 1784435154.3920405,
+    "ast_hash": "a36834f2a77dd6a81ee324ef4f6f8baa",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live/session-store.mjs": {
+    "mtime": 1784435154.3920405,
+    "ast_hash": "1f464fe28989247246d53927a1698265",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live/svelte-component.mjs": {
+    "mtime": 1784435154.3920405,
+    "ast_hash": "b23495379a1527dbb9c7c3171041819e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live/sveltekit-adapter.mjs": {
+    "mtime": 1784435154.3920405,
+    "ast_hash": "66e07d2c07827af6099ce81a442bd66e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live/ui-core.mjs": {
+    "mtime": 1784435154.3920405,
+    "ast_hash": "fd7d2bdbdab291957cffacfce95a19d1",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/scripts/live/vocabulary.mjs": {
+    "mtime": 1784435154.3920405,
+    "ast_hash": "e7e5650764fceb61f2197769c7f5864e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/ui-ux-pro-max/scripts/core.py": {
+    "mtime": 1784744730.9486692,
+    "ast_hash": "3df4734a785963a8242a56c1b926adfd",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/ui-ux-pro-max/scripts/design_system.py": {
+    "mtime": 1784744730.9496691,
+    "ast_hash": "08f84d04608a19049c90fc2b1ef314f9",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/ui-ux-pro-max/scripts/search.py": {
+    "mtime": 1784744730.9496691,
+    "ast_hash": "8c7e35426fe8f6f3ed91e9dce0ed7af1",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live-accept.mjs": {
+    "mtime": 1784435154.4040418,
+    "ast_hash": "63a98882c6e9cee6155ec14f0541cf6b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live-browser-dom.js": {
+    "mtime": 1784435154.4040418,
+    "ast_hash": "b96db5b10874366237a40305c5dc72a1",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live-browser-session.js": {
+    "mtime": 1784435154.4040418,
+    "ast_hash": "5dec3dae6158050d69762fb79facaf48",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live-browser.js": {
+    "mtime": 1784435154.4040418,
+    "ast_hash": "b7c63a6ef2dd967483bedd8330b003d7",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live-commit-manual-edits.mjs": {
+    "mtime": 1784435154.4040418,
+    "ast_hash": "866079c1dea82be936f92cf11adf01d3",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live-complete.mjs": {
+    "mtime": 1784435154.4040418,
+    "ast_hash": "18ddd6db2567d7d385291b813d310518",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live-copy-edit-agent.mjs": {
+    "mtime": 1784435154.4040418,
+    "ast_hash": "1c4926b56d5442775dab0138bf71a790",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live-discard-manual-edits.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "bbd49a16f77178fc8e778759653dd4c5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live-inject.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "953ad604895fa47278b7a98c0195b4b7",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live-insert.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "a0ce4a29836987cc67cad70e630d5dcf",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live-manual-edit-evidence.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "aafd35ccb714ec883362d7dde83f61d1",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live-poll.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "33b5ef512bb2f50016a4c9b819b7ec5a",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live-resume.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "0791b79bb824ffc6b52fcec25c6982a7",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live-server.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "5d11255f974997e866db7ab36354d5e9",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live-status.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "039529830229f091246f26baabaaa0dd",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live-target.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "7a25beda7cdc4c5a6eb2a7f135ec50fd",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live-wrap.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "fe8eb439e106eeeabab75941c62e6867",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "cd3b7e1e4a35a37fbc651b6bb1f3f12f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/modern-screenshot.umd.js": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "4fe5f9e490ab4f107afc707d7eafc819",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/palette.mjs": {
+    "mtime": 1784435154.4050417,
+    "ast_hash": "adbc82e1e9021b4948901b21563277a2",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/pin.mjs": {
+    "mtime": 1784435154.4060419,
+    "ast_hash": "452815179b2ed5cdfc843f506ca770f0",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/command-metadata.json": {
+    "mtime": 1784435154.3980412,
+    "ast_hash": "883d1962f87b23b4a0f6229e1aadd484",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/context-signals.mjs": {
+    "mtime": 1784435154.3980412,
+    "ast_hash": "05e3f193962cfd8ee4ebf30206332ebc",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/context.mjs": {
+    "mtime": 1784435154.3990412,
+    "ast_hash": "b9576499f86b49af3728aa86ff7f3735",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/critique-storage.mjs": {
+    "mtime": 1784435154.3990412,
+    "ast_hash": "d12f3059a3cd985f3eb61aff1faae87f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/detect-csp.mjs": {
+    "mtime": 1784435154.3990412,
+    "ast_hash": "02c5a9a8ad69f87d23af72bf580fd3f4",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/detect.mjs": {
+    "mtime": 1784435154.3990412,
+    "ast_hash": "11dbeb9341477d06d1a24c3ad1f37ac9",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/hook-admin.mjs": {
+    "mtime": 1784435154.4020414,
+    "ast_hash": "10f4460eaf2c38106cd70515e77508ce",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/hook-before-edit.mjs": {
+    "mtime": 1784435154.4020414,
+    "ast_hash": "b87461628d48057213a895d8eb6c4d88",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/hook-lib.mjs": {
+    "mtime": 1784435154.4020414,
+    "ast_hash": "dff88a3af8238f86bdeaa404cc737cd4",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/hook.mjs": {
+    "mtime": 1784435154.4020414,
+    "ast_hash": "b17a38c988ec5694067ec8b042813315",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live/session-store.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "1f464fe28989247246d53927a1698265",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live/svelte-component.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "b23495379a1527dbb9c7c3171041819e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live/sveltekit-adapter.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "66e07d2c07827af6099ce81a442bd66e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live/ui-core.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "fd7d2bdbdab291957cffacfce95a19d1",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live/vocabulary.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "e7e5650764fceb61f2197769c7f5864e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live/browser-script-parts.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "fc7fd981a98a65f20055f3ac9409a67d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live/completion.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "77185bc6cced6322e6892af8e05839f0",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live/event-validation.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "97a304ab4b04080bcdbaf3816d3ee968",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live/insert-ui.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "b6c5c82e14218c0c1b1e66f0851bff3f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live/manual-apply.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "043d0a1a7a4a373178648502bbe7da81",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live/manual-edit-routes.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "5f801f9370461d1faa9ae4cde85a96be",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/live/manual-edits-buffer.mjs": {
+    "mtime": 1784435154.4030416,
+    "ast_hash": "a36834f2a77dd6a81ee324ef4f6f8baa",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/detector/design-system.mjs": {
+    "mtime": 1784435154.3990412,
+    "ast_hash": "061f338cc4e2919f6e30d937ee19977e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/detector/detect-antipatterns-browser.js": {
+    "mtime": 1784435154.4000413,
+    "ast_hash": "05b0e18d6c93e1472a80b521d19bc6a2",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/detector/detect-antipatterns.mjs": {
+    "mtime": 1784435154.4000413,
+    "ast_hash": "1153e262200605dcc367717e5cb9958e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/detector/findings.mjs": {
+    "mtime": 1784435154.4000413,
+    "ast_hash": "f7f3de6f00121150c4762809df00df9f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/detector/cli/main.mjs": {
+    "mtime": 1784435154.3990412,
+    "ast_hash": "4c300364ffb4a04401c66916faa1e264",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/detector/registry/antipatterns.mjs": {
+    "mtime": 1784435154.4010415,
+    "ast_hash": "8ad3c2446924a9ef2f98c1fd534f71df",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/detector/engines/static-html/css-cascade.mjs": {
+    "mtime": 1784435154.4000413,
+    "ast_hash": "657919a4b2292ed8c5f7f400c94e7709",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/detector/engines/static-html/detect-html.mjs": {
+    "mtime": 1784435154.4000413,
+    "ast_hash": "c124c697ee3d2aab2f476e54559b1b18",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/detector/engines/visual/screenshot-contrast.mjs": {
+    "mtime": 1784435154.4000413,
+    "ast_hash": "6312c6dbc048c4445f50e69f167a297d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/detector/engines/browser/detect-url.mjs": {
+    "mtime": 1784435154.4000413,
+    "ast_hash": "79bad2870a43795ad3827691393c02d6",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/detector/engines/regex/detect-text.mjs": {
+    "mtime": 1784435154.4000413,
+    "ast_hash": "1227c4ca44f8b114c79d7e89e7c7f577",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/detector/rules/checks.mjs": {
+    "mtime": 1784435154.4010415,
+    "ast_hash": "8fb0c806fccc75110562555b191eca2a",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/detector/browser/injected/index.mjs": {
+    "mtime": 1784435154.3990412,
+    "ast_hash": "debb68b8803d28963da5e428b02a36b6",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/detector/node/file-system.mjs": {
+    "mtime": 1784435154.4010415,
+    "ast_hash": "21d55d864c78f1a6c20794551e3901d5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/detector/shared/color.mjs": {
+    "mtime": 1784435154.4010415,
+    "ast_hash": "2363d500ccf490f9ff285119b613276d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/detector/shared/constants.mjs": {
+    "mtime": 1784435154.4010415,
+    "ast_hash": "5700477c8a86d876b90de9d6eb63f191",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/detector/shared/fonts.mjs": {
+    "mtime": 1784435154.4010415,
+    "ast_hash": "5f06c512cc5316fb3f4f7116e33c7765",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/detector/shared/inline-ignores.mjs": {
+    "mtime": 1784435154.4010415,
+    "ast_hash": "6e3e7e639661186078ea93a849f57c64",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/detector/shared/page.mjs": {
+    "mtime": 1784435154.4010415,
+    "ast_hash": "ab3a243b690b4f70c4ef639cdf970d82",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/detector/profile/profiler.mjs": {
+    "mtime": 1784435154.4010415,
+    "ast_hash": "88c5d2027852842be578edf349a0f9c8",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/lib/design-parser.mjs": {
+    "mtime": 1784435154.4020414,
+    "ast_hash": "d158b9b1742ff7bf726431595a4bbfb1",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/lib/impeccable-config.mjs": {
+    "mtime": 1784435154.4020414,
+    "ast_hash": "ef8e2af0d064158f19a1a91251efe3ae",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/lib/impeccable-paths.mjs": {
+    "mtime": 1784435154.4020414,
+    "ast_hash": "e0ba90743cecda24a9ac244a8a1d45fb",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/lib/is-generated.mjs": {
+    "mtime": 1784435154.4020414,
+    "ast_hash": "edd718b1a4737edbf9631ff7f6f512ef",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/lib/provider.mjs": {
+    "mtime": 1784435154.4020414,
+    "ast_hash": "773f490ba7c80b4cb34592b6fad6111d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/scripts/lib/target-args.mjs": {
+    "mtime": 1784435154.4020414,
+    "ast_hash": "442e04a03b6ba43330a859a537a956b2",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.impeccable/config.json": {
+    "mtime": 1784821649.7393577,
+    "ast_hash": "89393cff4817b46c12002d8ce7c0d197",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/scripts/check-i18n-parity.mjs": {
+    "mtime": 1784837569.7495327,
+    "ast_hash": "40e4926fa4680da6073b36623383ffd4",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/GAMEPLAN.md": {
+    "mtime": 1784390560.4092982,
+    "ast_hash": "b3dfd03ee907fc6bb77f687ae1947022",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/AGENTS.md": {
+    "mtime": 1784853737.5230114,
+    "ast_hash": "c169f5003a02012d22a7bca46e7fb7d9",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/PROGRESS.md": {
+    "mtime": 1784938525.2043023,
+    "ast_hash": "97d94029e1f3ed4b2321fb3f42c6ba77",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/pnpm-workspace.yaml": {
+    "mtime": 1784863278.1037476,
+    "ast_hash": "4a5441a5327adaaf674c252501f48c81",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docker-compose.yml": {
+    "mtime": 1784181444.1247249,
+    "ast_hash": "310b164b1daaa830242d3bdec04ee4f7",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/PRODUCT.md": {
+    "mtime": 1784821649.9253747,
+    "ast_hash": "4b31624c3e4133816c7a81c4e2f72478",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/DESIGN.md": {
+    "mtime": 1785119049.968786,
+    "ast_hash": "7940798afcce30927f810d53c2c9933f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/README.md": {
+    "mtime": 1784856308.626174,
+    "ast_hash": "81bbc5ba8aff2ca82bfb4eb15cdfedb1",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/README.md": {
+    "mtime": 1784853689.4766333,
+    "ast_hash": "eb2c901c8f077505f2f8315d2c5f1836",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/admin/index.html": {
+    "mtime": 1785119096.076986,
+    "ast_hash": "f65a06d01d26d0ed43bf7291a2e20cd1",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/api/README.md": {
+    "mtime": 1784179258.3651185,
+    "ast_hash": "41f701938e6461d83b9b1f2ec54ef4f0",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/marketing/README.md": {
+    "mtime": 1785799261.929903,
+    "ast_hash": "6a9dae8a2ee59f1ea164b89dcc7d6eaf",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/mobile/README.md": {
+    "mtime": 1784180029.1502473,
+    "ast_hash": "bae877fda7432026813d553ccfebb01e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/web/README.md": {
+    "mtime": 1784181371.7131498,
+    "ast_hash": "7664c75ca7053bbcd0fb19c5c2cc0994",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/remotion/README.md": {
+    "mtime": 1784390546.6620455,
+    "ast_hash": "ab88efc1b68fced5316128bca4943511",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/06-feature-catalog-and-priority.md": {
+    "mtime": 1784473564.9256394,
+    "ast_hash": "89e1cffdf0baffaa5fcd7b24ceef57f6",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/07-dependency-graph.md": {
+    "mtime": 1784177893.933925,
+    "ast_hash": "53cdc4e193766588fe91879de447c4b9",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/08-open-questions.md": {
+    "mtime": 1785799112.3091905,
+    "ast_hash": "6033f723dce0b8fbc164de2ef0c7d656",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/app-spec.md": {
+    "mtime": 1784390559.6662307,
+    "ast_hash": "fae52b228d3ef30083f820cf07a547be",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/feature-backlog.md": {
+    "mtime": 1785799120.7839673,
+    "ast_hash": "43b7f71cb5f2bf99949124c2dcfd9f32",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/00-identity-and-context.md": {
+    "mtime": 1784180022.812671,
+    "ast_hash": "fb49a94649d2e5c16295cc5d6ca04aee",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/04-git-and-github-strategy.md": {
+    "mtime": 1784177932.7514496,
+    "ast_hash": "b59226c87ffa78c0ca7ffcb947c605b3",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/technical-stack.md": {
+    "mtime": 1784180432.536927,
+    "ast_hash": "45504e68dac15876077566851a6bf50c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/brand-brief.md": {
+    "mtime": 1785119057.4574683,
+    "ast_hash": "89efbe4de3dd3925f906690d74789108",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/integrations.md": {
+    "mtime": 1784393810.553084,
+    "ast_hash": "4c4a9b53ff9ac3d0181ec6320bb0d2c6",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/data-dictionary.yaml": {
+    "mtime": 1784906775.1378493,
+    "ast_hash": "9a7fb6e9ad3cfd1fe3ae7219e313a5f9",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/error-journal.md": {
+    "mtime": 1784178012.5056913,
+    "ast_hash": "c36c8fb703054dff4e46707a4a4022db",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/09-delivery-approach.md": {
+    "mtime": 1784390561.2023704,
+    "ast_hash": "312f40109d2eac76c8ff407e7c2a066a",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/02-stack.md": {
+    "mtime": 1785799095.6946673,
+    "ast_hash": "10faa79605ac0f67bfb931730fadf1c0",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/05-stack-versions.md": {
+    "mtime": 1784180444.2569926,
+    "ast_hash": "0f70175e30e31033ae6a402073ab4883",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/11-seo-ai-ready.md": {
+    "mtime": 1784180392.6923041,
+    "ast_hash": "da728f919c6bb9bca372dab3162c1073",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/10-agent-ops.md": {
+    "mtime": 1784472801.354605,
+    "ast_hash": "cacc6de54444bf4d4c4a4b3a1a8aa959",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/12-commerce-fiscal-complete.md": {
+    "mtime": 1784906778.8011832,
+    "ast_hash": "3db4ee6aaf959eb401daf98712875f19",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/13-journey-audit.md": {
+    "mtime": 1784906781.137396,
+    "ast_hash": "e9601b6abb7061ca8c79acee0614d7ca",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/mvp-confirmation-checklist.md": {
+    "mtime": 1785566333.0272174,
+    "ast_hash": "4c244810de6155facde5e28d6a2933d7",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/SECURITY.md": {
+    "mtime": 1784918384.9405177,
+    "ast_hash": "5fb03573c1a3099353a9ddeacdc0edeb",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/README.md": {
+    "mtime": 1784856308.627174,
+    "ast_hash": "cdc82cc65b854d273b3f8eba8163b5c5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/adr/README.md": {
+    "mtime": 1785119063.3660064,
+    "ast_hash": "a4bbc85b860141f03548a88b53a713aa",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/adr/0000-record-architecture-decisions.md": {
+    "mtime": 1784178001.2206666,
+    "ast_hash": "a887f504130c4e7a0f836d4a27e2c3bc",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/adr/0001-product-and-stack-direction.md": {
+    "mtime": 1784180570.9185085,
+    "ast_hash": "94e5a27e04562bbe1a53d408582238e8",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/adr/0002-platform-admin-inter.md": {
+    "mtime": 1784821649.828366,
+    "ast_hash": "37cc0258c209072279089ccd714ad4ba",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/adr/0003-platform-night-gold-glass.md": {
+    "mtime": 1785119060.9327848,
+    "ast_hash": "6659eaf745dbf241e53e8694c9067510",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/adr/0004-end-customer-payments-platform-charge.md": {
+    "mtime": 1784906606.2814584,
+    "ast_hash": "f6d774475d6fc851b094e1afc005118d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/adr/0005-platform-obsidian-soft.md": {
+    "mtime": 1785119058.991608,
+    "ast_hash": "f53b69b3970c56e088ba2ce8434ac133",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/plans/2026-07-16-autonomy-staging-cms.md": {
+    "mtime": 1784472807.53117,
+    "ast_hash": "9d1300e2b42348121e5a9540d7b69a52",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/plans/2026-07-28-admin-layout-recipes-wave-g.md": {
+    "mtime": 1785566332.6291807,
+    "ast_hash": "1c0e442d8e4af999b079c81d20f72d46",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/plans/2026-08-03-go-to-market-foundations.md": {
+    "mtime": 1785799112.3111906,
+    "ast_hash": "b993d537b6265b90883654b4c2ac2b3a",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/runbooks/staging-dokploy.md": {
+    "mtime": 1784932047.3773403,
+    "ast_hash": "d6a7cca0fafa175ba80374d3cd9ae741",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/runbooks/repo-history-hygiene.md": {
+    "mtime": 1784853704.3019843,
+    "ast_hash": "da00e5b64efcdd2c995f43a49847406f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/runbooks/dev-dokploy-smoke.md": {
+    "mtime": 1784932082.488544,
+    "ast_hash": "5e35e724f806988148195d58d8a22cbc",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/design-system/README.md": {
+    "mtime": 1785566332.6291807,
+    "ast_hash": "2ae3d7fd19723c2a01c236db957e1896",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/design-system/stack-and-tooling.md": {
+    "mtime": 1784564734.00665,
+    "ast_hash": "24c417515d79f2722af3226f05eceaed",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/design-system/motion-guidelines.md": {
+    "mtime": 1784744568.089821,
+    "ast_hash": "06b06f99584c5ea90722c9f2d15ee934",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/design-system/component-directory.md": {
+    "mtime": 1785566333.2192352,
+    "ast_hash": "5bc0d09090ead9995fc9c8168e1c1b2d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/design-system/process-and-boundaries.md": {
+    "mtime": 1784434553.6452053,
+    "ast_hash": "73d0ff90259a9af0e29ed287dcb43e7c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/design-system/CHANGELOG.md": {
+    "mtime": 1785566332.8552015,
+    "ast_hash": "e86ac18a84d7bb233515af6c5d77cba6",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/design-system/ux-ui-harmony-checklist.md": {
+    "mtime": 1785566332.5751758,
+    "ast_hash": "d14c49346800e5b2bd7e860d7a9d556c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/design-system/shadcn-css-variables.md": {
+    "mtime": 1784488454.2173297,
+    "ast_hash": "d6410d526457be3c4fddb980631ec83e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/design-system/site-theming.md": {
+    "mtime": 1784488454.21833,
+    "ast_hash": "79dd66affea36115548c850d8f20b002",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/design-system/admin-console-master-plan.md": {
+    "mtime": 1785566332.5581741,
+    "ast_hash": "f57eb3886ebead1c32010444342a971f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/design-system/i18n.md": {
+    "mtime": 1785799112.3091905,
+    "ast_hash": "17060d0c4cbf8dd126bf131ec5cdfc3e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/design-system/admin-console-layout-recipes.md": {
+    "mtime": 1785566332.8542016,
+    "ast_hash": "e2d69cbbd3912548c8b7f4dfbed59ec5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/design-system/reports/quality-2026-07-19.md": {
+    "mtime": 1784435453.1742983,
+    "ast_hash": "6818386770f57a847cfe9672d22691d1",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/docs/design-system/previews/obsidian-palette-preview.html": {
+    "mtime": 1785119100.3423746,
+    "ast_hash": "bf83eaad16ed817a5a8bf2b625a9a49a",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/config/README.md": {
+    "mtime": 1784179287.5207732,
+    "ast_hash": "7372f5e2b345978012ff65bd9ebc5e51",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/sdk/README.md": {
+    "mtime": 1784178017.1121097,
+    "ast_hash": "a29db4fab1d9dc6701cdd5fd4dd5780e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/tokens/README.md": {
+    "mtime": 1784178017.107109,
+    "ast_hash": "cf451836f614ad79b64d45c816e90186",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/ui/README.md": {
+    "mtime": 1784470038.9685874,
+    "ast_hash": "13ad63c359d733956f7d2b73042b0c8f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/packages/host-resolution/README.md": {
+    "mtime": 1784181398.115547,
+    "ast_hash": "177360326a3d42008d4d2aa65478143b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/workflows/ci.yml": {
+    "mtime": 1784837572.3177671,
+    "ast_hash": "9a6c95b110320c6b23caef152c790398",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/SKILL.md": {
+    "mtime": 1784435154.395041,
+    "ast_hash": "d0fefa40cfad0246307a75726b73f014",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/adapt.md": {
+    "mtime": 1784435154.395041,
+    "ast_hash": "93ac74ec6fc9fcff285f627e74f78771",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/adapt.native.md": {
+    "mtime": 1784435154.395041,
+    "ast_hash": "83199ca5ed98a15fe6951d5485b7cfa8",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/android.md": {
+    "mtime": 1784435154.395041,
+    "ast_hash": "8b392cf7b52b59cd76d796eabdad9fe5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/animate.md": {
+    "mtime": 1784435154.395041,
+    "ast_hash": "02c9097c2238570e965a7f0197bd64a5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/audit.md": {
+    "mtime": 1784435154.395041,
+    "ast_hash": "21c95f776f1d16711050e705a37a46ae",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/audit.native.md": {
+    "mtime": 1784435154.395041,
+    "ast_hash": "99e720491925c4954fe74df1e6d4ac2e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/bolder.md": {
+    "mtime": 1784435154.395041,
+    "ast_hash": "1886a11a2d1b823f433282128ca4d693",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/brand.md": {
+    "mtime": 1784435154.396041,
+    "ast_hash": "f70d1cd822ae916a55a2c26e775885aa",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/clarify.md": {
+    "mtime": 1784435154.396041,
+    "ast_hash": "59f37b001528ffa685aa9fc8b815ac0c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/codex.md": {
+    "mtime": 1784435154.396041,
+    "ast_hash": "6d97d559484916f05fa74f6b74f3da07",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/colorize.md": {
+    "mtime": 1784435154.396041,
+    "ast_hash": "5387c26ecec10e9bead735997da67f99",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/craft.md": {
+    "mtime": 1784435154.396041,
+    "ast_hash": "30b636d36ebb80efb147c409fbd56ef0",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/critique.md": {
+    "mtime": 1784435154.396041,
+    "ast_hash": "8fdd81acf04d48be708f72476e0ea33e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/delight.md": {
+    "mtime": 1784435154.396041,
+    "ast_hash": "2e70444af079164b12d970a619bd9ab9",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/distill.md": {
+    "mtime": 1784435154.396041,
+    "ast_hash": "2220616f91ee154c78020eceff2a3f15",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/document.md": {
+    "mtime": 1784435154.396041,
+    "ast_hash": "1994cb8d193a53238e37599c17fd143d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/extract.md": {
+    "mtime": 1784435154.396041,
+    "ast_hash": "29b884dd3d347d98c43bde900891673b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/harden.md": {
+    "mtime": 1784435154.396041,
+    "ast_hash": "e87b0bff32be86e7825e7ff4c50157e3",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/hooks.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "ee35ef70e6f4ac8246cfe9fed9439ef0",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/init.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "c6ad63071423ac5a9bf9fc4b5c7c6ecb",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/interaction-design.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "1dd83bb8a96d7e250914064aa7389f8b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/ios.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "c2ec616d924528cac7b9b303bb10fdb9",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/layout.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "3a5a55b83603ce5a84aa32d9ec2cb250",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/live.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "37e5af3cf12855b00916d318a5304bd3",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/onboard.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "7095aaea9e2994e37afb3cf1743bc092",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/optimize.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "d01f252b7e5cb35b8443d57eaad40b58",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/overdrive.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "05efa45c595b4f5ff78f8a9918fa7663",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/polish.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "136a9e1fa67ebf1f31f32f6600827ffd",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/product.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "6408a63ddbfe7003c732650381506860",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/quieter.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "c7804c62d7951f12a213704d68e64938",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/shape.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "ced5c539736c914392c10fd96d10e38a",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.github/skills/impeccable/reference/typeset.md": {
+    "mtime": 1784435154.3980412,
+    "ast_hash": "50863287d2186be37d6d7767b938c387",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/SKILL.md": {
+    "mtime": 1784435154.3830397,
+    "ast_hash": "3efae10e8fedbf70dbb292b85319e08e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/adapt.md": {
+    "mtime": 1784435154.3830397,
+    "ast_hash": "93ac74ec6fc9fcff285f627e74f78771",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/adapt.native.md": {
+    "mtime": 1784435154.3830397,
+    "ast_hash": "83199ca5ed98a15fe6951d5485b7cfa8",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/android.md": {
+    "mtime": 1784435154.3840399,
+    "ast_hash": "8b392cf7b52b59cd76d796eabdad9fe5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/animate.md": {
+    "mtime": 1784435154.3840399,
+    "ast_hash": "02c9097c2238570e965a7f0197bd64a5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/audit.md": {
+    "mtime": 1784435154.3840399,
+    "ast_hash": "21c95f776f1d16711050e705a37a46ae",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/audit.native.md": {
+    "mtime": 1784435154.38504,
+    "ast_hash": "99e720491925c4954fe74df1e6d4ac2e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/bolder.md": {
+    "mtime": 1784435154.38504,
+    "ast_hash": "1886a11a2d1b823f433282128ca4d693",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/brand.md": {
+    "mtime": 1784435154.38504,
+    "ast_hash": "f70d1cd822ae916a55a2c26e775885aa",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/clarify.md": {
+    "mtime": 1784435154.38504,
+    "ast_hash": "59f37b001528ffa685aa9fc8b815ac0c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/codex.md": {
+    "mtime": 1784435154.38504,
+    "ast_hash": "6d97d559484916f05fa74f6b74f3da07",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/colorize.md": {
+    "mtime": 1784435154.38504,
+    "ast_hash": "5387c26ecec10e9bead735997da67f99",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/craft.md": {
+    "mtime": 1784435154.38504,
+    "ast_hash": "30b636d36ebb80efb147c409fbd56ef0",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/critique.md": {
+    "mtime": 1784435154.38504,
+    "ast_hash": "4bb53738d6528a4b8144e86b043976dc",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/delight.md": {
+    "mtime": 1784435154.38504,
+    "ast_hash": "2e70444af079164b12d970a619bd9ab9",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/distill.md": {
+    "mtime": 1784435154.38504,
+    "ast_hash": "2220616f91ee154c78020eceff2a3f15",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/document.md": {
+    "mtime": 1784435154.38504,
+    "ast_hash": "1994cb8d193a53238e37599c17fd143d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/extract.md": {
+    "mtime": 1784435154.38604,
+    "ast_hash": "29b884dd3d347d98c43bde900891673b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/harden.md": {
+    "mtime": 1784435154.38604,
+    "ast_hash": "e87b0bff32be86e7825e7ff4c50157e3",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/hooks.md": {
+    "mtime": 1784435154.38604,
+    "ast_hash": "5871d88e26df9c7d0d9217e6df883c28",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/init.md": {
+    "mtime": 1784435154.38604,
+    "ast_hash": "2e915d7a624d75788445d85ffba6168b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/interaction-design.md": {
+    "mtime": 1784435154.38604,
+    "ast_hash": "1dd83bb8a96d7e250914064aa7389f8b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/ios.md": {
+    "mtime": 1784435154.38604,
+    "ast_hash": "c2ec616d924528cac7b9b303bb10fdb9",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/layout.md": {
+    "mtime": 1784435154.38604,
+    "ast_hash": "78c22a030d78407c0e16b616a35b8a48",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/live.md": {
+    "mtime": 1784435154.38604,
+    "ast_hash": "a48666cb5aa43e534b631ec22ceea2ea",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/onboard.md": {
+    "mtime": 1784435154.38604,
+    "ast_hash": "7095aaea9e2994e37afb3cf1743bc092",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/optimize.md": {
+    "mtime": 1784435154.38604,
+    "ast_hash": "d01f252b7e5cb35b8443d57eaad40b58",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/overdrive.md": {
+    "mtime": 1784435154.38604,
+    "ast_hash": "05efa45c595b4f5ff78f8a9918fa7663",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/polish.md": {
+    "mtime": 1784435154.38604,
+    "ast_hash": "9c0b66f13da1c7e42d63dd0d2899d235",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/product.md": {
+    "mtime": 1784435154.38604,
+    "ast_hash": "6408a63ddbfe7003c732650381506860",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/quieter.md": {
+    "mtime": 1784435154.3870401,
+    "ast_hash": "c7804c62d7951f12a213704d68e64938",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/shape.md": {
+    "mtime": 1784435154.3870401,
+    "ast_hash": "ced5c539736c914392c10fd96d10e38a",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/impeccable/reference/typeset.md": {
+    "mtime": 1784435154.3870401,
+    "ast_hash": "333139c9bdf2aa5cd944d0d24dcfc206",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.cursor/skills/ui-ux-pro-max/SKILL.md": {
+    "mtime": 1784744730.9176662,
+    "ast_hash": "9a05e2d49e962e177715637185a2f7f7",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/SKILL.md": {
+    "mtime": 1784435154.395041,
+    "ast_hash": "d0fefa40cfad0246307a75726b73f014",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/adapt.md": {
+    "mtime": 1784435154.395041,
+    "ast_hash": "93ac74ec6fc9fcff285f627e74f78771",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/adapt.native.md": {
+    "mtime": 1784435154.395041,
+    "ast_hash": "83199ca5ed98a15fe6951d5485b7cfa8",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/android.md": {
+    "mtime": 1784435154.395041,
+    "ast_hash": "8b392cf7b52b59cd76d796eabdad9fe5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/animate.md": {
+    "mtime": 1784435154.395041,
+    "ast_hash": "02c9097c2238570e965a7f0197bd64a5",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/audit.md": {
+    "mtime": 1784435154.395041,
+    "ast_hash": "21c95f776f1d16711050e705a37a46ae",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/audit.native.md": {
+    "mtime": 1784435154.395041,
+    "ast_hash": "99e720491925c4954fe74df1e6d4ac2e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/bolder.md": {
+    "mtime": 1784435154.395041,
+    "ast_hash": "1886a11a2d1b823f433282128ca4d693",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/brand.md": {
+    "mtime": 1784435154.396041,
+    "ast_hash": "f70d1cd822ae916a55a2c26e775885aa",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/clarify.md": {
+    "mtime": 1784435154.396041,
+    "ast_hash": "59f37b001528ffa685aa9fc8b815ac0c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/codex.md": {
+    "mtime": 1784435154.396041,
+    "ast_hash": "6d97d559484916f05fa74f6b74f3da07",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/colorize.md": {
+    "mtime": 1784435154.396041,
+    "ast_hash": "5387c26ecec10e9bead735997da67f99",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/craft.md": {
+    "mtime": 1784435154.396041,
+    "ast_hash": "30b636d36ebb80efb147c409fbd56ef0",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/critique.md": {
+    "mtime": 1784435154.396041,
+    "ast_hash": "8fdd81acf04d48be708f72476e0ea33e",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/delight.md": {
+    "mtime": 1784435154.396041,
+    "ast_hash": "2e70444af079164b12d970a619bd9ab9",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/distill.md": {
+    "mtime": 1784435154.396041,
+    "ast_hash": "2220616f91ee154c78020eceff2a3f15",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/document.md": {
+    "mtime": 1784435154.396041,
+    "ast_hash": "1994cb8d193a53238e37599c17fd143d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/extract.md": {
+    "mtime": 1784435154.396041,
+    "ast_hash": "29b884dd3d347d98c43bde900891673b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/harden.md": {
+    "mtime": 1784435154.396041,
+    "ast_hash": "e87b0bff32be86e7825e7ff4c50157e3",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/hooks.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "ee35ef70e6f4ac8246cfe9fed9439ef0",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/init.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "c6ad63071423ac5a9bf9fc4b5c7c6ecb",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/interaction-design.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "1dd83bb8a96d7e250914064aa7389f8b",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/ios.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "c2ec616d924528cac7b9b303bb10fdb9",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/layout.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "3a5a55b83603ce5a84aa32d9ec2cb250",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/live.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "37e5af3cf12855b00916d318a5304bd3",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/onboard.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "7095aaea9e2994e37afb3cf1743bc092",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/optimize.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "d01f252b7e5cb35b8443d57eaad40b58",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/overdrive.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "05efa45c595b4f5ff78f8a9918fa7663",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/polish.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "136a9e1fa67ebf1f31f32f6600827ffd",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/product.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "6408a63ddbfe7003c732650381506860",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/quieter.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "c7804c62d7951f12a213704d68e64938",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/shape.md": {
+    "mtime": 1784435154.397041,
+    "ast_hash": "ced5c539736c914392c10fd96d10e38a",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/.claude/skills/impeccable/reference/typeset.md": {
+    "mtime": 1784435154.3980412,
+    "ast_hash": "50863287d2186be37d6d7767b938c387",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/marketing/package.json": {
+    "mtime": 1785799153.0879283,
+    "ast_hash": "71ad9ef5af26a476e558c581ec5d748c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/marketing/astro.config.mjs": {
+    "mtime": 1785799301.1885004,
+    "ast_hash": "145cb9939cc1a16bf02d4d8870712758",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/marketing/tsconfig.json": {
+    "mtime": 1785799096.3977318,
+    "ast_hash": "e6ae27de08e532361fe49afcf95d06fc",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/marketing/src/env.d.ts": {
+    "mtime": 1785799261.7588873,
+    "ast_hash": "452a32cdaee8e21e2ea18e11bbcc3d1d",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/marketing/src/layouts/BaseLayout.astro": {
+    "mtime": 1785799256.080367,
+    "ast_hash": "0bda1d6eea0af6bbe829ee093db9c614",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/marketing/src/components/Umami.astro": {
+    "mtime": 1785799190.3483431,
+    "ast_hash": "282c5c6cb2d1649099f43a5de5ef6b25",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/marketing/src/components/CookieBanner.astro": {
+    "mtime": 1785799190.5003572,
+    "ast_hash": "d9458f48c42d699d87ff267077a12ddc",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/marketing/src/pages/index.astro": {
+    "mtime": 1785799205.7697566,
+    "ast_hash": "d0d4628c030ac03255cfe659b53db8bf",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/marketing/src/pages/[locale]/index.astro": {
+    "mtime": 1785799253.6731465,
+    "ast_hash": "755c8cfd49c1879e5a9a156230311c59",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/marketing/src/pages/[locale]/mentions-legales.astro": {
+    "mtime": 1785799227.062708,
+    "ast_hash": "386d5088eeaecbb315daffaed9a530fa",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/marketing/src/pages/[locale]/confidentialite.astro": {
+    "mtime": 1785799227.0637078,
+    "ast_hash": "13168db982c2e016edc5c192e10fb13f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/marketing/src/pages/[locale]/rgpd.astro": {
+    "mtime": 1785799227.0637078,
+    "ast_hash": "98e568e78468e9c03592f8c39ae57019",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/marketing/src/pages/[locale]/cgu.astro": {
+    "mtime": 1785799227.0637078,
+    "ast_hash": "30bbc34922f19f11e8a91cf44fec54ac",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/marketing/src/pages/[locale]/contact.astro": {
+    "mtime": 1785799227.0637078,
+    "ast_hash": "1b82f62e94c1af3abe28939835700dbe",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/marketing/src/pages/[locale]/cookies.astro": {
+    "mtime": 1785799227.064708,
+    "ast_hash": "153108e7f81116b0be0d87343acfef7c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/marketing/src/i18n/index.ts": {
+    "mtime": 1785799235.1594498,
+    "ast_hash": "8bb6ed8ad81e297749e9c1f272023d5f",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/marketing/src/i18n/en.json": {
+    "mtime": 1785799220.1430738,
+    "ast_hash": "d40fcf38629cc43b8d214404c3de61ba",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/marketing/src/i18n/fr.json": {
+    "mtime": 1785799233.5653038,
+    "ast_hash": "34fa091aabb492888b93c25ddaeaeecf",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/marketing/src/lib/locale.ts": {
+    "mtime": 1785799328.5820103,
+    "ast_hash": "410370fc4d9dfc8ac7d00dd1e149ce11",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/marketing/.astro/content.d.ts": {
+    "mtime": 1785799330.6602006,
+    "ast_hash": "4aaaf7e07990466432e5a0fcf9b2e58c",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/marketing/.astro/types.d.ts": {
+    "mtime": 1785799330.6612008,
+    "ast_hash": "f3d48b2aa569815a445d3509aa161559",
+    "semantic_hash": ""
+  },
+  "/home/mestryx/WorkSpace/repositories/SaaS-Multisite-Platform/apps/marketing/public/favicon.svg": {
+    "mtime": 1785799206.069784,
+    "ast_hash": "8534228ba6c987b3de8780bada99bcae",
+    "semantic_hash": ""
+  }
+}
