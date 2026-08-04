@@ -1,6 +1,6 @@
 # ADR-0005: Platform Obsidian Soft palette
 
-**Status**: Accepted  
+**Status**: Superseded by [ADR-0006](./0006-platform-mestryx-teal.md)  
 **Date**: 2026-07-27  
 **Supersedes**: [ADR-0003](./0003-platform-night-gold-glass.md) (night-gold accents)
 

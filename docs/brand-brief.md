@@ -35,14 +35,14 @@
 
 | Role | Platform | Storefront | Status |
 |------|----------|------------|--------|
-| Accent / primary interactive | `#a78bfa` | `#2f5d3a` | Accepted 2026-07-27 (Obsidian Soft) |
-| Background | `#19191c` | `#f4f0e8` | Accepted 2026-07-27 |
-| Foreground | `#e6e6ea` | `#1a1f16` | Accepted 2026-07-27 |
+| Accent / primary interactive | `#5eead4` (dark) / `#115e59` (light) | `#2f5d3a` | Accepted 2026-08-04 (Mestryx Teal) |
+| Background | `#0b0f14` | `#f4f0e8` | Accepted 2026-08-04 |
+| Foreground | `#e2e8f0` | `#1a1f16` | Accepted 2026-08-04 |
 | Display font | Plus Jakarta Sans | Fraunces | Accepted |
 | Body font | Inter | IBM Plex Sans | Accepted |
 | Radius | 8px | 8px Soft boutique | Accepted |
 
-Avoid Piblox brand collision; platform lilac is soft (`#a78bfa`), not neon purple mesh.
+Avoid Piblox brand collision; platform accent is Mestryx Teal (`#5eead4` / `#115e59`), not purple mesh. CV fonts are not imported — Inter + Plus Jakarta stay.
 
 ## Imagery
 

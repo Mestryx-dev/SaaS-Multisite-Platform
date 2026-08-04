@@ -2,6 +2,12 @@
 
 Traceability for FB-037 / design-system milestones. Newest first.
 
+## 2026-08-04 (Platform Mestryx Teal)
+
+- **Tokens:** platform dark → Mestryx Teal (stage `#0b0f14`, accent `#5eead4`); `platform-light` primary `#115e59`. Fonts unchanged (Inter + Plus Jakarta).
+- **Docs:** DESIGN.md + brand-brief; ADR-0006 Accepted (supersedes ADR-0005 Obsidian Soft).
+- Storefront Soft boutique unchanged.
+
 ## 2026-07-28 (Admin layout recipes — Wave G)
 
 - **SSOT:** [admin-console-layout-recipes.md](./admin-console-layout-recipes.md) — recipes R1–R8; page ↔ recipe matrix; agent rules.

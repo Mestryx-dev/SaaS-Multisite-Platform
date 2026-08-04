@@ -42,7 +42,7 @@ export const Specimens: Story = {
         <p className="type-kpi-value">1,284</p>
       </div>
       <p className="text-sm text-[var(--muted-foreground)]">
-        Decision: platform Obsidian Soft uses Plus Jakarta for display/KPI; storefront keeps Fraunces.
+        Decision: platform Mestryx Teal uses Plus Jakarta for display/KPI; storefront keeps Fraunces.
         Refs: DESIGN.md, ADR-0003.
       </p>
     </div>

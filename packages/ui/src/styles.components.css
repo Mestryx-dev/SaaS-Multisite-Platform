@@ -267,8 +267,8 @@ a.ui-sidebar-link-active {
 }
 
 /*
- * Platform active nav — soft gold wash (no hard border):
- * bg-ff-gold/15 text-ff-gold shadow-[0_0_12px_var(--color-ff-glow)]
+ * Platform active nav — teal wash (no hard border):
+ * bg primary/15 text primary shadow glow
  */
 :is([data-theme="platform"], [data-theme="platform-light"]) .ui-sidebar-link-active,
 :is([data-theme="platform"], [data-theme="platform-light"]) .ui-sidebar-link[data-active="true"],

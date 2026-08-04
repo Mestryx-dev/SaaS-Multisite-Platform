@@ -1,5 +1,5 @@
 /* Semantic tokens — shadcn CSS variable names (OKLCH).
- * Surface defaults: platform (admin Obsidian Soft) | storefront (universal Studio light base).
+ * Surface defaults: platform (admin Mestryx Teal) | storefront (universal Studio light base).
  * Site brands (Luna, …) overlay via themeJson presets — see docs/design-system/site-theming.md.
  * Mestryx extensions: --font-display, --flash-bg, --flash-border, --shadow-*, --glass-* .
  */
@@ -8,51 +8,51 @@
 [data-theme="platform"] {
   color-scheme: dark;
 
-  /* Obsidian Soft — graphite canvas + soft lilac accent */
-  --background: #19191c;
+  /* Mestryx Teal — CV color logic on deep stage (fonts unchanged) */
+  --background: #0b0f14;
   --background-ambient: radial-gradient(
       ellipse 75% 50% at 40% -20%,
-      color-mix(in srgb, #a78bfa 10%, transparent),
+      color-mix(in srgb, #5eead4 12%, transparent),
       transparent
     ),
     radial-gradient(
       ellipse 55% 40% at 100% 45%,
-      color-mix(in srgb, #6366f1 5%, transparent),
+      color-mix(in srgb, #115e59 8%, transparent),
       transparent
     ),
-    linear-gradient(180deg, #1d1d22 0%, #19191c 100%);
-  --foreground: #e6e6ea;
-  --card: #232328;
-  --card-foreground: #e6e6ea;
-  --popover: #232328;
-  --popover-foreground: #e6e6ea;
-  --primary: #a78bfa;
-  --primary-foreground: #120f1c;
-  --secondary: #2c2c33;
-  --secondary-foreground: #e6e6ea;
-  --muted: #2c2c33;
-  --muted-foreground: #9a9aa3;
-  --accent: #2c2c33;
-  --accent-foreground: #e6e6ea;
+    linear-gradient(180deg, #0f172a 0%, #0b0f14 100%);
+  --foreground: #e2e8f0;
+  --card: #0f172a;
+  --card-foreground: #e2e8f0;
+  --popover: #0f172a;
+  --popover-foreground: #e2e8f0;
+  --primary: #5eead4;
+  --primary-foreground: #0b0f14;
+  --secondary: #1e293b;
+  --secondary-foreground: #e2e8f0;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #1e293b;
+  --accent-foreground: #e2e8f0;
   --destructive: #e06c75;
-  --border: #34343d;
-  --input: #34343d;
-  --ring: #a78bfa;
+  --border: #334155;
+  --input: #334155;
+  --ring: #5eead4;
 
-  --chart-1: #a78bfa;
-  --chart-2: #9a9aa3;
-  --chart-3: #2c2c33;
-  --chart-4: #3f3f4a;
-  --chart-5: #e6e6ea;
+  --chart-1: #5eead4;
+  --chart-2: #94a3b8;
+  --chart-3: #1e293b;
+  --chart-4: #334155;
+  --chart-5: #e2e8f0;
 
-  --sidebar: #131316;
-  --sidebar-foreground: #e6e6ea;
-  --sidebar-primary: #a78bfa;
-  --sidebar-primary-foreground: #120f1c;
-  --sidebar-accent: #2c2c33;
-  --sidebar-accent-foreground: #e6e6ea;
-  --sidebar-border: #2c2c33;
-  --sidebar-ring: #c4b5fd;
+  --sidebar: #0f172a;
+  --sidebar-foreground: #e2e8f0;
+  --sidebar-primary: #5eead4;
+  --sidebar-primary-foreground: #0b0f14;
+  --sidebar-accent: #1e293b;
+  --sidebar-accent-foreground: #e2e8f0;
+  --sidebar-border: #1e293b;
+  --sidebar-ring: #99f6e4;
 
   --radius: 8px;
 
@@ -62,16 +62,16 @@
   --font-sans: "Inter", "Segoe UI", system-ui, sans-serif;
   --font-display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
 
-  --flash-bg: color-mix(in srgb, #a78bfa 16%, #232328);
-  --flash-border: color-mix(in srgb, #a78bfa 35%, #34343d);
+  --flash-bg: color-mix(in srgb, #5eead4 16%, #0f172a);
+  --flash-border: color-mix(in srgb, #5eead4 35%, #334155);
 
   /* Chrome glass (admin top bar / sticky panels only — not table cells or solid CTAs) */
-  --glass-bg: #232328eb;
+  --glass-bg: #0f172aeb;
   --glass-border: #ffffff1a;
   --glass-blur: 16px;
   --glass-shadow: 0 8px 32px #00000059;
-  --glow-accent: #a78bfa35;
-  --primary-muted: #a78bfa26;
+  --glow-accent: #5eead435;
+  --primary-muted: #5eead426;
 
   --shadow-2xs: 0 1px 3px 0px oklch(0.00 0 0 / 0.05);
   --shadow-xs: 0 1px 3px 0px oklch(0.00 0 0 / 0.05);
@@ -83,49 +83,49 @@
   --shadow-2xl: 0 1px 3px 0px oklch(0.00 0 0 / 0.25);
 }
 
-/* Admin light companion — same lilac accent; inverted surfaces */
+/* Admin light companion — Mestryx Teal primary on paper; inverted surfaces */
 [data-theme="platform-light"] {
   color-scheme: light;
 
-  --background: #f4f4f7;
+  --background: #f8fafc;
   --background-ambient: radial-gradient(
       ellipse 80% 50% at 50% -20%,
-      color-mix(in srgb, #a78bfa 12%, transparent),
+      color-mix(in srgb, #115e59 10%, transparent),
       transparent
     ),
-    linear-gradient(180deg, #fafafa 0%, #f4f4f7 100%);
-  --foreground: #18181b;
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  --foreground: #12141a;
   --card: #ffffff;
-  --card-foreground: #18181b;
+  --card-foreground: #12141a;
   --popover: #ffffff;
-  --popover-foreground: #18181b;
-  --primary: #7c5cbf;
+  --popover-foreground: #12141a;
+  --primary: #115e59;
   --primary-foreground: #ffffff;
-  --secondary: #ececf1;
-  --secondary-foreground: #18181b;
-  --muted: #ececf1;
-  --muted-foreground: #71717a;
-  --accent: #ececf1;
-  --accent-foreground: #18181b;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #12141a;
+  --muted: #f1f5f9;
+  --muted-foreground: #475569;
+  --accent: #f1f5f9;
+  --accent-foreground: #12141a;
   --destructive: #dc2626;
-  --border: #e4e4e7;
-  --input: #e4e4e7;
-  --ring: #7c5cbf;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #115e59;
 
-  --chart-1: #7c5cbf;
-  --chart-2: #71717a;
-  --chart-3: #ececf1;
-  --chart-4: #d4d4d8;
-  --chart-5: #18181b;
+  --chart-1: #115e59;
+  --chart-2: #475569;
+  --chart-3: #f1f5f9;
+  --chart-4: #e2e8f0;
+  --chart-5: #12141a;
 
   --sidebar: #ffffff;
-  --sidebar-foreground: #18181b;
-  --sidebar-primary: #7c5cbf;
+  --sidebar-foreground: #12141a;
+  --sidebar-primary: #115e59;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #ececf1;
-  --sidebar-accent-foreground: #18181b;
-  --sidebar-border: #e4e4e7;
-  --sidebar-ring: #a78bfa;
+  --sidebar-accent: #f1f5f9;
+  --sidebar-accent-foreground: #12141a;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #5eead4;
 
   --radius: 8px;
   --app-header-height: 3.5rem;
@@ -133,15 +133,15 @@
   --font-sans: "Inter", "Segoe UI", system-ui, sans-serif;
   --font-display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
 
-  --flash-bg: color-mix(in srgb, #a78bfa 12%, #ffffff);
-  --flash-border: color-mix(in srgb, #a78bfa 28%, #e4e4e7);
+  --flash-bg: color-mix(in srgb, #115e59 10%, #ffffff);
+  --flash-border: color-mix(in srgb, #115e59 28%, #e2e8f0);
 
   --glass-bg: #fffffff2;
-  --glass-border: #18181b14;
+  --glass-border: #12141a14;
   --glass-blur: 16px;
-  --glass-shadow: 0 8px 28px #18181b14;
-  --glow-accent: #a78bfa33;
-  --primary-muted: #a78bfa22;
+  --glass-shadow: 0 8px 28px #12141a14;
+  --glow-accent: #115e5933;
+  --primary-muted: #115e5922;
 
   --shadow-2xs: 0 1px 3px 0px oklch(0.00 0 0 / 0.05);
   --shadow-xs: 0 1px 3px 0px oklch(0.00 0 0 / 0.05);

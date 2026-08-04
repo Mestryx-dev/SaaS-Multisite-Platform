@@ -1,18 +1,18 @@
 ---
 version: alpha
 name: mestryx-platform
-description: Dual-theme product UI — platform admin (Obsidian Soft) and storefront shop (light). Lock from packages/tokens.
+description: Dual-theme product UI — platform admin (Mestryx Teal) and storefront shop (light). Lock from packages/tokens.
 colors:
-  platform-bg: "#19191c"
-  platform-fg: "#e6e6ea"
-  platform-muted: "#9a9aa3"
-  platform-accent: "#a78bfa"
-  platform-border: "#34343d"
+  platform-bg: "#0b0f14"
+  platform-fg: "#e2e8f0"
+  platform-muted: "#94a3b8"
+  platform-accent: "#5eead4"
+  platform-border: "#334155"
   platform-danger: "#e06c75"
   platform-warning: "#e8b84a"
-  platform-surface: "#232328"
-  platform-elevated: "#131316"
-  platform-on-accent: "#120f1c"
+  platform-surface: "#0f172a"
+  platform-elevated: "#0f172a"
+  platform-on-accent: "#0b0f14"
   storefront-bg: "#f4f0e8"
   storefront-fg: "#1a1f16"
   storefront-muted: "#5c6554"
@@ -66,7 +66,7 @@ components:
 
 mestryx-platform uses **two product themes** via `data-theme`:
 
-- **platform** — Obsidian Soft admin console (graphite `#19191c`, soft lilac accent `#a78bfa`, Inter UI + Plus Jakarta Sans display, 8px radius, chrome glass). Companion `platform-light` for daytime ops.
+- **platform** — Mestryx Teal admin console (stage `#0b0f14`, teal accent `#5eead4`, Inter UI + Plus Jakarta Sans display, 8px radius, chrome glass). Companion `platform-light` uses `#115e59` on paper.
 - **storefront** — light shop (Fraunces display + IBM Plex body, **Soft boutique** 8px radius, green accent `#2f5d3a`).
 
 Values match `packages/tokens`. Storefront universal base = Studio-derived light palette; **Luna** uses preset `luna`. Marketing product name remains deferred; avoid Piblox branding on this product.
@@ -75,7 +75,7 @@ Values match `packages/tokens`. Storefront universal base = Studio-derived light
 
 Semantic CSS variables use **shadcn names** (`--background`, `--primary`, …) under `data-theme` — see [docs/design-system/shadcn-css-variables.md](./docs/design-system/shadcn-css-variables.md). Front matter labels map to those roles.
 
-**Platform accent** is soft lilac (ADR-0005), not neon purple gradient meshes. **Ops status:** green for success only; warning amber OKLCH ≈ `oklch(0.72 0.12 75)` — not brand accent.
+**Platform accent** is Mestryx Teal (ADR-0006), not lilac / purple gradient meshes. **Ops status:** green for success only; warning amber OKLCH ≈ `oklch(0.72 0.12 75)` — not brand accent.
 
 ## Typography
 
@@ -93,13 +93,13 @@ Spacing scale 8 / 16 / 24. Prefer density for admin tables; generous rhythm for 
 - **Platform:** utilities top bar uses `.glass-chrome` (`--glass-*`, no floating shadow). Page title lives only in **PageHeader**. Never glass on table cells, primary form inputs, or solid primary CTAs.
 - **Storefront:** sticky header, PLP toolbar, cart drawer/overlay. Never on product media, hero photos, or solid primary CTAs.
 
-**Ambient page wash** — static CSS `--background-ambient` (soft lilac radials on graphite) so frosted chrome has something to blur through. No animated mesh under product grids.
+**Ambient page wash** — static CSS `--background-ambient` (teal/slate radials on stage) so frosted chrome has something to blur through. No animated mesh under product grids.
 
 **Vitrine homepage** — `/` is a boutique window (full-bleed hero, collection tiles, curated featured rail). Price filters and sort live only on **catalog** views.
 
 ## Elevation & Depth
 
-Surfaces via `--card` / `--secondary` — no nested card stacks for decoration. KPI strips use a single bordered surface with `gap-px` cells. Platform elevated = sidebar `#131316`.
+Surfaces via `--card` / `--secondary` — no nested card stacks for decoration. KPI strips use a single bordered surface with `gap-px` cells. Platform elevated = sidebar `#0f172a`.
 
 ## Components
 

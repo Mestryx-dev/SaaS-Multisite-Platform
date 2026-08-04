@@ -1,6 +1,6 @@
 # apps/marketing — product landing (mestryx.dev)
 
-Astro 7 static site · FR + EN · Obsidian Soft tokens · personalization via `PUBLIC_*` env.
+Astro 7 static site · FR + EN · Mestryx Teal tokens · personalization via `PUBLIC_*` env.
 
 ```bash
 cp apps/marketing/.env.example apps/marketing/.env   # optional local overrides

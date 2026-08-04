@@ -173,6 +173,9 @@ importers:
       '@mestryx/tokens':
         specifier: workspace:*
         version: link:../../packages/tokens
+      motion:
+        specifier: ^12.42.2
+        version: 12.43.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
     devDependencies:
       '@astrojs/check':
         specifier: ^0.9.4

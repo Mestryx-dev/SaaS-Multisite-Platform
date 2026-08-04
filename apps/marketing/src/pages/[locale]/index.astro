@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProductStage from "../../components/ProductStage.astro";
+import LandingMotion from "../../components/LandingMotion.astro";
 import { t } from "../../i18n";
 import { localeStaticPaths, resolveLocale } from "../../lib/locale";
 
@@ -12,43 +14,93 @@ const locale = resolveLocale(Astro.params.locale);
 
 <BaseLayout locale={locale} title={`${t(locale, "hero.productSlug")} · ${t(locale, "hero.tagline")}`}>
   <section class="hero shell">
-    <p class="hero__eyebrow">{t(locale, "hero.brand")}</p>
-    <h1 class="hero__title">{t(locale, "hero.tagline")}</h1>
-    <p class="hero__lead">{t(locale, "hero.supporting")}</p>
-    <div class="cta-row">
-      <a class="btn btn--primary" href={t(locale, "links.demoAdmin")}>{t(locale, "hero.cta.demoAdmin")}</a>
-      <a class="btn btn--ghost" href={t(locale, "links.demoStore")}>{t(locale, "hero.cta.demoStore")}</a>
-      <a class="btn btn--ghost" href={t(locale, "links.portfolio")}>{t(locale, "hero.cta.portfolio")}</a>
+    <div class="hero__copy">
+      <p class="hero__eyebrow" data-motion="hero">{t(locale, "hero.brand")}</p>
+      <h1 class="hero__title" data-motion="hero">{t(locale, "hero.tagline")}</h1>
+      <p class="hero__lead" data-motion="hero">{t(locale, "hero.supporting")}</p>
+      <div class="cta-row" data-motion="hero">
+        <a class="btn btn--primary" href={t(locale, "links.demoAdmin")}>{t(locale, "hero.cta.demoAdmin")}</a>
+        <a class="btn btn--ghost" href={t(locale, "links.demoStore")}>{t(locale, "hero.cta.demoStore")}</a>
+        <a class="btn btn--ghost" href={t(locale, "links.portfolio")}>{t(locale, "hero.cta.portfolio")}</a>
+      </div>
+    </div>
+    <div class="hero__visual">
+      <ProductStage
+        adminLabel={t(locale, "hero.stage.adminLabel")}
+        storeLabel={t(locale, "hero.stage.storeLabel")}
+        caption={t(locale, "hero.stage.caption")}
+      />
     </div>
   </section>
 
-  <section class="section shell" id="product">
+  <section class="section shell" id="product" data-motion="reveal">
     <h2>{t(locale, "problem.title")}</h2>
     <p>{t(locale, "problem.lead")}</p>
-    <ul class="roadmap" style="margin-top: 1.25rem">
-      <li><strong>{t(locale, "problem.point1.title")}</strong> — {t(locale, "problem.point1.body")}</li>
-      <li><strong>{t(locale, "problem.point2.title")}</strong> — {t(locale, "problem.point2.body")}</li>
-      <li><strong>{t(locale, "problem.point3.title")}</strong> — {t(locale, "problem.point3.body")}</li>
+    <ul class="point-list">
+      <li>
+        <strong>{t(locale, "problem.point1.title")}</strong>
+        <span>{t(locale, "problem.point1.body")}</span>
+      </li>
+      <li>
+        <strong>{t(locale, "problem.point2.title")}</strong>
+        <span>{t(locale, "problem.point2.body")}</span>
+      </li>
+      <li>
+        <strong>{t(locale, "problem.point3.title")}</strong>
+        <span>{t(locale, "problem.point3.body")}</span>
+      </li>
     </ul>
   </section>
 
-  <section class="section shell">
-    <h2>{t(locale, "solution.title")}</h2>
-    <p>{t(locale, "solution.lead")}</p>
-    <ul class="roadmap" style="margin-top: 1.25rem">
-      <li><strong>{t(locale, "solution.point1.title")}</strong> — {t(locale, "solution.point1.body")}</li>
-      <li><strong>{t(locale, "solution.point2.title")}</strong> — {t(locale, "solution.point2.body")}</li>
-      <li><strong>{t(locale, "solution.point3.title")}</strong> — {t(locale, "solution.point3.body")}</li>
+  <section class="section shell section--split" data-motion="reveal">
+    <div class="section__intro">
+      <h2>{t(locale, "solution.title")}</h2>
+      <p>{t(locale, "solution.lead")}</p>
+    </div>
+    <ul class="point-list point-list--stacked">
+      <li>
+        <strong>{t(locale, "solution.point1.title")}</strong>
+        <span>{t(locale, "solution.point1.body")}</span>
+      </li>
+      <li>
+        <strong>{t(locale, "solution.point2.title")}</strong>
+        <span>{t(locale, "solution.point2.body")}</span>
+      </li>
+      <li>
+        <strong>{t(locale, "solution.point3.title")}</strong>
+        <span>{t(locale, "solution.point3.body")}</span>
+      </li>
     </ul>
   </section>
 
-  <section class="section shell">
+  <section class="section shell" data-motion="reveal">
+    <h2>{t(locale, "stage.title")}</h2>
+    <p>{t(locale, "stage.lead")}</p>
+    <div class="stage-split">
+      <article class="stage-panel">
+        <h3>{t(locale, "stage.adminTitle")}</h3>
+        <p>{t(locale, "stage.adminBody")}</p>
+      </article>
+      <article class="stage-panel stage-panel--light">
+        <h3>{t(locale, "stage.storeTitle")}</h3>
+        <p>{t(locale, "stage.storeBody")}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section shell" data-motion="reveal">
     <h2>{t(locale, "roadmap.title")}</h2>
     <ul class="roadmap">
       <li><strong>{t(locale, "roadmap.phase.mvp.label")}</strong> — {t(locale, "roadmap.phase.mvp.description")}</li>
-      <li><strong>{t(locale, "roadmap.phase.clickCollect.label")}</strong> — {t(locale, "roadmap.phase.clickCollect.description")}</li>
+      <li>
+        <strong>{t(locale, "roadmap.phase.clickCollect.label")}</strong> — {
+          t(locale, "roadmap.phase.clickCollect.description")
+        }
+      </li>
       <li><strong>{t(locale, "roadmap.phase.ae.label")}</strong> — {t(locale, "roadmap.phase.ae.description")}</li>
       <li><strong>{t(locale, "roadmap.phase.pos.label")}</strong> — {t(locale, "roadmap.phase.pos.description")}</li>
     </ul>
   </section>
+
+  <LandingMotion />
 </BaseLayout>

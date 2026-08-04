@@ -7,4 +7,5 @@
 | [0002](./0002-platform-admin-inter.md) | Platform admin Inter typeface | Accepted |
 | [0003](./0003-platform-night-gold-glass.md) | Platform night-gold + glass | Superseded by 0005 |
 | [0004](./0004-end-customer-payments-platform-charge.md) | End-customer payments: platform charge | Accepted |
-| [0005](./0005-platform-obsidian-soft.md) | Platform Obsidian Soft palette | Accepted |
+| [0005](./0005-platform-obsidian-soft.md) | Platform Obsidian Soft palette | Superseded by 0006 |
+| [0006](./0006-platform-mestryx-teal.md) | Platform Mestryx Teal palette | Accepted |
