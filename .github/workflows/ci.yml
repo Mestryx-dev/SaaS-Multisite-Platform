@@ -41,14 +41,14 @@ jobs:
       NODE_ENV: test
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # packageManager in package.json supplies the pnpm version (do not set `version` here)
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
-          node-version: "22"
+          node-version: "24"
           cache: "pnpm"
 
       - name: Install
@@ -72,11 +72,11 @@ jobs:
   design-system:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
-          node-version: "22"
+          node-version: "24"
 
       - name: Detect AI design anti-patterns (packages/ui first)
         run: npx --yes impeccable@latest detect packages/ui/src --json
@@ -91,14 +91,14 @@ jobs:
       (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
       (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'remotion'))
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # packageManager in package.json supplies the pnpm version (do not set `version` here)
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
-          node-version: "22"
+          node-version: "24"
           cache: "pnpm"
 
       - name: Install
@@ -114,7 +114,7 @@ jobs:
         run: pnpm --filter @mestryx/remotion run ci:render
 
       - name: Upload promo MP4s
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: remotion-promos
           path: apps/remotion/out/*.mp4
