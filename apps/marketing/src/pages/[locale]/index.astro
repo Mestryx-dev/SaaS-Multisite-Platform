@@ -19,8 +19,8 @@ const locale = resolveLocale(Astro.params.locale);
       <h1 class="hero__title" data-motion="hero">{t(locale, "hero.tagline")}</h1>
       <p class="hero__lead" data-motion="hero">{t(locale, "hero.supporting")}</p>
       <div class="cta-row" data-motion="hero">
-        <a class="btn btn--primary" href={t(locale, "links.demoAdmin")}>{t(locale, "hero.cta.demoAdmin")}</a>
-        <a class="btn btn--ghost" href={t(locale, "links.demoStore")}>{t(locale, "hero.cta.demoStore")}</a>
+        <a class="btn btn--primary" href={t(locale, "links.demoStore")}>{t(locale, "hero.cta.demoStore")}</a>
+        <a class="btn btn--ghost" href={t(locale, "links.demoAdmin")}>{t(locale, "hero.cta.demoAdmin")}</a>
         <a class="btn btn--ghost" href={t(locale, "links.portfolio")}>{t(locale, "hero.cta.portfolio")}</a>
       </div>
     </div>

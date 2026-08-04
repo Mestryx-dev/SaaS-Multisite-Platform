@@ -47,13 +47,26 @@ Upstream Mestryx dogfood currently uses `*.mestryx.dev` (see product docs). Fork
 6. **Bind smoke storefront** — set the same `WEB_DEV_SITE_ID` on Web + API if the demo host is not under `*.sites.…`.  
 7. **Admin / Web / Storybook / Marketing** — deploy with build args as needed.
 
+### Public demo mode (ADR-0007)
+
+For isolated **demo** API + Admin hosts only (never merchant prod):
+
+| Service | Env / build arg | Effect |
+|---------|-----------------|--------|
+| API | `DEMO_MODE=true` | Block mutating `/v1/*` (`403 DEMO_READ_ONLY`); enable `POST /v1/demo/enter`; block sign-up |
+| API | `SEED_EMAIL` / `SEED_PASSWORD` | Credentials used by demo-enter (same as seed) |
+| Admin | `VITE_DEMO_MODE=true` (Docker build arg) | Auto demo-enter, Shell banner, hide sign-up |
+
+Ensure the demo DB is seeded before enabling. UI prefs (theme/sidebar) may still use localStorage; catalog writes do not persist.
+
 ## Smoke checklist
 
 1. [ ] `GET https://<api-host>/health` → 200  
 2. [ ] `GET …/v1/public/resolve-host?host=<web-host>` → 200 + expected site  
-3. [ ] Admin SPA loads; sign-in with seed user  
-4. [ ] Storefront HTML loads for the seed shop  
-5. [ ] Optional: Storybook / Marketing 200  
+3. [ ] Admin SPA loads; sign-in with seed user **or** (demo mode) skip login via demo-enter + banner  
+4. [ ] Demo mode: mutation → toast / `403 DEMO_READ_ONLY`  
+5. [ ] Storefront HTML loads for the seed shop  
+6. [ ] Optional: Storybook / Marketing 200; marketing primary CTA = store demo  
 
 ## Rollback
 

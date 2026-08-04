@@ -13,6 +13,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "@tanstack/react-router";
 import { apiFetch } from "../lib/api";
 import { safeReturnPath } from "../lib/auth-return";
+import { isDemoMode } from "../lib/demo";
 
 export function SignInPage() {
   const { t } = useTranslation();
@@ -29,6 +30,19 @@ export function SignInPage() {
     returnTo === "/"
       ? "/sign-up"
       : `/sign-up?return=${encodeURIComponent(returnTo)}`;
+
+  async function enterDemo() {
+    setError(null);
+    setPending(true);
+    try {
+      await apiFetch("/v1/demo/enter", { method: "POST", body: "{}" });
+      void navigate({ to: returnTo as "/" });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : t("demo.enterFailed"));
+    } finally {
+      setPending(false);
+    }
+  }
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -58,8 +72,15 @@ export function SignInPage() {
           <h1 className="text-lg font-semibold text-[var(--foreground)]">
             {t("auth.signIn")}
           </h1>
-          <Muted>{t("auth.signInHint")}</Muted>
+          <Muted>{isDemoMode ? t("demo.signInHint") : t("auth.signInHint")}</Muted>
         </div>
+        {isDemoMode ? (
+          <FormActions>
+            <Button type="button" disabled={pending} onClick={() => void enterDemo()}>
+              {pending ? "…" : t("demo.enter")}
+            </Button>
+          </FormActions>
+        ) : null}
         <form onSubmit={onSubmit} aria-busy={pending}>
           <Stack gap="sm">
             <FormField label={t("auth.email")} htmlFor="email" size="full">
@@ -86,12 +107,14 @@ export function SignInPage() {
               <Button type="submit" disabled={pending}>
                 {pending ? "…" : t("auth.signIn")}
               </Button>
-              <a
-                href={signUpHref}
-                className="text-sm text-[var(--muted-foreground)] underline-offset-2 hover:underline"
-              >
-                {t("auth.signUp")}
-              </a>
+              {isDemoMode ? null : (
+                <a
+                  href={signUpHref}
+                  className="text-sm text-[var(--muted-foreground)] underline-offset-2 hover:underline"
+                >
+                  {t("auth.signUp")}
+                </a>
+              )}
             </FormActions>
           </Stack>
         </form>

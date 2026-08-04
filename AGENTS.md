@@ -38,15 +38,17 @@ Do not add a second API stack or replace core choices without a new ADR accepted
 
 Knowledge graph at `graphify-out/` (`GRAPH_REPORT.md`, `graph.json`).
 
-- **Before** architecture questions: read `graphify-out/GRAPH_REPORT.md`.
-- **After** code/doc changes in MVP corpus:
+- **Before** architecture questions: read `graphify-out/GRAPH_REPORT.md` or `pnpm graphify` query path via CLI.
+- **After** code/doc changes in MVP corpus (mandatory session close):
 
   ```bash
-  ./scripts/graphify-update.sh
+  pnpm graphify
+  # equivalent: ./scripts/graphify-update.sh
   ```
 
-  Install once: `uv tool install graphifyy` (CLI `graphify` on PATH).
+  Install once: `uv tool install graphifyy` (CLI `graphify` on PATH). Upgrade: `uv tool upgrade graphifyy`.
   Corpus: `apps/{api,admin,web,marketing}`, `packages`, `docs`.
+  CI job `graphify` runs the same script (AST-only) on PR + push `main`/`dev`.
 
 ## Before implementing
 
@@ -56,7 +58,7 @@ Knowledge graph at `graphify-out/` (`GRAPH_REPORT.md`, `graph.json`).
 4. `docs/08-open-questions.md` — stop and ask Mestryx if blocked by an open Q  
 5. Never ship public sites without **tenant isolation tests** (F-104)  
 6. Never ship public content as SPA-only shell — see `docs/11-seo-ai-ready.md`
-7. Refresh Graphify when exploring unfamiliar areas (`./scripts/graphify-update.sh`)
+7. Refresh Graphify when exploring unfamiliar areas (`pnpm graphify`)
 
 ## Architecture rules
 

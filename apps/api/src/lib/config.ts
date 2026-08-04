@@ -28,11 +28,17 @@ export type AppConfig = {
   googleClientSecret: string | undefined;
   appleClientId: string | undefined;
   appleClientSecret: string | undefined;
+  /** Isolated demo hosts only — never enable on real merchant prod. */
+  demoMode: boolean;
+  demoSeedEmail: string | undefined;
+  demoSeedPassword: string | undefined;
 };
 
 export function loadConfig(): AppConfig {
   const secret =
     process.env.BETTER_AUTH_SECRET ?? "dev-secret-change-me-min-32-chars-long!!";
+  const demoMode =
+    process.env.DEMO_MODE === "true" || process.env.DEMO_MODE === "1";
   return {
     port: Number(process.env.PORT ?? 3001),
     nodeEnv: process.env.NODE_ENV ?? "development",
@@ -68,5 +74,8 @@ export function loadConfig(): AppConfig {
     googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
     appleClientId: process.env.APPLE_CLIENT_ID,
     appleClientSecret: process.env.APPLE_CLIENT_SECRET,
+    demoMode,
+    demoSeedEmail: process.env.SEED_EMAIL ?? process.env.DEMO_SEED_EMAIL,
+    demoSeedPassword: process.env.SEED_PASSWORD ?? process.env.DEMO_SEED_PASSWORD,
   };
 }

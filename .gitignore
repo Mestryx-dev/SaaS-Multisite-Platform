@@ -75,3 +75,4 @@ graphify-out/
 apps/*/graphify-out/
 packages/graphify-out/
 docs/graphify-out/
+.demo-seed.local

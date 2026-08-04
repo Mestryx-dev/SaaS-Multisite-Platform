@@ -9,3 +9,4 @@
 | [0004](./0004-end-customer-payments-platform-charge.md) | End-customer payments: platform charge | Accepted |
 | [0005](./0005-platform-obsidian-soft.md) | Platform Obsidian Soft palette | Superseded by 0006 |
 | [0006](./0006-platform-mestryx-teal.md) | Platform Mestryx Teal palette | Accepted |
+| [0007](./0007-demo-mode-read-only.md) | Demo environment read-only + auto session | Accepted |
