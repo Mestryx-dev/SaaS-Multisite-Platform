@@ -49,7 +49,7 @@ export function getSiteConfig(): SiteConfig {
   };
 }
 
-/** Flat map for `t()` interpolation (`{{contactEmail}}`, …). */
+/** Flat map for `t()` interpolation (`{{contactEmail}}`, `{{year}}`, …). */
 export function siteInterpolateVars(): Record<string, string> {
   const s = getSiteConfig();
   return {
@@ -59,5 +59,6 @@ export function siteInterpolateVars(): Record<string, string> {
     portfolioUrl: s.portfolioUrl,
     siteUrl: s.siteUrl,
     analyticsHost: s.analyticsHost,
+    year: String(new Date().getFullYear()),
   };
 }
