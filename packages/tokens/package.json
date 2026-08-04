@@ -13,8 +13,14 @@
       "import": "./src/index.ts",
       "default": "./src/index.ts"
     },
-    "./css": "./src/tokens.css",
-    "./fonts": "./src/fonts.css",
+    "./css": {
+      "types": "./src/css.d.ts",
+      "default": "./src/tokens.css"
+    },
+    "./fonts": {
+      "types": "./src/fonts.d.ts",
+      "default": "./src/fonts.css"
+    },
     "./presets": {
       "types": "./src/presets/index.ts",
       "development": "./src/presets/index.ts",
@@ -41,6 +47,6 @@
   },
   "devDependencies": {
     "@mestryx/config": "workspace:*",
-    "typescript": "^5.9.3"
+    "typescript": "^7.0.2"
   }
 }

@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 # Static Storybook for Dev smoke (Dokploy). Build context = monorepo root.
 
-FROM node:22-alpine AS build
+FROM node:24-alpine AS build
 WORKDIR /app
 RUN corepack enable && corepack prepare pnpm@10.32.0 --activate
 ENV CI=true

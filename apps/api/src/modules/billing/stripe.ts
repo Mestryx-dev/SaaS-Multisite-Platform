@@ -5,6 +5,6 @@ import type { AppConfig } from "../../lib/config.js";
 export function getStripe(config: AppConfig): Stripe | null {
   if (!config.stripeSecretKey) return null;
   return new Stripe(config.stripeSecretKey, {
-    apiVersion: "2025-08-27.basil",
+    apiVersion: "2026-07-29.dahlia",
   });
 }

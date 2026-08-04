@@ -2,6 +2,22 @@ packages:
   - "apps/*"
   - "packages/*"
 
-# Required for pnpm 10 `pnpm deploy` (portable prod trees in Docker).
+# Required for pnpm `pnpm deploy` (portable prod trees in Docker).
 injectWorkspacePackages: true
 
+# Security pins (moved from package.json#pnpm for pnpm 11+)
+overrides:
+  "fast-uri": ">=3.1.5"
+  "brace-expansion": ">=5.0.9"
+  "postcss": ">=8.5.23"
+  "esbuild": ">=0.25.0"
+
+# pnpm 11 default is 1440 (1 day). Kept at 0 for this SSOT upgrade so
+# freshly published AWS SDK / Remotion / etc. pins can install in CI.
+# Restore minimumReleaseAge: 1440 after 2026-08-05 once packages age.
+minimumReleaseAge: 0
+
+# Native/postinstall scripts required for Vite/Astro/Tailwind tooling
+allowBuilds:
+  "@parcel/watcher": true
+  esbuild: true
