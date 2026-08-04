@@ -1,15 +1,4 @@
-import {
-  Body,
-  Container,
-  Head,
-  Heading,
-  Hr,
-  Html,
-  Preview,
-  Section,
-  Text,
-} from "@react-email/components";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { emailT, type EmailLocale } from "./i18n.js";
 
 function money(cents: number, currency: string, locale: EmailLocale) {
@@ -34,6 +23,21 @@ export type OrderEmailProps = {
   trackingNumber?: string;
 };
 
+const bodyStyle: CSSProperties = {
+  backgroundColor: "#f6f6f6",
+  fontFamily: "sans-serif",
+};
+
+const containerStyle: CSSProperties = {
+  backgroundColor: "#ffffff",
+  margin: "24px auto",
+  padding: "24px",
+  maxWidth: "560px",
+};
+
+const headingStyle: CSSProperties = { fontSize: "20px", margin: "0 0 16px" };
+const footerStyle: CSSProperties = { color: "#666", fontSize: "12px" };
+
 function Layout(props: {
   locale: EmailLocale;
   preview: string;
@@ -41,29 +45,24 @@ function Layout(props: {
   children: ReactNode;
 }) {
   return (
-    <Html lang={props.locale}>
-      <Head />
-      <Preview>{props.preview}</Preview>
-      <Body style={{ backgroundColor: "#f6f6f6", fontFamily: "sans-serif" }}>
-        <Container
-          style={{
-            backgroundColor: "#ffffff",
-            margin: "24px auto",
-            padding: "24px",
-            maxWidth: "560px",
-          }}
-        >
-          <Heading as="h1" style={{ fontSize: "20px", margin: "0 0 16px" }}>
-            {props.title}
-          </Heading>
+    <html lang={props.locale}>
+      <head>
+        <meta charSet="utf-8" />
+        <title>{props.title}</title>
+      </head>
+      <body style={bodyStyle}>
+        {/* Preview text for email clients */}
+        <div style={{ display: "none", maxHeight: 0, overflow: "hidden" }}>
+          {props.preview}
+        </div>
+        <div style={containerStyle}>
+          <h1 style={headingStyle}>{props.title}</h1>
           {props.children}
-          <Hr />
-          <Text style={{ color: "#666", fontSize: "12px" }}>
-            {emailT(props.locale, "email.layout.footer")}
-          </Text>
-        </Container>
-      </Body>
-    </Html>
+          <hr />
+          <p style={footerStyle}>{emailT(props.locale, "email.layout.footer")}</p>
+        </div>
+      </body>
+    </html>
   );
 }
 
@@ -80,15 +79,13 @@ export function OrderConfirmationEmail(props: OrderEmailProps) {
       preview={emailT(locale, "email.order.confirmation.preview", { id })}
       title={emailT(locale, "email.order.confirmation.title")}
     >
-      <Text>{emailT(locale, "email.order.confirmation.body", { id })}</Text>
+      <p>{emailT(locale, "email.order.confirmation.body", { id })}</p>
       {total ? (
-        <Text>
-          {emailT(locale, "email.order.confirmation.total", { total })}
-        </Text>
+        <p>{emailT(locale, "email.order.confirmation.total", { total })}</p>
       ) : null}
-      <Section>
-        <Text>{emailT(locale, "email.order.confirmation.followUp")}</Text>
-      </Section>
+      <div>
+        <p>{emailT(locale, "email.order.confirmation.followUp")}</p>
+      </div>
     </Layout>
   );
 }
@@ -106,16 +103,16 @@ export function OrderPaidEmail(props: OrderEmailProps) {
       preview={emailT(locale, "email.order.paid.preview", { id })}
       title={emailT(locale, "email.order.paid.title")}
     >
-      <Text>{emailT(locale, "email.order.paid.body", { id })}</Text>
+      <p>{emailT(locale, "email.order.paid.body", { id })}</p>
       {props.invoiceNumber ? (
-        <Text>
+        <p>
           {emailT(locale, "email.order.paid.invoice", {
             number: props.invoiceNumber,
           })}
-        </Text>
+        </p>
       ) : null}
       {total ? (
-        <Text>{emailT(locale, "email.order.paid.total", { total })}</Text>
+        <p>{emailT(locale, "email.order.paid.total", { total })}</p>
       ) : null}
     </Layout>
   );
@@ -130,7 +127,7 @@ export function OrderCancelledEmail(props: OrderEmailProps) {
       preview={emailT(locale, "email.order.cancelled.preview", { id })}
       title={emailT(locale, "email.order.cancelled.title")}
     >
-      <Text>{emailT(locale, "email.order.cancelled.body", { id })}</Text>
+      <p>{emailT(locale, "email.order.cancelled.body", { id })}</p>
     </Layout>
   );
 }
@@ -144,20 +141,20 @@ export function OrderShippedEmail(props: OrderEmailProps) {
       preview={emailT(locale, "email.order.shipped.preview", { id })}
       title={emailT(locale, "email.order.shipped.title")}
     >
-      <Text>{emailT(locale, "email.order.shipped.body", { id })}</Text>
+      <p>{emailT(locale, "email.order.shipped.body", { id })}</p>
       {props.carrier ? (
-        <Text>
+        <p>
           {emailT(locale, "email.order.shipped.carrier", {
             carrier: props.carrier,
           })}
-        </Text>
+        </p>
       ) : null}
       {props.trackingNumber ? (
-        <Text>
+        <p>
           {emailT(locale, "email.order.shipped.tracking", {
             tracking: props.trackingNumber,
           })}
-        </Text>
+        </p>
       ) : null}
     </Layout>
   );
@@ -187,15 +184,15 @@ export function OrgInviteEmail(props: OrgInviteEmailProps) {
       preview={emailT(locale, "email.invite.preview", { org })}
       title={emailT(locale, "email.invite.title")}
     >
-      <Text>{body}</Text>
-      <Section>
-        <Text>
+      <p>{body}</p>
+      <div>
+        <p>
           {emailT(locale, "email.invite.accept")}{" "}
           <a href={props.acceptUrl} style={{ color: "#111" }}>
             {props.acceptUrl}
           </a>
-        </Text>
-      </Section>
+        </p>
+      </div>
     </Layout>
   );
 }
