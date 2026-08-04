@@ -26,7 +26,7 @@
     "render:remotion:all": "pnpm --filter @mestryx/remotion render:all"
   },
   "devDependencies": {
-    "turbo": "^2.10.5",
+    "turbo": "^2.10.8",
     "typescript": "^5.9.3"
   },
   "pnpm": {
