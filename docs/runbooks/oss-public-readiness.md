@@ -89,9 +89,11 @@ Related: [repo-history-hygiene.md](./repo-history-hygiene.md) · [SECURITY.md](.
 
 | Severity | Package | Action |
 |----------|---------|--------|
-| high | `fast-uri` (transitive) | Monitor; no direct dep — revisit when parents bump |
-| moderate | `hono` / `@hono/node-server` / `postcss` / `esbuild` (paths vary) | Bumped `hono` + `@hono/node-server` to latest compatible; re-run `pnpm audit` after next lock refresh |
+| high | `fast-uri` / `brace-expansion` (transitive) | Cleared via `pnpm-workspace.yaml` `overrides` (pnpm 11) |
+| moderate | `hono` / `@hono/node-server` / `postcss` / `esbuild` | Cleared — web aligned to Hono 4.13 + node-server 2.x; overrides for postcss/esbuild |
 | — | Critical live secrets | None found in working tree |
+
+**Follow-up (SSOT deps):** branch `chore/deps-ssot-align` — Node 24, pnpm 11, TypeScript 7, Vite 8, Vitest 4; `pnpm audit` clean as of upgrade.
 
 ---
 

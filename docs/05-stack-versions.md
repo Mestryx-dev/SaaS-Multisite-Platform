@@ -264,6 +264,18 @@ DB:          PostgreSQL 17 + Redis 7/8
 | Lucia as peer of Better Auth | Prefer **Better Auth**; Lucia soft-deprecated path |
 | TypeScript 5.x | **TypeScript 7.0.x** on npm at survey time |
 | Hono 4.12.x / node-server 1.x skew | **Hono 4.13.x** + `@hono/node-server` **2.0.x** everywhere |
+| Node 22 CI / pnpm 10 | **Node 24 LTS** + **pnpm 11** (`engines`, Docker, Actions); overrides live in `pnpm-workspace.yaml` |
+
+### Monorepo alignment (2026-08-04)
+
+Branch `chore/deps-ssot-align` brought the installed tree in line with this matrix.
+
+**Deferred deliberately:**
+- `@types/node` stays on **24.x** (match Node 24 LTS; Dependabot’s 26.x is Current).
+- `redis` npm client **5.x** → **6.x** major (separate smoke of session/cache).
+- `astro check` still needs TypeScript **≤6** programmatic API — marketing `typecheck` uses `tsc` until Astro supports TS 7; optional `pnpm --filter @mestryx/marketing check:astro` when on TS 6.
+
+**pnpm 11 note:** `minimumReleaseAge` temporarily **0** so freshly published AWS SDK / Remotion pins install; restore **1440** after 2026-08-05.
 
 ---
 
