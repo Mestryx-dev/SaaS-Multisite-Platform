@@ -114,7 +114,7 @@ jobs:
         run: pnpm --filter @mestryx/remotion run ci:render
 
       - name: Upload promo MP4s
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: remotion-promos
           path: apps/remotion/out/*.mp4
