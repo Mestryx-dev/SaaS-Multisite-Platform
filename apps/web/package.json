@@ -17,7 +17,7 @@
     "@mestryx/tokens": "workspace:*",
     "@mestryx/ui": "workspace:*",
     "dotenv": "^17.4.2",
-    "hono": "^4.12.30",
+    "hono": "^4.12.34",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
