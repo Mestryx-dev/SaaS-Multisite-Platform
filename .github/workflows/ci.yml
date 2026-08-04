@@ -4,6 +4,7 @@ on:
   pull_request:
   push:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   monorepo:
@@ -81,9 +82,14 @@ jobs:
         run: npx --yes impeccable@latest detect packages/ui/src --json
         # Expand to apps after legacy CSS migrate; start UI-package-only as planned.
 
-  # Promo MP4s for social/ads only — not embedded on storefront (code-driven UI there).
+  # Promo MP4s for social/ads only — not embedded on storefront.
+  # Heavy job: main pushes + manual dispatch (forks can disable). Label a PR `remotion` to opt in.
   remotion:
     runs-on: ubuntu-latest
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'remotion'))
     steps:
       - uses: actions/checkout@v4
 

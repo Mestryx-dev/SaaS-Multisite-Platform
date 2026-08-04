@@ -1,69 +1,93 @@
 # Mestryx Multisite Platform
 
-Multi-brand CMS / multisite SaaS by **Mestryx** (`mestryx.dev`) — TypeScript monorepo.
+Open-source **multi-brand CMS / multisite SaaS** by **Mestryx** — TypeScript monorepo (API, admin, SSR storefronts, optional marketing site).
 
 | | |
 |---|---|
-| **Working name** | **mestryx-platform** (marketing brand later if needed) |
-| **Owner** | Mestryx (Florian) — personal GitHub [`Mestryx-dev`](https://github.com/Mestryx-dev) |
-| **Hosts (early)** | `admin` / `api` / `*.sites` on `mestryx.dev` |
+| **Working name** | **mestryx-platform** |
+| **Licence** | [Apache-2.0](LICENSE) — see also [NOTICE](NOTICE) (trademark) |
+| **Security** | [SECURITY.md](SECURITY.md) · [docs/SECURITY.md](docs/SECURITY.md) |
+| **Contributing** | [CONTRIBUTING.md](CONTRIBUTING.md) |
 | **Repo** | [`Mestryx-dev/SaaS-Multisite-Platform`](https://github.com/Mestryx-dev/SaaS-Multisite-Platform) |
-| **Phase** | Autonomy waves A–G implemented locally; staging deploy awaits Mestryx DNS/Dokploy |
-| **Stack** | TypeScript modular monorepo — see `docs/02-stack.md`. |
+| **Upstream product hosts** | Marketing [`mestryx.dev`](https://mestryx.dev) · demos `demo-*-platform.mestryx.dev` |
+| **Stack** | See [`docs/02-stack.md`](docs/02-stack.md) |
 | **Not this product** | Piblox = Studio / AI video |
+
+> Marketing legal pages are **CRE drafts** (“not legal advice”). Forks must replace branding, hosts, and contact via `PUBLIC_*` env — see [`apps/marketing/.env.example`](apps/marketing/.env.example).
 
 ## Goals
 
 - Many public **sites** / custom **domains**, one **SaaS admin**
 - Modular product (CMS, catalog/commerce, billing, analytics — toggles per tenant)
 - Shared **design system**, web clients, later **mobile**
-- Built primarily with **AI agents** under clear ADRs and a prioritised backlog
-- Deployed on Mestryx infrastructure (Dokploy / self-hosted), secrets via vault — not a third-party “company org” for now
+- Deploy on your Docker orchestrator; secrets never in git
 
-## Docs (start here)
+## Quickstart
+
+```bash
+cp .env.example .env
+# Set SEED_PASSWORD in .env before seeding (required — no default in source)
+docker compose up -d          # Postgres 17 + Redis 7
+pnpm install
+pnpm --filter @mestryx/api db:migrate
+pnpm --filter @mestryx/api db:seed   # optional Luna Bijoux dogfood
+pnpm dev:api                  # http://localhost:3001/health
+pnpm --filter @mestryx/admin dev
+pnpm --filter @mestryx/web dev
+pnpm test && pnpm typecheck && pnpm build
+```
+
+Marketing (optional):
+
+```bash
+cp apps/marketing/.env.example apps/marketing/.env   # set PUBLIC_* for your brand
+pnpm --filter @mestryx/marketing dev                 # http://localhost:4321
+```
+
+Local compose DB credentials (`postgres`/`postgres`) are **local-only** — never reuse in staging/prod.
+
+## Architecture (apps)
+
+```
+apps/api          # Multi-tenant Hono + Drizzle API
+apps/admin        # SaaS console (Vite SPA)
+apps/web          # Public SSR sites + SEO/AI surfaces
+apps/marketing    # Astro product landing (FR/EN)
+apps/remotion     # Promo video tooling (optional CI)
+packages/ui|tokens|sdk|config|host-resolution
+docs/             # Product + ops SSOT
+```
+
+```mermaid
+flowchart LR
+  admin[apps/admin]
+  web[apps/web]
+  marketing[apps/marketing]
+  api[apps/api]
+  db[(Postgres)]
+  admin --> api
+  web --> api
+  api --> db
+  marketing -.->|static| cdn[CDN or nginx]
+```
+
+## Docs
 
 | Doc | Purpose |
 |-----|---------|
 | [docs/README.md](docs/README.md) | Full index |
-| [docs/app-spec.md](docs/app-spec.md) | Product purpose & users |
-| [docs/06-feature-catalog-and-priority.md](docs/06-feature-catalog-and-priority.md) | Features, waves, constraints |
-| [docs/07-dependency-graph.md](docs/07-dependency-graph.md) | What blocks what |
-| [docs/08-open-questions.md](docs/08-open-questions.md) | Locked decisions |
-| [docs/02-stack.md](docs/02-stack.md) | Technical stack (detail) |
-| [docs/11-seo-ai-ready.md](docs/11-seo-ai-ready.md) | SSR + SEO + AI discovery |
-| [docs/10-agent-ops.md](docs/10-agent-ops.md) | CI/CD, debug & learning loops |
-| [docs/runbooks/staging-dokploy.md](docs/runbooks/staging-dokploy.md) | Staging deploy (human gates) |
-| [docs/runbooks/dev-dokploy-smoke.md](docs/runbooks/dev-dokploy-smoke.md) | Dev smoke on Dokploy 245 |
-| [GAMEPLAN.md](GAMEPLAN.md) | Phases, risks, estimate |
-| [PROGRESS.md](PROGRESS.md) | Spec checklist |
+| [docs/app-spec.md](docs/app-spec.md) | Product purpose |
+| [docs/runbooks/oss-public-readiness.md](docs/runbooks/oss-public-readiness.md) | Public / OSS checklist |
+| [docs/runbooks/staging-dokploy.md](docs/runbooks/staging-dokploy.md) | Staging deploy pattern |
+| [docs/runbooks/dev-dokploy-smoke.md](docs/runbooks/dev-dokploy-smoke.md) | Dev smoke pattern (no private IDs) |
+| [AGENTS.md](AGENTS.md) | Agent-oriented map |
 
-## Layout
+## Forks & branding
 
-```
-apps/api          # Multi-tenant API
-apps/admin        # SaaS console (*.mestryx.dev)
-apps/web          # Public SSR sites + SEO/AI surfaces
-apps/remotion     # Remotion 4 promo videos (Studio + render)
-apps/mobile       # Expo (later)
-apps/marketing    # Astro marketing site (deferred)
-packages/ui|tokens|sdk|config
-docs/             # Source of truth (this phase)
-```
-
-## Phase 1 — local skeleton
-
-```bash
-cp .env.example .env
-docker compose up -d          # Postgres 17 + Redis 7
-pnpm install
-pnpm --filter @mestryx/api db:generate
-pnpm --filter @mestryx/api db:migrate
-pnpm dev:api                  # http://localhost:3001/health
-pnpm test
-```
-
-Hosts (later on Dokploy): `admin.mestryx.dev` · `api.mestryx.dev` · `*.sites.mestryx.dev`
+- Apache-2.0 covers **code**; **Mestryx** names/logos are not licensed for rebranded forks ([NOTICE](NOTICE)).
+- Replace marketing i18n / `PUBLIC_*` build args; leave Umami empty to disable analytics.
+- Package scope `@mestryx/*` is workspace-local (not published to npm).
 
 ## Licence
 
-Private — Mestryx-dev. TBD formal licence string.
+Licensed under the **Apache License, Version 2.0** — see [LICENSE](LICENSE).

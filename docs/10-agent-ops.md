@@ -34,7 +34,7 @@
 | OpenAPI / `packages/sdk` | Contract between api ↔ clients |
 | [docs/README.md](./README.md) | Ownership matrix |
 
-**Session bootstrap**: Hindsight recall with `project:saas-multisite-platform` before non-trivial work; retain decisions after milestones (not every file edit).
+**Session bootstrap** (optional upstream tooling): recall prior decisions for `project:saas-multisite-platform` before non-trivial work; retain milestones — not every file edit. Forks may skip this and rely on docs + issues only.
 
 ---
 

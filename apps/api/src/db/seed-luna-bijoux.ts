@@ -51,7 +51,13 @@ loadDotenv({ path: resolve(process.cwd(), "../../.env") });
 loadDotenv({ path: resolve(process.cwd(), ".env") });
 
 const SEED_EMAIL = process.env.SEED_EMAIL ?? "demo@lunabijoux.local";
-const SEED_PASSWORD = process.env.SEED_PASSWORD ?? "LunaBijoux2026!";
+/** Required — no default password in source (OSS / public-repo hygiene). */
+const SEED_PASSWORD = process.env.SEED_PASSWORD?.trim() ?? "";
+if (!SEED_PASSWORD) {
+  throw new Error(
+    "SEED_PASSWORD is required to run the Luna seed. Set it in your local .env (see .env.example). Never commit real passwords.",
+  );
+}
 const ORG_SLUG = "luna-bijoux";
 const SITE_SLUG = "luna";
 
@@ -1405,7 +1411,7 @@ async function main() {
   console.log("");
   console.log("Admin login:");
   console.log(`  email:    ${SEED_EMAIL}`);
-  console.log(`  password: ${SEED_PASSWORD}`);
+  console.log("  password: (the SEED_PASSWORD you set in .env — not printed)");
   console.log(`  URL:      http://localhost:5174/sign-in`);
   console.log("");
   console.log("Demo commerce (Orders / Returns / tracking):");

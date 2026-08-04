@@ -4,30 +4,27 @@
 **Status:** Prep only — **do not** force-push or orphan-reset without explicit Mestryx confirmation.  
 **Related:** [SECURITY.md](../SECURITY.md)
 
-## Audit snapshot (2026-07-24)
+## Audit snapshot (2026-08-04 OSS prep)
 
 | Check | Result |
 |-------|--------|
-| Tracked `.env` | **No** (only `.env.example`) |
-| Live-looking Stripe/Resend/GitHub tokens in blobs | **None found** |
-| Branches | `main` only (+ `origin/main`) |
-| Local `.env` | Present, gitignored; no obvious live provider keys |
-| Demo seed password in README | **Removed** (use env) |
-| Ephemeral critique dumps | **Gitignored** (`.impeccable/critique/`) |
+| Tracked `.env` | **No** (only `.env.example` + marketing example) |
+| Live-looking Stripe/Resend/GitHub tokens in working tree | **None found** |
+| Default seed password in source | **Removed** (`SEED_PASSWORD` required) |
+| `graphify-out/` | **Untracked** + gitignored |
+| Private Dokploy UUIDs / LAN in smoke runbook | **Scrubbed** |
+| Historical commits still contain older seed string | **Yes** → Option B before PUBLIC |
+| Bundle | `~/WorkSpace/backups/SaaS-Multisite-Platform-oss-prep-20260804.bundle` |
 
-Residual (acceptable for private dogfood, scrub on public open-source if desired):
-
-- Default seed password fallback in `apps/api/src/db/seed-luna-bijoux.ts` (local DX).
-- Compose/CI disposable Postgres / `BETTER_AUTH_SECRET` placeholders.
-- Historical commits still contain older README seed string until history is rewritten.
+Full checklist: [oss-public-readiness.md](./oss-public-readiness.md).
 
 ## Pre-purge checklist (working tree)
 
-- [x] `.gitignore` / `.cursorignore` cover `.env*`, keys, critique
-- [x] Docs point to vault; no plaintext seed password in admin README
-- [ ] `pnpm check:i18n` + typecheck green on tip
+- [x] `.gitignore` / `.cursorignore` cover `.env*`, keys, critique, `graphify-out/`
+- [x] Docs point to vault; no plaintext seed password in source
+- [ ] `pnpm check:i18n` + typecheck green on tip (run before merge)
 - [ ] Confirm nothing sensitive in **unpushed** commits (`git log origin/main..HEAD`)
-- [ ] Backup: `git bundle create ../SaaS-Multisite-Platform-backup.bundle --all`
+- [x] Backup: bundle under `WorkSpace/backups/`
 
 ## Option A — squash unpushed tip only (safe if already pushed base is clean)
 

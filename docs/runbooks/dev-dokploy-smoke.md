@@ -1,79 +1,68 @@
-# Dev smoke deploy — Dokploy (VM 245)
+# Dev smoke deploy — Dokploy (generic)
 
-**Status**: Project provisioned · Git branch **`dev`** · Dokploy env **`Dev`** (not the default `production`).  
-**Scope**: MVP smoke on hub **245**, not staging VM.  
-**Repo**: [Mestryx-dev/SaaS-Multisite-Platform](https://github.com/Mestryx-dev/SaaS-Multisite-Platform)
+**Status:** Pattern for a self-hosted Dokploy **Dev** environment (not production).  
+**Repo:** [Mestryx-dev/SaaS-Multisite-Platform](https://github.com/Mestryx-dev/SaaS-Multisite-Platform)
 
-**UI**: [Dev environment](https://dokploy.mestryx.dev/dashboard/project/-Vs-cpc8VxoBaVEiPYxV2/environment/3n9oonm3fmKyrN7S97g69)  
-Leave default [`production`](https://dokploy.mestryx.dev/dashboard/project/-Vs-cpc8VxoBaVEiPYxV2/environment/g2f5M7qZn81XlH9KaO2Jv) empty until a real prod cutover.
+Private orchestrator IDs, LAN addresses, and internal wiki links are **not** stored in this repository. Keep them in your operator knowledge base / secret store.
 
-## Dokploy IDs
+## Suggested services
 
-| Resource | ID / name |
-|----------|-----------|
-| Project | `-Vs-cpc8VxoBaVEiPYxV2` · `mestryx-platform` |
-| Environment **Dev** | `3n9oonm3fmKyrN7S97g69` ← smoke services live here |
-| Environment `production` (default, empty) | `g2f5M7qZn81XlH9KaO2Jv` — do not use for MVP |
-| Postgres | `jKgdinMzPNkenLxpLdKni` · `Postgres-Dev` · app `mestryx-platform-pg-dev-vk1j3y` |
-| API | `kCBbgI5zhsOzOT6_ODHfI` · `API-Dev` |
-| Admin | `gdyLubG94HJxre7WrKkCg` · `Admin-Dev` |
-| Web | `5Hbp0nfyZn9Nkh9eb8hVe` · `Web-Dev` |
-| Storybook | `prO2jYMucgP4rK2mx4iaY` · `Storybook-Dev` · Dockerfile `packages/ui/Dockerfile` |
+| Service | Dockerfile | Notes |
+|---------|------------|--------|
+| Postgres | Dokploy managed or compose | App DB for API |
+| API | `apps/api/Dockerfile` | Branch `dev` typical for smoke |
+| Admin | `apps/admin/Dockerfile` | Pass `VITE_*` build args |
+| Web | `apps/web/Dockerfile` | SSR storefront |
+| Storybook (optional) | `packages/ui/Dockerfile` | Static DS catalog |
+| Marketing (optional) | `apps/marketing/Dockerfile` | Product landing; `PUBLIC_*` build-args |
 
-Secrets (DB password, `BETTER_AUTH_SECRET`) live **only in Dokploy env** — not in git.
+Secrets (DB password, `BETTER_AUTH_SECRET`, Stripe test keys, Umami website IDs) live **only** in the orchestrator env — not in git.
 
-## Hosts (need Cloudflare DNS → Dokploy / tunnel)
+## Example public hosts (upstream dogfood)
 
-| Host | Service | Port |
-|------|---------|------|
-| `dev-api-platform.mestryx.dev` | API | 3001 |
-| `dev-admin-platform.mestryx.dev` | Admin | 80 |
-| `dev-web-platform.mestryx.dev` | Web SSR | 3000 |
-| `dev-storybook-platform.mestryx.dev` | Storybook static | 80 |
+Replace with your own domains when forking.
 
-TLS / Traefik (Cloudflare tunnel → Dokploy 245):
+| Host pattern | Service |
+|--------------|---------|
+| `demo-api-platform.example.com` | API |
+| `demo-admin-platform.example.com` | Admin |
+| `demo-web-platform.example.com` | Web SSR |
+| `demo-storybook-platform.example.com` | Storybook |
+| Apex marketing host | Marketing |
 
-- Cloudflare terminates HTTPS on the public edge.
-- Tunnel origin to Traefik is **HTTP :80** (`entryPoints: web`).
-- Dokploy domain: **`https: false`**, **`certificateType: none`**, port = app listen port (API `3001`). Same pattern as archery `dev-api-archery.mestryx.dev`.
-- Do **not** enable Dokploy Let's Encrypt / `https: true` — conflicts with CF Always HTTPS → `ERR_TOO_MANY_REDIRECTS`.
-- LAN check: `curl -H 'Host: dev-api-platform.mestryx.dev' http://192.168.0.245/health` (expect app JSON, not Traefik 502).
-- SSOT: Memorizer [DNS/Traefik/CF](http://memorizer.lan/view/6d9ae84b-ad12-4bc1-bc3b-eebc5a2a4a88).
+Upstream Mestryx dogfood currently uses `*.mestryx.dev` (see product docs). Forks should not rely on those hosts.
+
+## TLS / reverse proxy tips
+
+- If a CDN terminates HTTPS and tunnels HTTP to Traefik, set the app domain **HTTPS off** / no ACME on the orchestrator to avoid redirect loops.
+- Health check against the **internal** listen port of the container (e.g. API `3001`), not only the public edge.
 
 ## Deploy order (smoke)
 
-1. **DNS** — create the three CNAMEs/As to the same target as other `*.mestryx.dev` Dokploy apps.  
-2. **Postgres** — Deploy (started at provision). Wait until status `done`.  
-3. **API** — Deploy `API-Dev` (build `apps/api/Dockerfile`, branch `dev`).  
-4. **Migrate** — one-shot against Dokploy Postgres (`pnpm --filter @mestryx/api db:migrate` with `DATABASE_URL` from Dokploy). Prefer a **temporary** Postgres external port (LAN only), then set `externalPort` back to null and reload.  
-5. **Seed Luna** — `pnpm --filter @mestryx/api db:seed` with `SEED_EMAIL` / `SEED_PASSWORD` from vault (defaults are local-only). Seed **auto-verifies** the admin email (Better Auth otherwise blocks console login). Capture printed `WEB_DEV_SITE_ID=<uuid>`.  
-6. **Bind smoke host** — set the same `WEB_DEV_SITE_ID` on **Web-Dev** and **API-Dev** env, then redeploy both. Required because `dev-web-platform.mestryx.dev` is not a `*.sites.dev.mestryx.dev` subdomain; without it the storefront falls back to `id=local` and `/wishlist` / `/cart` / `/checkout` 404. API uses the id for `/v1/public/resolve-host` on `WEB_ORIGIN` / localhost.  
-7. **Admin** — Deploy `Admin-Dev` (`apps/admin/Dockerfile` + `VITE_*` build args).  
-8. **Web** — Deploy `Web-Dev` (`apps/web/Dockerfile`) if not already redeployed in step 6.  
-9. **Storybook** — Deploy `Storybook-Dev` (`packages/ui/Dockerfile`, branch `dev`, domain `dev-storybook-platform.mestryx.dev`, `https: false` / cert `none`). No runtime secrets.  
+1. **DNS** — point demo hosts at your Dokploy / tunnel target.  
+2. **Postgres** — deploy; wait until healthy.  
+3. **API** — build & deploy; set `DATABASE_URL`, `BETTER_AUTH_SECRET`, origins.  
+4. **Migrate** — `pnpm --filter @mestryx/api db:migrate` with that `DATABASE_URL`.  
+5. **Seed (optional)** — `pnpm --filter @mestryx/api db:seed` with `SEED_EMAIL` / `SEED_PASSWORD` from your vault (**required** env; no default password in source). Capture printed `WEB_DEV_SITE_ID`.  
+6. **Bind smoke storefront** — set the same `WEB_DEV_SITE_ID` on Web + API if the demo host is not under `*.sites.…`.  
+7. **Admin / Web / Storybook / Marketing** — deploy with build args as needed.
 
 ## Smoke checklist
 
-1. [ ] `GET https://dev-api-platform.mestryx.dev/health` → 200  
-2. [ ] `GET …/v1/public/resolve-host?host=dev-web-platform.mestryx.dev` → 200 + Luna site (not 500)  
-3. [ ] `https://dev-admin-platform.mestryx.dev` → SPA loads  
-4. [ ] Sign-in with seed user (or create org)  
-5. [ ] `https://dev-web-platform.mestryx.dev` → HTML titled Luna (not “Demo Store”)  
-6. [ ] `https://dev-web-platform.mestryx.dev/wishlist` → Soft page 200 (empty OK)  
-7. [ ] Admin Sites + Products list OK for Luna Bijoux  
-8. [ ] `https://dev-storybook-platform.mestryx.dev` → Storybook manager loads (Foundations / Themes)
+1. [ ] `GET https://<api-host>/health` → 200  
+2. [ ] `GET …/v1/public/resolve-host?host=<web-host>` → 200 + expected site  
+3. [ ] Admin SPA loads; sign-in with seed user  
+4. [ ] Storefront HTML loads for the seed shop  
+5. [ ] Optional: Storybook / Marketing 200  
 
 ## Rollback
 
-- Redeploy previous Dokploy deployment per app.  
-- Postgres: volume `mestryx-platform-pg-dev-vk1j3y-data` — restore from backup destination if configured.  
-- Storybook: stop/remove `Storybook-Dev` or redeploy previous image; no data volume.  
-- Do **not** delete the project without Mestryx OK.
+- Redeploy the previous image per app.  
+- Restore Postgres from your backup destination if configured.  
+- Do **not** delete the orchestrator project without an explicit operator decision.
 
-## Out of scope (later)
+## Out of scope
 
-- Dedicated staging VM  
-- Redis service (optional; API tolerates missing `REDIS_URL`)  
-- Wildcard `*.sites.dev.mestryx.dev`  
-- Production env on this project  
-- Auth gate on Dev Storybook (public static catalog for now)  
+- Production cutover checklist (separate)  
+- Redis (optional; API tolerates missing `REDIS_URL`)  
+- Auth gate on public Storybook  

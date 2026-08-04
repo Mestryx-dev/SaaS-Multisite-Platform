@@ -70,9 +70,9 @@ Knowledge graph at `graphify-out/` (`GRAPH_REPORT.md`, `graph.json`).
 - YAGNI: no GraphQL, Expo, Stripe Capture, Umami until the wave/backlog says so  
 - Remotion: installed at `apps/remotion` (FB-092 done) — `pnpm dev:remotion` / `pnpm render:remotion:all`; CI job `remotion` uploads social MP4 artifacts (not store embeds) 
 - After hard fixes → append `docs/error-journal.md` (learning loop)  
-- **Git**: after green `typecheck` + `test` + `build` → **commit and push** systematically (`docs/10-agent-ops.md` §2.1)  
-- **Docs sync (mandatory)**: every slice that changes behaviour/schema/API must update `docs/feature-backlog.md` first; `PROGRESS.md` only for phase-level milestones; OpenAPI / data-dictionary if contract/schema changed. Do **not** patch status into `docs/06`, `docs/12`, or `docs/13` — see `docs/10-agent-ops.md` §2.2 and `docs/README.md` ownership matrix. Stale backlog = incomplete slice.  
-- Open questions are **locked** in `docs/08-open-questions.md` — proceed autonomously; only stop for prod deploy / live Stripe / legal publish
+- **Git**: prefer green `typecheck` + `test` + `build` before proposing commit/push (`docs/10-agent-ops.md` §2.1). Do not force-push protected branches without explicit maintainer OK.  
+- **Docs sync**: every slice that changes behaviour/schema/API must update `docs/feature-backlog.md` first; `PROGRESS.md` only for phase-level milestones; OpenAPI / data-dictionary if contract/schema changed. Do **not** patch status into `docs/06`, `docs/12`, or `docs/13` — see `docs/10-agent-ops.md` §2.2 and `docs/README.md` ownership matrix. Stale backlog = incomplete slice.  
+- Open questions are **locked** in `docs/08-open-questions.md` — proceed autonomously; only stop for prod deploy / live Stripe / legal publish / history rewrite / making the repo Public
 
 ## Local commands
 

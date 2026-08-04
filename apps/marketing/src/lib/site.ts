@@ -1,6 +1,7 @@
 /**
  * Build-time public site knobs (Astro `PUBLIC_*` / Docker build-args).
- * Unset Umami vars = no tracker. Other knobs fall back to Mestryx defaults for dogfood.
+ * Unset Umami vars = no tracker.
+ * Forks: leave PRODUCT hosts empty and set PUBLIC_* at build time — no silent Mestryx defaults.
  */
 export type SiteConfig = {
   contactEmail: string;
@@ -30,18 +31,14 @@ function originFromScript(scriptUrl: string): string {
 export function getSiteConfig(): SiteConfig {
   const umamiScriptUrl = trim(import.meta.env.PUBLIC_UMAMI_SCRIPT_URL);
   const analyticsHost =
-    trim(import.meta.env.PUBLIC_ANALYTICS_HOST) ||
-    originFromScript(umamiScriptUrl) ||
-    "https://umami.mestryx.dev";
+    trim(import.meta.env.PUBLIC_ANALYTICS_HOST) || originFromScript(umamiScriptUrl);
 
   return {
-    contactEmail: trim(import.meta.env.PUBLIC_CONTACT_EMAIL) || "contact@mestryx.dev",
-    demoAdminUrl:
-      trim(import.meta.env.PUBLIC_LINK_DEMO_ADMIN) || "https://demo-admin-platform.mestryx.dev",
-    demoStoreUrl:
-      trim(import.meta.env.PUBLIC_LINK_DEMO_STORE) || "https://demo-web-platform.mestryx.dev",
-    portfolioUrl: trim(import.meta.env.PUBLIC_LINK_PORTFOLIO) || "https://portfolio.mestryx.dev",
-    siteUrl: trim(import.meta.env.PUBLIC_SITE_URL) || "https://mestryx.dev",
+    contactEmail: trim(import.meta.env.PUBLIC_CONTACT_EMAIL),
+    demoAdminUrl: trim(import.meta.env.PUBLIC_LINK_DEMO_ADMIN),
+    demoStoreUrl: trim(import.meta.env.PUBLIC_LINK_DEMO_STORE),
+    portfolioUrl: trim(import.meta.env.PUBLIC_LINK_PORTFOLIO),
+    siteUrl: trim(import.meta.env.PUBLIC_SITE_URL) || "https://example.com",
     analyticsHost,
     umamiScriptUrl,
     umamiWebsiteId: trim(import.meta.env.PUBLIC_UMAMI_WEBSITE_ID),
@@ -53,12 +50,12 @@ export function getSiteConfig(): SiteConfig {
 export function siteInterpolateVars(): Record<string, string> {
   const s = getSiteConfig();
   return {
-    contactEmail: s.contactEmail,
-    demoAdminUrl: s.demoAdminUrl,
-    demoStoreUrl: s.demoStoreUrl,
-    portfolioUrl: s.portfolioUrl,
+    contactEmail: s.contactEmail || "contact@example.com",
+    demoAdminUrl: s.demoAdminUrl || "#",
+    demoStoreUrl: s.demoStoreUrl || "#",
+    portfolioUrl: s.portfolioUrl || "#",
     siteUrl: s.siteUrl,
-    analyticsHost: s.analyticsHost,
+    analyticsHost: s.analyticsHost || "your analytics host",
     year: String(new Date().getFullYear()),
   };
 }

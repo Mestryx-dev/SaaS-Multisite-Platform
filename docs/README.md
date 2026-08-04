@@ -44,13 +44,14 @@
 14. [integrations.md](./integrations.md)  
 14b. [SECURITY.md](./SECURITY.md) — secrets policy  
 14c. [runbooks/repo-history-hygiene.md](./runbooks/repo-history-hygiene.md) — history purge prep  
+14d. [runbooks/oss-public-readiness.md](./runbooks/oss-public-readiness.md) — public / OSS checklist  
 15. [data-dictionary.yaml](./data-dictionary.yaml)  
 16. [brand-brief.md](./brand-brief.md)  
 16b. [mvp-confirmation-checklist.md](./mvp-confirmation-checklist.md) — **human MVP / F-01 / staging ticks**  
 17. [adr/](./adr/)  
 18. [error-journal.md](./error-journal.md)  
 19. [runbooks/staging-dokploy.md](./runbooks/staging-dokploy.md)  
-19b. [runbooks/dev-dokploy-smoke.md](./runbooks/dev-dokploy-smoke.md) — MVP smoke on VM 245  
+19b. [runbooks/dev-dokploy-smoke.md](./runbooks/dev-dokploy-smoke.md) — Dev smoke pattern (generic)  
 20. [plans/](./plans/) — historical  
 
 Root: [GAMEPLAN.md](../GAMEPLAN.md) · [PROGRESS.md](../PROGRESS.md) · [AGENTS.md](../AGENTS.md)

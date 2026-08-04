@@ -1,6 +1,6 @@
 # Integrations
 
-Planned external systems for Mestryx Multisite Platform. Credentials: Agent Vault / Infisical — never commit secrets.
+Planned external systems for Mestryx Multisite Platform. Credentials: your orchestrator env or a secrets vault — never commit secrets.
 
 ## Identity & email
 
@@ -34,14 +34,14 @@ Planned external systems for Mestryx Multisite Platform. Credentials: Agent Vaul
 | Uptime (Kuma / UptimeRobot) | Availability | Align with Mestryx monitoring |
 | **Umami** | Product + site analytics (privacy-friendly) | **Yes — planned.** Reuse Mestryx Umami ops where possible. Wire after public sites exist (W8 / F-802). Not required for Phase 1–2. |
 
-## Infra (Mestryx)
+## Infra
 
 | Service | Role | Notes |
 |---------|------|-------|
-| Dokploy | Deploy apps | Homelab Mestryx |
+| Docker orchestrator (Dokploy / Coolify / Compose) | Deploy apps | Operator choice |
 | PostgreSQL | Primary DB | Managed container |
-| Redis | Cache / BullMQ | Managed container |
-| Traefik | Ingress / TLS | Via Dokploy |
+| Redis | Cache / queues | Managed container |
+| Traefik / reverse proxy | Ingress / TLS | Via orchestrator |
 
 ## Not in MVP
 
