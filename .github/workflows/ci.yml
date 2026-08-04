@@ -42,9 +42,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # packageManager in package.json supplies the pnpm version (do not set `version` here)
       - uses: pnpm/action-setup@v4
-        with:
-          version: 10
 
       - uses: actions/setup-node@v4
         with:
@@ -88,9 +87,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # packageManager in package.json supplies the pnpm version (do not set `version` here)
       - uses: pnpm/action-setup@v4
-        with:
-          version: 10
 
       - uses: actions/setup-node@v4
         with:
