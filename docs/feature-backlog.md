@@ -3,7 +3,7 @@
 Prioritised executable backlog derived from [06-feature-catalog-and-priority.md](./06-feature-catalog-and-priority.md).  
 Statuses: `todo` · `doing` · `blocked` · `done` · `deferred`.
 
-**Last synced**: 2026-07-24 — Store polish + payment seams (FB-102/103/104). Must stay aligned with [PROGRESS.md](../PROGRESS.md) and code (see [10-agent-ops.md](./10-agent-ops.md) §2.2). Journey map: [13-journey-audit.md](./13-journey-audit.md).
+**Last synced**: 2026-08-04 — Marketing landing + legal (FB-105). Must stay aligned with [PROGRESS.md](../PROGRESS.md) and code (see [10-agent-ops.md](./10-agent-ops.md) §2.2). Journey map: [13-journey-audit.md](./13-journey-audit.md).
 
 ## Sequencing
 
@@ -19,7 +19,8 @@ Statuses: `todo` · `doing` · `blocked` · `done` · `deferred`.
 | 6 | Platform brand / ops | FB-084 modules, FB-085 theme, FB-089 Umami, FB-097 entitlements UX |
 | 7 | Store polish + payment prep | FB-102 Soft boutique polish, FB-103 payment seams, FB-104 tracking/RMA polish |
 | 8 | Deferred commerce | Stripe Capture = FB-070 when unlocked (prep = FB-103) |
-| 9 | Release gates | Staging → launch checklist (FB-044/045) |
+| 9 | Go-to-market | FB-105 marketing landing + legal (Astro, FR+EN) |
+| 10 | Release gates | Staging → launch checklist (FB-044/045) |
 
 Stripe end-customer capture (**FB-070**) stays deferred until explicitly unlocked. FB-081/082 are done; only FB-070 remains deferred for money movement.
 
@@ -164,6 +165,14 @@ Payment deferred: stop at `pending_payment` until Mestryx unlocks Stripe Capture
 | FB-089 | Umami analytics (platform + per-site hook) | feature | P1 | done | 4d | FB-040 |
 | FB-097 | Entitlements UX polish (limits / modules matrix) | feature | P2 | done | 2d | FB-053, FB-084 |
 | FB-098 | Security headers / CSP defaults | feature | P0 | done | 1d | FB-041 |
+
+## Phase 9 — go-to-market (CRE / AE)
+
+| ID | Title | Type | Priority | Status | Est. | Depends |
+|----|-------|------|----------|--------|------|---------|
+| FB-105 | Marketing landing + legal packaging (Astro, FR+EN, Dokploy) | feature | P0 | doing | 3d | FB-033 |
+
+**Branch:** `feat/marketing-landing-legal`. Host: `https://mestryx.dev`. Demos: `demo-admin-platform.mestryx.dev` · `demo-web-platform.mestryx.dev`. Plan: [plans/2026-08-03-go-to-market-foundations.md](./plans/2026-08-03-go-to-market-foundations.md).
 
 ## Icebox
 

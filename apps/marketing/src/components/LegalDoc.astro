@@ -1,0 +1,29 @@
+---
+import type { Locale, MessageKey } from "../i18n";
+import { t } from "../i18n";
+
+interface Props {
+  locale: Locale;
+  draftKey: MessageKey;
+  titleKey: MessageKey;
+  sectionKeys: MessageKey[];
+}
+
+const { locale, draftKey, titleKey, sectionKeys } = Astro.props;
+---
+
+<article class="legal-page shell">
+  <p class="draft-banner">{t(locale, draftKey)}</p>
+  <h1>{t(locale, titleKey)}</h1>
+  {
+    sectionKeys.map((titleKeySec) => {
+      const bodyKey = titleKeySec.replace(/\.title$/, ".body") as MessageKey;
+      return (
+        <>
+          <h2>{t(locale, titleKeySec)}</h2>
+          <p>{t(locale, bodyKey)}</p>
+        </>
+      );
+    })
+  }
+</article>

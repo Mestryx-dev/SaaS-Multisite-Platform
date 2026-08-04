@@ -1,0 +1,16 @@
+---
+import { getSiteConfig } from "../lib/site";
+
+const site = getSiteConfig();
+const ready = Boolean(site.umamiScriptUrl && site.umamiWebsiteId);
+const scriptUrl = site.umamiScriptUrl;
+const websiteId = site.umamiWebsiteId;
+---
+
+{
+  ready ? (
+    <script is:inline define:vars={{ scriptUrl, websiteId }}>
+      window.__MX_UMAMI__ = { scriptUrl, websiteId };
+    </script>
+  ) : null
+}

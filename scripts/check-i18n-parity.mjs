@@ -26,6 +26,11 @@ const catalogs = [
     en: "apps/api/src/modules/email/locales/en.json",
     fr: "apps/api/src/modules/email/locales/fr.json",
   },
+  {
+    name: "marketing",
+    en: "apps/marketing/src/i18n/en.json",
+    fr: "apps/marketing/src/i18n/fr.json",
+  },
 ];
 
 function loadKeys(rel) {

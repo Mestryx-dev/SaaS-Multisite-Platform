@@ -17,10 +17,10 @@ Mestryx can override any lock with a short message; agents then update this file
 
 | # | Question | Answer |
 |---|----------|--------|
-| Q6 | Hostname map (prod)? | `platform.mestryx.dev` · `admin.mestryx.dev` · `api.mestryx.dev` · `*.sites.mestryx.dev` |
+| Q6 | Hostname map (prod)? | `mestryx.dev` (marketing landing) · `admin.mestryx.dev` · `api.mestryx.dev` · `*.sites.mestryx.dev` · demos: `demo-admin-platform.mestryx.dev` · `demo-web-platform.mestryx.dev` · portfolio: `portfolio.mestryx.dev` |
 | Q7 | TLS for customer domains? | **Locked — phased**: (1) Platform hosts (`*.sites.mestryx.dev`) via **Dokploy/Traefik + Let’s Encrypt**. (2) Custom customer domains → **Cloudflare for SaaS** (or CF custom hostnames) when F-400+ lands. No half-TLS in prod. |
 | Q8 | Deploy target? | **Dokploy** (Mestryx) |
-| Q9 | Staging URL pattern? | **Locked**: `admin.staging.mestryx.dev` · `api.staging.mestryx.dev` · `*.sites.staging.mestryx.dev` · optional `platform.staging.mestryx.dev` |
+| Q9 | Staging URL pattern? | **Locked**: `admin.staging.mestryx.dev` · `api.staging.mestryx.dev` · `*.sites.staging.mestryx.dev` · optional `staging.mestryx.dev` (marketing preview) |
 
 ## Stack
 

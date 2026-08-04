@@ -5,7 +5,7 @@
 
 ## 1. Summary
 
-**pnpm + Turborepo** monorepo: apps (`api`, `admin`, `web`, `remotion`, later `mobile` / `marketing`) and packages (`ui`, `tokens`, `sdk`, `config`).
+**pnpm + Turborepo** monorepo: apps (`api`, `admin`, `web`, `marketing`, `remotion`, later `mobile`) and packages (`ui`, `tokens`, `sdk`, `config`).
 
 Shared UI primitives live in **`packages/ui` from the first admin screen** (see [09-delivery-approach.md](./09-delivery-approach.md)).
 
@@ -63,14 +63,24 @@ Shared UI primitives live in **`packages/ui` from the first admin screen** (see 
 
 Expo + Expo Router + NativeWind; same API/SDK.
 
-### 2.5 Marketing & video
+### 2.5 Marketing — `apps/marketing`
+
+| Layer | Choice |
+|-------|--------|
+| Framework | **Astro** (static / SSG landing) |
+| i18n | FR + EN catalogs — `apps/marketing/src/i18n/{fr,en}.json` |
+| Deploy | Docker → **Dokploy (Mestryx)** — `https://mestryx.dev` |
+| Status | In progress — branch `feat/marketing-landing-legal` (FB-105) |
+
+Product landing, legal stubs (mentions / privacy), demo CTAs. See [go-to-market plan](./plans/2026-08-03-go-to-market-foundations.md).
+
+### 2.6 Video — `apps/remotion`
 
 | App | Role |
 |-----|------|
-| `apps/marketing` | Astro landing — deferred |
 | `apps/remotion` | Remotion **4.0.489** brownfield (`registerRoot` + Studio + render) — [apps/remotion/README.md](../apps/remotion/README.md) · FB-092 |
 
-### 2.6 Design system
+### 2.7 Design system
 
 | Package | Role |
 |---------|------|
@@ -78,15 +88,15 @@ Expo + Expo Router + NativeWind; same API/SDK.
 | `packages/tokens` | Dual theme: `platform` / `storefront` |
 | Storybook | **FB-036 done** — `pnpm --filter @mestryx/ui storybook` |
 
-### 2.7 API client — `packages/sdk`
+### 2.8 API client — `packages/sdk`
 
 OpenAPI → orval (or openapi-typescript). One contract for admin, web, mobile.
 
-### 2.8 GraphQL
+### 2.9 GraphQL
 
 Not in MVP. REST + OpenAPI only unless a later ADR says otherwise.
 
-### 2.9 Quality
+### 2.10 Quality
 
 Biome (or tsc lint for now), Vitest, Playwright (when UI E2E), Turbo CI, MSW for mocks.
 

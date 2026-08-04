@@ -7,7 +7,7 @@
 | | |
 |---|---|
 | GitHub | [Mestryx-dev/SaaS-Multisite-Platform](https://github.com/Mestryx-dev/SaaS-Multisite-Platform) |
-| Hosts | `admin.mestryx.dev` · `api.mestryx.dev` · `*.sites.mestryx.dev` · optional `platform.mestryx.dev` |
+| Hosts | Marketing `mestryx.dev` · demos `demo-*-platform.mestryx.dev` · `admin` / `api` / `*.sites` (see GTM plan) |
 | Deploy | Dokploy (Mestryx) |
 | Not this product | **Piblox** = Studio / AI video |
 
@@ -34,6 +34,20 @@ TypeScript monorepo: **Hono + Drizzle + Better Auth + Tailwind**, shared UI in *
 
 Do not add a second API stack or replace core choices without a new ADR accepted by Mestryx.
 
+## Graphify (codebase map)
+
+Knowledge graph at `graphify-out/` (`GRAPH_REPORT.md`, `graph.json`).
+
+- **Before** architecture questions: read `graphify-out/GRAPH_REPORT.md`.
+- **After** code/doc changes in MVP corpus:
+
+  ```bash
+  ./scripts/graphify-update.sh
+  ```
+
+  Install once: `uv tool install graphifyy` (CLI `graphify` on PATH).
+  Corpus: `apps/{api,admin,web,marketing}`, `packages`, `docs`.
+
 ## Before implementing
 
 1. `docs/10-agent-ops.md` — how agents work on this repo  
@@ -42,6 +56,7 @@ Do not add a second API stack or replace core choices without a new ADR accepted
 4. `docs/08-open-questions.md` — stop and ask Mestryx if blocked by an open Q  
 5. Never ship public sites without **tenant isolation tests** (F-104)  
 6. Never ship public content as SPA-only shell — see `docs/11-seo-ai-ready.md`
+7. Refresh Graphify when exploring unfamiliar areas (`./scripts/graphify-update.sh`)
 
 ## Architecture rules
 

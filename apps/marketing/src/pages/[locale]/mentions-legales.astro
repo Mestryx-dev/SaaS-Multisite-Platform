@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import LegalDoc from "../../components/LegalDoc.astro";
+import { t, type MessageKey } from "../../i18n";
+import { localeStaticPaths, resolveLocale } from "../../lib/locale";
+
+export function getStaticPaths() {
+  return localeStaticPaths();
+}
+
+const locale = resolveLocale(Astro.params.locale);
+const sections = [
+  "legal.mentions.section.publisher.title",
+  "legal.mentions.section.director.title",
+  "legal.mentions.section.hosting.title",
+  "legal.mentions.section.contact.title",
+  "legal.mentions.section.intellectualProperty.title",
+  "legal.mentions.section.liability.title",
+] as MessageKey[];
+---
+
+<BaseLayout
+  locale={locale}
+  title={t(locale, "legal.mentions.meta.title")}
+  description={t(locale, "legal.mentions.meta.description")}
+>
+  <LegalDoc
+    locale={locale}
+    draftKey="legal.mentions.draftNotice"
+    titleKey="legal.mentions.meta.title"
+    sectionKeys={sections}
+  />
+</BaseLayout>

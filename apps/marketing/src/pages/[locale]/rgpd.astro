@@ -1,0 +1,10 @@
+---
+import { localeStaticPaths, resolveLocale } from "../../lib/locale";
+
+export function getStaticPaths() {
+  return localeStaticPaths();
+}
+
+const locale = resolveLocale(Astro.params.locale);
+return Astro.redirect(`/${locale}/confidentialite`);
+---
