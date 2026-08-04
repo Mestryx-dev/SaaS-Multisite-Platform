@@ -79,7 +79,7 @@
     "@vitejs/plugin-react": "^5.0.0",
     "@vitest/browser-playwright": "^4.1.10",
     "@vitest/coverage-v8": "^4.1.10",
-    "happy-dom": "^20.11.0",
+    "happy-dom": "^20.11.1",
     "playwright": "^1.61.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
