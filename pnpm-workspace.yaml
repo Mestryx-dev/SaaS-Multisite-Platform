@@ -1,0 +1,7 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+
+# Required for pnpm 10 `pnpm deploy` (portable prod trees in Docker).
+injectWorkspacePackages: true
+

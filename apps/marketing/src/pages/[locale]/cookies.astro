@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import LegalDoc from "../../components/LegalDoc.astro";
+import { t, type MessageKey } from "../../i18n";
+import { localeStaticPaths, resolveLocale } from "../../lib/locale";
+
+export function getStaticPaths() {
+  return localeStaticPaths();
+}
+
+const locale = resolveLocale(Astro.params.locale);
+const sections = [
+  "legal.cookies.section.intro.title",
+  "legal.cookies.section.necessary.title",
+  "legal.cookies.section.analytics.title",
+  "legal.cookies.section.duration.title",
+  "legal.cookies.section.manage.title",
+  "legal.cookies.section.contact.title",
+] as MessageKey[];
+---
+
+<BaseLayout
+  locale={locale}
+  title={t(locale, "legal.cookies.meta.title")}
+  description={t(locale, "legal.cookies.meta.description")}
+>
+  <LegalDoc
+    locale={locale}
+    draftKey="legal.cookies.draftNotice"
+    titleKey="legal.cookies.meta.title"
+    sectionKeys={sections}
+  />
+  <div class="shell cta-row" style="margin-top: -2rem; margin-bottom: 3rem">
+    <button type="button" class="btn btn--primary" id="prefs-accept">{t(locale, "cookies.banner.acceptAnalytics")}</button>
+    <button type="button" class="btn btn--ghost" id="prefs-reject">{t(locale, "cookies.banner.necessaryOnly")}</button>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  document.getElementById("prefs-accept")?.addEventListener("click", function () {
+    if (window.__MX_SET_CONSENT__) window.__MX_SET_CONSENT__("1");
+    else
+      try {
+        localStorage.setItem("mx-consent-analytics", "1");
+      } catch (_) {}
+  });
+  document.getElementById("prefs-reject")?.addEventListener("click", function () {
+    if (window.__MX_SET_CONSENT__) window.__MX_SET_CONSENT__("0");
+    else
+      try {
+        localStorage.setItem("mx-consent-analytics", "0");
+      } catch (_) {}
+  });
+</script>

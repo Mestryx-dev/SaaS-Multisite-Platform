@@ -1,0 +1,39 @@
+{
+  "name": "@mestryx/admin",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -p tsconfig.json --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "e2e": "playwright test"
+  },
+  "dependencies": {
+    "@mestryx/sdk": "workspace:*",
+    "@mestryx/tokens": "workspace:*",
+    "@mestryx/ui": "workspace:*",
+    "@tanstack/react-query": "^5.85.5",
+    "@tanstack/react-router": "^1.131.2",
+    "i18next": "^25.4.2",
+    "lucide-react": "^1.25.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-i18next": "^15.7.2"
+  },
+  "devDependencies": {
+    "@mestryx/config": "workspace:*",
+    "@playwright/test": "^1.55.0",
+    "@tailwindcss/vite": "4.3.2",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^5.0.0",
+    "tailwindcss": "4.3.2",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.2",
+    "vitest": "^3.2.4"
+  }
+}

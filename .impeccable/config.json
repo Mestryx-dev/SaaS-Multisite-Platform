@@ -1,0 +1,41 @@
+{
+  "detector": {
+    "ignoreRules": [
+      "design-system-font-size",
+      "design-system-radius"
+    ],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "fraunces",
+        "reason": "Storefront display font \u2014 DESIGN.md provisional lock",
+        "createdAt": "2026-07-19T04:30:42.999Z"
+      },
+      {
+        "rule": "overused-font",
+        "value": "ibm plex sans",
+        "reason": "Product UI body font \u2014 DESIGN.md",
+        "createdAt": "2026-07-19T04:30:44.601Z"
+      },
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "reason": "Platform admin UI font \u2014 ADR-0002 / DESIGN.md",
+        "createdAt": "2026-07-23T00:00:00.000Z"
+      },
+      {
+        "rule": "overused-font",
+        "value": "plus jakarta sans",
+        "reason": "Platform display/KPI font \u2014 ADR-0003 night-gold",
+        "createdAt": "2026-07-23T00:00:00.000Z"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "oklch(0.24 0 0 / 0.12)",
+        "reason": "Storefront Soft glass shadow fallback when --glass-shadow unset",
+        "createdAt": "2026-07-22T00:00:00.000Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+Mestryx Multisite Platform
+Copyright 2026 Mestryx
+
+This product includes software developed by Mestryx and contributors.
+Licensed under the Apache License, Version 2.0. See the LICENSE file.
+
+Trademark notice
+----------------
+"Mestryx", "mestryx-platform", and related logos are trademarks of Mestryx.
+This Apache-2.0 license does **not** grant permission to use Mestryx names or
+logos as the primary branding of forks or derivative commercial offerings.
+Forks should replace marketing copy, hosts, and package display names when
+distributing under a different brand.
+
+Third-party notices
+-------------------
+This repository vendors or references open-source components under their own
+licenses (see dependency lockfiles and package LICENSE files). Notable stacks
+include Node.js ecosystem packages, Remotion (for marketing video tooling),
+and UI fonts such as Plus Jakarta Sans / Inter where bundled or linked.
+Ensure attribution requirements of those projects are respected when redistributing.

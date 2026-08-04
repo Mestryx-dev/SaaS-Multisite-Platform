@@ -1,0 +1,46 @@
+{
+  "name": "@mestryx/tokens",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "development": "./src/index.ts",
+      "node": "./dist/index.js",
+      "import": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./css": "./src/tokens.css",
+    "./fonts": "./src/fonts.css",
+    "./presets": {
+      "types": "./src/presets/index.ts",
+      "development": "./src/presets/index.ts",
+      "node": "./dist/presets/index.js",
+      "import": "./src/presets/index.ts",
+      "default": "./src/presets/index.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "build": "tsc -p tsconfig.json",
+    "test": "echo \"no tests yet\""
+  },
+  "dependencies": {
+    "@fontsource/fraunces": "^5.3.0",
+    "@fontsource/ibm-plex-sans": "^5.3.0",
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/plus-jakarta-sans": "^5.3.0"
+  },
+  "devDependencies": {
+    "@mestryx/config": "workspace:*",
+    "typescript": "^5.9.3"
+  }
+}

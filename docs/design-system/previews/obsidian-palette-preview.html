@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Palette preview — Platform Obsidian</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --radius: 8px;
+        --font-sans: Inter, "Segoe UI", system-ui, sans-serif;
+        --font-display: "Plus Jakarta Sans", Inter, system-ui, sans-serif;
+        --app-header-height: 3.5rem;
+      }
+
+      /* Current production — night-gold */
+      [data-palette="night-gold"] {
+        color-scheme: dark;
+        --background: #07080d;
+        --foreground: #f5f3ef;
+        --card: #10131c;
+        --muted: #1a1d28;
+        --muted-foreground: #9ca3af;
+        --primary: #c9a227;
+        --primary-foreground: #07080d;
+        --border: #252a3a;
+        --sidebar: #0b0d14;
+        --sidebar-border: #252a3a;
+        --destructive: #c45c4a;
+        --success: #3d9b6a;
+        --glow: #c9a22740;
+        --ambient: radial-gradient(
+            ellipse 80% 50% at 50% -20%,
+            color-mix(in srgb, #c9a227 8%, transparent),
+            transparent
+          ),
+          linear-gradient(180deg, #0b0d14 0%, #07080d 100%);
+      }
+
+      /*
+       * Proposal A — Obsidian Classic
+       * Inspired by Obsidian.md default dark (violet accent, graphite surfaces).
+       */
+      [data-palette="obsidian-classic"] {
+        color-scheme: dark;
+        --background: #1e1e1e;
+        --foreground: #dcddde;
+        --card: #262626;
+        --muted: #2a2a2a;
+        --muted-foreground: #999999;
+        --primary: #7f6df2;
+        --primary-foreground: #ffffff;
+        --border: #363636;
+        --sidebar: #161616;
+        --sidebar-border: #2e2e2e;
+        --destructive: #e16464;
+        --success: #44cf6e;
+        --glow: #7f6df240;
+        --ambient: radial-gradient(
+            ellipse 70% 45% at 50% -15%,
+            color-mix(in srgb, #7f6df2 12%, transparent),
+            transparent
+          ),
+          linear-gradient(180deg, #222222 0%, #1e1e1e 100%);
+      }
+
+      /*
+       * Proposal B — Obsidian Soft
+       * Same graphite base, softer lilac accent (less neon).
+       */
+      [data-palette="obsidian-soft"] {
+        color-scheme: dark;
+        --background: #19191c;
+        --foreground: #e6e6ea;
+        --card: #232328;
+        --muted: #2c2c33;
+        --muted-foreground: #9a9aa3;
+        --primary: #a78bfa;
+        --primary-foreground: #120f1c;
+        --border: #34343d;
+        --sidebar: #131316;
+        --sidebar-border: #2c2c33;
+        --destructive: #e06c75;
+        --success: #56d39a;
+        --glow: #a78bfa35;
+        --ambient: radial-gradient(
+            ellipse 75% 50% at 40% -20%,
+            color-mix(in srgb, #a78bfa 10%, transparent),
+            transparent
+          ),
+          linear-gradient(180deg, #1d1d22 0%, #19191c 100%);
+      }
+
+      /*
+       * Proposal C — Obsidian Slate
+       * Graphite Obsidian surfaces + cool steel accent (avoids purple-SaaS vibe).
+       */
+      [data-palette="obsidian-slate"] {
+        color-scheme: dark;
+        --background: #18181b;
+        --foreground: #e4e4e7;
+        --card: #222226;
+        --muted: #2a2a2e;
+        --muted-foreground: #a1a1aa;
+        --primary: #7dd3fc;
+        --primary-foreground: #0c1220;
+        --border: #3f3f46;
+        --sidebar: #121214;
+        --sidebar-border: #2a2a2e;
+        --destructive: #f87171;
+        --success: #4ade80;
+        --glow: #7dd3fc33;
+        --ambient: radial-gradient(
+            ellipse 70% 45% at 60% -18%,
+            color-mix(in srgb, #7dd3fc 9%, transparent),
+            transparent
+          ),
+          linear-gradient(180deg, #1c1c1f 0%, #18181b 100%);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--font-sans);
+        background: #0a0a0a;
+        color: #e8e8e8;
+        min-height: 100vh;
+      }
+
+      .page {
+        display: grid;
+        gap: 1.25rem;
+        padding: 1.25rem;
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+
+      .intro {
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .intro h1 {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: 1.35rem;
+        letter-spacing: -0.03em;
+      }
+
+      .intro p {
+        margin: 0;
+        color: #a3a3a3;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        max-width: 62ch;
+      }
+
+      .picker {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .picker button {
+        appearance: none;
+        border: 1px solid #333;
+        background: #171717;
+        color: #e5e5e5;
+        border-radius: 999px;
+        padding: 0.45rem 0.9rem;
+        font: inherit;
+        font-size: 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .picker button[aria-pressed="true"] {
+        border-color: #777;
+        background: #262626;
+        box-shadow: inset 0 0 0 1px #555;
+      }
+
+      .swatches {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 0.6rem;
+      }
+
+      .swatch {
+        border: 1px solid #333;
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: #141414;
+      }
+
+      .swatch .chip {
+        height: 44px;
+      }
+
+      .swatch .meta {
+        padding: 0.45rem 0.55rem 0.55rem;
+        font-size: 0.7rem;
+        line-height: 1.35;
+      }
+
+      .swatch .meta strong {
+        display: block;
+        color: #f5f5f5;
+        font-size: 0.72rem;
+      }
+
+      .swatch code {
+        color: #a3a3a3;
+      }
+
+      .stage {
+        border: 1px solid #2a2a2a;
+        border-radius: 12px;
+        overflow: hidden;
+        background: var(--background);
+        background-image: var(--ambient);
+        color: var(--foreground);
+        min-height: 520px;
+      }
+
+      .shell {
+        display: flex;
+        flex-direction: column;
+        min-height: 520px;
+      }
+
+      .header {
+        height: var(--app-header-height);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0 0.9rem;
+        border-bottom: 1px solid var(--border);
+        background: color-mix(in srgb, var(--card) 88%, transparent);
+        backdrop-filter: blur(12px);
+        position: relative;
+      }
+
+      .brand {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 0.95rem;
+        letter-spacing: -0.02em;
+      }
+
+      .center-slot {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .header-right {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      .body {
+        display: flex;
+        flex: 1;
+        min-height: 0;
+      }
+
+      .sidebar {
+        width: 14rem;
+        border-right: 1px solid var(--sidebar-border);
+        background: var(--sidebar);
+        padding: 1rem 0.6rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+      }
+
+      .nav-label {
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted-foreground);
+        padding: 0.35rem 0.55rem;
+      }
+
+      .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.45rem 0.55rem;
+        border-radius: var(--radius);
+        color: var(--muted-foreground);
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+
+      .nav-link.active {
+        color: var(--primary);
+        background: color-mix(in srgb, var(--primary) 15%, transparent);
+        box-shadow: 0 0 12px var(--glow);
+      }
+
+      .main {
+        flex: 1;
+        padding: 1.1rem 1.25rem;
+        display: grid;
+        gap: 1rem;
+        align-content: start;
+      }
+
+      .page-title {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: 1.35rem;
+        letter-spacing: -0.03em;
+      }
+
+      .page-desc {
+        margin: 0.25rem 0 0;
+        color: var(--muted-foreground);
+        font-size: 0.85rem;
+      }
+
+      .kpis {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.65rem;
+      }
+
+      .kpi {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 0.75rem 0.85rem;
+      }
+
+      .kpi .label {
+        font-size: 0.7rem;
+        color: var(--muted-foreground);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .kpi .value {
+        margin-top: 0.25rem;
+        font-size: 1.25rem;
+        font-weight: 700;
+        font-family: var(--font-display);
+      }
+
+      .panel {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+      }
+
+      .panel-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding: 0.7rem 0.85rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .filters {
+        display: flex;
+        gap: 0.4rem;
+        flex-wrap: wrap;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.85rem;
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 0.65rem 0.85rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      th {
+        color: var(--muted-foreground);
+        font-weight: 600;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      .btn {
+        appearance: none;
+        border: 1px solid transparent;
+        border-radius: var(--radius);
+        padding: 0.4rem 0.75rem;
+        font: inherit;
+        font-size: 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: var(--primary-foreground);
+        box-shadow: 0 0 16px var(--glow);
+      }
+
+      .btn-secondary {
+        background: var(--muted);
+        color: var(--foreground);
+        border-color: var(--border);
+      }
+
+      .btn-ghost {
+        background: transparent;
+        color: var(--muted-foreground);
+        border-color: var(--border);
+      }
+
+      .select,
+      .input {
+        appearance: none;
+        background: var(--muted);
+        color: var(--foreground);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        height: 2rem;
+        padding: 0 0.6rem;
+        font: inherit;
+        font-size: 0.8rem;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 999px;
+        padding: 0.15rem 0.5rem;
+        font-size: 0.7rem;
+        font-weight: 600;
+      }
+
+      .badge-ok {
+        background: color-mix(in srgb, var(--success) 18%, transparent);
+        color: var(--success);
+      }
+
+      .badge-warn {
+        background: color-mix(in srgb, var(--primary) 18%, transparent);
+        color: var(--primary);
+      }
+
+      .notes {
+        border: 1px solid #2a2a2a;
+        border-radius: 12px;
+        padding: 1rem 1.1rem;
+        background: #121212;
+        font-size: 0.85rem;
+        line-height: 1.55;
+        color: #bdbdbd;
+      }
+
+      .notes strong {
+        color: #f0f0f0;
+      }
+
+      .notes ul {
+        margin: 0.4rem 0 0;
+        padding-left: 1.1rem;
+      }
+
+      @media (max-width: 900px) {
+        .kpis {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .sidebar {
+          display: none;
+        }
+        .center-slot {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="intro">
+        <h1>Proposition palette — Admin platform « Obsidian »</h1>
+        <p>
+          Preview hors code. Compare le night-gold historique avec 3 propositions
+          Obsidian. **Option B (Soft) applied in tokens 2026-07-27.**
+        </p>
+        <div class="picker" id="picker" role="group" aria-label="Palettes"></div>
+      </header>
+
+      <section class="swatches" id="swatches" aria-label="Swatches"></section>
+
+      <section class="stage" id="stage" data-palette="obsidian-classic">
+        <div class="shell">
+          <div class="header">
+            <span class="brand">mestryx-platform</span>
+            <button class="btn btn-ghost" type="button" aria-label="Collapse">☰</button>
+            <div class="center-slot">
+              <select class="select" aria-label="Organisation">
+                <option>Luna Bijoux</option>
+                <option>Demo Org</option>
+              </select>
+            </div>
+            <div class="header-right">
+              <button class="btn btn-ghost" type="button">EN</button>
+              <button class="btn btn-ghost" type="button">FR</button>
+              <button class="btn btn-secondary" type="button">⌘K</button>
+            </div>
+          </div>
+          <div class="body">
+            <aside class="sidebar" aria-label="Nav">
+              <div class="nav-label">Overview</div>
+              <a class="nav-link active" href="#">Dashboard</a>
+              <div class="nav-label">Workspace</div>
+              <a class="nav-link" href="#">Sites</a>
+              <div class="nav-label">Commerce</div>
+              <a class="nav-link" href="#">Products</a>
+              <a class="nav-link" href="#">Orders</a>
+            </aside>
+            <main class="main">
+              <div>
+                <h2 class="page-title">Welcome back, Luna</h2>
+                <p class="page-desc">What needs attention across catalog and orders.</p>
+              </div>
+              <div class="kpis">
+                <div class="kpi">
+                  <div class="label">Organizations</div>
+                  <div class="value">1</div>
+                </div>
+                <div class="kpi">
+                  <div class="label">Products</div>
+                  <div class="value">16</div>
+                </div>
+                <div class="kpi">
+                  <div class="label">Orders</div>
+                  <div class="value">0</div>
+                </div>
+                <div class="kpi">
+                  <div class="label">Low stock</div>
+                  <div class="value">0</div>
+                </div>
+              </div>
+              <div class="panel">
+                <div class="panel-head">
+                  <strong>Orders</strong>
+                  <div class="filters">
+                    <input class="input" placeholder="Search…" />
+                    <button class="btn btn-secondary" type="button">Filter</button>
+                    <button class="btn btn-primary" type="button">New order</button>
+                  </div>
+                </div>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Order</th>
+                      <th>Customer</th>
+                      <th>Status</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>#1042</td>
+                      <td>camille@example.com</td>
+                      <td><span class="badge badge-warn">pending</span></td>
+                      <td>€128.00</td>
+                    </tr>
+                    <tr>
+                      <td>#1041</td>
+                      <td>alex@example.com</td>
+                      <td><span class="badge badge-ok">paid</span></td>
+                      <td>€64.50</td>
+                    </tr>
+                    <tr>
+                      <td>#1040</td>
+                      <td>sam@example.com</td>
+                      <td><span class="badge badge-ok">paid</span></td>
+                      <td>€210.00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </main>
+          </div>
+        </div>
+      </section>
+
+      <aside class="notes">
+        <strong>Notes pour ajustement</strong>
+        <ul>
+          <li>
+            <strong>Obsidian Classic</strong> — le plus proche d’Obsidian.md
+            (violet <code>#7f6df2</code>). Risque « purple SaaS » si trop saturé.
+          </li>
+          <li>
+            <strong>Obsidian Soft</strong> — même famille, lilac plus doux
+            (<code>#a78bfa</code>, surfaces un peu plus bleutées.
+          </li>
+          <li>
+            <strong>Obsidian Slate</strong> — graphite Obsidian + accent acier
+            <code>#7dd3fc</code> (évite le violet).
+          </li>
+          <li>
+            Night-gold reste en référence historique (<code>#c9a227</code>).
+            <strong>Production = Obsidian Soft (B).</strong>
+          </li>
+          <li>
+            Storefront Soft boutique (Luna) non touché dans cette proposition —
+            admin platform seulement.
+          </li>
+        </ul>
+      </aside>
+    </div>
+
+    <script>
+      const palettes = [
+        {
+          id: "night-gold",
+          label: "Actuel · Night-gold",
+          tokens: {
+            background: "#07080d",
+            card: "#10131c",
+            sidebar: "#0b0d14",
+            border: "#252a3a",
+            primary: "#c9a227",
+            foreground: "#f5f3ef",
+            muted: "#9ca3af",
+          },
+        },
+        {
+          id: "obsidian-classic",
+          label: "A · Obsidian Classic",
+          tokens: {
+            background: "#1e1e1e",
+            card: "#262626",
+            sidebar: "#161616",
+            border: "#363636",
+            primary: "#7f6df2",
+            foreground: "#dcddde",
+            muted: "#999999",
+          },
+        },
+        {
+          id: "obsidian-soft",
+          label: "B · Obsidian Soft",
+          tokens: {
+            background: "#19191c",
+            card: "#232328",
+            sidebar: "#131316",
+            border: "#34343d",
+            primary: "#a78bfa",
+            foreground: "#e6e6ea",
+            muted: "#9a9aa3",
+          },
+        },
+        {
+          id: "obsidian-slate",
+          label: "C · Obsidian Slate",
+          tokens: {
+            background: "#18181b",
+            card: "#222226",
+            sidebar: "#121214",
+            border: "#3f3f46",
+            primary: "#7dd3fc",
+            foreground: "#e4e4e7",
+            muted: "#a1a1aa",
+          },
+        },
+      ];
+
+      const stage = document.getElementById("stage");
+      const picker = document.getElementById("picker");
+      const swatches = document.getElementById("swatches");
+
+      function renderSwatches(palette) {
+        const order = [
+          ["background", "Background"],
+          ["sidebar", "Sidebar"],
+          ["card", "Card"],
+          ["border", "Border"],
+          ["primary", "Primary"],
+          ["foreground", "Foreground"],
+          ["muted", "Muted text"],
+        ];
+        swatches.innerHTML = order
+          .map(([key, label]) => {
+            const hex = palette.tokens[key];
+            return `<article class="swatch">
+              <div class="chip" style="background:${hex}"></div>
+              <div class="meta"><strong>${label}</strong><code>${hex}</code></div>
+            </article>`;
+          })
+          .join("");
+      }
+
+      function selectPalette(id) {
+        stage.dataset.palette = id;
+        const palette = palettes.find((p) => p.id === id);
+        renderSwatches(palette);
+        [...picker.querySelectorAll("button")].forEach((btn) => {
+          btn.setAttribute("aria-pressed", String(btn.dataset.id === id));
+        });
+      }
+
+      palettes.forEach((p) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.dataset.id = p.id;
+        btn.textContent = p.label;
+        btn.addEventListener("click", () => selectPalette(p.id));
+        picker.appendChild(btn);
+      });
+
+      selectPalette("obsidian-soft");
+    </script>
+  </body>
+</html>

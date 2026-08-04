@@ -1,0 +1,21 @@
+{
+  "name": "@mestryx/sdk",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "build": "tsc -p tsconfig.json",
+    "test": "echo \"no tests yet\"",
+    "generate": "echo \"Wire orval against /openapi.json when admin stabilizes\""
+  },
+  "devDependencies": {
+    "@mestryx/config": "workspace:*",
+    "typescript": "^5.9.3"
+  }
+}

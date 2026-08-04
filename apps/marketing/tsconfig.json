@@ -1,0 +1,11 @@
+{
+  "extends": "@mestryx/config/tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*", "astro.config.mjs"]
+}

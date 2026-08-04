@@ -1,0 +1,27 @@
+name: Feature request
+description: Propose an enhancement
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What user problem does this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: Sketch the desired behaviour. Link backlog IDs (FB-*) if known.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I checked docs/feature-backlog.md and open questions
+          required: false
+        - label: This is not a security vulnerability (use SECURITY.md for those)
+          required: true

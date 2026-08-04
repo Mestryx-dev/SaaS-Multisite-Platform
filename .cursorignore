@@ -1,0 +1,10 @@
+# Never index secrets or local env into Cursor context
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+**/secrets/**
+.impeccable/critique/
+.impeccable/live/

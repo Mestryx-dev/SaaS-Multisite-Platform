@@ -1,0 +1,82 @@
+---
+import { t, type Locale } from "../i18n";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const prefsHref = `/${locale}/cookies`;
+---
+
+<div
+  id="cookie-banner"
+  class="cookie-banner"
+  role="dialog"
+  aria-labelledby="cookie-banner-title"
+  aria-describedby="cookie-banner-desc"
+  hidden
+>
+  <h2 id="cookie-banner-title">{t(locale, "cookies.banner.preferences")}</h2>
+  <p id="cookie-banner-desc">{t(locale, "cookies.banner.message")}</p>
+  <div class="cookie-banner__actions">
+    <button type="button" class="btn btn--primary" data-consent="analytics">
+      {t(locale, "cookies.banner.acceptAnalytics")}
+    </button>
+    <button type="button" class="btn btn--ghost" data-consent="necessary">
+      {t(locale, "cookies.banner.necessaryOnly")}
+    </button>
+    <a class="btn btn--ghost" href={prefsHref}>{t(locale, "cookies.banner.preferences")}</a>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var KEY = "mx-consent-analytics";
+    var banner = document.getElementById("cookie-banner");
+    if (!banner) return;
+
+    function loadUmami() {
+      var cfg = window.__MX_UMAMI__;
+      if (!cfg || !cfg.scriptUrl || !cfg.websiteId) return;
+      if (document.querySelector('script[data-umami-loaded="1"]')) return;
+      var s = document.createElement("script");
+      s.defer = true;
+      s.src = cfg.scriptUrl;
+      s.setAttribute("data-website-id", cfg.websiteId);
+      s.setAttribute("data-umami-loaded", "1");
+      document.head.appendChild(s);
+    }
+
+    function setConsent(value) {
+      try {
+        localStorage.setItem(KEY, value);
+      } catch (_) {}
+      banner.hidden = true;
+      if (value === "1") loadUmami();
+    }
+
+    var stored = null;
+    try {
+      stored = localStorage.getItem(KEY);
+    } catch (_) {}
+
+    if (stored === "1") {
+      loadUmami();
+      banner.hidden = true;
+    } else if (stored === "0") {
+      banner.hidden = true;
+    } else {
+      banner.hidden = false;
+    }
+
+    banner.querySelectorAll("[data-consent]").forEach(function (el) {
+      el.addEventListener("click", function () {
+        var v = el.getAttribute("data-consent");
+        setConsent(v === "analytics" ? "1" : "0");
+      });
+    });
+
+    window.__MX_SET_CONSENT__ = setConsent;
+  })();
+</script>
