@@ -29,6 +29,8 @@ export function getMessages(locale: Locale): Dictionary {
   return catalogs[locale] ?? catalogs.en;
 }
 
+import { siteInterpolateVars } from "../lib/site";
+
 function interpolate(
   template: string,
   vars?: Record<string, string | number>,
@@ -42,15 +44,17 @@ function interpolate(
 
 /**
  * Translate a flat marketing key. Missing keys fall back to EN, then the key itself.
+ * Always injects site `PUBLIC_*` knobs (`{{contactEmail}}`, `{{demoAdminUrl}}`, …).
  */
 export function t(
   locale: Locale,
   key: MessageKey,
   vars?: Record<string, string | number>,
 ): string {
+  const merged = { ...siteInterpolateVars(), ...vars };
   const primary = getMessages(locale)[key];
-  if (primary !== undefined) return interpolate(primary, vars);
+  if (primary !== undefined) return interpolate(primary, merged);
   const fallback = catalogs.en[key];
-  if (fallback !== undefined) return interpolate(fallback, vars);
+  if (fallback !== undefined) return interpolate(fallback, merged);
   return key;
 }

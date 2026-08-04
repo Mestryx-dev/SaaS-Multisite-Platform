@@ -2,6 +2,7 @@
 import { t, type Locale } from "../i18n";
 import CookieBanner from "../components/CookieBanner.astro";
 import Umami from "../components/Umami.astro";
+import { getSiteConfig } from "../lib/site";
 import "../styles/global.css";
 
 interface Props {
@@ -16,7 +17,7 @@ const suffix = pathWithoutLocale === "/" ? "" : pathWithoutLocale;
 const homeHref = `/${locale}`;
 const frHref = `/fr${suffix}`;
 const enHref = `/en${suffix}`;
-const shareUrl = import.meta.env.PUBLIC_UMAMI_SHARE_URL as string | undefined;
+const shareUrl = getSiteConfig().umamiShareUrl || undefined;
 ---
 
 <!doctype html>
