@@ -11,6 +11,33 @@ const dirname =
     ? __dirname
     : path.dirname(fileURLToPath(import.meta.url));
 
+/** Browser Storybook vitest — opt in: VITEST_STORYBOOK=1 (needs Playwright browsers). */
+const enableStorybookBrowser = process.env.VITEST_STORYBOOK === "1";
+
+const unitProject = {
+  extends: true as const,
+  test: {
+    name: "unit",
+    environment: "happy-dom" as const,
+    include: ["src/**/*.test.{ts,tsx}"],
+    setupFiles: [path.join(dirname, "src/__tests__/setup.ts")],
+  },
+};
+
+const storybookProject = {
+  extends: true as const,
+  plugins: [storybookTest({ configDir: path.join(dirname, ".storybook") })],
+  test: {
+    name: "storybook",
+    browser: {
+      enabled: true,
+      headless: true,
+      provider: playwright({}),
+      instances: [{ browser: "chromium" as const }],
+    },
+  },
+};
+
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
@@ -26,42 +53,23 @@ export default defineConfig({
         "src/**/*.stories.tsx",
         "src/**/index.ts",
         "src/__tests__/**",
-        // Storybook host glue — `document` / theme ternary not meaningful for lib coverage.
         ".storybook/**",
       ],
-      thresholds: {
-        statements: 95,
-        branches: 90,
-        functions: 95,
-        lines: 95,
-      },
+      // Full thresholds assume Storybook browser coverage; unit-only runs skip them.
+      ...(enableStorybookBrowser
+        ? {
+            thresholds: {
+              statements: 95,
+              branches: 90,
+              functions: 95,
+              lines: 95,
+            },
+          }
+        : {}),
       reporter: ["text", "text-summary", "html"],
     },
-    projects: [
-      {
-        extends: true,
-        plugins: [
-          storybookTest({ configDir: path.join(dirname, ".storybook") }),
-        ],
-        test: {
-          name: "storybook",
-          browser: {
-            enabled: true,
-            headless: true,
-            provider: playwright({}),
-            instances: [{ browser: "chromium" }],
-          },
-        },
-      },
-      {
-        extends: true,
-        test: {
-          name: "unit",
-          environment: "happy-dom",
-          include: ["src/**/*.test.{ts,tsx}"],
-          setupFiles: ["./src/__tests__/setup.ts"],
-        },
-      },
-    ],
+    projects: enableStorybookBrowser
+      ? [storybookProject, unitProject]
+      : [unitProject],
   },
 });
