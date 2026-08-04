@@ -1,6 +1,6 @@
 # Stack — library versions (2026)
 
-**Survey date**: 2026-07-16  
+**Survey date**: 2026-08-04  
 **Source**: npm registry (`npm view <pkg> version`) + Node.js dist index.  
 **Purpose**: For each layer in [02-stack.md](./02-stack.md), list the **chosen pick**, **latest version**, and optional library swaps *within the same TypeScript stack* (not a different product architecture).
 
@@ -22,13 +22,13 @@
 
 | Role | Package / product | Latest (survey) | Verdict | Notes |
 |------|-------------------|-----------------|---------|-------|
-| **REC** Runtime | **Node.js 24 LTS** (“Krypton”) | **v24.18.0** | Prefer for prod | Current LTS. Node latest is v26.5.0 (Current) — avoid for prod until LTS. |
+| **REC** Runtime | **Node.js 24 LTS** (“Krypton”) | **v24.19.0** | Prefer for prod | Current LTS. Node Current (v26.x) — avoid for prod until LTS. |
 | ALT Runtime | Node.js 22 | v22.22.x | OK | Previous LTS; fine if deps lag. |
 | ALT Runtime | **Bun** | **1.3.14** | ALT for DX | Great for local/scripts; keep Node for prod Docker unless team owns Bun ops. |
 | AVOID | Deno | — | Niche | Smaller hiring/agent corpus for SaaS APIs. |
-| **REC** Workspace | **pnpm** | **11.13.1** | Prefer | Best monorepo defaults + disk efficiency. |
+| **REC** Workspace | **pnpm** | **11.20.0** | Prefer | Best monorepo defaults + disk efficiency. |
 | ALT | npm / yarn | npm ships with Node | OK | npm workspaces OK; yarn less common in new 2026 kits. |
-| **REC** Tasks | **Turborepo** | **2.10.5** | Prefer | Still the default JS monorepo task runner. |
+| **REC** Tasks | **Turborepo** | **2.10.8** | Prefer | Still the default JS monorepo task runner. |
 | ALT | Nx | — | ALT | Heavier; better for huge orgs. |
 | ALT | Moon | — | ALT | Less ecosystem gravity. |
 
@@ -38,14 +38,14 @@
 
 | Role | Package | Latest | Verdict | When to pick |
 |------|---------|--------|---------|--------------|
-| **REC** | **Hono** | **4.12.30** | Prefer | Lean, Web Standards, great with agents, edge-ready, pairs with Zod OpenAPI. |
+| **REC** | **Hono** | **4.13.0** (`@hono/node-server` **2.0.12**) | Prefer | Lean, Web Standards, great with agents, edge-ready, pairs with Zod OpenAPI. |
 | ALT | **NestJS** (`@nestjs/core`) | **11.1.28** | ALT | Want explicit DI modules mirroring product modules; larger boilerplate. |
 | ALT | **Fastify** | **5.10.0** | ALT | Max Node throughput + schema validation; less “battery included” than Nest. |
 | ALT | **Elysia** | **1.4.29** | ALT | Bun-first; only if Bun is the runtime bet. |
 | ALT | **Express** | **5.2.1** | Legacy OK | Still ubiquitous; slower DX/types than Hono/Fastify for greenfield. |
 | AVOID | Adonis / Foal | — | Rare | Smaller TS SaaS mindshare. |
 
-**Platform pick:** **Hono 4.12.x** for MVP; revisit NestJS only if module/DI discipline becomes painful.
+**Platform pick:** **Hono 4.13.x** + `@hono/node-server` 2.x for MVP; revisit NestJS only if module/DI discipline becomes painful.
 
 ---
 
@@ -91,7 +91,7 @@
 
 | Role | Package | Latest | Verdict | Notes |
 |------|---------|--------|---------|-------|
-| **REC** | **Better Auth** | **1.6.23** | Prefer | TS-native, plugins, multi-tenant friendly, active 2026. |
+| **REC** | **Better Auth** | **1.6.25** | Prefer | TS-native, plugins, multi-tenant friendly, active 2026. |
 | ALT | **Clerk** (`@clerk/backend`) | **3.11.6** | ALT | Hosted IdP; faster start, vendor lock + cost. |
 | ALT | **Auth.js** (`@auth/core` / next-auth) | next-auth **4.24.14** / Auth.js v5 line | ALT | Fine with Next; less ideal on pure Hono without care. |
 | ALT | **Lucia** | **3.2.2** | Soft AVOID | Still on npm; Better Auth is the 2026 default successor path. |
@@ -228,21 +228,21 @@
 Use these as the **default shopping list** when scaffolding (caret ranges OK; re-check on install day):
 
 ```text
-Runtime:     Node 24.18.x LTS
-Workspace:   pnpm 11.13.x + turbo 2.10.x
+Runtime:     Node 24.19.x LTS
+Workspace:   pnpm 11.20.x + turbo 2.10.x
 Language:    typescript 7.0.x + zod 4.4.x
-API:         hono 4.12.x + drizzle-orm 0.45.x + bullmq 5.80.x
+API:         hono 4.13.x + @hono/node-server 2.0.x + drizzle-orm 0.45.x + bullmq 5.80.x
 Auth:        better-auth 1.6.x + @casl/ability 7.x
 Contract:    OpenAPI (Hono Zod OpenAPI) + orval 8.x
              (optional first-party: @orpc/server 1.14.x)
-Admin/Web:   vite 8.1.x + react 19.2.x + tailwindcss 4.3.x
+Admin/Web:   vite 8.2.x + react 19.2.x + tailwindcss 4.3.x
              + @tanstack/react-router 1.170.x + @tanstack/react-query 5.101.x
              + motion 12.x + shadcn CLI 4.x
 Public SSR:  @tanstack/react-start 1.168.x   (Next 16.2.x only via ADR)
 Mobile:      expo 57.x + nativewind 4.2.x
 DS:          storybook 10.5.x + style-dictionary 5.5.x
 Marketing:   astro 7.x + remotion 4.x (optional)
-Quality:     biome 2.5.x + vitest 4.1.x + playwright 1.61.x
+Quality:     biome 2.5.x + vitest 4.1.x + playwright 1.62.x
 Payments:    stripe 22.x
 Email:       resend 6.x
 Obs:         @sentry/node 10.x + OTEL
@@ -263,6 +263,7 @@ DB:          PostgreSQL 17 + Redis 7/8
 | tRPC as main ALT | **oRPC** often better if OpenAPI matters |
 | Lucia as peer of Better Auth | Prefer **Better Auth**; Lucia soft-deprecated path |
 | TypeScript 5.x | **TypeScript 7.0.x** on npm at survey time |
+| Hono 4.12.x / node-server 1.x skew | **Hono 4.13.x** + `@hono/node-server` **2.0.x** everywhere |
 
 ---
 
