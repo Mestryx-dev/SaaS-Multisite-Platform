@@ -9,8 +9,8 @@ Mestryx can override any lock with a short message; agents then update this file
 |---|----------|--------|
 | Q1 | Commercial product name / dedicated domain? | **Working name `mestryx-platform`**. Fancy brand later. Hosts on mestryx.dev. Piblox = Studio only. |
 | Q2 | MVP core job? | **CMS multi-brand**. Commerce = later module. |
-| Q3 | Who pays first? | **Dogfood Mestryx first**. External billing after. |
-| Q4 | First dogfood site? | **Greenfield** on the platform (nothing to migrate). |
+| Q3 | Who pays first? | **Mestryx internal trial first**. External billing after. |
+| Q4 | First internal trial site? | **Greenfield** on the platform (nothing to migrate). |
 | Q5 | Markets / languages? | **FR + EN** UI; code = English only. |
 
 ## Domains & infra
@@ -35,8 +35,8 @@ Mestryx can override any lock with a short message; agents then update this file
 | # | Question | Answer |
 |---|----------|--------|
 | Q13 | Company entity for Stripe? | **Locked for agents**: implement Stripe in **test mode** only until Mestryx supplies a legal entity + live keys. **No live Stripe** without explicit human confirm. |
-| Q14 | VAT / EU invoices at MVP? | **Defer** until first external paid customer. Dogfood = no VAT invoices required. |
-| Q15 | Privacy / ToS? | **Locked**: ship **draft** Privacy + ToS pages before any *external* signup; dogfood Mestryx-only may proceed with clearly marked drafts. External public launch blocked until Mestryx approves copy. |
+| Q14 | VAT / EU invoices at MVP? | **Defer** until first external paid customer. Internal trial = no VAT invoices required. |
+| Q15 | Privacy / ToS? | **Locked**: ship **draft** Privacy + ToS pages before any *external* signup; Mestryx-only internal trial may proceed with clearly marked drafts. External public launch blocked until Mestryx approves copy. |
 
 ## Brand (non-blocking)
 
@@ -60,9 +60,9 @@ Mestryx can override any lock with a short message; agents then update this file
 | A10 | Custom-domain TLS = Cloudflare for SaaS path (Q7) |
 | A11 | Commit + push after green local/CI validation (agent ops) |
 
-## What is “dogfood”? (Q4)
+## What is an internal trial site? (Q4)
 
-Using your own product for a real need. First site = **new greenfield site** on the platform (not a migration of an existing repo).
+Mestryx runs a real greenfield site on the platform for internal validation (not a migration of an existing repo).
 
 ## Agent autonomy
 

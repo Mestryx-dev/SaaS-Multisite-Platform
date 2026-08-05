@@ -5,7 +5,7 @@
 
 ## Objective
 
-Ship a multi-tenant **CMS multi-brand** SaaS — many sites/domains, one admin — dogfood **Luna Bijoux** (Option B admin + storefront). Agent-friendly TS monorepo, Dokploy-ready. Commercial brand/domain can be chosen later.
+Ship a multi-tenant **CMS multi-brand** SaaS — many sites/domains, one admin — internal trial **Luna Bijoux** (Option B admin + storefront). Agent-friendly TS monorepo, Dokploy-ready. Commercial brand/domain can be chosen later.
 
 ## Phases
 

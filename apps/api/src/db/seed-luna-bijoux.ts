@@ -1,5 +1,5 @@
 /**
- * Dogfood seed — "Luna Bijoux" girly fantasy jewelry boutique.
+ * Local demo seed — "Luna Bijoux" girly fantasy jewelry boutique.
  *
  *   pnpm --filter @mestryx/api db:seed
  *
@@ -171,7 +171,7 @@ const CATALOG: SeedProduct[] = [
     slug: "bague-perle-nacree",
     sku: "LUNA-BAG-004",
     description:
-      "Perle nacrée montée sur anneau ajustable. Variantes taille × couleur pour dogfood inventaire.",
+      "Perle nacrée montée sur anneau ajustable. Variantes taille × couleur pour inventaire de démo.",
     priceCents: 1590,
     stock: 0,
     lowStockThreshold: 6,
@@ -458,7 +458,7 @@ async function ensureUser(app: ReturnType<typeof createApp>, db: ReturnType<type
     const body = await res.text();
     throw new Error(`Sign-up failed (${res.status}): ${body}`);
   }
-  // Dogfood seed: Better Auth leaves email unverified; mark verified so admin console works.
+  // Local demo seed: Better Auth leaves email unverified; mark verified so admin console works.
   await db
     .update(user)
     .set({ emailVerified: true, updatedAt: new Date() })

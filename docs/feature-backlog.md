@@ -109,7 +109,7 @@ Stripe end-customer capture (**FB-070**) stays deferred until explicitly unlocke
 
 *Note:* FB-050/052/053 shipped earlier; **FB-051** adds real Stripe Checkout + Customer Portal when `STRIPE_*` test keys are set (stub otherwise). Live Stripe still requires human confirm (Q13).
 
-## Phase 6 — commerce (Option B — dogfood Luna Bijoux)
+## Phase 6 — commerce (Option B — Luna Bijoux internal trial)
 
 Payment deferred: stop at `pending_payment` until Mestryx unlocks Stripe Capture. Detail: [12-commerce-fiscal-complete.md](./12-commerce-fiscal-complete.md).
 

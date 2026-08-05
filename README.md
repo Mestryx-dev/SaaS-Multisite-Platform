@@ -30,7 +30,7 @@ cp .env.example .env
 docker compose up -d          # Postgres 17 + Redis 7
 pnpm install
 pnpm --filter @mestryx/api db:migrate
-pnpm --filter @mestryx/api db:seed   # optional Luna Bijoux dogfood
+pnpm --filter @mestryx/api db:seed   # optional Luna Bijoux internal trial
 pnpm dev:api                  # http://localhost:3001/health
 pnpm --filter @mestryx/admin dev
 pnpm --filter @mestryx/web dev

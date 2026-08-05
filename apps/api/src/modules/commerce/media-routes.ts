@@ -99,7 +99,7 @@ export function mediaRoutes(db: Db, auth: Auth, config: AppConfig) {
     return c.json({ assets });
   });
 
-  /** Register an external URL as an asset (local dogfood / no R2). */
+  /** Register an external URL as an asset (local demo / internal trial / no R2). */
   app.post("/media", async (c) => {
     const session = await auth.api.getSession({ headers: c.req.raw.headers });
     if (!session?.user) {

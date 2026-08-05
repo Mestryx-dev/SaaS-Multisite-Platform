@@ -18,7 +18,7 @@ Private orchestrator IDs, LAN addresses, and internal wiki links are **not** sto
 
 Secrets (DB password, `BETTER_AUTH_SECRET`, Stripe test keys, Umami website IDs) live **only** in the orchestrator env — not in git.
 
-## Example public hosts (upstream dogfood)
+## Example public hosts (upstream Mestryx demos)
 
 Replace with your own domains when forking.
 
@@ -30,7 +30,7 @@ Replace with your own domains when forking.
 | `demo-storybook-platform.example.com` | Storybook |
 | Apex marketing host | Marketing |
 
-Upstream Mestryx dogfood currently uses `*.mestryx.dev` (see product docs). Forks should not rely on those hosts.
+Upstream Mestryx demo hosts currently uses `*.mestryx.dev` (see product docs). Forks should not rely on those hosts.
 
 ## TLS / reverse proxy tips
 

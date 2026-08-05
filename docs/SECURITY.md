@@ -8,7 +8,7 @@
 1. **Never commit secrets** — `.env`, API keys, tokens, private keys, vault dumps.
 2. Use your orchestrator secret store or a vault product for real credentials (see [integrations.md](./integrations.md), [runbooks/staging-dokploy.md](./runbooks/staging-dokploy.md)).
 3. Repo root [`.env.example`](../.env.example) and [`apps/marketing/.env.example`](../apps/marketing/.env.example) are the only committed env templates (placeholders only).
-4. Local dogfood seed (`SEED_EMAIL` / **required** `SEED_PASSWORD`) is **local/dev only** — do not reuse on staging/prod. The Luna seed **auto-verifies** the admin email for console login (dogfood convenience only — not a production auth pattern).
+4. Local demo seed (`SEED_EMAIL` / **required** `SEED_PASSWORD`) is **local/dev only** — do not reuse on staging/prod. The Luna seed **auto-verifies** the admin email for console login (internal-trial convenience only — not a production auth pattern).
 5. CI may use disposable secrets (e.g. `BETTER_AUTH_SECRET` in GitHub Actions) — never production values.
 6. Report vulnerabilities to **security@mestryx.dev** (or GitHub private advisory) — see root [`SECURITY.md`](../SECURITY.md).
 
@@ -19,7 +19,7 @@
 | `.env.example` placeholders | Onboarding |
 | `docker-compose.yml` local `postgres`/`postgres` | Local-only compose |
 | Public product hostnames (documentation) | DNS examples |
-| Seed email domain `*.local` | Non-routable dogfood |
+| Seed email domain `*.local` | Non-routable demo seed |
 
 ## What is NOT OK
 

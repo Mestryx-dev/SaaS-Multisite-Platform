@@ -51,7 +51,7 @@ function templateElement(type: OrderEmailType, props: OrderEmailProps) {
 
 /**
  * Soft-fail transactional mail: never throws to callers.
- * Without RESEND_API_KEY → log-only (local dogfood).
+ * Without RESEND_API_KEY → log-only (local demo / internal trial).
  */
 export async function sendOrderEmail(
   config: AppConfig,

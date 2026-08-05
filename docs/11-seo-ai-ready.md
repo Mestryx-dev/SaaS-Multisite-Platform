@@ -43,7 +43,7 @@ Rewriting a Vite SPA into SSR later forces routing, data loading, meta, cache, a
 | **Clean content HTML** | Prefer content in DOM, not only behind client fetch |
 | **AI crawler policy** | Explicit `robots.txt` / headers policy for GPTBot, ClaudeBot, etc. (tenant toggle later if needed) |
 | **Stable URLs** | Slugs immutable after publish unless redirect row exists |
-| **Markdown-friendly exports** (later) | Optional `/…/raw.md` for docs-like sites — not MVP unless dogfood needs it |
+| **Markdown-friendly exports** (later) | Optional `/…/raw.md` for docs-like sites — not MVP unless the internal trial needs it |
 
 ## CMS data model (from first page)
 
@@ -70,7 +70,7 @@ When public runtime exists, add smoke checks (Playwright or fetch):
 
 ## Out of scope for day one (still planned)
 
-- Perfect Core Web Vitals tuning (measure after dogfood traffic)  
+- Perfect Core Web Vitals tuning (measure after internal-trial traffic)  
 - Per-tenant AI crawler allowlists UI (defaults first)  
 - Automatic FAQ schema generation from blocks  
 - Multi-language hreflang until F-406  

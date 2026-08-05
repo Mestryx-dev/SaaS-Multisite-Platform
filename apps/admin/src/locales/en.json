@@ -241,7 +241,7 @@
   "product.lowStock": "Low-stock threshold",
   "product.pageDescription": "Catalog belongs to the organization. Attach a site to publish on the storefront.",
   "product.noOrgTitle": "No organization",
-  "product.noOrgHint": "Select an organization in the shell switcher, or run the local seed and sign in with the dogfood account.",
+  "product.noOrgHint": "Select an organization in the shell switcher, or run the local seed and sign in with the local seed account.",
   "product.panelHint": "Catalog for the active organization.",
   "members.invite": "Invite member",
   "members.inviteSent": "Invite sent",

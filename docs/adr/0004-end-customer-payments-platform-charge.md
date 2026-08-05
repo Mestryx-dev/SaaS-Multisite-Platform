@@ -8,7 +8,7 @@
 
 Storefront checkout creates `store_order` rows in `pending_payment` with `payment.provider: "deferred"`. SaaS org billing already uses Stripe (FB-050/051). End-customer capture (FB-070) must not rewrite order schema or ops when unlocked.
 
-Dogfood merchant is Mestryx-operated (Luna Bijoux); multi-tenant Connect is not required for the first money path.
+Internal-trial merchant is Mestryx-operated (Luna Bijoux); multi-tenant Connect is not required for the first money path.
 
 ## Decision
 

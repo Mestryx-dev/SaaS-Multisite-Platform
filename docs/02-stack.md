@@ -54,7 +54,7 @@ Shared UI primitives live in **`packages/ui` from the first admin screen** (see 
 | Layer | Choice |
 |-------|--------|
 | Framework today | **Hono + React `renderToString`** (SSR) consuming `@mestryx/ui` |
-| ADR target | **TanStack Start** (later rewrite — not blocking dogfood) |
+| ADR target | **TanStack Start** (later rewrite — not blocking the internal trial) |
 | SEO / AI discovery | Meta, canonical, OG, sitemap, robots, `llms.txt`, JSON-LD — see [11-seo-ai-ready.md](./11-seo-ai-ready.md) |
 | Theming | `data-theme="storefront"` + CSS variables from `packages/tokens` |
 | ALT (only via new ADR) | Next.js 16 |

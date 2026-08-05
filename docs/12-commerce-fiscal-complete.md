@@ -2,7 +2,7 @@
 
 **Owns**: Target shop/fiscal **scope** only. Status → [feature-backlog.md](./feature-backlog.md) (FB-060+). Journeys → [13-journey-audit.md](./13-journey-audit.md).  
 **Date**: 2026-07-16  
-**Rule**: Plan the **full shop** so schema/API/UI do not need a rewrite later. Build in waves; dogfood can start with **one site**.
+**Rule**: Plan the **full shop** so schema/API/UI do not need a rewrite later. Build in waves; internal trial can start with **one site**.
 
 **Locked with Mestryx (2026-07-16):**
 
@@ -62,7 +62,7 @@ Related: [06-feature-catalog-and-priority.md](./06-feature-catalog-and-priority.
 
 | ID | Feature | Notes |
 |----|---------|-------|
-| F-508 | Stripe Connect or platform charge | **Decided:** platform charge for dogfood — [ADR-0004](./adr/0004-end-customer-payments-platform-charge.md). Connect later for external merchants. Seams: FB-103; capture: FB-070 (deferred). |
+| F-508 | Stripe Connect or platform charge | **Decided:** platform charge for internal trial — [ADR-0004](./adr/0004-end-customer-payments-platform-charge.md). Connect later for external merchants. Seams: FB-103; capture: FB-070 (deferred). |
 | F-703e | Card / wallet checkout | Stripe Payment Element (test then live) |
 | F-708 | Refunds / partial refunds | Stripe + order state machine |
 | F-711 | Payment webhooks | idempotent; paid / failed / dispute |

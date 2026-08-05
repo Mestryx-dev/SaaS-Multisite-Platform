@@ -15,11 +15,11 @@ Mestryx builds a multi-tenant multisite CMS SaaS (`mestryx-platform`) on persona
 4. **Deploy**: Dokploy (Mestryx homelab).  
 5. **Stack**: TypeScript monorepo — Hono, Drizzle, Better Auth, Vite/React (admin), **TanStack Start (public SSR)**, Tailwind, shared UI in `packages/ui`. Details in `docs/02-stack.md` and `docs/05-stack-versions.md`.  
 6. **Public SEO / AI**: Full SEO + AI discovery (`llms.txt`, JSON-LD, sitemap, OG) from the first public page — no SPA-first rewrite ([11-seo-ai-ready.md](../11-seo-ai-ready.md)).  
-7. **MVP**: CMS multi-brand; first site greenfield dogfood. Commerce / Web3 later.  
+7. **MVP**: CMS multi-brand; first site greenfield internal trial. Commerce / Web3 later.  
 8. **Sibling brand**: Piblox remains Studio/AI video only.  
 9. **Scope**: Feature waves in `docs/06` / `docs/07`; delivery in `docs/09`; agent ops in `docs/10-agent-ops.md`.  
 10. **Infra defaults**: Staging hosts Q9; TLS platform via Traefik/LE, custom domains via Cloudflare for SaaS (Q7). See `docs/08-open-questions.md`.  
-11. **Billing/legal**: Stripe test-mode until entity + human live confirm; draft legal OK for dogfood.
+11. **Billing/legal**: Stripe test-mode until entity + human live confirm; draft legal OK for internal trial.
 
 ## Consequences
 

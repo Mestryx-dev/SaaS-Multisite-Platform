@@ -20,7 +20,7 @@
 ## Positioning
 
 - Multi-brand **CMS** (core) with room for commerce, modules, later Web3  
-- Dogfood first: Mestryx runs a real site + business on Auralis  
+- Internal trial first: Mestryx runs a real site + business on Auralis  
 - Brand-first name (not descriptive “Sites/Hub”)
 
 ## Tone of voice

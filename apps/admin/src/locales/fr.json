@@ -241,7 +241,7 @@
   "product.lowStock": "Seuil stock bas",
   "product.pageDescription": "Le catalogue appartient à l’organisation. Attachez un site pour publier en vitrine.",
   "product.noOrgTitle": "Aucune organisation",
-  "product.noOrgHint": "Sélectionnez une organisation dans le sélecteur du shell, ou lancez le seed local et connectez-vous avec le compte dogfood.",
+  "product.noOrgHint": "Sélectionnez une organisation dans le sélecteur du shell, ou lancez le seed local et connectez-vous avec le compte seed local.",
   "product.panelHint": "Catalogue de l’organisation active.",
   "members.invite": "Inviter un membre",
   "members.inviteSent": "Invitation envoyée",
