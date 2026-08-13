@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@mestryx/tokens": "workspace:*",
-    "@remotion/bundler": "4.0.489",
+    "@remotion/bundler": "4.0.503",
     "@remotion/cli": "4.0.489",
     "@remotion/renderer": "4.0.489",
     "react": "^19.1.0",
