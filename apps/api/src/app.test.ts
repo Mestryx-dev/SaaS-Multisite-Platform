@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createApp } from "./app.js";
+import { createApp, isWebDevSiteHost } from "./app.js";
 
 describe("health endpoints", () => {
   it("GET /health returns ok with request id", async () => {
@@ -27,5 +27,37 @@ describe("health endpoints", () => {
     expect(res.status).toBe(200);
     const body = (await res.json()) as { openapi: string };
     expect(body.openapi).toBe("3.1.0");
+  });
+});
+
+describe("isWebDevSiteHost", () => {
+  it("allows localhost and WEB_ORIGIN host", () => {
+    expect(isWebDevSiteHost("localhost", "https://dev-web.example.com", [])).toBe(
+      true,
+    );
+    expect(
+      isWebDevSiteHost("dev-web.example.com", "https://dev-web.example.com", []),
+    ).toBe(true);
+  });
+
+  it("allows demo alias listed in TRUSTED_ORIGINS", () => {
+    expect(
+      isWebDevSiteHost(
+        "demo-web-platform.mestryx.dev",
+        "https://dev-web-platform.mestryx.dev",
+        [
+          "https://demo-web-platform.mestryx.dev",
+          "https://demo-admin-platform.mestryx.dev",
+        ],
+      ),
+    ).toBe(true);
+  });
+
+  it("rejects unknown hosts", () => {
+    expect(
+      isWebDevSiteHost("evil.example.com", "https://dev-web.example.com", [
+        "https://dev-web.example.com",
+      ]),
+    ).toBe(false);
   });
 });
