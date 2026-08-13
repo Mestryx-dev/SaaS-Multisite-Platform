@@ -80,10 +80,30 @@ const locale = resolveLocale(Astro.params.locale);
       <article class="stage-panel">
         <h3>{t(locale, "stage.adminTitle")}</h3>
         <p>{t(locale, "stage.adminBody")}</p>
+        <a class="stage-panel__shot" href={t(locale, "links.demoAdmin")}>
+          <img
+            src="/images/demos/mestryx-admin-demo.webp"
+            alt={t(locale, "stage.adminTitle")}
+            width="1200"
+            height="900"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
       </article>
       <article class="stage-panel stage-panel--light">
         <h3>{t(locale, "stage.storeTitle")}</h3>
         <p>{t(locale, "stage.storeBody")}</p>
+        <a class="stage-panel__shot" href={t(locale, "links.demoStore")}>
+          <img
+            src="/images/demos/mestryx-store-demo.webp"
+            alt={t(locale, "stage.storeTitle")}
+            width="1200"
+            height="900"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
       </article>
     </div>
   </section>

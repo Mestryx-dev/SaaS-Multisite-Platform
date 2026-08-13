@@ -275,6 +275,49 @@ a:hover {
   height: auto;
 }
 
+.product-stage__shots {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+  padding: 0.75rem;
+  background: #0b0f14;
+}
+
+.product-stage__shot {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.product-stage__shot img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #0f172a;
+}
+
+.product-stage__shot figcaption {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #5eead4;
+  letter-spacing: 0.02em;
+}
+
+.product-stage__shot--store figcaption {
+  color: #94a3b8;
+}
+
+@media (max-width: 720px) {
+  .product-stage__shots {
+    grid-template-columns: 1fr;
+  }
+}
+
 .product-stage__caption {
   margin-top: 0.75rem;
   font-size: 0.8rem;
@@ -392,6 +435,32 @@ a:hover {
 
 .stage-panel--light p {
   color: #475569;
+}
+
+.stage-panel__shot {
+  display: block;
+  margin-top: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.stage-panel__shot:hover {
+  border-color: color-mix(in srgb, #5eead4 45%, var(--border));
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+}
+
+.stage-panel__shot img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.stage-panel--light .stage-panel__shot {
+  border-color: #e2e8f0;
 }
 
 .roadmap {
