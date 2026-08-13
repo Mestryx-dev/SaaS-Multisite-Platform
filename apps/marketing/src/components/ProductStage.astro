@@ -7,12 +7,15 @@ interface Props {
   storeSrc?: string;
 }
 
+/** Cache-bust query: CF edge keys on full URL; nginx demos TTL is 1h (see nginx.conf). */
+const DEMO_ASSET_V = "20260813b";
+
 const {
   adminLabel,
   storeLabel,
   caption,
-  adminSrc = "/images/demos/mestryx-admin-demo.webp",
-  storeSrc = "/images/demos/mestryx-store-demo.webp",
+  adminSrc = `/images/demos/mestryx-admin-demo.webp?v=${DEMO_ASSET_V}`,
+  storeSrc = `/images/demos/mestryx-store-demo.webp?v=${DEMO_ASSET_V}`,
 } = Astro.props;
 ---
 
