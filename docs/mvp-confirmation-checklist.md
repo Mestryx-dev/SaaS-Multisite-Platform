@@ -1,6 +1,6 @@
 # MVP confirmation checklist — mestryx-platform
 
-**Purpose:** Single human checklist of points Mestryx must **confirm** before treating the dogfood MVP as ready for **staging (FB-044)** and later **launch packaging (FB-045)**.
+**Purpose:** Single human checklist of points Mestryx must **confirm** before treating the internal-trial MVP as ready for **staging (FB-044)** and later **launch packaging (FB-045)**.
 
 **Status:** Open — walk sections in order; tick only after live review.  
 **Updated:** 2026-07-24  
@@ -36,7 +36,7 @@
 
 Confirm this is the **accepted MVP boundary** (Option B commerce, Stripe end-customer capture still deferred).
 
-- [x] **MVP cut** = multi-site CMS + admin console + Luna dogfood shop through **`pending_payment`** (no FB-070 live capture yet)
+- [x] **MVP cut** = multi-site CMS + admin console + Luna Bijoux internal-trial shop through **`pending_payment`** (no FB-070 live capture yet)
 - [x] **Out of MVP** acknowledged: Expo (FB-090) later; marketing product name / dedicated domain not needed (vitrine); FB-070 unlock later
 - [x] Working name **mestryx-platform** OK for engineering / DNS until marketing name
 - [x] Piblox / Studio identity stays **separate** (no violet collision)
@@ -151,7 +151,7 @@ Smoke as org admin on Luna / demo org.
 
 ## 4. Platform / tenancy (quick)
 
-- [ ] Two orgs / sites cannot see each other’s data (isolation belief OK from dogfood + prior tests)
+- [ ] Two orgs / sites cannot see each other’s data (isolation belief OK from internal trial + prior tests)
 - [ ] Custom domain / subdomain story understood for staging (`*.sites…`)
 - [ ] Platform billing stub / entitlements UX acceptable for MVP (Stripe test portal if keys set)
 

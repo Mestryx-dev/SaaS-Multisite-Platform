@@ -48,6 +48,7 @@ pnpm --filter @mestryx/api db:migrate
 pnpm test
 pnpm typecheck
 pnpm build
+pnpm graphify                 # AST knowledge graph (local, gitignored)
 pnpm dev:api                  # :3001
 # later: pnpm dev:admin / pnpm dev:web
 ```
@@ -60,6 +61,7 @@ pnpm dev:api                  # :3001
 - [ ] **Docs sync loop** completed (see §2.2) — not optional  
 - [ ] Isolation tests if tenancy touched  
 - [ ] SEO smoke if public HTML touched ([11](./11-seo-ai-ready.md))  
+- [ ] **Graphify refreshed** after non-trivial code/doc corpus changes (`pnpm graphify`)  
 - [ ] **Commit + push to `origin`** (see §2.1)
 
 ### 2.1 Git loop (systematic — Mestryx policy)

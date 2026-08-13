@@ -152,7 +152,7 @@ Related: [07-dependency-graph.md](./07-dependency-graph.md) · [feature-backlog.
 ### W7 — Commerce module (full shop target)
 
 > Complete checklist: [12-commerce-fiscal-complete.md](./12-commerce-fiscal-complete.md).  
-> Dogfood: **one site** first; every row still has `site_id`.
+> Internal trial: **one site** first; every row still has `site_id`.
 
 | ID | Feature | Description | Requires | Priority |
 |----|---------|-------------|----------|----------|

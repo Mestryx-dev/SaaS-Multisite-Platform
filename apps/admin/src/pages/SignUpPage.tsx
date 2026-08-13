@@ -8,11 +8,12 @@ import {
   Muted,
   Stack,
 } from "@mestryx/ui";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "@tanstack/react-router";
 import { apiFetch } from "../lib/api";
 import { safeReturnPath } from "../lib/auth-return";
+import { isDemoMode } from "../lib/demo";
 
 export function SignUpPage() {
   const { t } = useTranslation();
@@ -31,8 +32,17 @@ export function SignUpPage() {
       ? "/sign-in"
       : `/sign-in?return=${encodeURIComponent(returnTo)}`;
 
+  useEffect(() => {
+    if (!isDemoMode) return;
+    void navigate({ to: "/sign-in" });
+  }, [navigate]);
+
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
+    if (isDemoMode) {
+      setError(t("demo.signUpDisabled"));
+      return;
+    }
     setError(null);
     setPending(true);
     try {
@@ -50,6 +60,27 @@ export function SignUpPage() {
     } finally {
       setPending(false);
     }
+  }
+
+  if (isDemoMode) {
+    return (
+      <FormPanel width="md">
+        <Stack gap="md">
+          <div className="space-y-1">
+            <h1 className="text-lg font-semibold text-[var(--foreground)]">
+              {t("auth.signUp")}
+            </h1>
+            <Muted>{t("demo.signUpDisabled")}</Muted>
+          </div>
+          <a
+            href={signInHref}
+            className="text-sm text-[var(--primary)] underline-offset-2 hover:underline"
+          >
+            {t("demo.enter")}
+          </a>
+        </Stack>
+      </FormPanel>
+    );
   }
 
   return (

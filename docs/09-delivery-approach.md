@@ -72,7 +72,7 @@ Places that usually force painful rewrites if done “quick and dirty”. **Do t
 |---------|-------|------------------|
 | Sessions | DIY JWT in localStorage | **Better Auth** (Q12) with httpOnly cookies for admin |
 | Roles | Check only in UI | **Server-side** CASL/RBAC on every mutation |
-| Email verify | Skip for speed | Required before privileged actions (even in dogfood) |
+| Email verify | Skip for speed | Required before privileged actions (even in internal trial) |
 
 ### 5. Hosts / deploy
 
@@ -98,7 +98,7 @@ Places that usually force painful rewrites if done “quick and dirty”. **Do t
 | Remotion | **FB-092 done** — app at `apps/remotion` | Scaffold + Studio/render + CI job `remotion` (MP4 artifacts for social/ads; store stays code UI) |
 | Umami | After public traffic exists | F-802 |
 | Stripe Capture | Explicit unlock (**FB-070**) | End-customer pay |
-| PWA / Expo | After web dogfood | Extra surface |
+| PWA / Expo | After web CMS internal trial | Extra surface |
 | GraphQL | Never by default | REST first |
 
 ---

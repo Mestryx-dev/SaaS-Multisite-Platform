@@ -21,7 +21,7 @@ Security fixes target the default branch (`main` / `dev` integration line). Olde
 1. **Never commit secrets** — `.env`, API keys, tokens, private keys, vault dumps.
 2. Use your orchestrator’s secret store (Dokploy/Coolify env, Infisical, etc.) for real credentials.
 3. Committed templates are [`.env.example`](.env.example) and [`apps/marketing/.env.example`](apps/marketing/.env.example) only (placeholders).
-4. Local dogfood seed requires `SEED_PASSWORD` (and optional `SEED_EMAIL`) — **local/dev only**; never reuse on staging/prod.
+4. Local demo seed requires `SEED_PASSWORD` (and optional `SEED_EMAIL`) — **local/dev only**; never reuse on staging/prod.
 5. CI may use disposable secrets (e.g. `BETTER_AUTH_SECRET` in GitHub Actions) — never production values.
 
 Full operator notes: [`docs/SECURITY.md`](docs/SECURITY.md).  

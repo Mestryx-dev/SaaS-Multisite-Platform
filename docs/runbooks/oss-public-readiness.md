@@ -16,7 +16,7 @@ Related: [repo-history-hygiene.md](./repo-history-hygiene.md) · [SECURITY.md](.
 |----------|--------|
 | Licence | Apache-2.0 + NOTICE |
 | Branding | Mestryx remains upstream product brand in marketing copy |
-| Forks | Empty / placeholder `PUBLIC_*` defaults; dogfood hosts only in `.env.example` comments |
+| Forks | Empty / placeholder `PUBLIC_*` defaults; demo hosts only in `.env.example` comments |
 | Private ops | Dokploy UUIDs, LAN, Memorizer links → out of git |
 | History | Option B orphan before first PUBLIC (human OK) |
 

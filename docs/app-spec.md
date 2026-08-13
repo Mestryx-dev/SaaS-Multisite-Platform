@@ -27,7 +27,7 @@ Detail & priority: [06-feature-catalog-and-priority.md](./06-feature-catalog-and
 
 ## Success criteria (complete product)
 
-Runnable dogfood remains useful locally; **public launch** waits until the completeness track in [feature-backlog.md](./feature-backlog.md) is largely Done.
+Runnable internal trial remains useful locally; **public launch** waits until the completeness track in [feature-backlog.md](./feature-backlog.md) is largely Done.
 
 - [ ] Two sites under one org resolve on different hosts without data leak  
 - [ ] Admin can CRUD sites, CMS pages, and commerce catalog (incl. categories / variants)  

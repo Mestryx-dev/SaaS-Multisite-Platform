@@ -10,7 +10,7 @@
 3. Load secrets from your vault / secret store into Dokploy (or equivalent) env — never commit — see **Env matrix** below.  
 4. Explicit Mestryx OK to deploy staging.  
 5. Run migrations: `pnpm --filter @mestryx/api db:migrate` against staging DB (or migrate job).  
-6. Seed Luna dogfood (optional): `pnpm --filter @mestryx/api db:seed` with staging `DATABASE_URL` + `SEED_EMAIL` / `SEED_PASSWORD`. Seed marks the admin email verified (required for console sign-in).
+6. Seed Luna Bijoux (internal trial) (optional): `pnpm --filter @mestryx/api db:seed` with staging `DATABASE_URL` + `SEED_EMAIL` / `SEED_PASSWORD`. Seed marks the admin email verified (required for console sign-in).
 
 ## Env matrix (`.env.example` ↔ staging)
 

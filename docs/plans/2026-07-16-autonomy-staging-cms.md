@@ -7,7 +7,7 @@
 
 ## Scope
 
-Dogfood CMS path to **staging-ready**: W0 gaps → W1 auth/tenancy → W2 admin → W3 SSR+SEO → W6 CMS light → W4 domain model → W5 Stripe test → Dokploy staging artifacts.
+Internal-trial CMS path to **staging-ready**: W0 gaps → W1 auth/tenancy → W2 admin → W3 SSR+SEO → W6 CMS light → W4 domain model → W5 Stripe test → Dokploy staging artifacts.
 
 **Not in this run**: GraphQL, git subtrees, commerce, Expo, live Stripe, prod deploy without Mestryx.
 

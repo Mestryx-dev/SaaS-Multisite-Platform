@@ -21,7 +21,7 @@ import {
   navLinkClassName,
   cn,
 } from "@mestryx/ui";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, Outlet, useNavigate, useRouterState } from "@tanstack/react-router";
 import {
   CreditCard,
@@ -48,6 +48,7 @@ import {
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { apiFetch } from "../lib/api";
+import { isDemoMode } from "../lib/demo";
 import { signInHrefWithReturn } from "../lib/auth-return";
 import { WorkspaceProvider, useWorkspaceOrg, readStoredOrgId } from "../lib/workspace";
 
@@ -445,9 +446,11 @@ function HeaderThemeToggle() {
 function AuthenticatedShell({ children }: { children: ReactNode }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [cmdOpen, setCmdOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [demoEnterFailed, setDemoEnterFailed] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(() => {
     // Default: icon rail (narrow). Only expand when user explicitly chose "0".
     if (typeof window === "undefined") return true;
@@ -487,9 +490,33 @@ function AuthenticatedShell({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!sessionSettled || signedIn) return;
+    if (isDemoMode) {
+      if (demoEnterFailed) return;
+      let cancelled = false;
+      void (async () => {
+        try {
+          await apiFetch("/v1/demo/enter", { method: "POST", body: "{}" });
+          if (cancelled) return;
+          await queryClient.invalidateQueries({ queryKey: ["session"] });
+          await queryClient.invalidateQueries({ queryKey: ["organizations"] });
+        } catch {
+          if (!cancelled) setDemoEnterFailed(true);
+        }
+      })();
+      return () => {
+        cancelled = true;
+      };
+    }
     const href = signInHrefWithReturn(pathname, window.location.search);
     window.location.assign(href);
-  }, [sessionSettled, signedIn, pathname, navigate]);
+  }, [
+    sessionSettled,
+    signedIn,
+    pathname,
+    navigate,
+    queryClient,
+    demoEnterFailed,
+  ]);
 
   const cmdItems = useMemo(() => {
     const base: CmdItem[] = [
@@ -545,6 +572,20 @@ function AuthenticatedShell({ children }: { children: ReactNode }) {
   }
 
   const c = sidebarCollapsed;
+
+  if (isDemoMode && demoEnterFailed && !signedIn) {
+    return (
+      <div className="flex min-h-svh flex-col items-center justify-center gap-3 bg-[image:var(--background-ambient)] bg-[var(--background)] px-4 text-center">
+        <p className="text-sm text-[var(--foreground)]">{t("demo.enterFailed")}</p>
+        <a
+          href="/sign-in"
+          className="text-sm text-[var(--primary)] underline-offset-2 hover:underline"
+        >
+          {t("auth.signIn")}
+        </a>
+      </div>
+    );
+  }
 
   if (!sessionSettled || !signedIn) {
     return (
@@ -620,6 +661,14 @@ function AuthenticatedShell({ children }: { children: ReactNode }) {
           </>
         }
       >
+        {isDemoMode ? (
+          <div
+            role="status"
+            className="border-b border-[var(--border)] bg-[color-mix(in_srgb,var(--primary)_14%,transparent)] px-4 py-2 text-center text-sm text-[var(--foreground)]"
+          >
+            {t("demo.banner")}
+          </div>
+        ) : null}
         <RouteFade routeKey={pathname}>{children}</RouteFade>
       </AppShell>
 

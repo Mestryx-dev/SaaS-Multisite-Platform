@@ -10,6 +10,7 @@ import { captureException, log } from "./lib/logger.js";
 import { rateLimit } from "./lib/redis.js";
 import { requestIdMiddleware } from "./middleware/request-id.js";
 import { securityHeadersMiddleware } from "./middleware/security-headers.js";
+import { demoReadOnlyMiddleware } from "./middleware/demo-read-only.js";
 import { createAuth, type Auth } from "./modules/identity/auth.js";
 import { billingRoutes, seedPlans } from "./modules/billing/routes.js";
 import { cmsRoutes } from "./modules/cms/routes.js";
@@ -26,6 +27,7 @@ import { returnRoutes } from "./modules/commerce/return-routes.js";
 import { domainRoutes } from "./modules/domains/routes.js";
 import { tenancyRoutes } from "./modules/tenancy/routes.js";
 import { membersRoutes } from "./modules/tenancy/members-routes.js";
+import { demoRoutes } from "./modules/demo/routes.js";
 
 export type AppEnv = {
   Variables: {
@@ -98,6 +100,7 @@ export function createApp(options: CreateAppOptions = {}) {
       service: "api",
       time: new Date().toISOString(),
       requestId: c.get("requestId"),
+      demoMode: config.demoMode,
     }),
   );
 
@@ -194,6 +197,14 @@ export function createApp(options: CreateAppOptions = {}) {
 
   if (auth && db) {
     app.on(["POST", "GET"], "/api/auth/*", async (c) => {
+      if (config.demoMode && c.req.path.includes("sign-up")) {
+        return apiError(
+          c,
+          403,
+          "DEMO_READ_ONLY",
+          "Sign up is disabled in the demo environment",
+        );
+      }
       const ip = c.req.header("x-forwarded-for") ?? "local";
       if (c.req.path.includes("sign-in") || c.req.path.includes("sign-up")) {
         const rl = await rateLimit(`auth:${ip}`, 30, 60);
@@ -204,6 +215,8 @@ export function createApp(options: CreateAppOptions = {}) {
       return auth.handler(c.req.raw);
     });
 
+    app.use("/v1/*", demoReadOnlyMiddleware(config.demoMode));
+    app.route("/v1", demoRoutes(auth, config, db));
     app.route("/v1", tenancyRoutes(db, auth));
     app.route("/v1", membersRoutes(db, auth, config));
     app.route("/v1", cmsRoutes(db, auth, config));

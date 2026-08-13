@@ -1,0 +1,56 @@
+---
+interface Props {
+  adminLabel: string;
+  storeLabel: string;
+  caption: string;
+  adminSrc?: string;
+  storeSrc?: string;
+}
+
+const {
+  adminLabel,
+  storeLabel,
+  caption,
+  adminSrc = "/images/demos/mestryx-admin-demo.webp",
+  storeSrc = "/images/demos/mestryx-store-demo.webp",
+} = Astro.props;
+---
+
+<figure class="product-stage" data-motion="stage" aria-label={caption}>
+  <div class="product-stage__glow" data-motion="glow" aria-hidden="true"></div>
+  <div class="product-stage__frame">
+    <div class="product-stage__chrome">
+      <span class="product-stage__dot" aria-hidden="true"></span>
+      <span class="product-stage__dot" aria-hidden="true"></span>
+      <span class="product-stage__dot" aria-hidden="true"></span>
+      <span class="product-stage__url">{caption}</span>
+    </div>
+    <div class="product-stage__shots">
+      <figure class="product-stage__shot product-stage__shot--admin">
+        <img
+          src={adminSrc}
+          alt={adminLabel}
+          width="1200"
+          height="900"
+          loading="eager"
+          decoding="async"
+        />
+        <figcaption>{adminLabel}</figcaption>
+      </figure>
+      <figure class="product-stage__shot product-stage__shot--store">
+        <div class="product-stage__phone">
+          <img
+            src={storeSrc}
+            alt={storeLabel}
+            width="390"
+            height="844"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+        <figcaption>{storeLabel}</figcaption>
+      </figure>
+    </div>
+  </div>
+  <figcaption class="product-stage__caption">{caption}</figcaption>
+</figure>
