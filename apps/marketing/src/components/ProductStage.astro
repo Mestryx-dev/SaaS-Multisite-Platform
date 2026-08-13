@@ -26,7 +26,7 @@ const {
       <span class="product-stage__url">{caption}</span>
     </div>
     <div class="product-stage__shots">
-      <figure class="product-stage__shot">
+      <figure class="product-stage__shot product-stage__shot--admin">
         <img
           src={adminSrc}
           alt={adminLabel}
@@ -38,14 +38,16 @@ const {
         <figcaption>{adminLabel}</figcaption>
       </figure>
       <figure class="product-stage__shot product-stage__shot--store">
-        <img
-          src={storeSrc}
-          alt={storeLabel}
-          width="1200"
-          height="900"
-          loading="eager"
-          decoding="async"
-        />
+        <div class="product-stage__phone">
+          <img
+            src={storeSrc}
+            alt={storeLabel}
+            width="390"
+            height="844"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
         <figcaption>{storeLabel}</figcaption>
       </figure>
     </div>
