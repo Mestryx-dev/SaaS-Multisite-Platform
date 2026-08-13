@@ -2,6 +2,7 @@
 
 export const THEME_PRESET_IDS = [
   "platform",
+  "marketing",
   "storefront-base",
   "luna",
   "storefront-dark",

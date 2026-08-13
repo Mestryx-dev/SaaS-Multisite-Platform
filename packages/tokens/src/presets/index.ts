@@ -1,4 +1,5 @@
 import { lunaPreset } from "./luna.js";
+import { marketingPreset } from "./marketing.js";
 import { platformPreset } from "./platform.js";
 import { storefrontBasePreset } from "./storefront-base.js";
 import { storefrontDarkPreset } from "./storefront-dark.js";
@@ -14,10 +15,12 @@ import {
 export * from "./types.js";
 export { storefrontBaseTokens } from "./storefront-base.js";
 export { platformTokensMap } from "./platform.js";
+export { marketingTokensMap } from "./marketing.js";
 export { storefrontDarkTokens } from "./storefront-dark.js";
 
 const PRESETS: Record<ThemePresetId, ThemePresetMeta> = {
   platform: platformPreset,
+  marketing: marketingPreset,
   "storefront-base": storefrontBasePreset,
   luna: lunaPreset,
   "storefront-dark": storefrontDarkPreset,
