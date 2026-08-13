@@ -1,5 +1,5 @@
 /* Semantic tokens — shadcn CSS variable names (OKLCH).
- * Surface defaults: platform (admin Mestryx Teal) | storefront (universal Studio light base).
+ * Surface defaults: platform (admin Mestryx Teal) | marketing (NYC Night) | storefront (universal Studio light base).
  * Site brands (Luna, …) overlay via themeJson presets — see docs/design-system/site-theming.md.
  * Mestryx extensions: --font-display, --flash-bg, --flash-border, --shadow-*, --glass-* .
  */
@@ -151,6 +151,87 @@
   --shadow-lg: 0 1px 3px 0px oklch(0.00 0 0 / 0.08), 0 4px 6px -1px oklch(0.00 0 0 / 0.08);
   --shadow-xl: 0 1px 3px 0px oklch(0.00 0 0 / 0.08), 0 8px 10px -1px oklch(0.00 0 0 / 0.08);
   --shadow-2xl: 0 1px 3px 0px oklch(0.00 0 0 / 0.16);
+}
+
+/* Product marketing landing — NYC Night (night-gold). Admin stays platform teal. */
+[data-theme="marketing"] {
+  color-scheme: dark;
+
+  --background: #07080d;
+  --background-ambient:
+    radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      color-mix(in srgb, #c9a227 8%, transparent),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 100% 50%,
+      color-mix(in srgb, #3b82f6 6%, transparent),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 50% 30% at 0% 80%,
+      color-mix(in srgb, #c9a227 4%, transparent),
+      transparent
+    ),
+    linear-gradient(180deg, #0b0d14 0%, #07080d 100%);
+  --foreground: #f5f3ef;
+  --card: #10131c;
+  --card-foreground: #f5f3ef;
+  --popover: #10131c;
+  --popover-foreground: #f5f3ef;
+  --primary: #c9a227;
+  --primary-foreground: #07080d;
+  --secondary: #161a26;
+  --secondary-foreground: #f5f3ef;
+  --muted: #161a26;
+  --muted-foreground: #9ca3af;
+  --accent: #d4af37;
+  --accent-foreground: #07080d;
+  --destructive: #b91c1c;
+  --border: #252a3a;
+  --input: #252a3a;
+  --ring: #c9a227;
+
+  --chart-1: #c9a227;
+  --chart-2: #d4af37;
+  --chart-3: #8a7020;
+  --chart-4: #9ca3af;
+  --chart-5: #6b7280;
+
+  --sidebar: #0b0d14;
+  --sidebar-foreground: #f5f3ef;
+  --sidebar-primary: #c9a227;
+  --sidebar-primary-foreground: #07080d;
+  --sidebar-accent: #161a26;
+  --sidebar-accent-foreground: #f5f3ef;
+  --sidebar-border: #252a3a;
+  --sidebar-ring: #c9a227;
+
+  --radius: 8px;
+  --app-header-height: 3.5rem;
+
+  --font-sans: "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+
+  --flash-bg: color-mix(in srgb, #c9a227 16%, #10131c);
+  --flash-border: color-mix(in srgb, #c9a227 35%, #252a3a);
+
+  --glass-bg: #10131ceb;
+  --glass-border: #ffffff1f;
+  --glass-blur: 16px;
+  --glass-shadow: 0 8px 32px #00000059;
+  --glow-accent: #c9a22740;
+  --primary-muted: #c9a22733;
+
+  --shadow-2xs: 0 1px 3px 0px oklch(0.00 0 0 / 0.05);
+  --shadow-xs: 0 1px 3px 0px oklch(0.00 0 0 / 0.05);
+  --shadow-sm: 0 1px 3px 0px oklch(0.00 0 0 / 0.10), 0 1px 2px -1px oklch(0.00 0 0 / 0.10);
+  --shadow: 0 1px 3px 0px oklch(0.00 0 0 / 0.10), 0 1px 2px -1px oklch(0.00 0 0 / 0.10);
+  --shadow-md: 0 1px 3px 0px oklch(0.00 0 0 / 0.10), 0 2px 4px -1px oklch(0.00 0 0 / 0.10);
+  --shadow-lg: 0 1px 3px 0px oklch(0.00 0 0 / 0.10), 0 4px 6px -1px oklch(0.00 0 0 / 0.10);
+  --shadow-xl: 0 1px 3px 0px oklch(0.00 0 0 / 0.10), 0 8px 10px -1px oklch(0.00 0 0 / 0.10);
+  --shadow-2xl: 0 1px 3px 0px oklch(0.00 0 0 / 0.25);
 }
 
 [data-theme="storefront"] {
