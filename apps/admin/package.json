@@ -18,7 +18,7 @@
     "@mestryx/ui": "workspace:*",
     "@tanstack/react-query": "^5.85.5",
     "@tanstack/react-router": "^1.131.2",
-    "i18next": "^25.4.2",
+    "i18next": "^26.3.6",
     "lucide-react": "^1.25.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
