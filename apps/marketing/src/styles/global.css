@@ -230,6 +230,7 @@ a:hover {
 .product-stage {
   position: relative;
   margin: 0;
+  overflow: hidden;
 }
 
 .product-stage__glow {
@@ -289,7 +290,7 @@ a:hover {
 
 .product-stage__shots {
   display: grid;
-  grid-template-columns: minmax(0, 1.55fr) minmax(9.5rem, 0.55fr);
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 0.45fr);
   align-items: end;
   gap: 0.85rem;
   padding: 0.85rem 0.9rem 1rem;
@@ -320,6 +321,7 @@ a:hover {
 
 .product-stage__phone {
   width: min(100%, 11.5rem);
+  max-width: 100%;
   margin-inline: auto;
   padding: 0.45rem;
   border-radius: 1.15rem;
@@ -356,6 +358,17 @@ a:hover {
 .product-stage__shot--store figcaption {
   color: #94a3b8;
   text-align: center;
+}
+
+/* Mid widths: keep phone fluid so hero never overflows beside admin */
+@media (max-width: 900px) and (min-width: 721px) {
+  .product-stage__shots {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.5fr);
+  }
+
+  .product-stage__phone {
+    width: min(100%, 10rem);
+  }
 }
 
 @media (max-width: 720px) {
@@ -452,16 +465,21 @@ a:hover {
   display: grid;
   gap: 1rem;
   margin-top: 1.5rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 @media (min-width: 720px) {
   .stage-split {
-    grid-template-columns: 1fr 1fr;
+    /* Admin primary; store column capped — phone supports, does not dominate */
+    grid-template-columns: minmax(0, 1fr) minmax(0, min(18rem, 32%));
   }
 }
 
 .stage-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
   padding: 1.25rem 1.35rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -480,6 +498,9 @@ a:hover {
 }
 
 .stage-panel--light {
+  width: 100%;
+  max-width: 100%;
+  justify-self: stretch;
   background: #f8fafc;
   color: #12141a;
   border-color: #e2e8f0;
@@ -518,10 +539,13 @@ a:hover {
   background: var(--card);
 }
 
-/* Store panel: phone chrome (same proportions as hero ProductStage) */
+/* Store panel: phone chrome — fluid; on desktop height tracks admin card */
 .stage-panel__shot--store {
   display: flex;
+  flex: 1 1 auto;
   justify-content: center;
+  align-items: center;
+  min-height: 0;
   overflow: visible;
   border: none;
   background: transparent;
@@ -540,6 +564,7 @@ a:hover {
 .demo-phone {
   display: block;
   width: min(100%, 15rem);
+  max-width: 100%;
   margin-inline: auto;
   padding: 0.45rem;
   border-radius: 1.15rem;
@@ -565,6 +590,49 @@ a:hover {
   border-radius: 0.85rem;
   border: 1px solid #e2e8f0;
   background: #f8fafc;
+}
+
+/*
+ * Desktop: take phone out of intrinsic height so the admin 4:3 drives the row;
+ * absolute fit keeps the phone supporting/smaller inside the stretched store card.
+ */
+@media (min-width: 720px) {
+  .stage-panel__shot--store {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  .demo-phone {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    margin-inline: 0;
+    aspect-ratio: 390 / 844;
+    box-sizing: border-box;
+  }
+
+  .demo-phone img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 719px) {
+  .stage-panel--light {
+    width: 100%;
+  }
+
+  .demo-phone {
+    width: min(100%, 14rem);
+  }
 }
 
 .roadmap {
