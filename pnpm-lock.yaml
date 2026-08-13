@@ -90,7 +90,7 @@ importers:
         version: 3.1090.0
       '@hono/node-server':
         specifier: ^2.0.12
-        version: 2.0.12(hono@4.13.0)
+        version: 2.1.0(hono@4.13.0)
       '@mestryx/host-resolution':
         specifier: workspace:*
         version: link:../../packages/host-resolution
@@ -236,8 +236,8 @@ importers:
   apps/web:
     dependencies:
       '@hono/node-server':
-        specifier: ^1.19.1
-        version: 1.19.14(hono@4.12.30)
+        specifier: ^1.19.15
+        version: 1.19.15(hono@4.12.30)
       '@mestryx/host-resolution':
         specifier: workspace:*
         version: link:../../packages/host-resolution
@@ -1435,14 +1435,14 @@ packages:
   '@fontsource/plus-jakarta-sans@5.3.0':
     resolution: {integrity: sha512-9WRw3G74Ve4cyPApAZSXLPY5DiLOZXDn7Q7dIBjFBpA0Pj56ljDItEdy2UUajjJxRuTg2HkMLO5C3K2nAQORWg==}
 
-  '@hono/node-server@1.19.14':
-    resolution: {integrity: sha512-GwtvgtXxnWsucXvbQXkRgqksiH2Qed37H9xHZocE5sA3N8O8O8/8FA3uclQXxXVzc9XBZuEOMK7+r02FmSpHtw==}
+  '@hono/node-server@1.19.15':
+    resolution: {integrity: sha512-Za2ai6TLdKjUvnur+eenO6nuYYipVAEhyCAdaV8IRvmU9kK8crOZUSYvIXn72E4f8fJqyAbpcJuTsYYmZp9Deg==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       hono: ^4
 
-  '@hono/node-server@2.0.12':
-    resolution: {integrity: sha512-eWpQYr67tqJLeaSUl0Q+TquuYfUdTibpOJlUMV2FfUP7+KqCC5TufnwnlXL6mobZBJbGAYRd7ZvEBDCbLInjhg==}
+  '@hono/node-server@2.1.0':
+    resolution: {integrity: sha512-XovyyCCnBzW+zKu+z/zq8hwNs4KOR5rEMAOxo2f40Q5xoOI37IMm6MIg2COOUtUApo0i6850MTBKH2u4QLGIqg==}
     engines: {node: '>=20'}
     peerDependencies:
       hono: ^4
@@ -7872,11 +7872,11 @@ snapshots:
 
   '@fontsource/plus-jakarta-sans@5.3.0': {}
 
-  '@hono/node-server@1.19.14(hono@4.12.30)':
+  '@hono/node-server@1.19.15(hono@4.12.30)':
     dependencies:
       hono: 4.12.30
 
-  '@hono/node-server@2.0.12(hono@4.13.0)':
+  '@hono/node-server@2.1.0(hono@4.13.0)':
     dependencies:
       hono: 4.13.0
 
