@@ -1,7 +1,7 @@
 # Brand brief — Multisite platform (by Mestryx)
 
 **Status**: Commercial name **deferred** · Visuals **provisional accepted** (2026-07-19)  
-**Updated**: 2026-07-19
+**Updated**: 2026-08-13
 
 ## Product naming
 
@@ -33,16 +33,16 @@
 
 **Provisional lock** (aligned with `packages/tokens` + root `DESIGN.md`). Replace only via DESIGN.md → tokens sync.
 
-| Role | Platform | Storefront | Status |
-|------|----------|------------|--------|
-| Accent / primary interactive | `#5eead4` (dark) / `#115e59` (light) | `#2f5d3a` | Accepted 2026-08-04 (Mestryx Teal) |
-| Background | `#0b0f14` | `#f4f0e8` | Accepted 2026-08-04 |
-| Foreground | `#e2e8f0` | `#1a1f16` | Accepted 2026-08-04 |
-| Display font | Plus Jakarta Sans | Fraunces | Accepted |
-| Body font | Inter | IBM Plex Sans | Accepted |
-| Radius | 8px | 8px Soft boutique | Accepted |
+| Role | Platform | Marketing (NYC Night) | Storefront | Status |
+|------|----------|------------------------|------------|--------|
+| Accent / primary interactive | `#5eead4` (dark) / `#115e59` (light) | `#c9a227` | `#2f5d3a` | Platform 2026-08-04 · Marketing 2026-08-13 |
+| Background | `#0b0f14` | `#07080d` | `#f4f0e8` | Platform 2026-08-04 · Marketing 2026-08-13 |
+| Foreground | `#e2e8f0` | `#f5f3ef` | `#1a1f16` | Platform 2026-08-04 · Marketing 2026-08-13 |
+| Display font | Plus Jakarta Sans | Plus Jakarta Sans | Fraunces | Accepted |
+| Body font | Inter | Inter | IBM Plex Sans | Accepted |
+| Radius | 8px | 8px | 8px Soft boutique | Accepted |
 
-Avoid Piblox brand collision; platform accent is Mestryx Teal (`#5eead4` / `#115e59`), not purple mesh. CV fonts are not imported — Inter + Plus Jakarta stay.
+Avoid Piblox brand collision; **admin** accent is Mestryx Teal (`#5eead4` / `#115e59`); **marketing landing** uses NYC Night gold (`#c9a227`) per ADR-0008. CV fonts are not imported — Inter + Plus Jakarta stay.
 
 ## Imagery
 

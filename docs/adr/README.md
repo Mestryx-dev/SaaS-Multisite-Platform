@@ -10,3 +10,4 @@
 | [0005](./0005-platform-obsidian-soft.md) | Platform Obsidian Soft palette | Superseded by 0006 |
 | [0006](./0006-platform-mestryx-teal.md) | Platform Mestryx Teal palette | Accepted |
 | [0007](./0007-demo-mode-read-only.md) | Demo environment read-only + auto session | Accepted |
+| [0008](./0008-marketing-nyc-night.md) | Marketing NYC Night surface | Accepted |
