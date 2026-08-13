@@ -82,7 +82,7 @@ const locale = resolveLocale(Astro.params.locale);
         <p>{t(locale, "stage.adminBody")}</p>
         <a class="stage-panel__shot" href={t(locale, "links.demoAdmin")}>
           <img
-            src="/images/demos/mestryx-admin-demo.webp"
+            src="/images/demos/mestryx-admin-demo.webp?v=20260813b"
             alt={t(locale, "stage.adminTitle")}
             width="1200"
             height="900"
@@ -94,15 +94,17 @@ const locale = resolveLocale(Astro.params.locale);
       <article class="stage-panel stage-panel--light">
         <h3>{t(locale, "stage.storeTitle")}</h3>
         <p>{t(locale, "stage.storeBody")}</p>
-        <a class="stage-panel__shot" href={t(locale, "links.demoStore")}>
-          <img
-            src="/images/demos/mestryx-store-demo.webp"
-            alt={t(locale, "stage.storeTitle")}
-            width="390"
-            height="844"
-            loading="lazy"
-            decoding="async"
-          />
+        <a class="stage-panel__shot stage-panel__shot--store" href={t(locale, "links.demoStore")}>
+          <span class="demo-phone">
+            <img
+              src="/images/demos/mestryx-store-demo.webp?v=20260813b"
+              alt={t(locale, "stage.storeTitle")}
+              width="390"
+              height="844"
+              loading="lazy"
+              decoding="async"
+            />
+          </span>
         </a>
       </article>
     </div>

@@ -452,6 +452,7 @@ a:hover {
   display: grid;
   gap: 1rem;
   margin-top: 1.5rem;
+  align-items: start;
 }
 
 @media (min-width: 720px) {
@@ -517,18 +518,53 @@ a:hover {
   background: var(--card);
 }
 
-.stage-panel--light .stage-panel__shot img {
-  width: min(100%, 16rem);
-  max-width: 100%;
-  height: auto;
-  margin-inline: auto;
-  aspect-ratio: 390 / 844;
-  object-fit: contain;
-  background: #f8fafc;
+/* Store panel: phone chrome (same proportions as hero ProductStage) */
+.stage-panel__shot--store {
+  display: flex;
+  justify-content: center;
+  overflow: visible;
+  border: none;
+  background: transparent;
+  box-shadow: none;
 }
 
-.stage-panel--light .stage-panel__shot {
-  border-color: #e2e8f0;
+.stage-panel__shot--store:hover {
+  border: none;
+  box-shadow: none;
+}
+
+.stage-panel--light .stage-panel__shot--store {
+  border: none;
+}
+
+.demo-phone {
+  display: block;
+  width: min(100%, 15rem);
+  margin-inline: auto;
+  padding: 0.45rem;
+  border-radius: 1.15rem;
+  border: 1px solid #e2e8f0;
+  background: linear-gradient(160deg, #e2e8f0, #f8fafc);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.stage-panel__shot--store:hover .demo-phone {
+  border-color: color-mix(in srgb, #115e59 35%, #e2e8f0);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.18);
+}
+
+.demo-phone img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 390 / 844;
+  object-fit: contain;
+  object-position: top center;
+  border-radius: 0.85rem;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
 }
 
 .roadmap {
