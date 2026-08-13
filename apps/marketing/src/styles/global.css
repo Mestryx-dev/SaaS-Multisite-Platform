@@ -586,20 +586,32 @@ a:hover {
 
 .cookie-banner {
   position: fixed;
-  inset-inline: 1rem;
+  inset-inline-start: 1rem;
+  inset-inline-end: auto;
   bottom: 1rem;
   z-index: 50;
-  max-width: 28rem;
-  margin-inline: auto;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(28rem, calc(100% - 2rem));
+  left: 1rem;
+  right: auto;
+  transform: none;
+  width: min(22rem, calc(100% - 2rem));
+  max-width: min(22rem, calc(100% - 2rem));
+  margin-inline: 0;
   padding: 1rem 1.1rem;
   border: 1px solid var(--border);
   border-radius: calc(var(--radius) + 2px);
   background: color-mix(in srgb, var(--card) 92%, transparent);
   backdrop-filter: blur(14px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 720px) {
+  .cookie-banner {
+    inset-inline: 1rem;
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+    max-width: none;
+  }
 }
 
 .cookie-banner[hidden] {
