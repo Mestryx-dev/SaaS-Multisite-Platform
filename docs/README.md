@@ -2,6 +2,8 @@
 
 **Owner**: Mestryx · **Domain**: mestryx.dev · **GitHub**: Mestryx-dev
 
+**Numbering note:** slots `01` and `03` were removed during a past restructure; numbers are kept as stable IDs (links point to them) — gaps are intentional, do not renumber.
+
 ## Sources of truth (no status duplicates)
 
 | Doc | Owns | Must NOT contain |
