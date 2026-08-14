@@ -1,0 +1,86 @@
+# SaaS Multisite Platform
+
+> Open-source multi-brand CMS / multisite SaaS by Mestryx (working name `mestryx-platform`): TypeScript monorepo with Hono API, Vite/React admin, TanStack Start SSR storefronts, Drizzle, Better Auth, shared UI in `packages/ui`. Chat with the operator is French; all durable artifacts are English.
+
+## Root
+
+- [README.md](README.md): Project overview, hosts, stack summary
+- [AGENTS.md](AGENTS.md): Agent guide — architecture rules, key docs map
+- [GAMEPLAN.md](GAMEPLAN.md): Delivery game plan
+- [PRODUCT.md](PRODUCT.md): Product vision and positioning
+- [PROGRESS.md](PROGRESS.md): Phase-level progress milestones
+- [DESIGN.md](DESIGN.md): Design notes
+- [SECURITY.md](SECURITY.md): Security policy and reporting
+- [CONTRIBUTING.md](CONTRIBUTING.md): Contribution guidelines
+- [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md): Code of conduct
+
+## Docs (docs/)
+
+- [docs/README.md](docs/README.md): Docs entry point and ownership matrix
+- [docs/00-identity-and-context.md](docs/00-identity-and-context.md): Identity and project context
+- [docs/02-stack.md](docs/02-stack.md): Full technical stack
+- [docs/04-git-and-github-strategy.md](docs/04-git-and-github-strategy.md): Git and GitHub workflow strategy
+- [docs/05-stack-versions.md](docs/05-stack-versions.md): Library versions and optional swaps
+- [docs/06-feature-catalog-and-priority.md](docs/06-feature-catalog-and-priority.md): Feature catalog and priorities
+- [docs/07-dependency-graph.md](docs/07-dependency-graph.md): Dependency graph between modules
+- [docs/08-open-questions.md](docs/08-open-questions.md): Locked open questions
+- [docs/09-delivery-approach.md](docs/09-delivery-approach.md): Build order and delivery policy
+- [docs/10-agent-ops.md](docs/10-agent-ops.md): Agent CI/CD, debug and learning loop
+- [docs/11-seo-ai-ready.md](docs/11-seo-ai-ready.md): SSR, SEO, llms.txt and JSON-LD
+- [docs/12-commerce-fiscal-complete.md](docs/12-commerce-fiscal-complete.md): Commerce and fiscal requirements
+- [docs/13-journey-audit.md](docs/13-journey-audit.md): User journey audit
+- [docs/app-spec.md](docs/app-spec.md): Product application specification
+- [docs/brand-brief.md](docs/brand-brief.md): Brand brief
+- [docs/technical-stack.md](docs/technical-stack.md): Short stack summary
+- [docs/feature-backlog.md](docs/feature-backlog.md): Feature backlog (FB-* items)
+- [docs/mvp-confirmation-checklist.md](docs/mvp-confirmation-checklist.md): MVP confirmation checklist
+- [docs/integrations.md](docs/integrations.md): Integration inventory
+- [docs/error-journal.md](docs/error-journal.md): Error and fix learning journal
+
+## ADR (docs/adr)
+
+- [docs/adr/README.md](docs/adr/README.md): ADR index
+- [docs/adr/0000-record-architecture-decisions.md](docs/adr/0000-record-architecture-decisions.md): ADR process bootstrap
+- [docs/adr/0001-product-and-stack-direction.md](docs/adr/0001-product-and-stack-direction.md): Product and stack direction
+- [docs/adr/0002-platform-admin-inter.md](docs/adr/0002-platform-admin-inter.md): Admin interface decision
+- [docs/adr/0003-platform-night-gold-glass.md](docs/adr/0003-platform-night-gold-glass.md): Night gold glass theme
+- [docs/adr/0004-end-customer-payments-platform-charge.md](docs/adr/0004-end-customer-payments-platform-charge.md): Payment charging model
+- [docs/adr/0005-platform-obsidian-soft.md](docs/adr/0005-platform-obsidian-soft.md): Obsidian soft theme
+- [docs/adr/0006-platform-mestryx-teal.md](docs/adr/0006-platform-mestryx-teal.md): Mestryx teal theme
+- [docs/adr/0007-demo-mode-read-only.md](docs/adr/0007-demo-mode-read-only.md): Demo mode read-only behavior
+- [docs/adr/0008-marketing-nyc-night.md](docs/adr/0008-marketing-nyc-night.md): Marketing NYC night theme
+
+## Design system (docs/design-system)
+
+- [docs/design-system/README.md](docs/design-system/README.md): Design system hub
+- [docs/design-system/admin-console-layout-recipes.md](docs/design-system/admin-console-layout-recipes.md): Admin console layout recipes
+- [docs/design-system/admin-console-master-plan.md](docs/design-system/admin-console-master-plan.md): Admin console master plan
+- [docs/design-system/component-directory.md](docs/design-system/component-directory.md): Component inventory
+- [docs/design-system/i18n.md](docs/design-system/i18n.md): Internationalization guidance
+- [docs/design-system/motion-guidelines.md](docs/design-system/motion-guidelines.md): Motion design guidelines
+- [docs/design-system/process-and-boundaries.md](docs/design-system/process-and-boundaries.md): Process and ownership boundaries
+- [docs/design-system/shadcn-css-variables.md](docs/design-system/shadcn-css-variables.md): shadcn CSS variables reference
+- [docs/design-system/site-theming.md](docs/design-system/site-theming.md): Site theming approach
+- [docs/design-system/stack-and-tooling.md](docs/design-system/stack-and-tooling.md): Design system stack and tooling
+- [docs/design-system/ux-ui-harmony-checklist.md](docs/design-system/ux-ui-harmony-checklist.md): UX/UI harmony checklist
+- [docs/design-system/CHANGELOG.md](docs/design-system/CHANGELOG.md): Design system changelog
+
+## Plans (docs/plans)
+
+- [docs/plans/2026-07-16-autonomy-staging-cms.md](docs/plans/2026-07-16-autonomy-staging-cms.md): Autonomy and staging CMS plan
+- [docs/plans/2026-07-28-admin-layout-recipes-wave-g.md](docs/plans/2026-07-28-admin-layout-recipes-wave-g.md): Admin layout recipes wave G
+- [docs/plans/2026-08-03-go-to-market-foundations.md](docs/plans/2026-08-03-go-to-market-foundations.md): Go-to-market foundations plan
+- [docs/plans/2026-08-13-marketing-image-sizing-cleanup.md](docs/plans/2026-08-13-marketing-image-sizing-cleanup.md): Marketing image sizing cleanup
+- [docs/plans/2026-08-13-marketing-nyc-night.md](docs/plans/2026-08-13-marketing-nyc-night.md): Marketing NYC night plan
+
+## Runbooks (docs/runbooks)
+
+- [docs/runbooks/dev-dokploy-smoke.md](docs/runbooks/dev-dokploy-smoke.md): Dev smoke on Dokploy
+- [docs/runbooks/staging-dokploy.md](docs/runbooks/staging-dokploy.md): Staging deploy on Dokploy
+- [docs/runbooks/oss-public-readiness.md](docs/runbooks/oss-public-readiness.md): Open-source public readiness
+- [docs/runbooks/repo-history-hygiene.md](docs/runbooks/repo-history-hygiene.md): Repository history hygiene
+
+## Optional
+
+- [docs/design-system/reports/quality-2026-07-19.md](docs/design-system/reports/quality-2026-07-19.md): Design system quality report
+- [docs/SECURITY.md](docs/SECURITY.md): Security notes for docs readers
