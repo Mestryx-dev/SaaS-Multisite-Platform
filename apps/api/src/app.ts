@@ -42,18 +42,40 @@ export type CreateAppOptions = {
   config?: AppConfig;
 };
 
-/** Hosts allowed to resolve via WEB_DEV_SITE_ID (local + Dokploy smoke WEB_ORIGIN). */
-function isWebDevSiteHost(host: string, webOrigin: string): boolean {
+/** Hosts allowed to resolve via WEB_DEV_SITE_ID (local + Dokploy smoke aliases). */
+export function isWebDevSiteHost(
+  host: string,
+  webOrigin: string,
+  trustedOrigins: string[] = [],
+): boolean {
   if (host === "localhost" || host === "127.0.0.1") return true;
   const smokeHosts = new Set<string>();
+
   const publicWebHost = process.env.PUBLIC_WEB_HOST?.trim().toLowerCase();
-  if (publicWebHost) smokeHosts.add(publicWebHost.split(":")[0]!);
+  if (publicWebHost) {
+    for (const part of publicWebHost.split(",")) {
+      const h = part.trim().split(":")[0];
+      if (h) smokeHosts.add(h);
+    }
+  }
+
   try {
     const originHost = new URL(webOrigin).hostname.toLowerCase();
     if (originHost) smokeHosts.add(originHost);
   } catch {
     // ignore invalid WEB_ORIGIN
   }
+
+  // Demo aliases (demo-web-…) are already listed in TRUSTED_ORIGINS on Dokploy Dev
+  for (const origin of trustedOrigins) {
+    try {
+      const h = new URL(origin).hostname.toLowerCase();
+      if (h) smokeHosts.add(h);
+    } catch {
+      // ignore invalid origin
+    }
+  }
+
   return smokeHosts.has(host);
 }
 
@@ -280,7 +302,7 @@ export function createApp(options: CreateAppOptions = {}) {
 
       // Local / smoke SSR (WEB_DEV_SITE_ID) — no platform subdomain or custom domain
       const webDevSiteId = process.env.WEB_DEV_SITE_ID?.trim();
-      if (webDevSiteId && isWebDevSiteHost(host, config.webOrigin)) {
+      if (webDevSiteId && isWebDevSiteHost(host, config.webOrigin, config.trustedOrigins)) {
         const [row] = await db
           .select()
           .from(site)

@@ -45,6 +45,7 @@ Upstream Mestryx demo hosts currently uses `*.mestryx.dev` (see product docs). F
 4. **Migrate** — `pnpm --filter @mestryx/api db:migrate` with that `DATABASE_URL`.  
 5. **Seed (optional)** — `pnpm --filter @mestryx/api db:seed` with `SEED_EMAIL` / `SEED_PASSWORD` from your vault (**required** env; no default password in source). Capture printed `WEB_DEV_SITE_ID`.  
 6. **Bind smoke storefront** — set the same `WEB_DEV_SITE_ID` on Web + API if the demo host is not under `*.sites.…`.  
+   Host aliases such as `demo-web-…` must appear in API `TRUSTED_ORIGINS` (and/or comma-separated `PUBLIC_WEB_HOST`) so `/v1/public/resolve-host` returns the seeded site (e.g. Luna Bijoux), not a stub.
 7. **Admin / Web / Storybook / Marketing** — deploy with build args as needed.
 
 ### Public demo mode (ADR-0007)

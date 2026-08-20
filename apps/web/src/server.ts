@@ -166,6 +166,36 @@ async function resolveSite(host: string): Promise<PublicSite | null> {
   return data?.site ?? null;
 }
 
+/** When host resolve fails but WEB_DEV_SITE_ID is set, probe WEB_ORIGIN then Luna stub. */
+async function resolveDevBoundSite(): Promise<PublicSite | null> {
+  if (!devSiteId) return null;
+
+  let probeHost = "localhost";
+  try {
+    const fromOrigin = new URL(process.env.WEB_ORIGIN ?? "http://localhost:3002")
+      .hostname;
+    if (fromOrigin) probeHost = fromOrigin;
+  } catch {
+    // keep localhost
+  }
+
+  const viaOrigin = await resolveSite(probeHost);
+  if (viaOrigin?.id === devSiteId) return viaOrigin;
+
+  // Last-resort labels match Luna Bijoux seed (DB already uses this name when resolve works)
+  return {
+    id: devSiteId,
+    name: "Luna Bijoux",
+    slug: "luna",
+    defaultLocale: "fr",
+    seoDefaultTitle: "Luna Bijoux — Bijoux fantaisie girly",
+    seoDefaultDescription:
+      "Colliers, bagues, bracelets et boucles d'oreilles fantaisie — soft, rose, fairy.",
+    llmsIntro:
+      "Luna Bijoux is a girly fantasy jewelry boutique: rose gold tones, moons, hearts, pearls.",
+  };
+}
+
 async function loadMenus(siteId: string) {
   if (siteId === "local") {
     return { header: [] as Array<{ label: string; href: string }>, footer: [] as Array<{ label: string; href: string }> };
@@ -672,26 +702,24 @@ ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join("\n")}
 
     if (!site) {
       if (devSiteId) {
-        site = {
-          id: devSiteId,
-          name: "Local Store",
-          slug: "local",
-          defaultLocale: "en",
-          seoDefaultTitle: "Local Store",
-          seoDefaultDescription: "Ecommerce storefront powered by mestryx-platform",
-          llmsIntro: "Local ecommerce storefront for mestryx-platform.",
-        };
+        site = await resolveDevBoundSite();
       } else {
         site = {
           id: "local",
-          name: kind.kind === "platform_subdomain" ? kind.slug : "Demo Store",
-          slug: kind.kind === "platform_subdomain" ? kind.slug : "local",
-          defaultLocale: "en",
-          seoDefaultTitle: "Demo Store",
-          seoDefaultDescription: "Ecommerce storefront powered by mestryx-platform",
-          llmsIntro: "Local ecommerce storefront for mestryx-platform.",
+          name: kind.kind === "platform_subdomain" ? kind.slug : "Luna Bijoux",
+          slug: kind.kind === "platform_subdomain" ? kind.slug : "luna",
+          defaultLocale: "fr",
+          seoDefaultTitle: "Luna Bijoux — Bijoux fantaisie girly",
+          seoDefaultDescription:
+            "Colliers, bagues, bracelets et boucles d'oreilles fantaisie — soft, rose, fairy.",
+          llmsIntro:
+            "Luna Bijoux is a girly fantasy jewelry boutique: rose gold tones, moons, hearts, pearls.",
         };
       }
+    }
+
+    if (!site) {
+      return c.html(notFoundHtml("Storefront unavailable"), 503);
     }
 
     const locale = normalizeLocale(site.defaultLocale);

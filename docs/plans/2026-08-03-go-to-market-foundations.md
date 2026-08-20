@@ -91,5 +91,3 @@ Add `content/projects/mestryx-platform.ts` on portfolio:
 2. Un-defer `apps/marketing` for landing shell + legal pages (Astro, FR+EN) — **in progress** (`feat/marketing-landing-legal`)
 3. Document second seed shop for CRE “2 boutiques” claim  
 4. Do **not** rewrite POS into v1 scope — pitch omni, build C after AE  
-
-CRE dossier pointer (personal): `Mestryx/projects/emploi/cre-ack-and-strategy.md`
