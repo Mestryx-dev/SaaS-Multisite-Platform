@@ -90,7 +90,7 @@ importers:
         version: 3.1090.0
       '@hono/node-server':
         specifier: ^2.0.12
-        version: 2.0.12(hono@4.13.0)
+        version: 2.0.12(hono@4.13.7)
       '@mestryx/host-resolution':
         specifier: workspace:*
         version: link:../../packages/host-resolution
@@ -113,8 +113,8 @@ importers:
         specifier: ^0.45.2
         version: 0.45.2(kysely@0.29.3)(postgres@3.4.9)
       hono:
-        specifier: ^4.13.0
-        version: 4.13.0
+        specifier: ^4.13.7
+        version: 4.13.7
       pdf-lib:
         specifier: ^1.17.1
         version: 1.17.1
@@ -237,7 +237,7 @@ importers:
     dependencies:
       '@hono/node-server':
         specifier: ^1.19.1
-        version: 1.19.14(hono@4.12.30)
+        version: 1.19.14(hono@4.13.7)
       '@mestryx/host-resolution':
         specifier: workspace:*
         version: link:../../packages/host-resolution
@@ -252,7 +252,7 @@ importers:
         version: 17.4.2
       hono:
         specifier: ^4.12.30
-        version: 4.12.30
+        version: 4.13.7
       react:
         specifier: ^19.1.0
         version: 19.2.7
@@ -5163,12 +5163,8 @@ packages:
   hastscript@9.0.1:
     resolution: {integrity: sha512-g7df9rMFX/SPi34tyGCyUBREQoKkapwdY/T04Qn9TDWfHhAYt4/I0gMVirzK5wEzeUqIjEB+LXC/ypb7Aqno5w==}
 
-  hono@4.12.30:
-    resolution: {integrity: sha512-emn+JoJjrN9YTpRDS5it/UI2SO9BAE37T6I3d963RxcZ81G9A4pr2SZTEiiaiKbzx+NKRg5BZ89fCL7gCJCUog==}
-    engines: {node: '>=16.9.0'}
-
-  hono@4.13.0:
-    resolution: {integrity: sha512-jhunvfHWxd7J5EFfSgH4xsYJzSe/lfqbUCxiyyeaQasUsXeEHXtzVid+7EOGByc5JnFa23SSFL3Y2RV/z1T+eQ==}
+  hono@4.13.7:
+    resolution: {integrity: sha512-c8/gF9ac8Y78/agExVocyLevgR+JlpNB444Py0FSX8pJoPdYUfUzRcXtYEYGwt6l19qIlVZPN5Mfsw9jFShmQQ==}
     engines: {node: '>=16.9.0'}
 
   html-entities@2.6.0:
@@ -7872,13 +7868,13 @@ snapshots:
 
   '@fontsource/plus-jakarta-sans@5.3.0': {}
 
-  '@hono/node-server@1.19.14(hono@4.12.30)':
+  '@hono/node-server@1.19.14(hono@4.13.7)':
     dependencies:
-      hono: 4.12.30
+      hono: 4.13.7
 
-  '@hono/node-server@2.0.12(hono@4.13.0)':
+  '@hono/node-server@2.0.12(hono@4.13.7)':
     dependencies:
-      hono: 4.13.0
+      hono: 4.13.7
 
   '@img/colour@1.1.0':
     optional: true
@@ -11489,9 +11485,7 @@ snapshots:
       property-information: 7.2.0
       space-separated-tokens: 2.0.2
 
-  hono@4.12.30: {}
-
-  hono@4.13.0: {}
+  hono@4.13.7: {}
 
   html-entities@2.6.0: {}
 
